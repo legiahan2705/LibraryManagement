@@ -41,6 +41,7 @@
             // 
             txt_MatKhau.Location = new Point(415, 234);
             txt_MatKhau.Name = "txt_MatKhau";
+            txt_MatKhau.PasswordChar = '*';
             txt_MatKhau.Size = new Size(229, 27);
             txt_MatKhau.TabIndex = 8;
             // 
@@ -115,8 +116,12 @@
             Controls.Add(txt_MaNhanVien);
             Controls.Add(label2);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "DangNhap";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DangNhap";
+            FormClosing += DangNhap_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

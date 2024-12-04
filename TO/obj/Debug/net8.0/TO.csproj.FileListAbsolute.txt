@@ -9,3 +9,15 @@ D:\QuanLyThuVien\QLThuVien\TO\obj\Debug\net8.0\TO.dll
 D:\QuanLyThuVien\QLThuVien\TO\obj\Debug\net8.0\refint\TO.dll
 D:\QuanLyThuVien\QLThuVien\TO\obj\Debug\net8.0\TO.pdb
 D:\QuanLyThuVien\QLThuVien\TO\obj\Debug\net8.0\ref\TO.dll
+D:\QuanLyThuVien\bin\Debug\net8.0\TO.deps.json
+D:\QuanLyThuVien\bin\Debug\net8.0\TO.dll
+D:\QuanLyThuVien\bin\Debug\net8.0\TO.pdb
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.GeneratedMSBuildEditorConfig.editorconfig
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.AssemblyInfoInputs.cache
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.AssemblyInfo.cs
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.csproj.CoreCompileInputs.cache
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.sourcelink.json
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.dll
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\refint\TO.dll
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.pdb
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\ref\TO.dll

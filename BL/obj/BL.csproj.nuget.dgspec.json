@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\QuanLyThuVien\\QLThuVien\\BL\\BL.csproj": {}
+    "D:\\QuanLyThuVien\\BL\\BL.csproj": {}
   },
   "projects": {
-    "D:\\QuanLyThuVien\\QLThuVien\\BL\\BL.csproj": {
+    "D:\\QuanLyThuVien\\BL\\BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuanLyThuVien\\QLThuVien\\BL\\BL.csproj",
+        "projectUniqueName": "D:\\QuanLyThuVien\\BL\\BL.csproj",
         "projectName": "BL",
-        "projectPath": "D:\\QuanLyThuVien\\QLThuVien\\BL\\BL.csproj",
+        "projectPath": "D:\\QuanLyThuVien\\BL\\BL.csproj",
         "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
-        "outputPath": "D:\\QuanLyThuVien\\QLThuVien\\BL\\obj\\",
+        "outputPath": "D:\\QuanLyThuVien\\BL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\QuanLyThuVien\\QLThuVien\\DL\\DL.csproj": {
-                "projectPath": "D:\\QuanLyThuVien\\QLThuVien\\DL\\DL.csproj"
+              "D:\\QuanLyThuVien\\DL\\DL.csproj": {
+                "projectPath": "D:\\QuanLyThuVien\\DL\\DL.csproj"
               },
-              "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj": {
-                "projectPath": "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj"
+              "D:\\QuanLyThuVien\\TO\\TO.csproj": {
+                "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj"
               }
             }
           }
@@ -76,14 +76,14 @@
         }
       }
     },
-    "D:\\QuanLyThuVien\\QLThuVien\\DL\\DL.csproj": {
+    "D:\\QuanLyThuVien\\DL\\DL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuanLyThuVien\\QLThuVien\\DL\\DL.csproj",
+        "projectUniqueName": "D:\\QuanLyThuVien\\DL\\DL.csproj",
         "projectName": "DL",
-        "projectPath": "D:\\QuanLyThuVien\\QLThuVien\\DL\\DL.csproj",
+        "projectPath": "D:\\QuanLyThuVien\\DL\\DL.csproj",
         "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
-        "outputPath": "D:\\QuanLyThuVien\\QLThuVien\\DL\\obj\\",
+        "outputPath": "D:\\QuanLyThuVien\\DL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -104,8 +104,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj": {
-                "projectPath": "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj"
+              "D:\\QuanLyThuVien\\TO\\TO.csproj": {
+                "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj"
               }
             }
           }
@@ -151,14 +151,14 @@
         }
       }
     },
-    "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj": {
+    "D:\\QuanLyThuVien\\TO\\TO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj",
+        "projectUniqueName": "D:\\QuanLyThuVien\\TO\\TO.csproj",
         "projectName": "TO",
-        "projectPath": "D:\\QuanLyThuVien\\QLThuVien\\TO\\TO.csproj",
+        "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj",
         "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
-        "outputPath": "D:\\QuanLyThuVien\\QLThuVien\\TO\\obj\\",
+        "outputPath": "D:\\QuanLyThuVien\\TO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

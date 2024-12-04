@@ -44,16 +44,63 @@ namespace QLThuVien
                     MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
                     return;
             }
-            MessageBox.Show("Đăng nhập thành công");
+
+            DialogResult dialogResult = MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                // Tạo instance của Dashboard form
+                Dashboard dashboardForm = new Dashboard();
+
+                // Đóng form DangNhap hiện tại
+                this.Hide();
+
+                // Hiển thị form Dashboard
+                dashboardForm.Show();
+            }
 
         }
 
+        // Hàm thoát dùng chung để tránh lặp lại
+        private bool ConfirmExit()
+        {
+            // Hiển thị hộp thoại xác nhận
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn thoát không?", // Nội dung thông báo
+                "Xác nhận thoát",                     // Tiêu đề
+                MessageBoxButtons.YesNo,              // Các nút lựa chọn
+                MessageBoxIcon.Question               // Biểu tượng
+            );
+
+            // Trả về true nếu người dùng chọn Yes
+            return result == DialogResult.Yes;
+        }
+
+
         private void btn_Thoat_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (ConfirmExit()) // Gọi hàm xác nhận thoát
             {
-                Application.Exit();
+                Environment.Exit(0); // Thoát ứng dụng ngay lập tức
+            }
+        }
+
+        private void DangNhap_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool isExiting = false;
+        private void DangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!isExiting && !ConfirmExit()) // Nếu chưa xác nhận thoát hoặc chọn Không
+            {
+                e.Cancel = true; // Hủy sự kiện đóng form
+            }
+            else
+            {
+                isExiting = true; // Đánh dấu đã xác nhận thoát
+                Environment.Exit(0); // Thoát ứng dụng
             }
         }
     }
