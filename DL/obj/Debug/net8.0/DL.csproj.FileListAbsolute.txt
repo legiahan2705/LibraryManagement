@@ -1,0 +1,13 @@
+D:\QuanLyThuVien\QLThuVien\bin\Debug\net8.0\DL.deps.json
+D:\QuanLyThuVien\QLThuVien\bin\Debug\net8.0\DL.dll
+D:\QuanLyThuVien\QLThuVien\bin\Debug\net8.0\DL.pdb
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.csproj.AssemblyReference.cache
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.GeneratedMSBuildEditorConfig.editorconfig
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.AssemblyInfoInputs.cache
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.AssemblyInfo.cs
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.csproj.CoreCompileInputs.cache
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.csproj.Up2Date
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.dll
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\refint\DL.dll
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\DL.pdb
+D:\QuanLyThuVien\QLThuVien\DL\obj\Debug\net8.0\ref\DL.dll
