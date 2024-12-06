@@ -12,6 +12,7 @@ namespace QLThuVien
 {
     public partial class Dashboard : Form
     {
+        //lưu tên NV được truyền từ form Đăng Nhập
         private string employeeName;
         public Dashboard(string name)
         {
@@ -24,8 +25,8 @@ namespace QLThuVien
         {
             // Hiển thị hộp thoại xác nhận thoát
             DialogResult result = MessageBox.Show(
-                "Bạn có chắc chắn muốn thoát không?",
-                "Xác nhận thoát",
+                "Are you sure you want to exit?",
+                "Exit Confirmation",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -107,7 +108,7 @@ namespace QLThuVien
             RegisterEvents(pnlReports);
             RegisterEvents(pnlLogOut);
 
-            //gán tên nhân viên vào label
+            //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
         }
 
@@ -116,8 +117,8 @@ namespace QLThuVien
         {
             // Hiển thị MessageBox xác nhận đăng xuất
             DialogResult result = MessageBox.Show(
-                "Bạn có muốn đăng xuất không?",
-                "Đăng xuất",
+                "Do you want to log out?",
+                "Log Out Confirmation",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -140,8 +141,8 @@ namespace QLThuVien
         {
             // Hiển thị MessageBox xác nhận đăng xuất
             DialogResult result = MessageBox.Show(
-                "Bạn có muốn đăng xuất không?",
-                "Đăng xuất",
+                "Do you want to log out?",
+                "Log Out Confirmation",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );

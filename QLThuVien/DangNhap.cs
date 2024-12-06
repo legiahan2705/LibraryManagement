@@ -14,6 +14,7 @@ namespace QLThuVien
 {
     public partial class DangNhap : Form
     {
+        // đối tượng lưu trữ thông tin tài khoản gồm MaNV và MK
         TaiKhoan_TO taikhoan = new TaiKhoan_TO();
         TaiKhoanBL TaiKhoanBL = new TaiKhoanBL();
 
@@ -24,30 +25,34 @@ namespace QLThuVien
 
         private void btn_DangNhap_Click_1(object sender, EventArgs e)
         {
+            //lấy thông tin được nhập từ textbox đăng nhập gán vào taikhoan
             taikhoan.MaNV = txt_MaNhanVien.Text;
             taikhoan.MK = txt_MatKhau.Text;
 
             string employeeName;
+
+            // lấy thông tin trong taikhoan dùng cho phương thức CheckLogin trong TaiKhoanBL
+          
             string getuser = TaiKhoanBL.CheckLogin(taikhoan, out employeeName);
 
             // Trả lại kết quả nếu nghiệp vụ không đúng
             switch (getuser)
             {
                 case "required_taikhoan":
-                    MessageBox.Show("Tài khoản không được để trống");
+                    MessageBox.Show("Username cannot be empty"); // Tài khoản không được để trống
                     return;
 
                 case "required_matkhau":
-                    MessageBox.Show("Mật khẩu không được để trống");
+                    MessageBox.Show("Password cannot be empty"); // Mật khẩu không được để trống
                     return;
 
                 case "Tài khoản hoặc mật khẩu không chính xác!":
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
+                    MessageBox.Show("Invalid username or password!"); // Tài khoản hoặc mật khẩu không chính xác
                     return;
             }
 
             // Nếu đăng nhập thành công
-            DialogResult dialogResult = MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult dialogResult = MessageBox.Show("Login successful", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (dialogResult == DialogResult.OK)
             {
@@ -67,8 +72,8 @@ namespace QLThuVien
         {
             // Hiển thị hộp thoại xác nhận
             DialogResult result = MessageBox.Show(
-                "Bạn có chắc chắn muốn thoát không?", // Nội dung thông báo
-                "Xác nhận thoát",                     // Tiêu đề
+                "Are you sure you want to exit?", // Nội dung thông báo
+                "Exit Confirmation",                     // Tiêu đề
                 MessageBoxButtons.YesNo,              // Các nút lựa chọn
                 MessageBoxIcon.Question               // Biểu tượng
             );

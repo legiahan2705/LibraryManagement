@@ -17,7 +17,8 @@ namespace DL
 
     public class DataBaseAccess
     {
-        public static string CheckLogin_TO(TaiKhoan_TO taikhoan, out string employeeName)
+        //kiểm tra thông tin đăng nhập: MaNV, Pass. Đăng nhập thành công lấy tên NV
+        public static string CheckLogin_TO(TaiKhoan_TO taikhoan, out string employeeName) //out string employeeName: biến đầu ra để trả về tên NV
         {
             string result = null;
             employeeName = null;  // Khởi tạo employeeName mặc định

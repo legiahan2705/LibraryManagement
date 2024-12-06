@@ -7,8 +7,10 @@ using TO;
 
 namespace DL
 {
+    //Lớp này làm trung gian giữa DataBaseAccess và các thành phần khác
     public class TaiKhoanAccess : DataBaseAccess
     {
+        
         public string CheckLogin(TaiKhoan_TO taikhoan, out string employeeName)
         {
             // Gọi phương thức từ DataBaseAccess để kiểm tra đăng nhập
