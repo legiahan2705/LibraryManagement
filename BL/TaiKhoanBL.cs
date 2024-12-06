@@ -10,21 +10,12 @@ namespace BL
 {
     public class TaiKhoanBL
     {
-        TaiKhoanAccess tkAccess = new TaiKhoanAccess();
-        public string CheckLogin(TaiKhoan_TO taikhoan)
+        // Phương thức kiểm tra đăng nhập và lấy tên nhân viên
+        public string CheckLogin(TaiKhoan_TO taikhoan, out string employeeName)
         {
-            // Kiểm tra nghiệp vụ
-            if (taikhoan.MaNV == "")
-            {
-                return "required_taikhoan";
-            }
-            if (taikhoan.MK == "")
-            {
-                return "required_matkhau";
-            }
-
-            string info = tkAccess.CheckLogin(taikhoan);
-            return info;
+            TaiKhoanAccess taiKhoanAccess = new TaiKhoanAccess();
+            string result = taiKhoanAccess.CheckLogin(taikhoan, out employeeName);
+            return result;
         }
     }
 }

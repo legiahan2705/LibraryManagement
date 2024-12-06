@@ -12,9 +12,11 @@ namespace QLThuVien
 {
     public partial class Dashboard : Form
     {
-        public Dashboard()
+        private string employeeName;
+        public Dashboard(string name)
         {
             InitializeComponent();
+            employeeName = name;
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -93,7 +95,7 @@ namespace QLThuVien
             }
         }
 
-        // Hàm khởi tạo sự kiện khi Form Dashboard được tải
+     
         private void Dashboard_Load(object sender, EventArgs e)
         {
             // Đăng ký sự kiện cho các Panel trong Dashboard
@@ -104,6 +106,9 @@ namespace QLThuVien
             RegisterEvents(pnlBorrowReturn);
             RegisterEvents(pnlReports);
             RegisterEvents(pnlLogOut);
+
+            //gán tên nhân viên vào label
+            lblEmployeeName.Text = employeeName;
         }
 
         //Xử lí nút Log Out bên Trái

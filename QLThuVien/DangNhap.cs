@@ -22,14 +22,15 @@ namespace QLThuVien
             InitializeComponent();
         }
 
-
         private void btn_DangNhap_Click_1(object sender, EventArgs e)
         {
             taikhoan.MaNV = txt_MaNhanVien.Text;
             taikhoan.MK = txt_MatKhau.Text;
-            string getuser = TaiKhoanBL.CheckLogin(taikhoan);
 
-            //trả lại kq nếu nghiệp vụ không đúng
+            string employeeName;
+            string getuser = TaiKhoanBL.CheckLogin(taikhoan, out employeeName);
+
+            // Trả lại kết quả nếu nghiệp vụ không đúng
             switch (getuser)
             {
                 case "required_taikhoan":
@@ -45,12 +46,13 @@ namespace QLThuVien
                     return;
             }
 
+            // Nếu đăng nhập thành công
             DialogResult dialogResult = MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (dialogResult == DialogResult.OK)
             {
-                // Tạo instance của Dashboard form
-                Dashboard dashboardForm = new Dashboard();
+                // Tạo form Dashboard và truyền tên nhân viên vào
+                Dashboard dashboardForm = new Dashboard(employeeName);
 
                 // Đóng form DangNhap hiện tại
                 this.Hide();
@@ -58,7 +60,6 @@ namespace QLThuVien
                 // Hiển thị form Dashboard
                 dashboardForm.Show();
             }
-
         }
 
         // Hàm thoát dùng chung để tránh lặp lại
@@ -75,7 +76,6 @@ namespace QLThuVien
             // Trả về true nếu người dùng chọn Yes
             return result == DialogResult.Yes;
         }
-
 
         private void btn_Thoat_Click(object sender, EventArgs e)
         {

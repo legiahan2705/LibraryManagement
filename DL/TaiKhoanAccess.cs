@@ -9,10 +9,13 @@ namespace DL
 {
     public class TaiKhoanAccess : DataBaseAccess
     {
-        public string CheckLogin(TaiKhoan_TO taikhoan)
+        public string CheckLogin(TaiKhoan_TO taikhoan, out string employeeName)
         {
-            string info = CheckLogin_TO(taikhoan);
-            return info;
+            // Gọi phương thức từ DataBaseAccess để kiểm tra đăng nhập
+            string result = CheckLogin_TO(taikhoan, out employeeName);
+            return result;
         }
+
+
     }
 }

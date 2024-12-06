@@ -405,9 +405,12 @@
             // lblEmployeeName
             // 
             lblEmployeeName.AutoSize = true;
-            lblEmployeeName.Location = new Point(197, 151);
+            lblEmployeeName.BackColor = Color.Transparent;
+            lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblEmployeeName.ForeColor = Color.DarkSlateBlue;
+            lblEmployeeName.Location = new Point(183, 143);
             lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(50, 20);
+            lblEmployeeName.Size = new Size(70, 28);
             lblEmployeeName.TabIndex = 10;
             lblEmployeeName.Text = "label1";
             // 

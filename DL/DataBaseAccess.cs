@@ -1,19 +1,12 @@
-﻿
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using TO;
 
 namespace DL
 {
     public class SqlConnectionData
     {
-        // Tạo chuỗi kết nối csdl
-
+        // Tạo chuỗi kết nối CSDL
         public static SqlConnection Connect()
         {
             string strcon = @"Data Source=LEGIAHAN\SQLEXPRESS01;Initial Catalog=QuanLyThuvien;Integrated Security=True;Trust Server Certificate=True";
@@ -24,37 +17,45 @@ namespace DL
 
     public class DataBaseAccess
     {
-        public static string CheckLogin_TO(TaiKhoan_TO taikhoan)
+        public static string CheckLogin_TO(TaiKhoan_TO taikhoan, out string employeeName)
         {
-            string user = null;
+            string result = null;
+            employeeName = null;  // Khởi tạo employeeName mặc định
+
             SqlConnection conn = SqlConnectionData.Connect();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("proc_login", conn);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@user", taikhoan.MaNV);
-            cmd.Parameters.AddWithValue("@pass", taikhoan.MK);
 
-            // Kiểm tra quyền
-            cmd.Connection = conn;
+            // Sử dụng câu truy vấn JOIN giữa TaiKhoan và NhanVien để lấy tên nhân viên sau khi xác thực tài khoản và mật khẩu
+            string query = @"
+            SELECT NhanVien.Ten
+            FROM TaiKhoan
+            INNER JOIN NhanVien ON TaiKhoan.MaNV = NhanVien.MaNV
+            WHERE TaiKhoan.MaNV = @user AND TaiKhoan.MK = @pass";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@user", taikhoan.MaNV);  // Truyền mã nhân viên
+            cmd.Parameters.AddWithValue("@pass", taikhoan.MK);   // Truyền mật khẩu
+
             SqlDataReader reader = cmd.ExecuteReader();
+
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    user = reader.GetString(0);
-                    return user;
+                    employeeName = reader.GetString(0);  // Lấy tên nhân viên từ kết quả JOIN
+                    result = "LoginSuccess";  // Đánh dấu đăng nhập thành công
                 }
-                reader.Close();
-                conn.Close();
             }
             else
             {
-                return "Tài khoản hoặc mật khẩu không chính xác!";
+                result = "Tài khoản hoặc mật khẩu không chính xác!";
             }
 
+            reader.Close();
+            conn.Close();
 
-
-            return user;
+            return result;
         }
+
     }
 }

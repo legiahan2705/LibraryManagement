@@ -21,6 +21,14 @@ END
 DROP PROC proc_login
 
 
+--Lấy tên nhân viên--
+SELECT NhanVien.Ten
+        FROM TaiKhoan
+        INNER JOIN NhanVien ON TaiKhoan.MaNV = NhanVien.MaNV
+        WHERE TaiKhoan.MaNV = @user AND TaiKhoan.MK = @pass"
+
+
+
 
 
 
