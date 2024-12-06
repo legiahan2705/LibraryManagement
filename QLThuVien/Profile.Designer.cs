@@ -81,7 +81,6 @@
             // 
             // picAvatar
             // 
-            picAvatar.Image = (Image)resources.GetObject("picAvatar.Image");
             picAvatar.Location = new Point(12, 108);
             picAvatar.Name = "picAvatar";
             picAvatar.Size = new Size(127, 113);
@@ -394,7 +393,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(690, 235);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(192, 159);

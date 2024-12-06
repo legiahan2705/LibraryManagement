@@ -60,9 +60,9 @@
             label2.ForeColor = Color.DarkSlateBlue;
             label2.Location = new Point(415, 208);
             label2.Name = "label2";
-            label2.Size = new Size(87, 23);
+            label2.Size = new Size(85, 23);
             label2.TabIndex = 6;
-            label2.Text = "Mật Khẩu";
+            label2.Text = "Password";
             // 
             // label1
             // 
@@ -72,9 +72,9 @@
             label1.ForeColor = Color.DarkSlateBlue;
             label1.Location = new Point(415, 139);
             label1.Name = "label1";
-            label1.Size = new Size(122, 23);
+            label1.Size = new Size(111, 23);
             label1.TabIndex = 5;
-            label1.Text = "Mã Nhân Viên";
+            label1.Text = "Employee ID";
             // 
             // btn_DangNhap
             // 
@@ -85,7 +85,7 @@
             btn_DangNhap.Name = "btn_DangNhap";
             btn_DangNhap.Size = new Size(111, 36);
             btn_DangNhap.TabIndex = 9;
-            btn_DangNhap.Text = "Đăng Nhập";
+            btn_DangNhap.Text = "Login";
             btn_DangNhap.UseVisualStyleBackColor = false;
             btn_DangNhap.Click += btn_DangNhap_Click_1;
             // 
@@ -99,7 +99,7 @@
             btn_Thoat.Name = "btn_Thoat";
             btn_Thoat.Size = new Size(111, 36);
             btn_Thoat.TabIndex = 10;
-            btn_Thoat.Text = "Thoát";
+            btn_Thoat.Text = "Exit";
             btn_Thoat.UseVisualStyleBackColor = false;
             btn_Thoat.Click += btn_Thoat_Click;
             // 

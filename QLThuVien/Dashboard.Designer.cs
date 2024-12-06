@@ -60,6 +60,7 @@
             pnlReportsBTN = new Panel();
             pnlLogOutBTN = new Panel();
             picIconHome = new PictureBox();
+            lblEmployeeName = new Label();
             ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
@@ -401,12 +402,22 @@
             picIconHome.TabIndex = 2;
             picIconHome.TabStop = false;
             // 
+            // lblEmployeeName
+            // 
+            lblEmployeeName.AutoSize = true;
+            lblEmployeeName.Location = new Point(197, 151);
+            lblEmployeeName.Name = "lblEmployeeName";
+            lblEmployeeName.Size = new Size(50, 20);
+            lblEmployeeName.TabIndex = 10;
+            lblEmployeeName.Text = "label1";
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(lblEmployeeName);
             Controls.Add(picIconHome);
             Controls.Add(pnlLogOutBTN);
             Controls.Add(pnlReportsBTN);
@@ -491,5 +502,6 @@
         private Panel pnlReportsBTN;
         private Panel pnlLogOutBTN;
         private PictureBox picIconHome;
+        private Label lblEmployeeName;
     }
 }

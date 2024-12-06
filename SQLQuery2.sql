@@ -2,11 +2,29 @@ HEAD
 ﻿﻿
 --Tao database 
 
-create database [QuanLyThuvien]
-go
-use QuanLyThuVien
---Tao Danh Sach PHIEU 
+CREATE DATABASE [QuanLyThuvien]
 
+GO
+USE QuanLyThuVien
+
+--Tạo PROC lấy ID và MK
+GO
+CREATE PROCEDURE proc_login
+    @user CHAR(10), @pass NVARCHAR(10)
+AS
+BEGIN
+    SELECT*
+	FROM TaiKhoan 
+	WHERE MaNV=@user AND MK=@pass
+END
+
+DROP PROC proc_login
+
+
+
+
+
+--Tao Danh Sach PHIEU 
 
 CREATE TABLE [dbo].[DanhSachPhieu](
 	[MaPhieu] [char](10) NULL,
