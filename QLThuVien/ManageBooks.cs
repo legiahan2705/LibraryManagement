@@ -10,18 +10,20 @@ using System.Windows.Forms;
 
 namespace QLThuVien
 {
-    public partial class Dashboard : Form
+    public partial class ManageBooks : Form
     {
+        public ManageBooks()
+        {
+            InitializeComponent();
+        }
+
+
         //lưu tên NV được truyền từ form Đăng Nhập
         private string employeeName;
-        public Dashboard(string name)
+        public ManageBooks(string name)
         {
             InitializeComponent();
             employeeName = name;
-        }
-
-        public Dashboard()
-        {
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -41,7 +43,7 @@ namespace QLThuVien
         // Biến cờ để theo dõi trạng thái thoát
         private bool isExiting = false;
 
-        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        private void ManageBook_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Nếu chưa xác nhận thoát hoặc chọn Không, hủy sự kiện đóng form
             if (!isExiting && !ConfirmExit())
@@ -100,10 +102,9 @@ namespace QLThuVien
             }
         }
 
-
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void ManageBook_Load(object sender, EventArgs e)
         {
-            // Đăng ký sự kiện cho các Panel trong Dashboard
+            // Đăng ký sự kiện cho các Panel trong ManageBook
             RegisterEvents(pnlDashBoard);
             RegisterEvents(pnlProfile);
             RegisterEvents(pnlManageUsers);
@@ -129,8 +130,8 @@ namespace QLThuVien
 
             if (result == DialogResult.Yes)
             {
-                // Nếu chọn Có, đóng form Dashboard và mở lại form DangNhap
-                this.Hide(); // Ẩn form Dashboard hiện tại
+                // Nếu chọn Có, đóng form ManageBook và mở lại form DangNhap
+                this.Hide(); // Ẩn form ManageBook hiện tại
                 DangNhap loginForm = new DangNhap(); // Tạo mới form DangNhap
                 loginForm.Show(); // Hiển thị form DangNhap
             }
@@ -140,40 +141,18 @@ namespace QLThuVien
             }
         }
 
-        //Xử lí nút Log Out trên control panel
-        private void pnlLogOutBTN_Click(object sender, EventArgs e)
+        private void pnlDashBoard_Click(object sender, EventArgs e)
         {
-            // Hiển thị MessageBox xác nhận đăng xuất
-            DialogResult result = MessageBox.Show(
-                "Do you want to log out?",
-                "Log Out Confirmation",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+            // Tạo một instance của form DashBoard
+            Dashboard dashBoardForm = new Dashboard();
 
-            if (result == DialogResult.Yes)
-            {
-                // Nếu chọn Có, đóng form Dashboard và mở lại form DangNhap
-                this.Hide(); // Ẩn form Dashboard hiện tại
-                DangNhap loginForm = new DangNhap(); // Tạo mới form DangNhap
-                loginForm.Show(); // Hiển thị form DangNhap
-            }
-            else
-            {
-                // Nếu chọn không, MessageBox tự tắt
-            }
-        }
-
-        private void pnlManageBooksBTN_Click(object sender, EventArgs e)
-        {
-            // Tạo một instance của form ManageBook
-            ManageBooks manageBooksForm = new ManageBooks();
-
-            // Hiển thị form ManageBook
-            manageBooksForm.Show();
+            // Hiển thị form DashBoard
+            dashBoardForm.Show();
 
             // Ẩn form hiện tại 
             this.Hide();
         }
+
     }
+
 }

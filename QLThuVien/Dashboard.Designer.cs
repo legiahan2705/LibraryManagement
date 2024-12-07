@@ -362,6 +362,7 @@
             pnlManageBooksBTN.Name = "pnlManageBooksBTN";
             pnlManageBooksBTN.Size = new Size(247, 215);
             pnlManageBooksBTN.TabIndex = 6;
+            pnlManageBooksBTN.Click += pnlManageBooksBTN_Click;
             // 
             // pnlBorrowReturnBTN
             // 
