@@ -325,7 +325,7 @@
             pnlDashBoard.Name = "pnlDashBoard";
             pnlDashBoard.Size = new Size(291, 57);
             pnlDashBoard.TabIndex = 13;
-            pnlDashBoard.Click += pnlDashBoard_Click;
+            
             // 
             // picAvatar
             // 
@@ -373,6 +373,7 @@
             pnlSearchBTN.Name = "pnlSearchBTN";
             pnlSearchBTN.Size = new Size(249, 217);
             pnlSearchBTN.TabIndex = 24;
+            pnlSearchBTN.Paint += pnlSearchBTN_Paint;
             // 
             // pnlAddBookBTN
             // 
@@ -413,6 +414,7 @@
             Controls.Add(pnlDashBoard);
             Controls.Add(picAvatar);
             Name = "ManageBooks";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Test";
             FormClosing += ManageBook_FormClosing;
             Load += ManageBook_Load;

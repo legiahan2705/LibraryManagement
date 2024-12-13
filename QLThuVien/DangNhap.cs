@@ -16,7 +16,7 @@ namespace QLThuVien
     {
         // đối tượng lưu trữ thông tin tài khoản gồm MaNV và MK
         TaiKhoan_TO taikhoan = new TaiKhoan_TO();
-        TaiKhoanBL TaiKhoanBL = new TaiKhoanBL();
+        BL_AccountAccess TaiKhoanBL = new BL_AccountAccess();
 
         public DangNhap()
         {
@@ -25,46 +25,64 @@ namespace QLThuVien
 
         private void btn_DangNhap_Click_1(object sender, EventArgs e)
         {
-            //lấy thông tin được nhập từ textbox đăng nhập gán vào taikhoan
-            taikhoan.MaNV = txt_MaNhanVien.Text;
-            taikhoan.MK = txt_MatKhau.Text;
+            // Lấy thông tin từ các ô nhập liệu
+            string maNV = txt_MaNhanVien.Text;
+            string mk = txt_MatKhau.Text;
 
-            string employeeName;
-
-            // lấy thông tin trong taikhoan dùng cho phương thức CheckLogin trong TaiKhoanBL
-          
-            string getuser = TaiKhoanBL.CheckLogin(taikhoan, out employeeName);
-
-            // Trả lại kết quả nếu nghiệp vụ không đúng
-            switch (getuser)
+            // Kiểm tra các ô có bị để trống không
+            if (string.IsNullOrEmpty(maNV))
             {
-                case "required_taikhoan":
-                    MessageBox.Show("Username cannot be empty"); // Tài khoản không được để trống
-                    return;
-
-                case "required_matkhau":
-                    MessageBox.Show("Password cannot be empty"); // Mật khẩu không được để trống
-                    return;
-
-                case "Tài khoản hoặc mật khẩu không chính xác!":
-                    MessageBox.Show("Invalid username or password!"); // Tài khoản hoặc mật khẩu không chính xác
-                    return;
+                MessageBox.Show("Employee ID cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_MaNhanVien.Focus();
+                return;
             }
 
-            // Nếu đăng nhập thành công
-            DialogResult dialogResult = MessageBox.Show("Login successful", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            if (dialogResult == DialogResult.OK)
+            if (string.IsNullOrEmpty(mk))
             {
-                // Tạo form Dashboard và truyền tên nhân viên vào
-                Dashboard dashboardForm = new Dashboard(employeeName);
-
-                // Đóng form DangNhap hiện tại
-                this.Hide();
-
-                // Hiển thị form Dashboard
-                dashboardForm.Show();
+                MessageBox.Show("Password cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_MatKhau.Focus();
+                return;
             }
+
+            // Tạo đối tượng TaiKhoan_TO
+            TaiKhoan_TO taiKhoan = new TaiKhoan_TO
+            {
+                MaNV = maNV,
+                MK = mk
+            };
+
+            // Gọi tầng BL để kiểm tra đăng nhập
+            BL_AccountAccess blAccount = new BL_AccountAccess();
+            string employeeName, employeeRole;
+            string result = blAccount.Login(taiKhoan, out employeeName, out employeeRole);
+
+            // Hiển thị thông báo dựa trên kết quả
+            if (result == "Login successful") // Nếu đăng nhập thành công
+            {
+                DialogResult dialogResult = MessageBox.Show(
+                $"Login successful with role: {employeeRole}", // Thông báo bao gồm vai trò
+                "Notification",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    // Tạo form Dashboard và truyền tên, quyền nhân viên vào
+                    Dashboard dashboardForm = new Dashboard(employeeName, employeeRole);
+
+                    // Đóng form DangNhap hiện tại
+                    this.Hide();
+
+                    // Hiển thị form Dashboard
+                    dashboardForm.Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
         }
 
         // Hàm thoát dùng chung để tránh lặp lại

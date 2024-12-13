@@ -21,14 +21,15 @@ END
 DROP PROC proc_login
 
 
---Lấy tên nhân viên--
-SELECT NhanVien.Ten
-        FROM TaiKhoan
-        INNER JOIN NhanVien ON TaiKhoan.MaNV = NhanVien.MaNV
-        WHERE TaiKhoan.MaNV = @user AND TaiKhoan.MK = @pass"
+--Lấy tên và quyền nhân viên--
+SELECT Nhanvien.Ten, Nhanvien.PhanQuyen
+FROM TaiKhoan
+INNER JOIN Nhanvien ON TaiKhoan.MaNV = Nhanvien.MaNV
+WHERE TaiKhoan.MaNV = @user AND TaiKhoan.MK = @pass
 
-
-
+--Lấy All nhân viên-----
+SELECT MaNV, Ten, GioiTinh,SDT,NgaySinh,Diachi,Email,PhanQuyen
+FROM Nhanvien
 
 
 
@@ -616,7 +617,7 @@ GO
 INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100000  ', N'Trường', N'Nam', N'0353573467', CAST(N'2020-07-10' AS Date), N'Quận 9', N'truong@gmail.com', N'Nhân Viên')
 INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100002  ', N'Tuấn', N'Nam', N'0369696896', CAST(N'2000-07-14' AS Date), N'Quận 9', N'Tuanml@gmail.com', N'Nhân Viên')
 INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100004  ', N'Vũ', N'Nam', N'0369696896', CAST(N'2000-03-14' AS Date), N'Quận 9', N'Vuml@gmail.com', N'Nhân Viên')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100005  ', N'Nguyễn Hoàng Vương', N'Nam', N'0365868584', CAST(N'2000-04-12' AS Date), N'Quận 9', N'Vuongmk@gmail.com', N'Quản Lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100005  ', N'Nguyễn Hoàng Vương', N'Nam', N'0365868584', CAST(N'2000-04-12' AS Date), N'Quận 9', N'Vuongmk@gmail.com', N'Quản lý')
 GO
 INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100000  ', N'5951071111', CAST(N'2020-07-07' AS Date), CAST(N'2020-07-21' AS Date), N'Phieu Tra', 1)
 INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100001  ', N'5951071119', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Tra', 5)

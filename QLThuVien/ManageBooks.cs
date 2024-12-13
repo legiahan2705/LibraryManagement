@@ -141,18 +141,12 @@ namespace QLThuVien
             }
         }
 
-        private void pnlDashBoard_Click(object sender, EventArgs e)
+        
+
+        private void pnlSearchBTN_Paint(object sender, PaintEventArgs e)
         {
-            // Tạo một instance của form DashBoard
-            Dashboard dashBoardForm = new Dashboard();
 
-            // Hiển thị form DashBoard
-            dashBoardForm.Show();
-
-            // Ẩn form hiện tại 
-            this.Hide();
         }
-
     }
 
 }

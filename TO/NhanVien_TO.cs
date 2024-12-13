@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TO
 {
-    internal class NhanVien_TO
+    public class NhanVien_TO
     {
         public string MaNV {  get; set; }
         public string Ten {  get; set; }
