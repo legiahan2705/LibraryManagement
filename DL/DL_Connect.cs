@@ -10,6 +10,6 @@ namespace DL
 {
     public class DL_Connect
     {
-        protected static SqlConnection connection = new SqlConnection ("Data Source=LEGIAHAN\\SQLEXPRESS01;Initial Catalog=QuanLyThuvien;Integrated Security=True;Trust Server Certificate=True");
+        protected static SqlConnection connection = new SqlConnection ("Data Source=LEGIAHAN\\SQLEXPRESS01;Initial Catalog=QLThuVien;Integrated Security=True;Trust Server Certificate=True");
     }
 }

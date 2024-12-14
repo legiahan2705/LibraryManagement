@@ -21,14 +21,15 @@ namespace DL
                 connection.Open();
 
                 // Câu lệnh SQL INSERT với OUTPUT để lấy Id vừa thêm
-                string sql = "INSERT INTO Nhanvien (Ten, GioiTinh, SDT, NgaySinh, DiaChi,Email, PhanQuyen) " +
+                string sql = "INSERT INTO Nhanvien (MaNV, Ten, GioiTinh, SDT, NgaySinh, DiaChi,Email, PhanQuyen) " +
                              "OUTPUT INSERTED.MaNV " +
-                             "VALUES (@Ten, @GioiTinh, @SDT, @NgaySinh, @DiaChi, @Email, @PhanQuyen)";
+                             "VALUES (@MaNV, @Ten, @GioiTinh, @SDT, @NgaySinh, @DiaChi, @Email, @PhanQuyen)";
 
                 // Tạo SqlCommand
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     // Gán giá trị tham số
+                    command.Parameters.AddWithValue("@MaNV", employee.MaNV);
                     command.Parameters.AddWithValue("@Ten", employee.Ten);
                     command.Parameters.AddWithValue("@GioiTinh", employee.GioiTinh);
                     command.Parameters.AddWithValue("@SDT", employee.SDT);

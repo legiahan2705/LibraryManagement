@@ -219,6 +219,8 @@ namespace QLThuVien
             grBoxManageEmployees.Visible = false;
         }
 
+
+        // xóa nhân viên
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
@@ -256,7 +258,8 @@ namespace QLThuVien
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
             // Kiểm tra các TextBox có dữ liệu đầy đủ hay không
-            if (string.IsNullOrEmpty(txtTen.Text) || string.IsNullOrEmpty(txtGioiTinh.Text) ||
+            if (string.IsNullOrEmpty(txtMaNV.Text) ||
+                string.IsNullOrEmpty(txtTen.Text) || string.IsNullOrEmpty(txtGioiTinh.Text) ||
                 string.IsNullOrEmpty(txtSDT.Text) || string.IsNullOrEmpty(txtNgaySinh.Text) ||
                 string.IsNullOrEmpty(txtPhanQuyen.Text))
             {
@@ -286,6 +289,7 @@ namespace QLThuVien
                 // Tạo đối tượng nhân viên và gán các giá trị từ TextBox
                 NhanVien_TO newEmployee = new NhanVien_TO
                 {
+                    MaNV = txtMaNV.Text,
                     Ten = txtTen.Text,
                     GioiTinh = txtGioiTinh.Text,
                     SDT = txtSDT.Text,
@@ -295,7 +299,7 @@ namespace QLThuVien
                     PhanQuyen = txtPhanQuyen.Text
                 };
 
-                // Gọi phương thức thêm nhân viên (có thể là trong lớp BL hoặc DL)
+                // Gọi phương thức thêm nhân viên 
                 bool isAdded = _blAddEmployee.AddEmployee(newEmployee);
 
                 // Thông báo kết quả thêm nhân viên
@@ -303,6 +307,7 @@ namespace QLThuVien
                 {
                     MessageBox.Show("Employee added successfully!", "Success");
                     // Có thể làm sạch các TextBox sau khi thêm
+                    txtMaNV.Clear();
                     txtTen.Clear();
                     txtGioiTinh.Clear();
                     txtSDT.Clear();

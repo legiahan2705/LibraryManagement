@@ -19,7 +19,6 @@ namespace BL
 
         public bool DeleteEmployee(string employeeId)
         {
-            // Gọi phương thức Delete_Employee từ tầng DL
             return _dlDelete.Delete_Employee(employeeId);
         }
     }

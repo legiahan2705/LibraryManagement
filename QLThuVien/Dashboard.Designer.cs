@@ -78,6 +78,8 @@
             Delete = new DataGridViewImageColumn();
             bLGetEmployeesBindingSource = new BindingSource(components);
             grBoxManageEmployees = new Panel();
+            txtMaNV = new TextBox();
+            label20 = new Label();
             txtEmail = new TextBox();
             label9 = new Label();
             txtDiaChi = new TextBox();
@@ -588,6 +590,8 @@
             // grBoxManageEmployees
             // 
             grBoxManageEmployees.BackColor = Color.White;
+            grBoxManageEmployees.Controls.Add(txtMaNV);
+            grBoxManageEmployees.Controls.Add(label20);
             grBoxManageEmployees.Controls.Add(txtEmail);
             grBoxManageEmployees.Controls.Add(label9);
             grBoxManageEmployees.Controls.Add(txtDiaChi);
@@ -611,6 +615,22 @@
             grBoxManageEmployees.Name = "grBoxManageEmployees";
             grBoxManageEmployees.Size = new Size(930, 771);
             grBoxManageEmployees.TabIndex = 12;
+            // 
+            // txtMaNV
+            // 
+            txtMaNV.Location = new Point(260, 404);
+            txtMaNV.Name = "txtMaNV";
+            txtMaNV.Size = new Size(242, 27);
+            txtMaNV.TabIndex = 22;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(260, 381);
+            label20.Name = "label20";
+            label20.Size = new Size(54, 20);
+            label20.TabIndex = 21;
+            label20.Text = "Mã NV";
             // 
             // txtEmail
             // 
@@ -898,5 +918,7 @@
         private Label label8;
         private TextBox txtEmail;
         private Label label9;
+        private TextBox txtMaNV;
+        private Label label20;
     }
 }
