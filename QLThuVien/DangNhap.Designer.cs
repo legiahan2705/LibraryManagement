@@ -122,6 +122,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DangNhap";
             FormClosing += DangNhap_FormClosing;
+            Load += DangNhap_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -248,6 +248,7 @@
             pnlProfile.Name = "pnlProfile";
             pnlProfile.Size = new Size(291, 55);
             pnlProfile.TabIndex = 14;
+            pnlProfile.Click += pnlProfile_Click;
             // 
             // lblProfile
             // 
@@ -325,7 +326,6 @@
             pnlDashBoard.Name = "pnlDashBoard";
             pnlDashBoard.Size = new Size(291, 57);
             pnlDashBoard.TabIndex = 13;
-            
             // 
             // picAvatar
             // 
@@ -373,7 +373,6 @@
             pnlSearchBTN.Name = "pnlSearchBTN";
             pnlSearchBTN.Size = new Size(249, 217);
             pnlSearchBTN.TabIndex = 24;
-            pnlSearchBTN.Paint += pnlSearchBTN_Paint;
             // 
             // pnlAddBookBTN
             // 
@@ -416,8 +415,8 @@
             Name = "ManageBooks";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Test";
-            FormClosing += ManageBook_FormClosing;
-            Load += ManageBook_Load;
+            FormClosing += ManageBooks_FormClosing;
+            Load += ManageBooks_Load;
             ((System.ComponentModel.ISupportInitialize)picIconReports).EndInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).EndInit();
             pnlReports.ResumeLayout(false);

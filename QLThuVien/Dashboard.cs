@@ -22,12 +22,14 @@ namespace QLThuVien
         private BL_AddEmployee _blAddEmployee;
         private string employeeName; // Lưu tên nhân viên
         private string employeeRole; // Lưu quyền của nhân viên
+        private string employeeID;
 
-        public Dashboard(string employeeName, string employeeRole)
+        public Dashboard(string employeeName, string employeeRole, string id)
         {
             InitializeComponent();
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
+            this.employeeID = id;
 
             // Khởi tạo đối tượng BL_GetEmployees
             _blEmployees = new BL_GetEmployees();
@@ -40,6 +42,11 @@ namespace QLThuVien
             _blAddEmployee = new BL_AddEmployee();
 
 
+        }
+
+        public Dashboard()
+        {
+            InitializeComponent();
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -338,6 +345,20 @@ namespace QLThuVien
                 // Nếu chọn No, không làm gì cả, đóng MessageBox
                 return;
             }
+        }
+
+        private void pnlProfile_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(employeeID, employeeName);
+            profile.Show();
+            this.Hide();
+        }
+
+        private void pnlManageBooks_Click(object sender, EventArgs e)
+        {
+            ManageBooks manageBooks = new ManageBooks();
+            manageBooks.Show();
+            this.Hide();
         }
     }
 }

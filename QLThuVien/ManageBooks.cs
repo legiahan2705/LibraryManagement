@@ -26,6 +26,35 @@ namespace QLThuVien
             employeeName = name;
         }
 
+        private void ManageBooks_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Nếu chưa xác nhận thoát hoặc chọn Không, hủy sự kiện đóng form
+            if (!isExiting && !ConfirmExit())
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                isExiting = true; // Đánh dấu đã xác nhận thoát
+                Environment.Exit(0); // Thoát toàn bộ ứng dụng
+            }
+        }
+
+        private void ManageBooks_Load(object sender, EventArgs e)
+        {
+            // Đăng ký sự kiện cho các Panel trong ManageBook
+            RegisterEvents(pnlDashBoard);
+            RegisterEvents(pnlProfile);
+            RegisterEvents(pnlManageUsers);
+            RegisterEvents(pnlManageBooks);
+            RegisterEvents(pnlBorrowReturn);
+            RegisterEvents(pnlReports);
+            RegisterEvents(pnlLogOut);
+
+            //gán tên nhân viên vào label Welcome
+            lblEmployeeName.Text = employeeName;
+        }
+
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
         private bool ConfirmExit()
         {
@@ -43,19 +72,6 @@ namespace QLThuVien
         // Biến cờ để theo dõi trạng thái thoát
         private bool isExiting = false;
 
-        private void ManageBook_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Nếu chưa xác nhận thoát hoặc chọn Không, hủy sự kiện đóng form
-            if (!isExiting && !ConfirmExit())
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                isExiting = true; // Đánh dấu đã xác nhận thoát
-                Environment.Exit(0); // Thoát toàn bộ ứng dụng
-            }
-        }
 
         // Hàm xử lý Hover các panel bên Trái
         private void HoverEffect_MouseEnter(object? sender, EventArgs e)
@@ -102,21 +118,6 @@ namespace QLThuVien
             }
         }
 
-        private void ManageBook_Load(object sender, EventArgs e)
-        {
-            // Đăng ký sự kiện cho các Panel trong ManageBook
-            RegisterEvents(pnlDashBoard);
-            RegisterEvents(pnlProfile);
-            RegisterEvents(pnlManageUsers);
-            RegisterEvents(pnlManageBooks);
-            RegisterEvents(pnlBorrowReturn);
-            RegisterEvents(pnlReports);
-            RegisterEvents(pnlLogOut);
-
-            //gán tên nhân viên vào label Welcome
-            lblEmployeeName.Text = employeeName;
-        }
-
         //Xử lí nút Log Out bên Trái
         private void pnlLogOut_Click(object sender, EventArgs e)
         {
@@ -141,12 +142,14 @@ namespace QLThuVien
             }
         }
 
-        
-
-        private void pnlSearchBTN_Paint(object sender, PaintEventArgs e)
+        private void pnlProfile_Click(object sender, EventArgs e)
         {
-
+            Profile profile = new Profile();
+            profile.Show();
+            this.Hide();
         }
+
+
     }
 
 }

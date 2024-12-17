@@ -52,15 +52,17 @@
             lblProfile = new Label();
             picIconProfile = new PictureBox();
             pnlProfile = new Panel();
-            button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            pictureBox1 = new PictureBox();
+            btnEdit = new Button();
+            txtEmployeeID = new TextBox();
+            txtSex = new TextBox();
+            txtPhoneNo = new TextBox();
+            txtDateOfBirth = new TextBox();
+            txtAddress = new TextBox();
+            txtEmail = new TextBox();
+            txtRole = new TextBox();
+            lblEmployeeName = new Label();
+            txtName = new TextBox();
+            txtPassword = new TextBox();
             ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
             pnlDashBoard.SuspendLayout();
@@ -76,7 +78,6 @@
             pnlManageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconProfile).BeginInit();
             pnlProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // picAvatar
@@ -131,6 +132,7 @@
             pnlDashBoard.Name = "pnlDashBoard";
             pnlDashBoard.Size = new Size(291, 57);
             pnlDashBoard.TabIndex = 3;
+            pnlDashBoard.Click += pnlDashBoard_Click;
             // 
             // picIconLogOut
             // 
@@ -238,6 +240,7 @@
             pnlManageBooks.Name = "pnlManageBooks";
             pnlManageBooks.Size = new Size(291, 55);
             pnlManageBooks.TabIndex = 11;
+            pnlManageBooks.Click += pnlManageBooks_Click;
             // 
             // lblManageBooks
             // 
@@ -324,81 +327,99 @@
             pnlProfile.Size = new Size(291, 55);
             pnlProfile.TabIndex = 9;
             // 
-            // button1
+            // btnEdit
             // 
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button1.Location = new Point(703, 740);
-            button1.Name = "button1";
-            button1.Size = new Size(167, 48);
-            button1.TabIndex = 15;
-            button1.Text = "Edit";
-            button1.UseVisualStyleBackColor = true;
+            btnEdit.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnEdit.Location = new Point(727, 743);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(167, 48);
+            btnEdit.TabIndex = 15;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtEmployeeID
             // 
-            textBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox1.Location = new Point(717, 414);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(292, 31);
-            textBox1.TabIndex = 16;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtEmployeeID.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtEmployeeID.Location = new Point(751, 286);
+            txtEmployeeID.Name = "txtEmployeeID";
+            txtEmployeeID.Size = new Size(292, 31);
+            txtEmployeeID.TabIndex = 16;
             // 
-            // textBox2
+            // txtSex
             // 
-            textBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox2.Location = new Point(717, 459);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(292, 31);
-            textBox2.TabIndex = 17;
+            txtSex.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtSex.Location = new Point(751, 381);
+            txtSex.Name = "txtSex";
+            txtSex.Size = new Size(292, 31);
+            txtSex.TabIndex = 17;
             // 
-            // textBox3
+            // txtPhoneNo
             // 
-            textBox3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox3.Location = new Point(717, 504);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(292, 31);
-            textBox3.TabIndex = 18;
+            txtPhoneNo.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtPhoneNo.Location = new Point(751, 428);
+            txtPhoneNo.Name = "txtPhoneNo";
+            txtPhoneNo.Size = new Size(292, 31);
+            txtPhoneNo.TabIndex = 18;
             // 
-            // textBox4
+            // txtDateOfBirth
             // 
-            textBox4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox4.Location = new Point(717, 549);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(292, 31);
-            textBox4.TabIndex = 19;
+            txtDateOfBirth.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtDateOfBirth.Location = new Point(751, 480);
+            txtDateOfBirth.Name = "txtDateOfBirth";
+            txtDateOfBirth.Size = new Size(292, 31);
+            txtDateOfBirth.TabIndex = 19;
             // 
-            // textBox5
+            // txtAddress
             // 
-            textBox5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox5.Location = new Point(717, 594);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(292, 31);
-            textBox5.TabIndex = 20;
+            txtAddress.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtAddress.Location = new Point(751, 536);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(292, 31);
+            txtAddress.TabIndex = 20;
             // 
-            // textBox6
+            // txtEmail
             // 
-            textBox6.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox6.Location = new Point(717, 639);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(292, 31);
-            textBox6.TabIndex = 21;
+            txtEmail.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtEmail.Location = new Point(751, 588);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(292, 31);
+            txtEmail.TabIndex = 21;
             // 
-            // textBox7
+            // txtRole
             // 
-            textBox7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox7.Location = new Point(717, 684);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(292, 31);
-            textBox7.TabIndex = 22;
+            txtRole.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtRole.Location = new Point(751, 638);
+            txtRole.Name = "txtRole";
+            txtRole.Size = new Size(292, 31);
+            txtRole.TabIndex = 22;
             // 
-            // pictureBox1
+            // lblEmployeeName
             // 
-            pictureBox1.Location = new Point(690, 235);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(192, 159);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 23;
-            pictureBox1.TabStop = false;
+            lblEmployeeName.AutoSize = true;
+            lblEmployeeName.BackColor = Color.Transparent;
+            lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblEmployeeName.ForeColor = Color.DarkSlateBlue;
+            lblEmployeeName.Location = new Point(183, 146);
+            lblEmployeeName.Name = "lblEmployeeName";
+            lblEmployeeName.Size = new Size(70, 28);
+            lblEmployeeName.TabIndex = 24;
+            lblEmployeeName.Text = "label1";
+            // 
+            // txtName
+            // 
+            txtName.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtName.Location = new Point(751, 333);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(292, 31);
+            txtName.TabIndex = 25;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtPassword.Location = new Point(751, 692);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(292, 31);
+            txtPassword.TabIndex = 26;
             // 
             // Profile
             // 
@@ -406,15 +427,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
-            Controls.Add(pictureBox1);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(txtPassword);
+            Controls.Add(txtName);
+            Controls.Add(lblEmployeeName);
+            Controls.Add(txtRole);
+            Controls.Add(txtEmail);
+            Controls.Add(txtAddress);
+            Controls.Add(txtDateOfBirth);
+            Controls.Add(txtPhoneNo);
+            Controls.Add(txtSex);
+            Controls.Add(txtEmployeeID);
+            Controls.Add(btnEdit);
             Controls.Add(pnlLogOut);
             Controls.Add(pnlReports);
             Controls.Add(pnlBorrowReturn);
@@ -428,7 +451,10 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Profile";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
+            FormClosing += Profile_FormClosing;
+            Load += Profile_Load;
             ((System.ComponentModel.ISupportInitialize)picAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).EndInit();
             pnlDashBoard.ResumeLayout(false);
@@ -451,7 +477,6 @@
             ((System.ComponentModel.ISupportInitialize)picIconProfile).EndInit();
             pnlProfile.ResumeLayout(false);
             pnlProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -481,14 +506,16 @@
         private Label lblProfile;
         private PictureBox picIconProfile;
         private Panel pnlProfile;
-        private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private PictureBox pictureBox1;
+        private Button btnEdit;
+        private TextBox txtEmployeeID;
+        private TextBox txtSex;
+        private TextBox txtPhoneNo;
+        private TextBox txtDateOfBirth;
+        private TextBox txtAddress;
+        private TextBox txtEmail;
+        private TextBox txtRole;
+        private Label lblEmployeeName;
+        private TextBox txtName;
+        private TextBox txtPassword;
     }
 }

@@ -68,7 +68,7 @@ namespace QLThuVien
                 if (dialogResult == DialogResult.OK)
                 {
                     // Tạo form Dashboard và truyền tên, quyền nhân viên vào
-                    Dashboard dashboardForm = new Dashboard(employeeName, employeeRole);
+                    Dashboard dashboardForm = new Dashboard(employeeName, employeeRole, maNV);
 
                     // Đóng form DangNhap hiện tại
                     this.Hide();
@@ -82,7 +82,8 @@ namespace QLThuVien
                 MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
+
         }
 
         // Hàm thoát dùng chung để tránh lặp lại
@@ -125,6 +126,12 @@ namespace QLThuVien
                 isExiting = true; // Đánh dấu đã xác nhận thoát
                 Environment.Exit(0); // Thoát ứng dụng
             }
+        }
+
+        private void DangNhap_Load_1(object sender, EventArgs e)
+        {
+            txt_MaNhanVien.Text = "NV100005";
+            txt_MatKhau.Text = "12345";
         }
     }
 }
