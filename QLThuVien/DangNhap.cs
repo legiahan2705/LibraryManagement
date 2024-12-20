@@ -130,7 +130,7 @@ namespace QLThuVien
 
         private void DangNhap_Load_1(object sender, EventArgs e)
         {
-            txt_MaNhanVien.Text = "NV100005";
+            txt_MaNhanVien.Text = "NV100003";
             txt_MatKhau.Text = "12345";
         }
     }

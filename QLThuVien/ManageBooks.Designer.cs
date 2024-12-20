@@ -43,7 +43,7 @@
             picIconManageBooks = new PictureBox();
             lblManageUsers = new Label();
             picIconManageUsers = new PictureBox();
-            pnlManageUsers = new Panel();
+            pnlManageEmployees = new Panel();
             pnlProfile = new Panel();
             lblProfile = new Label();
             picIconProfile = new PictureBox();
@@ -67,7 +67,7 @@
             pnlManageBooks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageUsers).BeginInit();
-            pnlManageUsers.SuspendLayout();
+            pnlManageEmployees.SuspendLayout();
             pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconProfile).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
@@ -86,6 +86,8 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.MouseEnter += HoverEffect_MouseEnter;
+            picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblLogOut
             // 
@@ -97,6 +99,8 @@
             lblLogOut.Size = new Size(87, 28);
             lblLogOut.TabIndex = 0;
             lblLogOut.Text = "Log Out";
+            lblLogOut.MouseEnter += HoverEffect_MouseEnter;
+            lblLogOut.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconLogOut
             // 
@@ -107,6 +111,8 @@
             picIconLogOut.SizeMode = PictureBoxSizeMode.Zoom;
             picIconLogOut.TabIndex = 1;
             picIconLogOut.TabStop = false;
+            picIconLogOut.MouseEnter += HoverEffect_MouseEnter;
+            picIconLogOut.MouseLeave += HoverEffect_MouseLeave;
             // 
             // pnlReports
             // 
@@ -118,6 +124,8 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 18;
+            pnlReports.MouseEnter += HoverEffect_MouseEnter;
+            pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblReports
             // 
@@ -129,6 +137,8 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.MouseEnter += HoverEffect_MouseEnter;
+            lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
             // pnlBorrowReturn
             // 
@@ -140,6 +150,8 @@
             pnlBorrowReturn.Name = "pnlBorrowReturn";
             pnlBorrowReturn.Size = new Size(291, 55);
             pnlBorrowReturn.TabIndex = 17;
+            pnlBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
+            pnlBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblBorrowReturn
             // 
@@ -151,6 +163,8 @@
             lblBorrowReturn.Size = new Size(192, 28);
             lblBorrowReturn.TabIndex = 0;
             lblBorrowReturn.Text = "Borrow and Return";
+            lblBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
+            lblBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconBorrowReturn
             // 
@@ -161,6 +175,8 @@
             picIconBorrowReturn.SizeMode = PictureBoxSizeMode.Zoom;
             picIconBorrowReturn.TabIndex = 1;
             picIconBorrowReturn.TabStop = false;
+            picIconBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
+            picIconBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblWelcome
             // 
@@ -184,6 +200,8 @@
             pnlManageBooks.Name = "pnlManageBooks";
             pnlManageBooks.Size = new Size(291, 55);
             pnlManageBooks.TabIndex = 16;
+            pnlManageBooks.MouseEnter += HoverEffect_MouseEnter;
+            pnlManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblManageBooks
             // 
@@ -195,6 +213,8 @@
             lblManageBooks.Size = new Size(151, 28);
             lblManageBooks.TabIndex = 0;
             lblManageBooks.Text = "Manage Books";
+            lblManageBooks.MouseEnter += HoverEffect_MouseEnter;
+            lblManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconManageBooks
             // 
@@ -205,6 +225,8 @@
             picIconManageBooks.SizeMode = PictureBoxSizeMode.Zoom;
             picIconManageBooks.TabIndex = 1;
             picIconManageBooks.TabStop = false;
+            picIconManageBooks.MouseEnter += HoverEffect_MouseEnter;
+            picIconManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblManageUsers
             // 
@@ -213,9 +235,11 @@
             lblManageUsers.ForeColor = Color.DarkSlateBlue;
             lblManageUsers.Location = new Point(59, 15);
             lblManageUsers.Name = "lblManageUsers";
-            lblManageUsers.Size = new Size(145, 28);
+            lblManageUsers.Size = new Size(195, 28);
             lblManageUsers.TabIndex = 0;
-            lblManageUsers.Text = "Manage Users";
+            lblManageUsers.Text = "Manage Employees";
+            lblManageUsers.MouseEnter += HoverEffect_MouseEnter;
+            lblManageUsers.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconManageUsers
             // 
@@ -226,17 +250,22 @@
             picIconManageUsers.SizeMode = PictureBoxSizeMode.Zoom;
             picIconManageUsers.TabIndex = 1;
             picIconManageUsers.TabStop = false;
+            picIconManageUsers.MouseEnter += HoverEffect_MouseEnter;
+            picIconManageUsers.MouseLeave += HoverEffect_MouseLeave;
             // 
-            // pnlManageUsers
+            // pnlManageEmployees
             // 
-            pnlManageUsers.BackColor = Color.Transparent;
-            pnlManageUsers.Controls.Add(lblManageUsers);
-            pnlManageUsers.Controls.Add(picIconManageUsers);
-            pnlManageUsers.Cursor = Cursors.Hand;
-            pnlManageUsers.Location = new Point(12, 377);
-            pnlManageUsers.Name = "pnlManageUsers";
-            pnlManageUsers.Size = new Size(291, 55);
-            pnlManageUsers.TabIndex = 15;
+            pnlManageEmployees.BackColor = Color.Transparent;
+            pnlManageEmployees.Controls.Add(lblManageUsers);
+            pnlManageEmployees.Controls.Add(picIconManageUsers);
+            pnlManageEmployees.Cursor = Cursors.Hand;
+            pnlManageEmployees.Location = new Point(12, 377);
+            pnlManageEmployees.Name = "pnlManageEmployees";
+            pnlManageEmployees.Size = new Size(291, 55);
+            pnlManageEmployees.TabIndex = 15;
+            pnlManageEmployees.Click += pnlManageEmployees_Click;
+            pnlManageEmployees.MouseEnter += HoverEffect_MouseEnter;
+            pnlManageEmployees.MouseLeave += HoverEffect_MouseLeave;
             // 
             // pnlProfile
             // 
@@ -249,6 +278,8 @@
             pnlProfile.Size = new Size(291, 55);
             pnlProfile.TabIndex = 14;
             pnlProfile.Click += pnlProfile_Click;
+            pnlProfile.MouseEnter += HoverEffect_MouseEnter;
+            pnlProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblProfile
             // 
@@ -260,6 +291,8 @@
             lblProfile.Size = new Size(75, 28);
             lblProfile.TabIndex = 0;
             lblProfile.Text = "Profile";
+            lblProfile.MouseEnter += HoverEffect_MouseEnter;
+            lblProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconProfile
             // 
@@ -270,6 +303,8 @@
             picIconProfile.SizeMode = PictureBoxSizeMode.Zoom;
             picIconProfile.TabIndex = 1;
             picIconProfile.TabStop = false;
+            picIconProfile.MouseEnter += HoverEffect_MouseEnter;
+            picIconProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblDashBoard
             // 
@@ -281,6 +316,8 @@
             lblDashBoard.Size = new Size(121, 28);
             lblDashBoard.TabIndex = 0;
             lblDashBoard.Text = "Dash Board";
+            lblDashBoard.MouseEnter += HoverEffect_MouseEnter;
+            lblDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconDashBoard
             // 
@@ -291,6 +328,8 @@
             picIconDashBoard.SizeMode = PictureBoxSizeMode.Zoom;
             picIconDashBoard.TabIndex = 1;
             picIconDashBoard.TabStop = false;
+            picIconDashBoard.MouseEnter += HoverEffect_MouseEnter;
+            picIconDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 
             // lblEmployeeName
             // 
@@ -315,6 +354,8 @@
             pnlLogOut.Size = new Size(291, 55);
             pnlLogOut.TabIndex = 19;
             pnlLogOut.Click += pnlLogOut_Click;
+            pnlLogOut.MouseEnter += HoverEffect_MouseEnter;
+            pnlLogOut.MouseLeave += HoverEffect_MouseLeave;
             // 
             // pnlDashBoard
             // 
@@ -326,6 +367,8 @@
             pnlDashBoard.Name = "pnlDashBoard";
             pnlDashBoard.Size = new Size(291, 57);
             pnlDashBoard.TabIndex = 13;
+            pnlDashBoard.MouseEnter += HoverEffect_MouseEnter;
+            pnlDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picAvatar
             // 
@@ -406,7 +449,7 @@
             Controls.Add(pnlBorrowReturn);
             Controls.Add(lblWelcome);
             Controls.Add(pnlManageBooks);
-            Controls.Add(pnlManageUsers);
+            Controls.Add(pnlManageEmployees);
             Controls.Add(pnlProfile);
             Controls.Add(lblEmployeeName);
             Controls.Add(pnlLogOut);
@@ -428,8 +471,8 @@
             pnlManageBooks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).EndInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageUsers).EndInit();
-            pnlManageUsers.ResumeLayout(false);
-            pnlManageUsers.PerformLayout();
+            pnlManageEmployees.ResumeLayout(false);
+            pnlManageEmployees.PerformLayout();
             pnlProfile.ResumeLayout(false);
             pnlProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picIconProfile).EndInit();
@@ -459,7 +502,7 @@
         private PictureBox picIconManageBooks;
         private Label lblManageUsers;
         private PictureBox picIconManageUsers;
-        private Panel pnlManageUsers;
+        private Panel pnlManageEmployees;
         private Panel pnlProfile;
         private Label lblProfile;
         private PictureBox picIconProfile;

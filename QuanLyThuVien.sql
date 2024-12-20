@@ -145,6 +145,21 @@ CREATE TABLE [dbo].[TheLoai](
 	  PRIMARY KEY ([MaTL])
 )
 
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100001', N'Hồng Lĩnh', N'Nam', N'12345678',CAST(N'2004-10-16' AS Date), N'Tân Phú', N'honglinh@gmail.com', N'Quản lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100002', N'Mai Chi', N'Nữ', N'12345678',CAST(N'2004-02-13' AS Date), N'Bình Thạnh', N'maichi@gmail.com', N'Quản lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100003', N'Gia Hân', N'Nữ', N'12345678',CAST(N'2004-05-27' AS Date), N'Quận 1', N'giahan@gmail.com', N'Quản lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100004', N'Thanh Tú', N'Nữ', N'12345678',CAST(N'2004-07-12' AS Date), N'Vĩnh Long', N'thanhtu@gmail.com', N'Nhân viên')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100005', N'Mỹ Duyên', N'Nữ', N'12345678',CAST(N'2004-03-09' AS Date), N'Quận 12', N'myduyen@gmail.com', N'Nhân viên')
+GO
+
+
+GO
+INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100001 ', N'12345')
+INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100002  ', N'12345')
+INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100003  ', N'12345')
+INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100004  ', N'123')
+INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100005  ', N'123')
+
 INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100001  ', N'SG100008  ', 1)
 INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100001  ', N'SG100007  ', 1)
 INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100006  ', N'SG100009  ', 1)
@@ -408,11 +423,7 @@ INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100021  ', N'TG1000
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100022  ', N'TG100011  ')
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100002  ', N'TG100007  ')
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100002  ', N'TG100006  ')
-GO
-INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100000  ', N'123')
-INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100005  ', N'12345')
-INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100002  ', N'123')
-INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100004  ', N'123')
+
 GO
 INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100000  ', N'Điện , Điện Tử , Tự Động Hóa', N'Không có thông tin')
 INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100001  ', N'Khoa Học', N'Không có thông tin')

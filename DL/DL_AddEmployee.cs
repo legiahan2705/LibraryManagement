@@ -63,6 +63,53 @@ namespace DL
             }
 
             return isAdded;
+
+        }
+
+        // Phương thức cập nhật nhân viên
+        public bool UpdateEmployee(NhanVien_TO employee)
+        {
+            bool isUpdated = false;
+
+            try
+            {
+                connection.Open();
+
+                string sql = @"UPDATE Nhanvien 
+                               SET Ten = @Ten, GioiTinh = @GioiTinh, SDT = @SDT, 
+                                   NgaySinh = @NgaySinh, DiaChi = @DiaChi, 
+                                   Email = @Email, PhanQuyen = @PhanQuyen
+                               WHERE MaNV = @MaNV";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@MaNV", employee.MaNV);
+                    command.Parameters.AddWithValue("@Ten", employee.Ten);
+                    command.Parameters.AddWithValue("@GioiTinh", employee.GioiTinh);
+                    command.Parameters.AddWithValue("@SDT", employee.SDT);
+                    command.Parameters.AddWithValue("@NgaySinh", employee.NgaySinh);
+                    command.Parameters.AddWithValue("@DiaChi", employee.DiaChi);
+                    command.Parameters.AddWithValue("@Email", employee.Email);
+                    command.Parameters.AddWithValue("@PhanQuyen", employee.PhanQuyen);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    isUpdated = rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to update employee: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return isUpdated;
         }
     }
 }

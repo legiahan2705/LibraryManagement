@@ -15,24 +15,28 @@ namespace QLThuVien
 {
     public partial class Profile : Form
     {
-        private string employeeID;  // ID của nhân viên
-        private string employeeName;
+        private BL_GetEmployees _blEmployees;
+        private BL_DeleteEmployee _blDeleteEmployee;
+        private BL_AddEmployee _blAddEmployee;
+
+        private string employeeName; // Lưu tên nhân viên
+        private string employeeRole; // Lưu quyền của nhân viên
+        private string employeeID; // Lưu ID nhân viên
+
         private BL_InformationEmployee _bl_informationEmployee;
 
-        public Profile()
-        {
-            InitializeComponent();
-        }
-
         //lưu tên NV được truyền từ form Đăng Nhập
-        public Profile(string id, string name)
+        public Profile(string employeeName, string employeeRole, string id)
         {
             InitializeComponent();
-            //tên welcome
-            this.employeeName = name;
 
-            // Gán giá trị cho các thuộc tính
+            this.employeeName = employeeName;
+            this.employeeRole = employeeRole;
             this.employeeID = id;
+
+            // Khởi tạo đối tượng BL_GetEmployees
+            _blEmployees = new BL_GetEmployees();
+
 
             _bl_informationEmployee = new BL_InformationEmployee();
         }
@@ -85,21 +89,6 @@ namespace QLThuVien
             }
         }
 
-        // Hàm đăng ký các sự kiện cần thiết (MouseEnter, MouseLeave)
-        private void RegisterEvents(Panel panel)
-        {
-            // Đăng ký sự kiện hover (MouseEnter và MouseLeave) cho chính Panel
-            panel.MouseEnter += HoverEffect_MouseEnter;
-            panel.MouseLeave += HoverEffect_MouseLeave;
-
-            // Đăng ký sự kiện hover cho từng điều khiển con bên trong Panel
-            foreach (Control control in panel.Controls)
-            {
-                control.MouseEnter += HoverEffect_MouseEnter;
-                control.MouseLeave += HoverEffect_MouseLeave;
-            }
-        }
-
         //Xử lí nút Log Out bên Trái
         private void pnlLogOut_Click(object sender, EventArgs e)
         {
@@ -140,14 +129,6 @@ namespace QLThuVien
 
         private void Profile_Load(object sender, EventArgs e)
         {
-            // Đăng ký sự kiện cho các Panel trong Profile
-            RegisterEvents(pnlDashBoard);
-            RegisterEvents(pnlProfile);
-            RegisterEvents(pnlManageUsers);
-            RegisterEvents(pnlManageBooks);
-            RegisterEvents(pnlBorrowReturn);
-            RegisterEvents(pnlReports);
-            RegisterEvents(pnlLogOut);
 
             NhanVien_TO employee = _bl_informationEmployee.GetEmployeeInfo(employeeID);
 
@@ -175,8 +156,23 @@ namespace QLThuVien
 
         private void pnlDashBoard_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
             dashboard.Show();
+            this.Hide();
+        }
+
+        private void pnlManageEmployees_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra vai trò trước\
+            string role = "Quản lý";
+            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Thoát khỏi sự kiện nếu không phải quản lý
+            }
+
+            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
+            manageEmployees.Show();
             this.Hide();
         }
     }

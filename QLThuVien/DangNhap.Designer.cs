@@ -79,6 +79,7 @@
             // btn_DangNhap
             // 
             btn_DangNhap.BackColor = Color.DarkSlateBlue;
+            btn_DangNhap.Cursor = Cursors.Hand;
             btn_DangNhap.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btn_DangNhap.ForeColor = Color.White;
             btn_DangNhap.Location = new Point(415, 280);
@@ -92,6 +93,7 @@
             // btn_Thoat
             // 
             btn_Thoat.BackColor = Color.DarkSlateBlue;
+            btn_Thoat.Cursor = Cursors.Hand;
             btn_Thoat.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btn_Thoat.ForeColor = Color.Snow;
             btn_Thoat.Location = new Point(533, 280);

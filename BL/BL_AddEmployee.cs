@@ -21,5 +21,11 @@ namespace BL
         {
             return _dlAdd.AddEmployee(employee);
         }
+
+        // Phương thức cập nhật nhân viên
+        public bool UpdateEmployee(NhanVien_TO employee)
+        {
+            return _dlAdd.UpdateEmployee(employee);
+        }
     }
 }

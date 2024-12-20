@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,18 +13,27 @@ namespace QLThuVien
 {
     public partial class ManageBooks : Form
     {
+        private BL_GetEmployees _blEmployees;
+        private BL_DeleteEmployee _blDeleteEmployee;
+        private BL_AddEmployee _blAddEmployee;
+
+        private string employeeName; // Lưu tên nhân viên
+        private string employeeRole; // Lưu quyền của nhân viên
+        private string employeeID; // Lưu ID nhân viên
         public ManageBooks()
         {
             InitializeComponent();
         }
 
-
-        //lưu tên NV được truyền từ form Đăng Nhập
-        private string employeeName;
-        public ManageBooks(string name)
+        public ManageBooks(string employeeName, string employeeRole, string id)
         {
             InitializeComponent();
-            employeeName = name;
+            // Khởi tạo đối tượng BL_GetEmployees
+            _blEmployees = new BL_GetEmployees();
+
+            this.employeeName = employeeName;
+            this.employeeRole = employeeRole;
+            this.employeeID = employeeID;
         }
 
         private void ManageBooks_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,15 +52,6 @@ namespace QLThuVien
 
         private void ManageBooks_Load(object sender, EventArgs e)
         {
-            // Đăng ký sự kiện cho các Panel trong ManageBook
-            RegisterEvents(pnlDashBoard);
-            RegisterEvents(pnlProfile);
-            RegisterEvents(pnlManageUsers);
-            RegisterEvents(pnlManageBooks);
-            RegisterEvents(pnlBorrowReturn);
-            RegisterEvents(pnlReports);
-            RegisterEvents(pnlLogOut);
-
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
         }
@@ -103,20 +104,6 @@ namespace QLThuVien
             }
         }
 
-        // Hàm đăng ký các sự kiện cần thiết (MouseEnter, MouseLeave)
-        private void RegisterEvents(Panel panel)
-        {
-            // Đăng ký sự kiện hover (MouseEnter và MouseLeave) cho chính Panel
-            panel.MouseEnter += HoverEffect_MouseEnter;
-            panel.MouseLeave += HoverEffect_MouseLeave;
-
-            // Đăng ký sự kiện hover cho từng điều khiển con bên trong Panel
-            foreach (Control control in panel.Controls)
-            {
-                control.MouseEnter += HoverEffect_MouseEnter;
-                control.MouseLeave += HoverEffect_MouseLeave;
-            }
-        }
 
         //Xử lí nút Log Out bên Trái
         private void pnlLogOut_Click(object sender, EventArgs e)
@@ -144,12 +131,25 @@ namespace QLThuVien
 
         private void pnlProfile_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile();
+            Profile profile = new Profile(employeeName, employeeRole, employeeID);
             profile.Show();
             this.Hide();
         }
 
+        private void pnlManageEmployees_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra vai trò trước\
+            string role = "Quản lý";
+            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Thoát khỏi sự kiện nếu không phải quản lý
+            }
 
+            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
+            manageEmployees.Show();
+            this.Hide();
+        }
     }
 
 }
