@@ -214,6 +214,10 @@ namespace QLThuVien
                 txtEmail.Text = employeeEmail;
                 txtPhanQuyen.Text = employeePhanQuyen;
 
+                // Đặt txtMaNV thành chỉ đọc
+                txtMaNV.ReadOnly = true;
+                txtMaNV.Enabled = false;   // Cho phép nhấp chuột
+
 
             }
             else
@@ -228,6 +232,10 @@ namespace QLThuVien
                 txtDiaChi.Clear();
                 txtEmail.Clear();
                 txtPhanQuyen.Clear();
+
+                
+                txtMaNV.ReadOnly = false;
+                txtMaNV.Enabled = true;  
 
                 btnAddEmployee.BackColor = Color.DarkSlateBlue;
                 btnAddEmployee.Text = "Add Employee";
@@ -383,6 +391,10 @@ namespace QLThuVien
                         txtDiaChi.Clear();
                         txtEmail.Clear();
                         txtPhanQuyen.Clear();
+
+                        // Đặt txtMaNV thành chỉ đọc
+                        txtMaNV.ReadOnly = false;
+                        txtMaNV.Enabled = true;   // Cho phép nhấp chuột
 
                         btnAddEmployee.BackColor = Color.DarkSlateBlue;
                         btnAddEmployee.Text = "Add Employee";
