@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TO;
 using DL;
+using TO;
 
 namespace BL
 {
-    public class BL_GetEmployees
+    public class BL_GetReaders
     {
-        private DL_GetEmployees _dlGetEmployees = new DL_GetEmployees();
+        private DL_GetReaders _dlGetReader = new DL_GetReaders();
 
-        public List<NhanVien_TO> GetAllEmployees()
+        public List<DocGia_TO> GetAllReader()
         {
             // Gọi tầng DL để lấy dữ liệu
-            List<NhanVien_TO> employees = _dlGetEmployees.GetEmployees();
+            List<DocGia_TO> readers = _dlGetReader.GetReaders();
 
             // Kiểm tra nếu không có nhân viên nào
-            if (employees == null || employees.Count == 0)
+            if (readers == null ||readers.Count == 0)
             {
                 // Trả về danh sách rỗng hoặc ném thông báo lỗi
-                Console.WriteLine("There are no employees in the database");
-                return new List<NhanVien_TO>();
+                Console.WriteLine("There are no readers in the database.");
+                return new List<DocGia_TO>();
             }
 
             // Trả về danh sách nhân viên nếu hợp lệ
-            return employees;
+            return readers;
         }
     }
 }

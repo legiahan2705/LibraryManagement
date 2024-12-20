@@ -192,7 +192,7 @@ namespace QLThuVien
 
             if (e.ColumnIndex == dataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                panel1.BackColor=Color.Lavender;
+                panel1.BackColor = Color.Lavender;
                 btnAddEmployee.BackColor = Color.CornflowerBlue;
                 btnAddEmployee.Text = "Save";
                 // Lấy mã nhân viên từ cột MaNV (giữ dưới dạng chuỗi)
@@ -233,9 +233,9 @@ namespace QLThuVien
                 txtEmail.Clear();
                 txtPhanQuyen.Clear();
 
-                
+
                 txtMaNV.ReadOnly = false;
-                txtMaNV.Enabled = true;  
+                txtMaNV.Enabled = true;
 
                 btnAddEmployee.BackColor = Color.DarkSlateBlue;
                 btnAddEmployee.Text = "Add Employee";
@@ -425,7 +425,7 @@ namespace QLThuVien
                 }
             }
         }
-        
+
 
         private void pnlLogOut_Click(object sender, EventArgs e)
         {
@@ -468,6 +468,13 @@ namespace QLThuVien
         {
             ManageBooks managebooks = new ManageBooks(employeeName, employeeRole, employeeID);
             managebooks.Show();
+            this.Hide();
+        }
+
+        private void pnlBorrowReturn_Click(object sender, EventArgs e)
+        {
+            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
+            borrowReturn.Show();
             this.Hide();
         }
     }

@@ -262,6 +262,7 @@
             pnlBorrowReturn.Name = "pnlBorrowReturn";
             pnlBorrowReturn.Size = new Size(291, 55);
             pnlBorrowReturn.TabIndex = 6;
+            pnlBorrowReturn.Click += pnlBorrowReturn_Click;
             pnlBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             pnlBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -377,6 +378,7 @@
             pnlBorrowReturnBTN.Name = "pnlBorrowReturnBTN";
             pnlBorrowReturnBTN.Size = new Size(247, 215);
             pnlBorrowReturnBTN.TabIndex = 7;
+            pnlBorrowReturnBTN.Click += pnlBorrowReturn_Click;
             // 
             // pnlReportsBTN
             // 

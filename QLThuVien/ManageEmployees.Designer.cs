@@ -225,6 +225,7 @@
             pnlBorrowReturn.Name = "pnlBorrowReturn";
             pnlBorrowReturn.Size = new Size(291, 55);
             pnlBorrowReturn.TabIndex = 17;
+            pnlBorrowReturn.Click += pnlBorrowReturn_Click;
             pnlBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             pnlBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 

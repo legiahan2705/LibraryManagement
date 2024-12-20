@@ -45,7 +45,8 @@ INSERT INTO Nhanvien( MaNV,Ten, GioiTinh, SDT, NgaySinh, Diachi, Email, PhanQuye
 OUTPUT INSERTED.MaNV
 VALUES (@MaNV, @Ten, @GioiTinh, @SDT, @NgaySinh, @DiaChi, @Email, @PhanQuyen);
 
-
+--get readers
+SELECT MaDG,Ten,GioiTinh,SDT,NgaySinh,Diachi FROM Docgia
 --Tao Danh Sach PHIEU 
 
 CREATE TABLE [dbo].[DanhSachPhieu](
@@ -200,7 +201,7 @@ INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071130', N'Nguyễn Thanh An', N'Nữ', N'0369598547', CAST(N'2001-07-24' AS Date), N'Quận 7', N'Anml@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071131', N'Trần Thị Quý', N'Nữ', N'0366666999', CAST(N'2000-07-24' AS Date), N'Quận 9', N'Quyml@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071132', N'Nguyễn Thanh Ân', N'Nữ', N'0369598547', CAST(N'2001-07-24' AS Date), N'Quận 8', N'Anml@gmail.com')
-INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071133', N'Trần Phúc Hậu', N'Nữ', N'0354585444', CAST(N'0200-07-22' AS Date), N'Quận 10', N'Hauml1@gmail.com')
+INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071133', N'Trần Phúc Hậu', N'Nữ', N'0354585444', CAST(N'2000-07-22' AS Date), N'Quận 10', N'Hauml1@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071134', N'Trần Thanh Bảo', N'Nữ', N'0358581111', CAST(N'2000-07-06' AS Date), N'Quận 9', N'Baoml11@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071135', N'Ngô Thanh Thảo', N'Nữ', N'0365847522', CAST(N'1999-07-16' AS Date), N'Quận 10', N'Thaoml@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071136', N'Trần Thanh Vương', N'Nữ', N'0356277772', CAST(N'2000-07-01' AS Date), N'Quận 10', N'Vuongml123@gmail.com')

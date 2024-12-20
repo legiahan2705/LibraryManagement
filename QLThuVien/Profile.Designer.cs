@@ -251,6 +251,7 @@
             pnlBorrowReturn.Name = "pnlBorrowReturn";
             pnlBorrowReturn.Size = new Size(291, 55);
             pnlBorrowReturn.TabIndex = 12;
+            pnlBorrowReturn.Click += pnlBorrowReturn_Click;
             pnlBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             pnlBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -342,6 +343,7 @@
             lblProfile.Size = new Size(75, 28);
             lblProfile.TabIndex = 0;
             lblProfile.Text = "Profile";
+            lblProfile.Click += pnlBorrowReturn_Click;
             lblProfile.MouseEnter += HoverEffect_MouseEnter;
             lblProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -354,6 +356,7 @@
             picIconProfile.SizeMode = PictureBoxSizeMode.Zoom;
             picIconProfile.TabIndex = 1;
             picIconProfile.TabStop = false;
+            picIconProfile.Click += pnlBorrowReturn_Click;
             picIconProfile.MouseEnter += HoverEffect_MouseEnter;
             picIconProfile.MouseLeave += HoverEffect_MouseLeave;
             // 

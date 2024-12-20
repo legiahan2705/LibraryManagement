@@ -155,6 +155,13 @@ namespace QLThuVien
             manageEmployees.Show();
             this.Hide();
         }
+
+        private void pnlBorrowReturn_Click(object sender, EventArgs e)
+        {
+            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
+            borrowReturn.Show();
+            this.Hide();
+        }
     }
 }
     
