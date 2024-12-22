@@ -200,6 +200,7 @@
             lblBorrowReturn.Size = new Size(192, 28);
             lblBorrowReturn.TabIndex = 0;
             lblBorrowReturn.Text = "Borrow and Return";
+            lblBorrowReturn.Click += pnlBorrowReturn_Click;
             lblBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             lblBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -212,6 +213,7 @@
             picIconBorrowReturn.SizeMode = PictureBoxSizeMode.Zoom;
             picIconBorrowReturn.TabIndex = 1;
             picIconBorrowReturn.TabStop = false;
+            picIconBorrowReturn.Click += pnlBorrowReturn_Click;
             picIconBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             picIconBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -350,6 +352,7 @@
             lblDashBoard.Size = new Size(121, 28);
             lblDashBoard.TabIndex = 0;
             lblDashBoard.Text = "Dash Board";
+            lblDashBoard.Click += pnlDashBoard_Click;
             lblDashBoard.MouseEnter += HoverEffect_MouseEnter;
             lblDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -362,6 +365,7 @@
             picIconDashBoard.SizeMode = PictureBoxSizeMode.Zoom;
             picIconDashBoard.TabIndex = 1;
             picIconDashBoard.TabStop = false;
+            picIconDashBoard.Click += pnlDashBoard_Click;
             picIconDashBoard.MouseEnter += HoverEffect_MouseEnter;
             picIconDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 

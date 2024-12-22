@@ -216,7 +216,7 @@ namespace QLThuVien
 
                 // Đặt txtMaNV thành chỉ đọc
                 txtMaNV.ReadOnly = true;
-                txtMaNV.Enabled = false;   // Cho phép nhấp chuột
+                txtMaNV.Enabled = false;   // k cho nhấn đâu
 
 
             }

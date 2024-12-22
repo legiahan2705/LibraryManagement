@@ -276,6 +276,7 @@
             lblBorrowReturn.Size = new Size(192, 28);
             lblBorrowReturn.TabIndex = 0;
             lblBorrowReturn.Text = "Borrow and Return";
+            lblBorrowReturn.Click += pnlBorrowReturn_Click;
             lblBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             lblBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -288,6 +289,7 @@
             picIconBorrowReturn.SizeMode = PictureBoxSizeMode.Zoom;
             picIconBorrowReturn.TabIndex = 1;
             picIconBorrowReturn.TabStop = false;
+            picIconBorrowReturn.Click += pnlBorrowReturn_Click;
             picIconBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             picIconBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 

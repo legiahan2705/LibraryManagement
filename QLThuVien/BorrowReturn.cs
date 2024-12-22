@@ -108,7 +108,7 @@ namespace QLThuVien
 
         private void BorrowReturn_Load(object sender, EventArgs e)
         {
-            
+            pnlBorrowReturn.BackColor = ColorTranslator.FromHtml("#BDC0FA");
 
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
