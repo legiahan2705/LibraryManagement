@@ -1,12 +1,10 @@
-HEAD
-﻿﻿
 --Tao database 
 
-CREATE DATABASE [QLThuVien]
+CREATE DATABASE [QuanLyThuVien]
 
 GO
 
-USE QLThuVien
+USE QuanLyThuVien
 
 --Tạo PROC lấy ID và MK
 GO
@@ -47,104 +45,126 @@ VALUES (@MaNV, @Ten, @GioiTinh, @SDT, @NgaySinh, @DiaChi, @Email, @PhanQuyen);
 
 --get readers
 SELECT MaDG,Ten,GioiTinh,SDT,NgaySinh,Diachi FROM Docgia
---Tao Danh Sach PHIEU 
+CREATE DATABASE [QuanLyThuVien]
+GO
 
-CREATE TABLE [dbo].[DanhSachPhieu](
-	[MaPhieu] [char](10) NULL,
-	[MaSach] [char](10) NULL,
-	[SL] [int] NULL
-) 
---Tao bang doc gia
 
+USE QuanLyThuVien
+GO
+
+-- Tạo bảng Docgia (Độc giả)
 CREATE TABLE [dbo].[Docgia](
-	[MaDG] [char](10) NOT NULL,
-	[Ten] [nvarchar](50) NULL,
-	[GioiTinh] [nvarchar](50) NULL,
-	[SDT] [char](10) NULL,
-	[NgaySinh] [date] NULL,
-	[Diachi] [nvarchar](50) NULL,
-	[Email] [nvarchar](50) NULL,
-	PRIMARY KEY ([MaDG])
-)	
+    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
+    [Ten] NVARCHAR(50) NULL,             -- Tên độc giả
+    [GioiTinh] NVARCHAR(50) NULL,        -- Giới tính
+    [SDT] CHAR(10) NULL,                 -- Số điện thoại
+    [NgaySinh] DATE NULL,                -- Ngày sinh
+    [Diachi] NVARCHAR(50) NULL,          -- Địa chỉ
+    [Email] NVARCHAR(50) NULL,           -- Email
+    PRIMARY KEY ([MaDG])
+);
 
---Tao bang Nhan vien
-
+-- Tạo bảng Nhanvien (Nhân viên)
 CREATE TABLE [dbo].[Nhanvien](
-	[MaNV] [char](10) NOT NULL,
-	[Ten] [nvarchar](50) NULL,
-	[GioiTinh] [nvarchar](50) NULL,
-	[SDT] [char](10) NULL,
-	[NgaySinh] [date] NULL,
-	[Diachi] [nvarchar](50) NULL,
-	[Email] [nvarchar](50) NULL,
-	[PhanQuyen] [nvarchar](20) NULL,
-PRIMARY KEY ([MaNV])
-) 
---Tao TABLE Phieu
-CREATE TABLE [dbo].[Phieu](
-	[MaPhieu] [char](10) NOT NULL,
-	[MaDG] [char](10) NULL,
-	[NgayMuon] [date] NULL,
-	[NgayTra] [date] NULL,
-	[LoaiPhieu] [nvarchar](20) NULL,
-	[Tong] [int] NULL,
-		PRIMARY KEY ([MaPHIEU])
-)
+    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
+    [Ten] NVARCHAR(50) NULL,             -- Tên nhân viên
+    [GioiTinh] NVARCHAR(50) NULL,        -- Giới tính
+    [SDT] CHAR(10) NULL,                 -- Số điện thoại
+    [NgaySinh] DATE NULL,                -- Ngày sinh
+    [Diachi] NVARCHAR(50) NULL,          -- Địa chỉ
+    [Email] NVARCHAR(50) NULL,           -- Email
+    [PhanQuyen] NVARCHAR(20) NULL,       -- Quyền hạn (ví dụ: 'Quản lý', 'Thủ thư', 'Nhân viên')
+    PRIMARY KEY ([MaNV])
+);
 
---Tao table quan ly phieu 
-CREATE TABLE [dbo].[QuanLyPhieu](
-	[MaNV] [char](10) NULL,
-	[MaPH] [char](10) NULL
-)
-
---Tao table quan ly sach 
-CREATE TABLE [dbo].[QuanLySach](
-	[MaNV] [char](10) NULL,
-	[MaSach] [char](10) NULL
-) 
---Tao bang   sach
-CREATE TABLE [dbo].[Sach](
-	[MaSach] [char](10) NOT NULL,
-	[TenSach] [nvarchar](100) NULL,
-	[MaTL] [char](10) NULL,
-	[SL] [int] NULL,
-	[NXB] [nvarchar](50) NULL,
-	[NgayNhap] [date] NULL,
-	[NoiDung] [nvarchar](max) NULL,
-  PRIMARY KEY ([MaSach])
-) 
-
---Tao bang  tac gia
-CREATE TABLE [dbo].[TacGia](
-	[MaTG] [char](10) NOT NULL,
-	[Ten] [nvarchar](50) NULL,
-	[NgaySinh] [date] NULL,
-	[GioiThieu] [nvarchar](max) NULL,
-  PRIMARY KEY ([MaTG])
-  )
- --Tao bang doc tac gia viet sach
-
-CREATE TABLE [dbo].[TacGiaVietSach](
-	[Masach] [char](10) NULL,
-	[MaTG] [char](10) NULL
-) 
-
---Tao bang Tai Khoan
-
+-- Tạo bảng TaiKhoan (Tài khoản nhân viên)
 CREATE TABLE [dbo].[TaiKhoan](
-	[MaNV] [char](10) NULL,
-	[MK] [nvarchar](10) NULL
-)
+    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
+    [MK] NVARCHAR(10) NOT NULL,          -- Mật khẩu
+    FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV])   -- Liên kết với bảng Nhân viên
+);
 
---Tao bang  the loai
+-- Tạo bảng Sach (Sách)
+CREATE TABLE [dbo].[Sach](
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    [TenSach] NVARCHAR(100) NULL,        -- Tên sách
+    [MaTL] CHAR(10) NULL,                -- Mã thể loại (khóa ngoại)
+    [SL] INT NULL,                       -- Số lượng sách
+    [NXB] NVARCHAR(50) NULL,             -- Nhà xuất bản
+    [NgayNhap] DATE NULL,                -- Ngày nhập sách
+    [NoiDung] NVARCHAR(MAX) NULL,        -- Nội dung sách
+    PRIMARY KEY ([MaSach]),
+    FOREIGN KEY ([MaTL]) REFERENCES [TheLoai]([MaTL])   -- Liên kết với bảng Thể loại
+);
 
-
+-- Tạo bảng TheLoai (Thể loại)
 CREATE TABLE [dbo].[TheLoai](
-	[MaTL] [char](10) NOT NULL,
-	[Ten] [nvarchar](50) NULL,
-	[ThongTin] [nvarchar](max) NULL,
-	  PRIMARY KEY ([MaTL])
-)
+    [MaTL] CHAR(10) NOT NULL,            -- Mã thể loại
+    [Ten] NVARCHAR(50) NULL,             -- Tên thể loại
+    [ThongTin] NVARCHAR(MAX) NULL,       -- Thông tin thể loại
+    PRIMARY KEY ([MaTL])
+);
+
+-- Tạo bảng TacGia (Tác giả)
+CREATE TABLE [dbo].[TacGia](
+    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
+    [Ten] NVARCHAR(50) NULL,             -- Tên tác giả
+    [NgaySinh] DATE NULL,                -- Ngày sinh
+    [GioiThieu] NVARCHAR(MAX) NULL,      -- Giới thiệu về tác giả
+    PRIMARY KEY ([MaTG])
+);
+
+-- Tạo bảng TacGiaVietSach (Tác giả viết sách)
+CREATE TABLE [dbo].[TacGiaVietSach](
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
+    PRIMARY KEY ([MaSach], [MaTG]),      -- Khóa chính là sự kết hợp giữa MaSach và MaTG
+    FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]),   -- Liên kết với bảng Sach
+    FOREIGN KEY ([MaTG]) REFERENCES [TacGia]([MaTG])      -- Liên kết với bảng TacGia
+);
+
+-- Tạo bảng Phieu (Phiếu mượn)
+CREATE TABLE [dbo].[Phieu](
+    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
+    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả (khóa ngoại)
+    [NgayMuon] DATE NOT NULL,            -- Ngày mượn
+    [NgayTra] DATE NULL,                 -- Ngày trả
+    [TrangThai] NVARCHAR(20) NOT NULL,   -- Trạng thái (ví dụ: 'Chưa trả', 'Đã trả')
+    PRIMARY KEY ([MaPhieu]),
+    FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG])    -- Liên kết với bảng Docgia
+);
+
+-- Tạo bảng ChiTietPhieu (Chi tiết phiếu mượn)
+CREATE TABLE [dbo].[ChiTietPhieu](
+    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu (khóa ngoại)
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách (khóa ngoại)
+    [SoLuong] INT NOT NULL,              -- Số lượng sách mượn
+    PRIMARY KEY ([MaPhieu], [MaSach]),   -- Khóa chính là sự kết hợp giữa MaPhieu và MaSach
+    FOREIGN KEY ([MaPhieu]) REFERENCES [Phieu]([MaPhieu]),   -- Liên kết với bảng Phieu
+    FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach])       -- Liên kết với bảng Sach
+);
+
+-- Tạo bảng QuanLySach (Quản lý sách)
+CREATE TABLE [dbo].[QuanLySach](
+    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên (khóa ngoại)
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách (khóa ngoại)
+    PRIMARY KEY ([MaNV], [MaSach]),      -- Khóa chính là sự kết hợp giữa MaNV và MaSach
+    FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]),    -- Liên kết với bảng Nhân viên
+    FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach])     -- Liên kết với bảng Sach
+);
+
+
+INSERT INTO Phieu (MaPhieu, MaDG, NgayMuon, NgayTra, TrangThai)
+VALUES
+('P001', '5951071111', '2024-12-22', NULL, N'Chưa trả');
+
+INSERT INTO ChiTietPhieu (MaPhieu, MaSach, SoLuong)
+VALUES
+('P001', 'SG100000', 2),
+('P001', 'SG100001', 1);
+
+
+
 
 INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100001', N'Hồng Lĩnh', N'Nam', N'12345678',CAST(N'2004-10-16' AS Date), N'Tân Phú', N'honglinh@gmail.com', N'Quản lý')
 INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100002', N'Mai Chi', N'Nữ', N'12345678',CAST(N'2004-02-13' AS Date), N'Bình Thạnh', N'maichi@gmail.com', N'Quản lý')
@@ -153,7 +173,6 @@ INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Ema
 INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100005', N'Mỹ Duyên', N'Nữ', N'12345678',CAST(N'2004-03-09' AS Date), N'Quận 12', N'myduyen@gmail.com', N'Nhân viên')
 GO
 
-
 GO
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100001 ', N'12345')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100002  ', N'12345')
@@ -161,24 +180,6 @@ INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100003  ', N'12345')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100004  ', N'123')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100005  ', N'123')
 
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100001  ', N'SG100008  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100001  ', N'SG100007  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100006  ', N'SG100009  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100000  ', N'SG100000  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100000  ', N'SG100007  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100000  ', N'SG100006  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100001  ', N'SG100004  ', 3)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100003  ', N'SG100011  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100003  ', N'SG100010  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100003  ', N'SG100006  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100003  ', N'SG100005  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100005  ', N'SG100005  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100002  ', N'SG100004  ', 3)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100002  ', N'SG100001  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100002  ', N'SG100003  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100002  ', N'SG100006  ', 1)
-INSERT [dbo].[DanhSachPhieu] ([MaPhieu], [MaSach], [SL]) VALUES (N'PM100004  ', N'SG100004  ', 1)
-GO
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071111', N'Pham Trong Truong 1', N'Nam', N'0353573467', CAST(N'2020-07-16' AS Date), N'Quận 9', N'truong@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071112', N'Trần Đức Vũ', N'Nam', N'0363636569', CAST(N'2000-07-01' AS Date), N'Quận 9', N'Tranducvu23@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071113', N'Trần Đức Bo', N'Nam', N'0365696844', CAST(N'1999-07-03' AS Date), N'Quận 10', N'Ducbo@gmail.com')
@@ -207,136 +208,7 @@ INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071136', N'Trần Thanh Vương', N'Nữ', N'0356277772', CAST(N'2000-07-01' AS Date), N'Quận 10', N'Vuongml123@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071137', N'Trần Đức Vũ', N'Nam', N'0363636569', CAST(N'2000-08-16' AS Date), N'Quận 9', N'Tranducvu23@gmail.com')
 GO
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100000  ', N'Trường', N'Nam', N'0353573467', CAST(N'2020-07-10' AS Date), N'Quận 9', N'truong@gmail.com', N'Nhân Viên')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100002  ', N'Tuấn', N'Nam', N'0369696896', CAST(N'2000-07-14' AS Date), N'Quận 9', N'Tuanml@gmail.com', N'Nhân Viên')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100004  ', N'Vũ', N'Nam', N'0369696896', CAST(N'2000-03-14' AS Date), N'Quận 9', N'Vuml@gmail.com', N'Nhân Viên')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email], [PhanQuyen]) VALUES (N'NV100005  ', N'Nguyễn Hoàng Vương', N'Nam', N'0365868584', CAST(N'2000-04-12' AS Date), N'Quận 9', N'Vuongmk@gmail.com', N'Quản Lý')
-GO
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100000  ', N'5951071111', CAST(N'2020-07-07' AS Date), CAST(N'2020-07-21' AS Date), N'Phieu Tra', 1)
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100001  ', N'5951071119', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Tra', 5)
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100002  ', N'5951071117', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Tra', 6)
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100003  ', N'5951071120', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Muon', 4)
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100004  ', N'5951071114', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Muon', 1)
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100005  ', N'5951071112', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Muon', 1)
-INSERT [dbo].[Phieu] ([MaPhieu], [MaDG], [NgayMuon], [NgayTra], [LoaiPhieu], [Tong]) VALUES (N'PM100006  ', N'5951071118', CAST(N'2020-07-08' AS Date), CAST(N'2020-07-22' AS Date), N'Phieu Muon', 1)
-GO
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100001  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100001  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100001  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100001  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100002  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100002  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100002  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100004  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100004  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100004  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100004  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100002  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100006  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100006  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100006  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100006  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100000  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100000  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100000  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100000  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100003  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100003  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100003  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100003  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100000  ', N'PM100005  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100005  ', N'PM100005  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100002  ', N'PM100005  ')
-INSERT [dbo].[QuanLyPhieu] ([MaNV], [MaPH]) VALUES (N'NV100004  ', N'PM100005  ')
-GO
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100000  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100000  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100000  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100000  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100001  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100001  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100005  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100005  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100005  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100005  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100006  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100006  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100006  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100006  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100007  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100007  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100007  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100007  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100008  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100008  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100008  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100008  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100009  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100009  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100009  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100009  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100010  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100010  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100010  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100010  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100011  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100011  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100011  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100011  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100012  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100012  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100012  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100012  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100013  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100013  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100013  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100013  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100014  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100014  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100014  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100014  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100015  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100015  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100015  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100015  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100001  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100001  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100002  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100002  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100002  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100002  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100003  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100003  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100003  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100003  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100004  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100004  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100004  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100004  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100019  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100019  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100019  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100019  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100020  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100020  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100020  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100020  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100021  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100021  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100021  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100021  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100022  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100022  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100022  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100022  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100023  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100023  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100023  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100023  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100024  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100024  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100024  ')
-INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100024  ')
+
 GO
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100000  ', N'Lập trình và cuộc sống ', N'TL100004  ', 29, N'NXB Thanh Niên', CAST(N'2020-07-07' AS Date), N'Anh cần một cách để theo dõi sự phát triển của phần mềm theo thời gian-bất cứ điều gì anh ta nghĩ đến hoặc làm việc trên nó. Jeff đã nghiên cứu các chủ đề mà anh cảm thấy thú vị, sau đó ghi lại nghiên cứu của mình bằng một bài đăng trên blog mà anh có thể dễ dàng tìm lại và tham khải sau này.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100001  ', N'Giáo Trình C++ & Lập Trình Hướng Đối Tượng', N'TL100004  ', 18, N'NXB Hồng Đức', CAST(N'2020-07-07' AS Date), N'Giáo trình C++ & lập trình hướng đối tượng” trình bày một cách hệ thống các khái niệm của lập trình hướng đối tượng được cài đặt trong C++ như lớp, đối tượng, sự thừa kế, tính tương ứng bội và các khả năng mới trong xây dựng, sử dụng hàm như đối tham chiếu, đối mặc định, hàm trùng tên, hàm toán tử.')
@@ -436,63 +308,93 @@ INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100008  ', N'Ki�
 INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100009  ', N'Hóa Học', N'Không có thông tin')
 INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100010  ', N'Xây Dựng', N'Không có thông tin')
 GO
-ALTER TABLE [dbo].[DanhSachPhieu]  WITH CHECK ADD  CONSTRAINT [FK_DanhSachPhieu_Phieu] FOREIGN KEY([MaPhieu])
-REFERENCES [dbo].[Phieu] ([MaPhieu])
-GO
-ALTER TABLE [dbo].[DanhSachPhieu] CHECK CONSTRAINT [FK_DanhSachPhieu_Phieu]
-GO
-ALTER TABLE [dbo].[DanhSachPhieu]  WITH CHECK ADD  CONSTRAINT [FK_DanhSachPhieu_Sach] FOREIGN KEY([MaSach])
-REFERENCES [dbo].[Sach] ([MaSach])
-GO
-ALTER TABLE [dbo].[DanhSachPhieu] CHECK CONSTRAINT [FK_DanhSachPhieu_Sach]
-GO
-ALTER TABLE [dbo].[Phieu]  WITH CHECK ADD  CONSTRAINT [FK_Phieu_Docgia] FOREIGN KEY([MaDG])
-REFERENCES [dbo].[Docgia] ([MaDG])
-GO
-ALTER TABLE [dbo].[Phieu] CHECK CONSTRAINT [FK_Phieu_Docgia]
-GO
 
-
-ALTER TABLE [dbo].[QuanLyPhieu]  WITH CHECK ADD  CONSTRAINT [FK_QuanLyPhieu_Phieu] FOREIGN KEY([MaPH])
-REFERENCES [dbo].[Phieu] ([MaPhieu])
 GO
-ALTER TABLE [dbo].[QuanLyPhieu] CHECK CONSTRAINT [FK_QuanLyPhieu_Phieu]
-GO
-
-
-ALTER TABLE [dbo].[QuanLySach]  WITH CHECK ADD  CONSTRAINT [FK_QuanLySach_Sach] FOREIGN KEY([MaSach])
-REFERENCES [dbo].[Sach] ([MaSach])
-GO
-ALTER TABLE [dbo].[QuanLySach] CHECK CONSTRAINT [FK_QuanLySach_Sach]
-GO
-ALTER TABLE [dbo].[Sach]  WITH CHECK ADD  CONSTRAINT [FK_Sach_TheLoai] FOREIGN KEY([MaTL])
-REFERENCES [dbo].[TheLoai] ([MaTL])
-GO
-ALTER TABLE [dbo].[Sach] CHECK CONSTRAINT [FK_Sach_TheLoai]
-GO
-ALTER TABLE [dbo].[TacGiaVietSach]  WITH CHECK ADD  CONSTRAINT [FK_TacGiaVietSach_TacGia] FOREIGN KEY([MaTG])
-REFERENCES [dbo].[TacGia] ([MaTG])
-GO
-ALTER TABLE [dbo].[TacGiaVietSach] CHECK CONSTRAINT [FK_TacGiaVietSach_TacGia]
-GO
-
-ALTER TABLE QuanLyPhieu
-ADD CONSTRAINT FK_QuanLyPhieu_Nhanvien
-FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV)
-ON DELETE CASCADE;
-
-ALTER TABLE QuanLySach
-ADD CONSTRAINT FK_QuanLySach_Nhanvien
-FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV)
-ON DELETE CASCADE;
-
-ALTER TABLE TaiKhoan
-ADD CONSTRAINT FK_TaiKhoan_Nhanvien
-FOREIGN KEY (MaNV) REFERENCES Nhanvien(MaNV)
-ON DELETE CASCADE;
-
-
-=======
-﻿﻿
-
-master
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100000  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100000  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100000  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100000  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100001  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100001  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100005  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100005  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100005  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100005  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100006  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100006  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100006  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100006  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100007  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100007  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100007  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100007  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100008  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100008  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100008  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100008  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100009  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100009  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100009  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100009  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100010  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100010  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100010  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100010  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100011  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100011  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100011  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100011  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100012  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100012  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100012  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100012  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100013  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100013  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100013  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100013  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100014  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100014  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100014  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100014  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100015  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100015  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100015  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100015  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100001  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100001  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100002  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100002  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100002  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100002  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100003  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100003  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100003  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100003  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100004  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100004  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100004  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100004  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100019  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100019  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100019  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100019  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100020  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100020  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100020  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100020  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100021  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100021  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100021  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100021  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100022  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100022  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100022  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100022  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100023  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100023  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100023  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100023  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100024  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100024  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100024  ')
+INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100024  ')
