@@ -57,7 +57,6 @@
             pictureBox2 = new PictureBox();
             pnlBookCaseBTN = new FlowLayoutPanel();
             pnlSearchBTN = new FlowLayoutPanel();
-            pnlAddBookBTN = new FlowLayoutPanel();
             pnlBookManagerBTN = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
@@ -407,33 +406,25 @@
             // pnlBookCaseBTN
             // 
             pnlBookCaseBTN.BackColor = Color.Transparent;
-            pnlBookCaseBTN.Location = new Point(495, 203);
+            pnlBookCaseBTN.Location = new Point(434, 195);
             pnlBookCaseBTN.Name = "pnlBookCaseBTN";
-            pnlBookCaseBTN.Size = new Size(249, 217);
+            pnlBookCaseBTN.Size = new Size(198, 126);
             pnlBookCaseBTN.TabIndex = 23;
             // 
             // pnlSearchBTN
             // 
             pnlSearchBTN.BackColor = Color.Transparent;
-            pnlSearchBTN.Location = new Point(833, 203);
+            pnlSearchBTN.Location = new Point(700, 203);
             pnlSearchBTN.Name = "pnlSearchBTN";
-            pnlSearchBTN.Size = new Size(249, 217);
+            pnlSearchBTN.Size = new Size(192, 118);
             pnlSearchBTN.TabIndex = 24;
-            // 
-            // pnlAddBookBTN
-            // 
-            pnlAddBookBTN.BackColor = Color.Transparent;
-            pnlAddBookBTN.Location = new Point(495, 480);
-            pnlAddBookBTN.Name = "pnlAddBookBTN";
-            pnlAddBookBTN.Size = new Size(249, 217);
-            pnlAddBookBTN.TabIndex = 25;
             // 
             // pnlBookManagerBTN
             // 
             pnlBookManagerBTN.BackColor = Color.Transparent;
-            pnlBookManagerBTN.Location = new Point(833, 480);
+            pnlBookManagerBTN.Location = new Point(959, 203);
             pnlBookManagerBTN.Name = "pnlBookManagerBTN";
-            pnlBookManagerBTN.Size = new Size(249, 217);
+            pnlBookManagerBTN.Size = new Size(198, 118);
             pnlBookManagerBTN.TabIndex = 24;
             // 
             // ManageBooks
@@ -443,7 +434,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
             Controls.Add(pnlBookManagerBTN);
-            Controls.Add(pnlAddBookBTN);
             Controls.Add(pnlSearchBTN);
             Controls.Add(pnlBookCaseBTN);
             Controls.Add(pictureBox2);
@@ -519,7 +509,6 @@
         private PictureBox pictureBox2;
         private FlowLayoutPanel pnlBookCaseBTN;
         private FlowLayoutPanel pnlSearchBTN;
-        private FlowLayoutPanel pnlAddBookBTN;
         private FlowLayoutPanel pnlBookManagerBTN;
     }
 }
