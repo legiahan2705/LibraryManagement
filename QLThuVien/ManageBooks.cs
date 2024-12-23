@@ -33,7 +33,7 @@ namespace QLThuVien
 
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
-            this.employeeID = employeeID;
+            this.employeeID = id;
         }
 
         private void ManageBooks_FormClosing(object sender, FormClosingEventArgs e)
@@ -129,13 +129,6 @@ namespace QLThuVien
             }
         }
 
-        private void pnlProfile_Click(object sender, EventArgs e)
-        {
-            Profile profile = new Profile(employeeName, employeeRole, employeeID);
-            profile.Show();
-            this.Hide();
-        }
-
         private void pnlManageEmployees_Click(object sender, EventArgs e)
         {
             //Kiểm tra vai trò trước\
@@ -157,6 +150,20 @@ namespace QLThuVien
             borrowReturn.Show();
             this.Hide();
         }
+
+        private void pnlDashBoard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
+            dashboard.Show();
+            this.Hide();
+        }
+        private void pnlProfile_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(employeeName, employeeRole, employeeID);
+            profile.Show();
+            this.Hide();
+        }
+
     }
 
 }

@@ -369,6 +369,7 @@
             pnlDashBoard.Name = "pnlDashBoard";
             pnlDashBoard.Size = new Size(291, 57);
             pnlDashBoard.TabIndex = 13;
+            pnlDashBoard.Click += pnlDashBoard_Click;
             pnlDashBoard.MouseEnter += HoverEffect_MouseEnter;
             pnlDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 
