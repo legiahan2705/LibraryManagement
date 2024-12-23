@@ -147,20 +147,6 @@ namespace QLThuVien
             // Hiển thị thông tin nhân viên lên các TextBox
         }
 
-        private void pnlManageBooks_Click(object sender, EventArgs e)
-        {
-            ManageBooks manageBooks = new ManageBooks();
-            manageBooks.Show();
-            this.Hide();
-        }
-
-        private void pnlDashBoard_Click(object sender, EventArgs e)
-        {
-            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
-            dashboard.Show();
-            this.Hide();
-        }
-
         private void pnlManageEmployees_Click(object sender, EventArgs e)
         {
             //Kiểm tra vai trò trước\
@@ -182,5 +168,19 @@ namespace QLThuVien
             borrowReturn.Show();
             this.Hide();
         }
+        private void pnlManageBooks_Click(object sender, EventArgs e)
+        {
+            ManageBooks manageBooks = new ManageBooks(employeeName, employeeRole, employeeID);
+            manageBooks.Show();
+            this.Hide();
+        }
+
+        private void pnlDashBoard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
+            dashboard.Show();
+            this.Hide();
+        }
+
     }
 }
