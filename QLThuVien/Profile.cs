@@ -129,6 +129,7 @@ namespace QLThuVien
 
         private void Profile_Load(object sender, EventArgs e)
         {
+            pnlProfile.BackColor = ColorTranslator.FromHtml("#BDC0FA");
 
             NhanVien_TO employee = _bl_informationEmployee.GetEmployeeInfo(employeeID);
 

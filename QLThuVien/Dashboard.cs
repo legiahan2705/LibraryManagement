@@ -32,7 +32,41 @@ namespace QLThuVien
             // Khởi tạo đối tượng BL_GetEmployees
             _blEmployees = new BL_GetEmployees();
         }
+        private void pnlBorrowReturn_Click(object sender, EventArgs e)
+        {
+            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
+            borrowReturn.Show();
+            this.Hide();
+        }
 
+        private void pnlProfile_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(employeeName, employeeRole, employeeID);
+            profile.Show();
+            this.Hide();
+        }
+
+        private void pnlManageBooks_Click(object sender, EventArgs e)
+        {
+            ManageBooks manageBooks = new ManageBooks(employeeName, employeeRole, employeeID);
+            manageBooks.Show();
+            this.Hide();
+        }
+
+        private void pnlManageEmployees_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra vai trò trước\
+            string role = "Quản lý";
+            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Thoát khỏi sự kiện nếu không phải quản lý
+            }
+
+            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
+            manageEmployees.Show();
+            this.Hide();
+        }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
         private bool ConfirmExit()
@@ -127,40 +161,9 @@ namespace QLThuVien
             }
         }
 
-        private void pnlProfile_Click(object sender, EventArgs e)
+        private void lblEmployeeName_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile(employeeName, employeeRole, employeeID);
-            profile.Show();
-            this.Hide();
-        }
 
-        private void pnlManageBooks_Click(object sender, EventArgs e)
-        {
-            ManageBooks manageBooks = new ManageBooks(employeeName, employeeRole, employeeID);
-            manageBooks.Show();
-            this.Hide();
-        }
-
-        private void pnlManageEmployees_Click(object sender, EventArgs e)
-        {
-            //Kiểm tra vai trò trước\
-            string role = "Quản lý";
-            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Thoát khỏi sự kiện nếu không phải quản lý
-            }
-
-            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
-            manageEmployees.Show();
-            this.Hide();
-        }
-
-        private void pnlBorrowReturn_Click(object sender, EventArgs e)
-        {
-            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
-            borrowReturn.Show();
-            this.Hide();
         }
     }
 }

@@ -16,6 +16,5 @@ namespace TO
         public string DiaChi { get; set; }
         public string Email { get; set; }
         public string PhanQuyen { get; set; }
-
     }
 }

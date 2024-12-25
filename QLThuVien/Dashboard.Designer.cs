@@ -30,7 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            picAvatar = new PictureBox();
             lblWelcome = new Label();
             pnlDashBoard = new Panel();
             lblDashBoard = new Label();
@@ -63,7 +62,6 @@
             pnlManageUsersBTN = new Panel();
             pnlManageBooksBTN = new Panel();
             bLGetEmployeesBindingSource = new BindingSource(components);
-            ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
             pnlProfile.SuspendLayout();
@@ -82,21 +80,13 @@
             ((System.ComponentModel.ISupportInitialize)bLGetEmployeesBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // picAvatar
-            // 
-            picAvatar.Location = new Point(13, 105);
-            picAvatar.Name = "picAvatar";
-            picAvatar.Size = new Size(127, 113);
-            picAvatar.TabIndex = 0;
-            picAvatar.TabStop = false;
-            // 
             // lblWelcome
             // 
             lblWelcome.AutoSize = true;
             lblWelcome.BackColor = Color.Transparent;
             lblWelcome.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblWelcome.ForeColor = Color.DarkSlateBlue;
-            lblWelcome.Location = new Point(157, 105);
+            lblWelcome.Location = new Point(86, 122);
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(147, 38);
             lblWelcome.TabIndex = 1;
@@ -407,11 +397,12 @@
             lblEmployeeName.BackColor = Color.Transparent;
             lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblEmployeeName.ForeColor = Color.DarkSlateBlue;
-            lblEmployeeName.Location = new Point(183, 143);
+            lblEmployeeName.Location = new Point(122, 160);
             lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(70, 28);
+            lblEmployeeName.Size = new Size(58, 28);
             lblEmployeeName.TabIndex = 10;
-            lblEmployeeName.Text = "label1";
+            lblEmployeeName.Text = "label";
+            lblEmployeeName.Click += lblEmployeeName_Click;
             // 
             // lblDashBoardTitle
             // 
@@ -444,6 +435,7 @@
             pnlProfileBTN.Name = "pnlProfileBTN";
             pnlProfileBTN.Size = new Size(247, 215);
             pnlProfileBTN.TabIndex = 4;
+            pnlProfileBTN.Click += pnlProfile_Click;
             // 
             // pnlManageUsersBTN
             // 
@@ -463,6 +455,7 @@
             pnlManageBooksBTN.Name = "pnlManageBooksBTN";
             pnlManageBooksBTN.Size = new Size(247, 215);
             pnlManageBooksBTN.TabIndex = 6;
+            pnlManageBooksBTN.Click += pnlManageBooks_Click;
             // 
             // bLGetEmployeesBindingSource
             // 
@@ -490,7 +483,6 @@
             Controls.Add(pnlProfile);
             Controls.Add(pnlDashBoard);
             Controls.Add(lblWelcome);
-            Controls.Add(picAvatar);
             Controls.Add(picIconHome);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -499,7 +491,6 @@
             Text = "Dashboard";
             FormClosing += Dashboard_FormClosing;
             Load += Dashboard_Load;
-            ((System.ComponentModel.ISupportInitialize)picAvatar).EndInit();
             pnlDashBoard.ResumeLayout(false);
             pnlDashBoard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).EndInit();
@@ -528,8 +519,6 @@
         }
 
         #endregion
-
-        private PictureBox picAvatar;
         private Label lblWelcome;
         private Panel pnlDashBoard;
         private PictureBox picIconDashBoard;

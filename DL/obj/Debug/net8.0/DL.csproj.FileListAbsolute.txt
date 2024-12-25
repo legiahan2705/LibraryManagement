@@ -25,3 +25,17 @@ D:\QuanLyThuVien\DL\obj\Debug\net8.0\DL.dll
 D:\QuanLyThuVien\DL\obj\Debug\net8.0\refint\DL.dll
 D:\QuanLyThuVien\DL\obj\Debug\net8.0\DL.pdb
 D:\QuanLyThuVien\DL\obj\Debug\net8.0\ref\DL.dll
+D:\Thư mục mới\bin\Debug\net8.0\DL.deps.json
+D:\Thư mục mới\bin\Debug\net8.0\DL.dll
+D:\Thư mục mới\bin\Debug\net8.0\DL.pdb
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.csproj.AssemblyReference.cache
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.AssemblyInfoInputs.cache
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.AssemblyInfo.cs
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.csproj.CoreCompileInputs.cache
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.sourcelink.json
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.csproj.Up2Date
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.dll
+D:\Thư mục mới\DL\obj\Debug\net8.0\refint\DL.dll
+D:\Thư mục mới\DL\obj\Debug\net8.0\DL.pdb
+D:\Thư mục mới\DL\obj\Debug\net8.0\ref\DL.dll

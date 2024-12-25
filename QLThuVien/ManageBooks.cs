@@ -1,4 +1,4 @@
-﻿using BL;
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TO;
+using BL;
+using DL;
 
 namespace QLThuVien
 {
@@ -16,6 +19,8 @@ namespace QLThuVien
         private BL_GetEmployees _blEmployees;
         private BL_DeleteEmployee _blDeleteEmployee;
         private BL_AddEmployee _blAddEmployee;
+        private BL_GetBooks _blBooks;
+        private BL_DeleteBooks _blDeleteBooks;
 
         private string employeeName; // Lưu tên nhân viên
         private string employeeRole; // Lưu quyền của nhân viên
@@ -30,10 +35,32 @@ namespace QLThuVien
             InitializeComponent();
             // Khởi tạo đối tượng BL_GetEmployees
             _blEmployees = new BL_GetEmployees();
+            _blBooks = new BL_GetBooks();
 
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
             this.employeeID = id;
+        }
+
+        // Chuyển qua các Form
+        private void pnlBorrowReturn_Click(object sender, EventArgs e)
+        {
+            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
+            borrowReturn.Show();
+            this.Hide();
+        }
+
+        private void pnlDashBoard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
+            dashboard.Show();
+            this.Hide();
+        }
+        private void pnlProfile_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(employeeName, employeeRole, employeeID);
+            profile.Show();
+            this.Hide();
         }
 
         private void ManageBooks_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,8 +79,51 @@ namespace QLThuVien
 
         private void ManageBooks_Load(object sender, EventArgs e)
         {
+            pnlManageBooks.BackColor = ColorTranslator.FromHtml("#BDC0FA");
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
+
+            try
+            {
+                // Lấy danh sách nhân viên từ Business Logic Layer (BL)
+                List<Sach_TO> books = new DL_GetBooks().GetBooks();
+
+                // Kiểm tra danh sách nhân viên
+                if (books != null && books.Count > 0)
+                {
+                    // Làm sạch DataGridView
+                    dataGridView1.Rows.Clear();
+
+                    dataGridView1.DataSource = null;
+
+                    // Ánh xạ dữ liệu lên DataGridView
+                    foreach (Sach_TO book in books)
+                    {
+                        dataGridView1.Rows.Add(
+                            book.MaSach,
+                            book.TenSach,
+                            book.MaTL,
+                            book.SL,
+                            book.NXB,
+                            book.NgayNhap
+                        );
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("There are no books in the database.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Lỗi cơ sở dữ liệu
+                MessageBox.Show($"Database connection error: {sqlEx.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Các lỗi khác
+                MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -144,26 +214,90 @@ namespace QLThuVien
             this.Hide();
         }
 
-        private void pnlBorrowReturn_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
-            borrowReturn.Show();
-            this.Hide();
-        }
+            if (e.ColumnIndex == dataGridView1.Columns["Xoa"].Index && e.RowIndex >= 0)
+            {
+                // Lấy mã nhân viên từ cột MaNV (giữ dưới dạng chuỗi)
+                string bookID = dataGridView1.Rows[e.RowIndex].Cells["MaSach"].Value.ToString();
 
-        private void pnlDashBoard_Click(object sender, EventArgs e)
-        {
-            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
-            dashboard.Show();
-            this.Hide();
-        }
-        private void pnlProfile_Click(object sender, EventArgs e)
-        {
-            Profile profile = new Profile(employeeName, employeeRole, employeeID);
-            profile.Show();
-            this.Hide();
-        }
+                // Hiển thị hộp thoại xác nhận
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Are you sure you want to delete the book with Book ID = {bookID}?",
+                    "Delete Confirmation",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning
+                );
 
+                // Nếu người dùng chọn OK, tiến hành xóa
+                if (dialogResult == DialogResult.OK)
+                {
+
+                    bool isDeleted =  new BL.BL_DeleteBooks().DeleteBooks( bookID );
+                    if (isDeleted)
+                    {
+                        // Xóa dòng khỏi DataGridView
+                        dataGridView1.Rows.RemoveAt(e.RowIndex);
+                        MessageBox.Show("Book deleted successfully!", "Notification");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete book!", "Notification");
+                    }
+                }
+            }
+
+            //if (e.ColumnIndex == dataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            //{
+            //    panel1.BackColor = Color.Lavender;
+            //    btnAddEmployee.BackColor = Color.CornflowerBlue;
+            //    btnAddEmployee.Text = "Save";
+            //    // Lấy mã nhân viên từ cột MaNV (giữ dưới dạng chuỗi)
+            //    string employeeId = dataGridView1.Rows[e.RowIndex].Cells["MaNV"].Value.ToString();
+            //    string employeeTen = dataGridView1.Rows[e.RowIndex].Cells["Ten"].Value.ToString();
+            //    string employeeGioiTinh = dataGridView1.Rows[e.RowIndex].Cells["GioiTinh"].Value.ToString();
+            //    string employeeSDT = dataGridView1.Rows[e.RowIndex].Cells["SDT"].Value.ToString();
+            //    string employeeNgaySinh = dataGridView1.Rows[e.RowIndex].Cells["NgaySinh"].Value.ToString();
+            //    string employeeDiaChi = dataGridView1.Rows[e.RowIndex].Cells["DiaChi"].Value.ToString();
+            //    string employeeEmail = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+            //    string employeePhanQuyen = dataGridView1.Rows[e.RowIndex].Cells["PhanQuyen"].Value.ToString();
+
+            //    txtMaNV.Text = employeeId;
+            //    txtTen.Text = employeeTen;
+            //    txtGioiTinh.Text = employeeGioiTinh;
+            //    txtSDT.Text = employeeSDT;
+            //    txtNgaySinh.Text = employeeNgaySinh;
+            //    txtDiaChi.Text = employeeDiaChi;
+            //    txtEmail.Text = employeeEmail;
+            //    txtPhanQuyen.Text = employeePhanQuyen;
+
+            //    // Đặt txtMaNV thành chỉ đọc
+            //    txtMaNV.ReadOnly = true;
+            //    txtMaNV.Enabled = false;   // k cho nhấn đâu
+
+
+            //}
+            //else
+            //{
+            //    panel1.BackColor = Color.GhostWhite;
+
+            //    txtMaNV.Clear();
+            //    txtTen.Clear();
+            //    txtGioiTinh.Clear();
+            //    txtSDT.Clear();
+            //    txtNgaySinh.Clear();
+            //    txtDiaChi.Clear();
+            //    txtEmail.Clear();
+            //    txtPhanQuyen.Clear();
+
+
+            //    txtMaNV.ReadOnly = false;
+            //    txtMaNV.Enabled = true;
+
+            //    btnAddEmployee.BackColor = Color.DarkSlateBlue;
+            //    btnAddEmployee.Text = "Add Employee";
+            //}
+        }
     }
 
 }
