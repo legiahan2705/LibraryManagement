@@ -35,6 +35,7 @@ SELECT MaNV, Ten, GioiTinh,SDT,NgaySinh,Diachi,Email,PhanQuyen
 FROM Nhanvien
 
 --xóa nhân viên-------
+
 DELETE FROM Nhanvien WHERE MaNV = @EmployeeId
 
 
@@ -73,7 +74,7 @@ CREATE TABLE [dbo].[Nhanvien](
     [NgaySinh] DATE NULL,                -- Ngày sinh
     [Diachi] NVARCHAR(50) NULL,          -- Địa chỉ
     [Email] NVARCHAR(50) NULL,           -- Email
-    [PhanQuyen] NVARCHAR(20) NULL,       -- Quyền hạn (ví dụ: 'Quản lý', 'Thủ thư', 'Nhân viên')
+    [PhanQuyen] NVARCHAR(20) NULL,       -- Quyền hạn
     PRIMARY KEY ([MaNV])
 );
 
@@ -81,20 +82,21 @@ CREATE TABLE [dbo].[Nhanvien](
 CREATE TABLE [dbo].[TaiKhoan](
     [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
     [MK] NVARCHAR(10) NOT NULL,          -- Mật khẩu
-    FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV])   -- Liên kết với bảng Nhân viên
+    PRIMARY KEY ([MaNV]),
+    CONSTRAINT FK_TaiKhoan_Nhanvien FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]) ON DELETE CASCADE
 );
 
 -- Tạo bảng Sach (Sách)
 CREATE TABLE [dbo].[Sach](
     [MaSach] CHAR(10) NOT NULL,          -- Mã sách
     [TenSach] NVARCHAR(100) NULL,        -- Tên sách
-    [MaTL] CHAR(10) NULL,                -- Mã thể loại (khóa ngoại)
+    [MaTL] CHAR(10) NULL,                -- Mã thể loại
     [SL] INT NULL,                       -- Số lượng sách
     [NXB] NVARCHAR(50) NULL,             -- Nhà xuất bản
     [NgayNhap] DATE NULL,                -- Ngày nhập sách
     [NoiDung] NVARCHAR(MAX) NULL,        -- Nội dung sách
     PRIMARY KEY ([MaSach]),
-    FOREIGN KEY ([MaTL]) REFERENCES [TheLoai]([MaTL])   -- Liên kết với bảng Thể loại
+    CONSTRAINT FK_Sach_TheLoai FOREIGN KEY ([MaTL]) REFERENCES [TheLoai]([MaTL]) ON DELETE CASCADE
 );
 
 -- Tạo bảng TheLoai (Thể loại)
@@ -110,7 +112,7 @@ CREATE TABLE [dbo].[TacGia](
     [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
     [Ten] NVARCHAR(50) NULL,             -- Tên tác giả
     [NgaySinh] DATE NULL,                -- Ngày sinh
-    [GioiThieu] NVARCHAR(MAX) NULL,      -- Giới thiệu về tác giả
+    [GioiThieu] NVARCHAR(MAX) NULL,      -- Giới thiệu
     PRIMARY KEY ([MaTG])
 );
 
@@ -118,40 +120,41 @@ CREATE TABLE [dbo].[TacGia](
 CREATE TABLE [dbo].[TacGiaVietSach](
     [MaSach] CHAR(10) NOT NULL,          -- Mã sách
     [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
-    PRIMARY KEY ([MaSach], [MaTG]),      -- Khóa chính là sự kết hợp giữa MaSach và MaTG
-    FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]),   -- Liên kết với bảng Sach
-    FOREIGN KEY ([MaTG]) REFERENCES [TacGia]([MaTG])      -- Liên kết với bảng TacGia
+    PRIMARY KEY ([MaSach], [MaTG]),
+    CONSTRAINT FK_TacGiaVietSach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE,
+    CONSTRAINT FK_TacGiaVietSach_TacGia FOREIGN KEY ([MaTG]) REFERENCES [TacGia]([MaTG]) ON DELETE CASCADE
 );
 
 -- Tạo bảng Phieu (Phiếu mượn)
 CREATE TABLE [dbo].[Phieu](
     [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
-    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả (khóa ngoại)
+    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
     [NgayMuon] DATE NOT NULL,            -- Ngày mượn
     [NgayTra] DATE NULL,                 -- Ngày trả
-    [TrangThai] NVARCHAR(20) NOT NULL,   -- Trạng thái (ví dụ: 'Chưa trả', 'Đã trả')
+    [TrangThai] NVARCHAR(20) NOT NULL,   -- Trạng thái
     PRIMARY KEY ([MaPhieu]),
-    FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG])    -- Liên kết với bảng Docgia
+    CONSTRAINT FK_Phieu_Docgia FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG]) ON DELETE CASCADE
 );
 
 -- Tạo bảng ChiTietPhieu (Chi tiết phiếu mượn)
 CREATE TABLE [dbo].[ChiTietPhieu](
-    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu (khóa ngoại)
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách (khóa ngoại)
+    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
     [SoLuong] INT NOT NULL,              -- Số lượng sách mượn
-    PRIMARY KEY ([MaPhieu], [MaSach]),   -- Khóa chính là sự kết hợp giữa MaPhieu và MaSach
-    FOREIGN KEY ([MaPhieu]) REFERENCES [Phieu]([MaPhieu]),   -- Liên kết với bảng Phieu
-    FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach])       -- Liên kết với bảng Sach
+    PRIMARY KEY ([MaPhieu], [MaSach]),
+    CONSTRAINT FK_ChiTietPhieu_Phieu FOREIGN KEY ([MaPhieu]) REFERENCES [Phieu]([MaPhieu]) ON DELETE CASCADE,
+    CONSTRAINT FK_ChiTietPhieu_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE
 );
 
 -- Tạo bảng QuanLySach (Quản lý sách)
 CREATE TABLE [dbo].[QuanLySach](
-    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên (khóa ngoại)
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách (khóa ngoại)
-    PRIMARY KEY ([MaNV], [MaSach]),      -- Khóa chính là sự kết hợp giữa MaNV và MaSach
-    FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]),    -- Liên kết với bảng Nhân viên
-    FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach])     -- Liên kết với bảng Sach
+    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    PRIMARY KEY ([MaNV], [MaSach]),
+    CONSTRAINT FK_QuanLySach_Nhanvien FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]) ON DELETE CASCADE,
+    CONSTRAINT FK_QuanLySach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE
 );
+
 
 
 INSERT INTO Phieu (MaPhieu, MaDG, NgayMuon, NgayTra, TrangThai)
