@@ -49,7 +49,6 @@ namespace QLThuVien
             borrowReturn.Show();
             this.Hide();
         }
-
         private void pnlDashBoard_Click(object sender, EventArgs e)
         {
             Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
@@ -79,6 +78,7 @@ namespace QLThuVien
 
         private void ManageBooks_Load(object sender, EventArgs e)
         {
+            pnlBookCase.Visible = false;
             pnlManageBooks.BackColor = ColorTranslator.FromHtml("#BDC0FA");
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
@@ -233,7 +233,7 @@ namespace QLThuVien
                 if (dialogResult == DialogResult.OK)
                 {
 
-                    bool isDeleted =  new BL.BL_DeleteBooks().DeleteBooks( bookID );
+                    bool isDeleted = new BL.BL_DeleteBooks().DeleteBooks(bookID);
                     if (isDeleted)
                     {
                         // Xóa dòng khỏi DataGridView
@@ -297,6 +297,56 @@ namespace QLThuVien
             //    btnAddEmployee.BackColor = Color.DarkSlateBlue;
             //    btnAddEmployee.Text = "Add Employee";
             //}
+        }
+
+        private void pnlBookCaseBTN_Click(object sender, EventArgs e)
+        {
+            pnlBookCase.Visible = true;
+
+            try
+            {
+                // Lấy danh sách nhân viên từ Business Logic Layer (BL)
+                List<Sach_TO> books = new DL_GetBooks().GetBooks();
+
+                // Kiểm tra danh sách reader
+                if (books != null && books.Count > 0)
+                {
+                    // Làm sạch DataGridView
+                    dataGridView1.Rows.Clear();
+
+                    dataGridView1.DataSource = null;
+
+                    // Ánh xạ dữ liệu lên DataGridView
+                    foreach (Sach_TO book in books)
+                    {
+                        dataGridView1.Rows.Add(
+                            book.MaSach,
+                            book.TenSach,
+                            book.MaTL,
+                            book.SL,
+                            book.NXB,
+                            book.NgayNhap
+                        );
+                    }
+
+                    // Hiển thị GroupBox
+                    pnlBookCase.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("There are no books in the database.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Lỗi cơ sở dữ liệu
+                MessageBox.Show($"Database connection error: {sqlEx.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Các lỗi khác
+                MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 
