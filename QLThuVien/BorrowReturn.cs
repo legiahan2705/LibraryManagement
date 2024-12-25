@@ -27,8 +27,6 @@ namespace QLThuVien
         private string employeeRole; // Lưu quyền của nhân viên
         private string employeeID; // Lưu ID nhân viên
 
-
-
         public BorrowReturn(string employeeName, string employeeRole, string id)
         {
             InitializeComponent();
@@ -43,6 +41,26 @@ namespace QLThuVien
             _blEmployees = new BL_GetEmployees();
 
             _blAddReader = new BL_AddReader();
+        }
+
+        // Chuyển qua các Form
+        private void pnlDashBoard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
+            dashboard.Show();
+            this.Hide();
+        }
+        private void pnlProfile_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(employeeName, employeeRole, employeeID);
+            profile.Show();
+            this.Hide();
+        }
+        private void pnlManageBooks_Click(object sender, EventArgs e)
+        {
+            ManageBooks managebooks = new ManageBooks(employeeName, employeeRole, employeeID);
+            managebooks.Show();
+            this.Hide();
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -118,19 +136,7 @@ namespace QLThuVien
 
         }
 
-        private void pnlDashBoard_Click(object sender, EventArgs e)
-        {
-            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
-            dashboard.Show();
-            this.Hide();
-        }
-
-        private void pnlProfile_Click(object sender, EventArgs e)
-        {
-            Profile profile = new Profile(employeeName, employeeRole, employeeID);
-            profile.Show();
-            this.Hide();
-        }
+        
 
         private void pnlManageEmployees_Click(object sender, EventArgs e)
         {
@@ -147,12 +153,6 @@ namespace QLThuVien
             this.Hide();
         }
 
-        private void pnlManageBooks_Click(object sender, EventArgs e)
-        {
-            ManageBooks managebooks = new ManageBooks(employeeName, employeeRole, employeeID);
-            managebooks.Show();
-            this.Hide();
-        }
 
         private void pnlLogOut_Click(object sender, EventArgs e)
         {

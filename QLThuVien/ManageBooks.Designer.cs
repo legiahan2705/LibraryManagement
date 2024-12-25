@@ -67,7 +67,7 @@
             Xoa = new DataGridViewImageColumn();
             lblEmployeeName = new Label();
             lblWelcome = new Label();
-            pnlReader = new Panel();
+            pnlBookCase = new Panel();
             btnAddBook = new Button();
             panel1 = new Panel();
             txtMaSach = new TextBox();
@@ -98,7 +98,7 @@
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            pnlReader.SuspendLayout();
+            pnlBookCase.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -395,14 +395,17 @@
             // pnlBookCaseBTN
             // 
             pnlBookCaseBTN.BackColor = Color.Transparent;
+            pnlBookCaseBTN.Cursor = Cursors.Hand;
             pnlBookCaseBTN.Location = new Point(434, 195);
             pnlBookCaseBTN.Name = "pnlBookCaseBTN";
             pnlBookCaseBTN.Size = new Size(198, 126);
             pnlBookCaseBTN.TabIndex = 23;
+            pnlBookCaseBTN.Click += pnlBookCaseBTN_Click;
             // 
             // pnlSearchBTN
             // 
             pnlSearchBTN.BackColor = Color.Transparent;
+            pnlSearchBTN.Cursor = Cursors.Hand;
             pnlSearchBTN.Location = new Point(700, 203);
             pnlSearchBTN.Name = "pnlSearchBTN";
             pnlSearchBTN.Size = new Size(192, 118);
@@ -411,6 +414,7 @@
             // pnlBookManagerBTN
             // 
             pnlBookManagerBTN.BackColor = Color.Transparent;
+            pnlBookManagerBTN.Cursor = Cursors.Hand;
             pnlBookManagerBTN.Location = new Point(959, 203);
             pnlBookManagerBTN.Name = "pnlBookManagerBTN";
             pnlBookManagerBTN.Size = new Size(198, 118);
@@ -432,7 +436,7 @@
             dataGridView1.Location = new Point(52, 24);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(840, 204);
+            dataGridView1.Size = new Size(847, 204);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -524,16 +528,16 @@
             lblWelcome.TabIndex = 26;
             lblWelcome.Text = "Welcome!";
             // 
-            // pnlReader
+            // pnlBookCase
             // 
-            pnlReader.BackColor = Color.White;
-            pnlReader.Controls.Add(btnAddBook);
-            pnlReader.Controls.Add(panel1);
-            pnlReader.Controls.Add(dataGridView1);
-            pnlReader.Location = new Point(319, 343);
-            pnlReader.Name = "pnlReader";
-            pnlReader.Size = new Size(921, 524);
-            pnlReader.TabIndex = 28;
+            pnlBookCase.BackColor = Color.White;
+            pnlBookCase.Controls.Add(btnAddBook);
+            pnlBookCase.Controls.Add(panel1);
+            pnlBookCase.Controls.Add(dataGridView1);
+            pnlBookCase.Location = new Point(319, 343);
+            pnlBookCase.Name = "pnlBookCase";
+            pnlBookCase.Size = new Size(921, 524);
+            pnlBookCase.TabIndex = 28;
             // 
             // btnAddBook
             // 
@@ -689,7 +693,7 @@
             Controls.Add(pnlProfile);
             Controls.Add(pnlLogOut);
             Controls.Add(pnlDashBoard);
-            Controls.Add(pnlReader);
+            Controls.Add(pnlBookCase);
             Name = "ManageBooks";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Test";
@@ -718,7 +722,7 @@
             pnlDashBoard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            pnlReader.ResumeLayout(false);
+            pnlBookCase.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -755,7 +759,7 @@
         private DataGridView dataGridView1;
         private Label lblEmployeeName;
         private Label lblWelcome;
-        private Panel pnlReader;
+        private Panel pnlBookCase;
         private Button btnAddBook;
         private Panel panel1;
         private TextBox txtMaSach;

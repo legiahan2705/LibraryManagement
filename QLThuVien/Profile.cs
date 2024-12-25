@@ -36,9 +36,28 @@ namespace QLThuVien
 
             // Khởi tạo đối tượng BL_GetEmployees
             _blEmployees = new BL_GetEmployees();
-
-
             _bl_informationEmployee = new BL_InformationEmployee();
+        }
+
+        // Chuyển qua các Form
+        private void pnlBorrowReturn_Click(object sender, EventArgs e)
+        {
+            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
+            borrowReturn.Show();
+            this.Hide();
+        }
+        private void pnlManageBooks_Click(object sender, EventArgs e)
+        {
+            ManageBooks manageBooks = new ManageBooks(employeeName, employeeRole, employeeID);
+            manageBooks.Show();
+            this.Hide();
+        }
+
+        private void pnlDashBoard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
+            dashboard.Show();
+            this.Hide();
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -162,26 +181,7 @@ namespace QLThuVien
             manageEmployees.Show();
             this.Hide();
         }
-
-        private void pnlBorrowReturn_Click(object sender, EventArgs e)
-        {
-            BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
-            borrowReturn.Show();
-            this.Hide();
-        }
-        private void pnlManageBooks_Click(object sender, EventArgs e)
-        {
-            ManageBooks manageBooks = new ManageBooks(employeeName, employeeRole, employeeID);
-            manageBooks.Show();
-            this.Hide();
-        }
-
-        private void pnlDashBoard_Click(object sender, EventArgs e)
-        {
-            Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
-            dashboard.Show();
-            this.Hide();
-        }
+        
 
     }
 }

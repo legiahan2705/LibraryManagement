@@ -32,6 +32,8 @@ namespace QLThuVien
             // Khởi tạo đối tượng BL_GetEmployees
             _blEmployees = new BL_GetEmployees();
         }
+
+        // Chuyển qua các Form
         private void pnlBorrowReturn_Click(object sender, EventArgs e)
         {
             BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
