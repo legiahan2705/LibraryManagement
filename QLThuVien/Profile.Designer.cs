@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
-            picAvatar = new PictureBox();
-            lblWelcome = new Label();
             lblDashBoard = new Label();
             picIconDashBoard = new PictureBox();
             pnlDashBoard = new Panel();
@@ -60,10 +58,10 @@
             txtAddress = new TextBox();
             txtEmail = new TextBox();
             txtRole = new TextBox();
-            lblEmployeeName = new Label();
             txtName = new TextBox();
             txtPassword = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
+            lblEmployeeName = new Label();
+            lblWelcome = new Label();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
@@ -79,27 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)picIconProfile).BeginInit();
             pnlProfile.SuspendLayout();
             SuspendLayout();
-            // 
-            // picAvatar
-            // 
-            picAvatar.Location = new Point(12, 108);
-            picAvatar.Name = "picAvatar";
-            picAvatar.Size = new Size(127, 113);
-            picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-            picAvatar.TabIndex = 1;
-            picAvatar.TabStop = false;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.BackColor = Color.Transparent;
-            lblWelcome.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            lblWelcome.ForeColor = Color.DarkSlateBlue;
-            lblWelcome.Location = new Point(156, 108);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(147, 38);
-            lblWelcome.TabIndex = 2;
-            lblWelcome.Text = "Welcome!";
             // 
             // lblDashBoard
             // 
@@ -344,8 +321,6 @@
             lblProfile.TabIndex = 0;
             lblProfile.Text = "Profile";
             lblProfile.Click += pnlBorrowReturn_Click;
-            lblProfile.MouseEnter += HoverEffect_MouseEnter;
-            lblProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
             // picIconProfile
             // 
@@ -357,8 +332,6 @@
             picIconProfile.TabIndex = 1;
             picIconProfile.TabStop = false;
             picIconProfile.Click += pnlBorrowReturn_Click;
-            picIconProfile.MouseEnter += HoverEffect_MouseEnter;
-            picIconProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
             // pnlProfile
             // 
@@ -370,8 +343,6 @@
             pnlProfile.Name = "pnlProfile";
             pnlProfile.Size = new Size(291, 55);
             pnlProfile.TabIndex = 9;
-            pnlProfile.MouseEnter += HoverEffect_MouseEnter;
-            pnlProfile.MouseLeave += HoverEffect_MouseLeave;
             // 
             // btnEdit
             // 
@@ -439,18 +410,6 @@
             txtRole.Size = new Size(292, 31);
             txtRole.TabIndex = 22;
             // 
-            // lblEmployeeName
-            // 
-            lblEmployeeName.AutoSize = true;
-            lblEmployeeName.BackColor = Color.Transparent;
-            lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            lblEmployeeName.ForeColor = Color.DarkSlateBlue;
-            lblEmployeeName.Location = new Point(183, 146);
-            lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(70, 28);
-            lblEmployeeName.TabIndex = 24;
-            lblEmployeeName.Text = "label1";
-            // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
@@ -467,15 +426,40 @@
             txtPassword.Size = new Size(292, 31);
             txtPassword.TabIndex = 26;
             // 
+            // lblEmployeeName
+            // 
+            lblEmployeeName.AutoSize = true;
+            lblEmployeeName.BackColor = Color.Transparent;
+            lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblEmployeeName.ForeColor = Color.DarkSlateBlue;
+            lblEmployeeName.Location = new Point(122, 160);
+            lblEmployeeName.Name = "lblEmployeeName";
+            lblEmployeeName.Size = new Size(70, 28);
+            lblEmployeeName.TabIndex = 28;
+            lblEmployeeName.Text = "label1";
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.BackColor = Color.Transparent;
+            lblWelcome.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblWelcome.ForeColor = Color.DarkSlateBlue;
+            lblWelcome.Location = new Point(86, 122);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(147, 38);
+            lblWelcome.TabIndex = 27;
+            lblWelcome.Text = "Welcome!";
+            // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(lblEmployeeName);
+            Controls.Add(lblWelcome);
             Controls.Add(txtPassword);
             Controls.Add(txtName);
-            Controls.Add(lblEmployeeName);
             Controls.Add(txtRole);
             Controls.Add(txtEmail);
             Controls.Add(txtAddress);
@@ -491,8 +475,6 @@
             Controls.Add(pnlManageEmployees);
             Controls.Add(pnlProfile);
             Controls.Add(pnlDashBoard);
-            Controls.Add(lblWelcome);
-            Controls.Add(picAvatar);
             ForeColor = Color.DarkSlateBlue;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -501,7 +483,6 @@
             Text = "Profile";
             FormClosing += Profile_FormClosing;
             Load += Profile_Load;
-            ((System.ComponentModel.ISupportInitialize)picAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).EndInit();
             pnlDashBoard.ResumeLayout(false);
             pnlDashBoard.PerformLayout();
@@ -528,9 +509,6 @@
         }
 
         #endregion
-
-        private PictureBox picAvatar;
-        private Label lblWelcome;
         private Label lblDashBoard;
         private PictureBox picIconDashBoard;
         private Panel pnlDashBoard;
@@ -560,8 +538,9 @@
         private TextBox txtAddress;
         private TextBox txtEmail;
         private TextBox txtRole;
-        private Label lblEmployeeName;
         private TextBox txtName;
         private TextBox txtPassword;
+        private Label lblEmployeeName;
+        private Label lblWelcome;
     }
 }

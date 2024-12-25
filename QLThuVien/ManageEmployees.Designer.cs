@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageEmployees));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             lblLogOut = new Label();
             pnlLogOut = new Panel();
             picIconLogOut = new PictureBox();
@@ -53,10 +53,7 @@
             pnlProfile = new Panel();
             lblDashBoard = new Label();
             picIconDashBoard = new PictureBox();
-            lblEmployeeName = new Label();
             pnlDashBoard = new Panel();
-            lblWelcome = new Label();
-            picAvatar = new PictureBox();
             grBoxManageEmployees = new Panel();
             panel1 = new Panel();
             txtMaNV = new TextBox();
@@ -90,6 +87,8 @@
             PhanQuyen = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
+            lblEmployeeName = new Label();
+            lblWelcome = new Label();
             pnlLogOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
@@ -104,7 +103,6 @@
             pnlProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
             pnlDashBoard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             grBoxManageEmployees.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -369,18 +367,6 @@
             picIconDashBoard.MouseEnter += HoverEffect_MouseEnter;
             picIconDashBoard.MouseLeave += HoverEffect_MouseLeave;
             // 
-            // lblEmployeeName
-            // 
-            lblEmployeeName.AutoSize = true;
-            lblEmployeeName.BackColor = Color.Transparent;
-            lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            lblEmployeeName.ForeColor = Color.DarkSlateBlue;
-            lblEmployeeName.Location = new Point(182, 142);
-            lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(70, 28);
-            lblEmployeeName.TabIndex = 20;
-            lblEmployeeName.Text = "label1";
-            // 
             // pnlDashBoard
             // 
             pnlDashBoard.BackColor = Color.Transparent;
@@ -394,26 +380,6 @@
             pnlDashBoard.Click += pnlDashBoard_Click;
             pnlDashBoard.MouseEnter += HoverEffect_MouseEnter;
             pnlDashBoard.MouseLeave += HoverEffect_MouseLeave;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.BackColor = Color.Transparent;
-            lblWelcome.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            lblWelcome.ForeColor = Color.DarkSlateBlue;
-            lblWelcome.Location = new Point(156, 104);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(147, 38);
-            lblWelcome.TabIndex = 12;
-            lblWelcome.Text = "Welcome!";
-            // 
-            // picAvatar
-            // 
-            picAvatar.Location = new Point(12, 104);
-            picAvatar.Name = "picAvatar";
-            picAvatar.Size = new Size(127, 113);
-            picAvatar.TabIndex = 11;
-            picAvatar.TabStop = false;
             // 
             // grBoxManageEmployees
             // 
@@ -646,37 +612,37 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lavender;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.Lavender;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaNV, Ten, GioiTinh, SDT, NgaySinh, DiaChi, Email, PhanQuyen, Edit, Delete });
             dataGridView1.Cursor = Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Lavender;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 8F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = Color.Lavender;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             dataGridView1.GridColor = Color.White;
             dataGridView1.Location = new Point(2, 107);
             dataGridView1.Margin = new Padding(0);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = SystemColors.Control;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 8F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.Size = new Size(928, 261);
@@ -741,9 +707,9 @@
             // 
             // Edit
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle10.NullValue = resources.GetObject("dataGridViewCellStyle10.NullValue");
+            Edit.DefaultCellStyle = dataGridViewCellStyle10;
             Edit.HeaderText = "Edit";
             Edit.Image = (Image)resources.GetObject("Edit.Image");
             Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -764,12 +730,38 @@
             Delete.SortMode = DataGridViewColumnSortMode.Automatic;
             Delete.Width = 84;
             // 
+            // lblEmployeeName
+            // 
+            lblEmployeeName.AutoSize = true;
+            lblEmployeeName.BackColor = Color.Transparent;
+            lblEmployeeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblEmployeeName.ForeColor = Color.DarkSlateBlue;
+            lblEmployeeName.Location = new Point(122, 160);
+            lblEmployeeName.Name = "lblEmployeeName";
+            lblEmployeeName.Size = new Size(70, 28);
+            lblEmployeeName.TabIndex = 30;
+            lblEmployeeName.Text = "label1";
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.BackColor = Color.Transparent;
+            lblWelcome.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblWelcome.ForeColor = Color.DarkSlateBlue;
+            lblWelcome.Location = new Point(86, 122);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(147, 38);
+            lblWelcome.TabIndex = 29;
+            lblWelcome.Text = "Welcome!";
+            // 
             // ManageEmployees
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(lblEmployeeName);
+            Controls.Add(lblWelcome);
             Controls.Add(grBoxManageEmployees);
             Controls.Add(pnlLogOut);
             Controls.Add(pnlReports);
@@ -777,10 +769,7 @@
             Controls.Add(pnlManageBooks);
             Controls.Add(pnlManageEmployees);
             Controls.Add(pnlProfile);
-            Controls.Add(lblEmployeeName);
             Controls.Add(pnlDashBoard);
-            Controls.Add(lblWelcome);
-            Controls.Add(picAvatar);
             Name = "ManageEmployees";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ManageEmployees";
@@ -807,7 +796,6 @@
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).EndInit();
             pnlDashBoard.ResumeLayout(false);
             pnlDashBoard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picAvatar).EndInit();
             grBoxManageEmployees.ResumeLayout(false);
             grBoxManageEmployees.PerformLayout();
             panel1.ResumeLayout(false);
@@ -840,10 +828,7 @@
         private Panel pnlProfile;
         private Label lblDashBoard;
         private PictureBox picIconDashBoard;
-        private Label lblEmployeeName;
         private Panel pnlDashBoard;
-        private Label lblWelcome;
-        private PictureBox picAvatar;
         private Panel grBoxManageEmployees;
         private TextBox txtMaNV;
         private Label label20;
@@ -877,5 +862,7 @@
         private DataGridViewTextBoxColumn PhanQuyen;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
+        private Label lblEmployeeName;
+        private Label lblWelcome;
     }
 }
