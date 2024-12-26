@@ -531,7 +531,6 @@
             // pnlBookCase
             // 
             pnlBookCase.BackColor = Color.White;
-            pnlBookCase.Controls.Add(btnAddBook);
             pnlBookCase.Controls.Add(panel1);
             pnlBookCase.Controls.Add(dataGridView1);
             pnlBookCase.Location = new Point(319, 343);
@@ -545,15 +544,17 @@
             btnAddBook.Cursor = Cursors.Hand;
             btnAddBook.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnAddBook.ForeColor = Color.White;
-            btnAddBook.Location = new Point(201, 434);
+            btnAddBook.Location = new Point(199, 196);
             btnAddBook.Name = "btnAddBook";
             btnAddBook.Size = new Size(517, 48);
             btnAddBook.TabIndex = 33;
             btnAddBook.Text = "Add Book";
             btnAddBook.UseVisualStyleBackColor = false;
+            btnAddBook.Click += btnAddBook_Click;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAddBook);
             panel1.Controls.Add(txtMaSach);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label20);
