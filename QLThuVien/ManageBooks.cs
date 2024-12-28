@@ -16,11 +16,9 @@ namespace QLThuVien
 {
     public partial class ManageBooks : Form
     {
-        private BL_GetEmployees _blEmployees;
-        private BL_DeleteEmployee _blDeleteEmployee;
-        private BL_AddEmployee _blAddEmployee;
-        private BL_GetBooks _blBooks;
+        private BL_GetBooks _blGetBooks;
         private BL_DeleteBooks _blDeleteBooks;
+        private BL_AddBooks _blAddBooks;
 
         private string employeeName; // Lưu tên nhân viên
         private string employeeRole; // Lưu quyền của nhân viên
@@ -33,9 +31,10 @@ namespace QLThuVien
         public ManageBooks(string employeeName, string employeeRole, string id)
         {
             InitializeComponent();
-            // Khởi tạo đối tượng BL_GetEmployees
-            _blEmployees = new BL_GetEmployees();
-            _blBooks = new BL_GetBooks();
+            // Khởi tạo đối tượng BL_GetBooks
+            _blDeleteBooks = new BL_DeleteBooks();
+            _blGetBooks = new BL_GetBooks();
+            _blAddBooks = new BL_AddBooks();
 
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
@@ -247,56 +246,50 @@ namespace QLThuVien
                 }
             }
 
-            //if (e.ColumnIndex == dataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            //{
-            //    panel1.BackColor = Color.Lavender;
-            //    btnAddEmployee.BackColor = Color.CornflowerBlue;
-            //    btnAddEmployee.Text = "Save";
-            //    // Lấy mã nhân viên từ cột MaNV (giữ dưới dạng chuỗi)
-            //    string employeeId = dataGridView1.Rows[e.RowIndex].Cells["MaNV"].Value.ToString();
-            //    string employeeTen = dataGridView1.Rows[e.RowIndex].Cells["Ten"].Value.ToString();
-            //    string employeeGioiTinh = dataGridView1.Rows[e.RowIndex].Cells["GioiTinh"].Value.ToString();
-            //    string employeeSDT = dataGridView1.Rows[e.RowIndex].Cells["SDT"].Value.ToString();
-            //    string employeeNgaySinh = dataGridView1.Rows[e.RowIndex].Cells["NgaySinh"].Value.ToString();
-            //    string employeeDiaChi = dataGridView1.Rows[e.RowIndex].Cells["DiaChi"].Value.ToString();
-            //    string employeeEmail = dataGridView1.Rows[e.RowIndex].Cells["Email"].Value.ToString();
-            //    string employeePhanQuyen = dataGridView1.Rows[e.RowIndex].Cells["PhanQuyen"].Value.ToString();
+            if (e.ColumnIndex == dataGridView1.Columns["Sua"].Index && e.RowIndex >= 0)
+            {
+                panel1.BackColor = Color.Lavender;
+                btnAddBook.BackColor = Color.CornflowerBlue;
+                btnAddBook.Text = "Save";
+                // Lấy mã sách từ cột MaSach (giữ dưới dạng chuỗi)
+                string bookId = dataGridView1.Rows[e.RowIndex].Cells["MaSach"].Value.ToString();
+                string bookTen = dataGridView1.Rows[e.RowIndex].Cells["TenSach"].Value.ToString();
+                string bookMaTL = dataGridView1.Rows[e.RowIndex].Cells["MaTL"].Value.ToString();
+                string bookSL = dataGridView1.Rows[e.RowIndex].Cells["SL"].Value.ToString();
+                string bookNXB = dataGridView1.Rows[e.RowIndex].Cells["NXB"].Value.ToString();
+                string bookNgayNhap = dataGridView1.Rows[e.RowIndex].Cells["NgayNhap"].Value.ToString();
 
-            //    txtMaNV.Text = employeeId;
-            //    txtTen.Text = employeeTen;
-            //    txtGioiTinh.Text = employeeGioiTinh;
-            //    txtSDT.Text = employeeSDT;
-            //    txtNgaySinh.Text = employeeNgaySinh;
-            //    txtDiaChi.Text = employeeDiaChi;
-            //    txtEmail.Text = employeeEmail;
-            //    txtPhanQuyen.Text = employeePhanQuyen;
+                txtMaSach.Text = bookId;
+                txtTenSach.Text = bookTen;
+                txtMaTL.Text = bookMaTL;
+                txtSL.Text = bookSL;
+                txtNXB.Text = bookNXB;
+                txtNgayNhap.Text = bookNgayNhap;
 
-            //    // Đặt txtMaNV thành chỉ đọc
-            //    txtMaNV.ReadOnly = true;
-            //    txtMaNV.Enabled = false;   // k cho nhấn đâu
+                // Đặt txtMaNV thành chỉ đọc
+                txtMaSach.ReadOnly = true;
+                txtMaSach.Enabled = false;   // k cho nhấn đâu
 
 
-            //}
-            //else
-            //{
-            //    panel1.BackColor = Color.GhostWhite;
+            }
+            else
+            {
+                panel1.BackColor = Color.GhostWhite;
 
-            //    txtMaNV.Clear();
-            //    txtTen.Clear();
-            //    txtGioiTinh.Clear();
-            //    txtSDT.Clear();
-            //    txtNgaySinh.Clear();
-            //    txtDiaChi.Clear();
-            //    txtEmail.Clear();
-            //    txtPhanQuyen.Clear();
+                txtMaSach.Clear();
+                txtTenSach.Clear();
+                txtMaTL.Clear();
+                txtSL.Clear();
+                txtNXB.Clear();
+                txtNgayNhap.Clear();
 
 
-            //    txtMaNV.ReadOnly = false;
-            //    txtMaNV.Enabled = true;
+                txtMaSach.ReadOnly = false;
+                txtMaSach.Enabled = true;
 
-            //    btnAddEmployee.BackColor = Color.DarkSlateBlue;
-            //    btnAddEmployee.Text = "Add Employee";
-            //}
+                btnAddBook.BackColor = Color.DarkSlateBlue;
+                btnAddBook.Text = "Add Book";
+            }
         }
 
         private void pnlBookCaseBTN_Click(object sender, EventArgs e)
@@ -346,6 +339,180 @@ namespace QLThuVien
             {
                 // Các lỗi khác
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            if (btnAddBook.Text == "Add Book")
+            {
+                // Kiểm tra các TextBox có dữ liệu đầy đủ hay không
+                if (string.IsNullOrEmpty(txtMaSach.Text) ||
+                    string.IsNullOrEmpty(txtTenSach.Text) || string.IsNullOrEmpty(txtMaTL.Text) ||
+                    string.IsNullOrEmpty(txtSL.Text) || string.IsNullOrEmpty(txtNXB.Text) || 
+                    string.IsNullOrEmpty(txtNgayNhap.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Nếu thiếu thông tin thì hiển thị thông báo
+                }
+
+                // Kiểm tra xem ngày nhập có hợp lệ không
+                DateTime ngayNhap;
+                if (!DateTime.TryParse(txtNgayNhap.Text, out ngayNhap))
+                {
+                    MessageBox.Show("Invalid date format. Please enter the date in YYYY-MM-DD format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Nếu ngày sinh không hợp lệ thì thông báo
+                }
+
+                // Hiển thị hộp thoại xác nhận việc thêm sách
+                DialogResult dialogResult = MessageBox.Show(
+                    "Are you sure you want to add this book?",
+                    "Confirm Add",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Nếu người dùng chọn Yes, tiến hành thêm book
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // Tạo đối tượng sách và gán các giá trị từ TextBox
+                    Sach_TO newBook = new Sach_TO
+                    {
+                        MaSach = txtMaSach.Text,
+                        TenSach = txtTenSach.Text,
+                        MaTL = txtMaTL.Text,
+                        NXB = txtNXB.Text,
+                        SL = int.Parse(txtSL.Text),
+                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd"), // Cần phải kiểm tra xem định dạng ngày có hợp lệ không
+                    };
+
+                    // Gọi phương thức thêm book
+                    bool isAdded = _blAddBooks.AddBooks(newBook);
+
+                    // Thông báo kết quả thêm book
+                    if (isAdded)
+                    {
+                        MessageBox.Show("Book added successfully!", "Success");
+                        // Có thể làm sạch các TextBox sau khi thêm
+                        txtMaSach.Clear();
+                        txtTenSach.Clear();
+                        txtMaTL.Clear();
+                        txtSL.Clear();
+                        txtNXB.Clear();
+                        txtNgayNhap.Clear();
+
+                        // Thêm sách mới vào DataGridView ngay lập tức
+                        dataGridView1.Rows.Add(
+                            newBook.MaSach,
+                            newBook.TenSach,
+                            newBook.MaTL,
+                            newBook.SL,
+                            newBook.NXB,
+                            newBook.NgayNhap
+                        );
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add book.", "Error");
+                    }
+                }
+                else
+                {
+                    // Nếu chọn No, không làm gì cả, đóng MessageBox
+                    return;
+                }
+            }
+
+            if (btnAddBook.Text == "Save")
+            {
+                // Kiểm tra dữ liệu hợp lệ
+                if (string.IsNullOrEmpty(txtMaSach.Text) ||
+                    string.IsNullOrEmpty(txtTenSach.Text) ||
+                    string.IsNullOrEmpty(txtMaTL.Text) ||
+                    string.IsNullOrEmpty(txtSL.Text) ||
+                    string.IsNullOrEmpty(txtNXB.Text) ||
+                    string.IsNullOrEmpty(txtNgayNhap.Text))
+
+                {
+                    MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DateTime ngayNhap;
+                if (!DateTime.TryParse(txtNgayNhap.Text, out ngayNhap))
+                {
+                    MessageBox.Show("Invalid date format. Please enter the date in YYYY-MM-DD format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Hiển thị hộp thoại xác nhận
+                DialogResult confirmResult = MessageBox.Show(
+                    "Are you sure you want to update this book's information?",
+                    "Confirm Update",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirmResult == DialogResult.OK)
+                {
+                    // Cập nhật thông tin book
+                    Sach_TO updateBook = new Sach_TO
+                    {
+                        MaSach = txtMaSach.Text,
+                        TenSach = txtTenSach.Text, 
+                        MaTL = txtMaTL.Text,
+                        SL = int.Parse(txtSL.Text),
+                        NXB = txtNXB.Text,
+                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd"),
+                    };
+
+                    // Gọi phương thức cập nhật từ lớp BL
+                    bool isUpdated = _blAddBooks.UpdateBook(updateBook);
+
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("Book updated successfully!", "Success");
+
+                        // Đặt lại giao diện
+                        panel1.BackColor = Color.White;
+                        txtMaSach.Clear();
+                        txtTenSach.Clear();
+                        txtMaTL.Clear();
+                        txtSL.Clear();
+                        txtNXB.Clear();
+                        txtNgayNhap.Clear();
+
+
+                        // Đặt txtMaSach thành chỉ đọc
+                        txtMaSach.ReadOnly = false;
+                        txtMaSach.Enabled = true;   // Cho phép nhấp chuột
+
+                        btnAddBook.BackColor = Color.DarkSlateBlue;
+                        btnAddBook.Text = "Add Book";
+
+                        // Cập nhật lại hàng trong DataGridView
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.Cells["MaSach"].Value.ToString() == updateBook.MaSach)
+                            {
+                                row.SetValues(
+                                    updateBook.MaSach,
+                                    updateBook.TenSach,
+                                    updateBook.MaTL,
+                                    updateBook.SL,
+                                    updateBook.NXB,
+                                    updateBook.NgayNhap
+
+                                );
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }

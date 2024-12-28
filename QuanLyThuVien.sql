@@ -53,18 +53,6 @@ GO
 USE QuanLyThuVien
 GO
 
--- Tạo bảng Docgia (Độc giả)
-CREATE TABLE [dbo].[Docgia](
-    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
-    [Ten] NVARCHAR(50) NULL,             -- Tên độc giả
-    [GioiTinh] NVARCHAR(50) NULL,        -- Giới tính
-    [SDT] CHAR(10) NULL,                 -- Số điện thoại
-    [NgaySinh] DATE NULL,                -- Ngày sinh
-    [Diachi] NVARCHAR(50) NULL,          -- Địa chỉ
-    [Email] NVARCHAR(50) NULL,           -- Email
-    PRIMARY KEY ([MaDG])
-);
-
 -- Tạo bảng Nhanvien (Nhân viên)
 CREATE TABLE [dbo].[Nhanvien](
     [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
@@ -78,6 +66,13 @@ CREATE TABLE [dbo].[Nhanvien](
     PRIMARY KEY ([MaNV])
 );
 
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100001', N'Hồng Lĩnh', N'Nam', N'12345678',CAST(N'2004-10-16' AS Date), N'Tân Phú', N'honglinh@gmail.com', N'Quản lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100002', N'Mai Chi', N'Nữ', N'12345678',CAST(N'2004-02-13' AS Date), N'Bình Thạnh', N'maichi@gmail.com', N'Quản lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100003', N'Gia Hân', N'Nữ', N'12345678',CAST(N'2004-05-27' AS Date), N'Quận 1', N'giahan@gmail.com', N'Quản lý')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100004', N'Thanh Tú', N'Nữ', N'12345678',CAST(N'2004-07-12' AS Date), N'Vĩnh Long', N'thanhtu@gmail.com', N'Nhân viên')
+INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100005', N'Mỹ Duyên', N'Nữ', N'12345678',CAST(N'2004-03-09' AS Date), N'Quận 12', N'myduyen@gmail.com', N'Nhân viên')
+GO
+
 -- Tạo bảng TaiKhoan (Tài khoản nhân viên)
 CREATE TABLE [dbo].[TaiKhoan](
     [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
@@ -86,102 +81,24 @@ CREATE TABLE [dbo].[TaiKhoan](
     CONSTRAINT FK_TaiKhoan_Nhanvien FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]) ON DELETE CASCADE
 );
 
--- Tạo bảng Sach (Sách)
-CREATE TABLE [dbo].[Sach](
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
-    [TenSach] NVARCHAR(100) NULL,        -- Tên sách
-    [MaTL] CHAR(10) NULL,                -- Mã thể loại
-    [SL] INT NULL,                       -- Số lượng sách
-    [NXB] NVARCHAR(50) NULL,             -- Nhà xuất bản
-    [NgayNhap] DATE NULL,                -- Ngày nhập sách
-    [NoiDung] NVARCHAR(MAX) NULL,        -- Nội dung sách
-    PRIMARY KEY ([MaSach]),
-    CONSTRAINT FK_Sach_TheLoai FOREIGN KEY ([MaTL]) REFERENCES [TheLoai]([MaTL]) ON DELETE CASCADE
-);
-
--- Tạo bảng TheLoai (Thể loại)
-CREATE TABLE [dbo].[TheLoai](
-    [MaTL] CHAR(10) NOT NULL,            -- Mã thể loại
-    [Ten] NVARCHAR(50) NULL,             -- Tên thể loại
-    [ThongTin] NVARCHAR(MAX) NULL,       -- Thông tin thể loại
-    PRIMARY KEY ([MaTL])
-);
-
--- Tạo bảng TacGia (Tác giả)
-CREATE TABLE [dbo].[TacGia](
-    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
-    [Ten] NVARCHAR(50) NULL,             -- Tên tác giả
-    [NgaySinh] DATE NULL,                -- Ngày sinh
-    [GioiThieu] NVARCHAR(MAX) NULL,      -- Giới thiệu
-    PRIMARY KEY ([MaTG])
-);
-
--- Tạo bảng TacGiaVietSach (Tác giả viết sách)
-CREATE TABLE [dbo].[TacGiaVietSach](
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
-    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
-    PRIMARY KEY ([MaSach], [MaTG]),
-    CONSTRAINT FK_TacGiaVietSach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE,
-    CONSTRAINT FK_TacGiaVietSach_TacGia FOREIGN KEY ([MaTG]) REFERENCES [TacGia]([MaTG]) ON DELETE CASCADE
-);
-
--- Tạo bảng Phieu (Phiếu mượn)
-CREATE TABLE [dbo].[Phieu](
-    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
-    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
-    [NgayMuon] DATE NOT NULL,            -- Ngày mượn
-    [NgayTra] DATE NULL,                 -- Ngày trả
-    [TrangThai] NVARCHAR(20) NOT NULL,   -- Trạng thái
-    PRIMARY KEY ([MaPhieu]),
-    CONSTRAINT FK_Phieu_Docgia FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG]) ON DELETE CASCADE
-);
-
--- Tạo bảng ChiTietPhieu (Chi tiết phiếu mượn)
-CREATE TABLE [dbo].[ChiTietPhieu](
-    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
-    [SoLuong] INT NOT NULL,              -- Số lượng sách mượn
-    PRIMARY KEY ([MaPhieu], [MaSach]),
-    CONSTRAINT FK_ChiTietPhieu_Phieu FOREIGN KEY ([MaPhieu]) REFERENCES [Phieu]([MaPhieu]) ON DELETE CASCADE,
-    CONSTRAINT FK_ChiTietPhieu_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE
-);
-
--- Tạo bảng QuanLySach (Quản lý sách)
-CREATE TABLE [dbo].[QuanLySach](
-    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
-    PRIMARY KEY ([MaNV], [MaSach]),
-    CONSTRAINT FK_QuanLySach_Nhanvien FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]) ON DELETE CASCADE,
-    CONSTRAINT FK_QuanLySach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE
-);
-
-
-
-INSERT INTO Phieu (MaPhieu, MaDG, NgayMuon, NgayTra, TrangThai)
-VALUES
-('P001', '5951071111', '2024-12-22', NULL, N'Chưa trả');
-
-INSERT INTO ChiTietPhieu (MaPhieu, MaSach, SoLuong)
-VALUES
-('P001', 'SG100000', 2),
-('P001', 'SG100001', 1);
-
-
-
-
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100001', N'Hồng Lĩnh', N'Nam', N'12345678',CAST(N'2004-10-16' AS Date), N'Tân Phú', N'honglinh@gmail.com', N'Quản lý')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100002', N'Mai Chi', N'Nữ', N'12345678',CAST(N'2004-02-13' AS Date), N'Bình Thạnh', N'maichi@gmail.com', N'Quản lý')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100003', N'Gia Hân', N'Nữ', N'12345678',CAST(N'2004-05-27' AS Date), N'Quận 1', N'giahan@gmail.com', N'Quản lý')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100004', N'Thanh Tú', N'Nữ', N'12345678',CAST(N'2004-07-12' AS Date), N'Vĩnh Long', N'thanhtu@gmail.com', N'Nhân viên')
-INSERT [dbo].[Nhanvien] ([MaNV], [Ten],[GioiTinh],[SDT],[NgaySinh],[Diachi],[Email],[PhanQuyen]) VALUES (N'NV100005', N'Mỹ Duyên', N'Nữ', N'12345678',CAST(N'2004-03-09' AS Date), N'Quận 12', N'myduyen@gmail.com', N'Nhân viên')
-GO
-
 GO
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100001 ', N'12345')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100002  ', N'12345')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100003  ', N'12345')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100004  ', N'123')
 INSERT [dbo].[TaiKhoan] ([MaNV], [MK]) VALUES (N'NV100005  ', N'123')
+
+-- Tạo bảng Docgia (Độc giả)
+CREATE TABLE [dbo].[Docgia](
+    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
+    [Ten] NVARCHAR(50) NULL,             -- Tên độc giả
+    [GioiTinh] NVARCHAR(50) NULL,        -- Giới tính
+    [SDT] CHAR(10) NULL,                 -- Số điện thoại
+    [NgaySinh] DATE NULL,                -- Ngày sinh
+    [Diachi] NVARCHAR(50) NULL,          -- Địa chỉ
+    [Email] NVARCHAR(50) NULL,           -- Email
+    PRIMARY KEY ([MaDG])
+);
 
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071111', N'Pham Trong Truong 1', N'Nam', N'0353573467', CAST(N'2020-07-16' AS Date), N'Quận 9', N'truong@gmail.com')
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071112', N'Trần Đức Vũ', N'Nam', N'0363636569', CAST(N'2000-07-01' AS Date), N'Quận 9', N'Tranducvu23@gmail.com')
@@ -212,6 +129,39 @@ INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [
 INSERT [dbo].[Docgia] ([MaDG], [Ten], [GioiTinh], [SDT], [NgaySinh], [Diachi], [Email]) VALUES (N'5951071137', N'Trần Đức Vũ', N'Nam', N'0363636569', CAST(N'2000-08-16' AS Date), N'Quận 9', N'Tranducvu23@gmail.com')
 GO
 
+-- Tạo bảng TheLoai (Thể loại)
+CREATE TABLE [dbo].[TheLoai](
+    [MaTL] CHAR(10) NOT NULL,            -- Mã thể loại
+    [Ten] NVARCHAR(50) NULL,             -- Tên thể loại
+    [ThongTin] NVARCHAR(MAX) NULL,       -- Thông tin thể loại
+    PRIMARY KEY ([MaTL])
+);
+
+GO
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100000  ', N'Điện , Điện Tử , Tự Động Hóa', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100001  ', N'Khoa Học', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100003  ', N'Tham Khảo', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100004  ', N'CNTT', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100006  ', N'Toán', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100007  ', N'Vật Lý', N'1111111111111')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100008  ', N'Kiến Trúc', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100009  ', N'Hóa Học', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100010  ', N'Xây Dựng', N'Không có thông tin')
+GO
+
+-- Tạo bảng Sach (Sách)
+CREATE TABLE [dbo].[Sach](
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    [TenSach] NVARCHAR(100) NULL,        -- Tên sách
+    [MaTL] CHAR(10) NULL,                -- Mã thể loại
+    [SL] INT NULL,                       -- Số lượng sách
+    [NXB] NVARCHAR(50) NULL,             -- Nhà xuất bản
+    [NgayNhap] DATE NULL,                -- Ngày nhập sách
+    [NoiDung] NVARCHAR(MAX) NULL,        -- Nội dung sách
+    PRIMARY KEY ([MaSach]),
+    CONSTRAINT FK_Sach_TheLoai FOREIGN KEY ([MaTL]) REFERENCES [TheLoai]([MaTL]) ON DELETE CASCADE
+);
+
 GO
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100000  ', N'Lập trình và cuộc sống ', N'TL100004  ', 29, N'NXB Thanh Niên', CAST(N'2020-07-07' AS Date), N'Anh cần một cách để theo dõi sự phát triển của phần mềm theo thời gian-bất cứ điều gì anh ta nghĩ đến hoặc làm việc trên nó. Jeff đã nghiên cứu các chủ đề mà anh cảm thấy thú vị, sau đó ghi lại nghiên cứu của mình bằng một bài đăng trên blog mà anh có thể dễ dàng tìm lại và tham khải sau này.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100001  ', N'Giáo Trình C++ & Lập Trình Hướng Đối Tượng', N'TL100004  ', 18, N'NXB Hồng Đức', CAST(N'2020-07-07' AS Date), N'Giáo trình C++ & lập trình hướng đối tượng” trình bày một cách hệ thống các khái niệm của lập trình hướng đối tượng được cài đặt trong C++ như lớp, đối tượng, sự thừa kế, tính tương ứng bội và các khả năng mới trong xây dựng, sử dụng hàm như đối tham chiếu, đối mặc định, hàm trùng tên, hàm toán tử.')
@@ -238,6 +188,16 @@ INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiD
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100023  ', N'Ngôi Nhà Hạnh Phúc', N'TL100008  ', 39, N'Nxb Tổng hợp TP.HCM', CAST(N'2020-07-07' AS Date), N'Tuy đã giảng dạy lâu năm về kiến trúc, nhưng khi được yêu cầu trình bày về ngôi nhà của thường dân người Việt, kiến trúc sư Thái thú nhận bản thân mình cũng lúng túng do chưa am hiểu thấu đáo về sự xuất hiện, tồn tại và biến chuyển của ngôi nhà. Chỉ gần đây, do yêu cầu viết một biên khảo về nếp ở của người Việt, anh mới tập trung nghiên cứu lại vấn đề một cách căn cơ hơn.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100024  ', N'Giai Tích', N'TL100006  ', 19, N'NXB Dân Trí', CAST(N'2020-07-07' AS Date), N'Toán học đại học .')
 GO
+
+-- Tạo bảng TacGia (Tác giả)
+CREATE TABLE [dbo].[TacGia](
+    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
+    [Ten] NVARCHAR(50) NULL,             -- Tên tác giả
+    [NgaySinh] DATE NULL,                -- Ngày sinh
+    [GioiThieu] NVARCHAR(MAX) NULL,      -- Giới thiệu
+    PRIMARY KEY ([MaTG])
+);
+
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100000  ', N'Jeff Atwood', CAST(N'2020-09-07' AS Date), N'aaa')
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100001  ', N'Tony Crilly', CAST(N'2020-10-07' AS Date), N'bb')
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100002  ', N'Michio Kaku', CAST(N'2000-02-07' AS Date), N'Không có thông tin')
@@ -265,6 +225,17 @@ INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG10002
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100026  ', N'Nguyễn Minh Tuyền', CAST(N'1887-10-07' AS Date), N'Không có thông tin')
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100027  ', N'Lê Sỹ Phong', CAST(N'1888-09-07' AS Date), N'Không có thông tin')
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100028  ', N'Nguyễn Bá Đô', CAST(N'1888-02-07' AS Date), N'Không có thông tin')
+GO
+
+-- Tạo bảng TacGiaVietSach (Tác giả viết sách)
+CREATE TABLE [dbo].[TacGiaVietSach](
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
+    PRIMARY KEY ([MaSach], [MaTG]),
+    CONSTRAINT FK_TacGiaVietSach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE,
+    CONSTRAINT FK_TacGiaVietSach_TacGia FOREIGN KEY ([MaTG]) REFERENCES [TacGia]([MaTG]) ON DELETE CASCADE
+);
+
 GO
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100011  ', N'TG100025  ')
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100010  ', N'TG100024  ')
@@ -299,18 +270,16 @@ INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100021  ', N'TG1000
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100022  ', N'TG100011  ')
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100002  ', N'TG100007  ')
 INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100002  ', N'TG100006  ')
+GO
 
-GO
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100000  ', N'Điện , Điện Tử , Tự Động Hóa', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100001  ', N'Khoa Học', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100003  ', N'Tham Khảo', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100004  ', N'CNTT', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100006  ', N'Toán', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100007  ', N'Vật Lý', N'1111111111111')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100008  ', N'Kiến Trúc', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100009  ', N'Hóa Học', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100010  ', N'Xây Dựng', N'Không có thông tin')
-GO
+-- Tạo bảng QuanLySach (Quản lý sách)
+CREATE TABLE [dbo].[QuanLySach](
+    [MaNV] CHAR(10) NOT NULL,            -- Mã nhân viên
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    PRIMARY KEY ([MaNV], [MaSach]),
+    CONSTRAINT FK_QuanLySach_Nhanvien FOREIGN KEY ([MaNV]) REFERENCES [Nhanvien]([MaNV]) ON DELETE CASCADE,
+    CONSTRAINT FK_QuanLySach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE
+);
 
 GO
 INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100000  ')
@@ -401,3 +370,55 @@ INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100000  ', N'SG100024  
 INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100005  ', N'SG100024  ')
 INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100002  ', N'SG100024  ')
 INSERT [dbo].[QuanLySach] ([MaNV], [MaSach]) VALUES (N'NV100004  ', N'SG100024  ')
+
+
+-- Tạo bảng Phieu (Phiếu mượn)
+CREATE TABLE [dbo].[Phieu](
+    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
+    [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
+    [NgayMuon] DATE NOT NULL,            -- Ngày mượn
+    [NgayTra] DATE NULL,                 -- Ngày trả
+    [TrangThai] NVARCHAR(20) NOT NULL,   -- Trạng thái
+    PRIMARY KEY ([MaPhieu]),
+    CONSTRAINT FK_Phieu_Docgia FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG]) ON DELETE CASCADE
+);
+
+INSERT INTO Phieu (MaPhieu, MaDG, NgayMuon, NgayTra, TrangThai)
+VALUES
+('P001', '5951071111', '2024-12-22', NULL, N'Chưa trả');
+
+-- Tạo bảng ChiTietPhieu (Chi tiết phiếu mượn)
+CREATE TABLE [dbo].[ChiTietPhieu](
+    [MaPhieu] CHAR(10) NOT NULL,         -- Mã phiếu
+    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
+    [SoLuong] INT NOT NULL,              -- Số lượng sách mượn
+    PRIMARY KEY ([MaPhieu], [MaSach]),
+    CONSTRAINT FK_ChiTietPhieu_Phieu FOREIGN KEY ([MaPhieu]) REFERENCES [Phieu]([MaPhieu]) ON DELETE CASCADE,
+    CONSTRAINT FK_ChiTietPhieu_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE
+);
+
+INSERT INTO ChiTietPhieu (MaPhieu, MaSach, SoLuong)
+VALUES
+('P001', 'SG100000', 2),
+('P001', 'SG100001', 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

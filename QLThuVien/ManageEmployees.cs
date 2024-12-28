@@ -35,9 +35,7 @@ namespace QLThuVien
 
             // Khởi tạo đối tượng BL_GetEmployees
             _blEmployees = new BL_GetEmployees();
-
             _blDeleteEmployee = new BL_DeleteEmployee();
-
             _blAddEmployee = new BL_AddEmployee();
         }
 
