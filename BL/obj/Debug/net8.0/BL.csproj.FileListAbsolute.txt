@@ -39,3 +39,17 @@ D:\Thư mục mới\BL\obj\Debug\net8.0\BL.dll
 D:\Thư mục mới\BL\obj\Debug\net8.0\refint\BL.dll
 D:\Thư mục mới\BL\obj\Debug\net8.0\BL.pdb
 D:\Thư mục mới\BL\obj\Debug\net8.0\ref\BL.dll
+D:\Thực Hành\LibraryManagement\bin\Debug\net8.0\BL.deps.json
+D:\Thực Hành\LibraryManagement\bin\Debug\net8.0\BL.dll
+D:\Thực Hành\LibraryManagement\bin\Debug\net8.0\BL.pdb
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.csproj.AssemblyReference.cache
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.AssemblyInfoInputs.cache
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.AssemblyInfo.cs
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.csproj.CoreCompileInputs.cache
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.sourcelink.json
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.csproj.Up2Date
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.dll
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\refint\BL.dll
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\BL.pdb
+D:\Thực Hành\LibraryManagement\BL\obj\Debug\net8.0\ref\BL.dll

@@ -136,7 +136,7 @@ namespace QLThuVien
 
         }
 
-        
+
 
         private void pnlManageEmployees_Click(object sender, EventArgs e)
         {
@@ -238,7 +238,7 @@ namespace QLThuVien
             }
             else
             {
-                panel1.BackColor=Color.White;
+                panel1.BackColor = Color.White;
 
                 txtMaDG.Clear();
                 txtTen.Clear();
@@ -484,6 +484,12 @@ namespace QLThuVien
                 // Các lỗi khác
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pnlAddBorrowSlipsBTN_Click(object sender, EventArgs e)
+        {
+            AddBorrow brr = new AddBorrow();
+            brr.Show();
         }
     }
 }
