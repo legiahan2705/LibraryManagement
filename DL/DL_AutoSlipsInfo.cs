@@ -106,9 +106,9 @@ namespace DL
             return newMaPhieu;
         }
 
-        public string GetMaDocGia(string Name)
+        public string GetTenDocGia(string id)
         {
-            string id = "";
+            string name = "";
 
             try
             {
@@ -117,16 +117,16 @@ namespace DL
                     connection.Open();
                 }
 
-                string query = "Select MaDG from Docgia where Ten Like @Name";
+                string query = "Select Ten from Docgia where MaDG = @ID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Name", "%" + Name + "%");
+                    command.Parameters.AddWithValue("@ID", id);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            id = reader["MaDG"].ToString();
+                            name = reader["Ten"].ToString();
                         }
                     }
                 }
@@ -135,7 +135,7 @@ namespace DL
             {
                 throw new Exception("Lỗi: ", ex);
             }
-            return id;
+            return name;
         }
     }
 }

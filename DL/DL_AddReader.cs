@@ -17,7 +17,10 @@ namespace DL
             try
             {
                 // Mở kết nối
-                connection.Open();
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
 
                 // Câu lệnh SQL INSERT với OUTPUT để lấy Id vừa thêm
                 string sql = "INSERT INTO Docgia (MaDG,Ten,GioiTinh,SDT,NgaySinh,DiaChi) " +

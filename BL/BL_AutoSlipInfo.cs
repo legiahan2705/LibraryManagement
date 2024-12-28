@@ -39,11 +39,11 @@ namespace BL
             return Maphieu;
         }
 
-        public string GetMaDocGia(string name)
+        public string GetTenDocGia(string id)
         {
-            string id = dl_AutoSlipInfo.GetMaDocGia(name);
+            string name = dl_AutoSlipInfo.GetTenDocGia(id);
 
-            return id;
+            return name;
         }
     }
 }

@@ -12,6 +12,7 @@ using BL;
 using TO;
 using DL;
 using Microsoft.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace QLThuVien
 {
@@ -20,6 +21,7 @@ namespace QLThuVien
         private BL_GetReaders _blReaders;
         private BL_DeleteReader _blDeleteReader;
         private BL_AddReader _blAddReader;
+        private BL_GetPhieuDetails _blGetPhieuDetails;
 
 
         private BL_GetEmployees _blEmployees;
@@ -41,6 +43,8 @@ namespace QLThuVien
             _blEmployees = new BL_GetEmployees();
 
             _blAddReader = new BL_AddReader();
+
+            _blGetPhieuDetails = new BL_GetPhieuDetails();
         }
 
         // Chuyển qua các Form
@@ -437,6 +441,7 @@ namespace QLThuVien
         private void pnlReaderBTN_Click(object sender, EventArgs e)
         {
             pnlReader.Visible = true;
+            pnl_SlipDetails.Visible = false;
 
             try
             {
@@ -484,12 +489,53 @@ namespace QLThuVien
                 // Các lỗi khác
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
 
         private void pnlAddBorrowSlipsBTN_Click(object sender, EventArgs e)
         {
             AddBorrow brr = new AddBorrow();
             brr.Show();
+        }
+
+        private void load_slips()
+        {
+            DataTable data = _blGetPhieuDetails.bl_getphieuDetails();
+            dataGridView2.DataSource = data;
+
+            dataGridView2.RowHeadersVisible = false;
+
+            try
+            {
+                if (!dataGridView2.Columns.Contains("Edit"))
+                {
+                    DataGridViewImageColumn editColumn = new DataGridViewImageColumn
+                    {
+                        Name = "Edit",
+                        HeaderText = "Chỉnh Sửa",
+                        //Image = Image.FromFile("path_to_your_edit_icon.png"), 
+                        Width = 50
+                    };
+                    dataGridView2.Columns.Add(editColumn);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void pnlManaageBorrowBTN_Click(object sender, EventArgs e)
+        {
+            pnl_SlipDetails.Visible = true;
+            pnlReader.Visible = false;
+            load_slips();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

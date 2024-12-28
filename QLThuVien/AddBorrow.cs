@@ -79,9 +79,9 @@ namespace QLThuVien
             // 
             txt_MaDocGia.Location = new Point(151, 146);
             txt_MaDocGia.Name = "txt_MaDocGia";
-            txt_MaDocGia.ReadOnly = true;
             txt_MaDocGia.Size = new Size(227, 27);
             txt_MaDocGia.TabIndex = 2;
+            txt_MaDocGia.TextChanged += txt_MaDocGia_TextChanged;
             // 
             // label2
             // 
@@ -96,6 +96,7 @@ namespace QLThuVien
             // 
             txt_TenDocGia.Location = new Point(151, 198);
             txt_TenDocGia.Name = "txt_TenDocGia";
+            txt_TenDocGia.ReadOnly = true;
             txt_TenDocGia.Size = new Size(227, 27);
             txt_TenDocGia.TabIndex = 3;
             txt_TenDocGia.TextChanged += txt_TenDocGia_TextChanged;
@@ -270,14 +271,7 @@ namespace QLThuVien
 
         private void txt_TenDocGia_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                txt_MaDocGia.Text = bl_AutoSlipInfo.GetMaDocGia(txt_TenDocGia.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
         private void btn_AddSlip_Click(object sender, EventArgs e)
@@ -293,13 +287,13 @@ namespace QLThuVien
                     (txt_BookID.Text.Trim(), int.Parse(txt_SL.Text))
                 };
 
-                if(string.IsNullOrWhiteSpace(maDocGia) || string.IsNullOrWhiteSpace(txt_TenDocGia.Text) || string.IsNullOrWhiteSpace(comboBox_books.Text) || String.IsNullOrWhiteSpace(txt_SL.Text))
+                if (string.IsNullOrWhiteSpace(maDocGia) || string.IsNullOrWhiteSpace(txt_TenDocGia.Text) || string.IsNullOrWhiteSpace(comboBox_books.Text) || String.IsNullOrWhiteSpace(txt_SL.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin phiếu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                if(!bl_addPhieu.Checkname(txt_TenDocGia.Text, txt_MaDocGia.Text))
+                if (!bl_addPhieu.Checkname(txt_TenDocGia.Text, txt_MaDocGia.Text))
                 {
                     MessageBox.Show("Tên độc giả không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -307,7 +301,7 @@ namespace QLThuVien
 
                 bool success = bl_addPhieu.AddPhieu(maPhieu, maDocGia, ngayMuon, chitietPhieu);
 
-                if (success) 
+                if (success)
                 {
                     MessageBox.Show("Tạo phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //txt_MaPhieu.Clear();
@@ -318,6 +312,18 @@ namespace QLThuVien
                     //comboBox_books.Items.Clear();
                     this.Hide();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txt_MaDocGia_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txt_TenDocGia.Text = bl_AutoSlipInfo.GetTenDocGia(txt_MaDocGia.Text);
             }
             catch (Exception ex)
             {

@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             lblReports = new Label();
             lblBorrowReturn = new Label();
             picIconBorrowReturn = new PictureBox();
@@ -86,6 +87,8 @@
             txtSDT = new TextBox();
             lblEmployeeName = new Label();
             lblWelcome = new Label();
+            pnl_SlipDetails = new Panel();
+            dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)picIconBorrowReturn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageUsers).BeginInit();
@@ -104,6 +107,8 @@
             pnlReader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
+            pnl_SlipDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // lblReports
@@ -421,6 +426,7 @@
             pnlManaageBorrowBTN.Name = "pnlManaageBorrowBTN";
             pnlManaageBorrowBTN.Size = new Size(196, 120);
             pnlManaageBorrowBTN.TabIndex = 6;
+            pnlManaageBorrowBTN.Click += pnlManaageBorrowBTN_Click;
             // 
             // pnlAddBorrowSlipsBTN
             // 
@@ -723,12 +729,42 @@
             lblWelcome.TabIndex = 29;
             lblWelcome.Text = "Welcome!";
             // 
+            // pnl_SlipDetails
+            // 
+            pnl_SlipDetails.Controls.Add(dataGridView2);
+            pnl_SlipDetails.Location = new Point(316, 337);
+            pnl_SlipDetails.Name = "pnl_SlipDetails";
+            pnl_SlipDetails.Size = new Size(928, 524);
+            pnl_SlipDetails.TabIndex = 41;
+            pnl_SlipDetails.Visible = false;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridView2.BackgroundColor = Color.White;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView2.Location = new Point(3, 3);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.Size = new Size(922, 511);
+            dataGridView2.TabIndex = 0;
+            // 
             // BorrowReturn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(pnl_SlipDetails);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblWelcome);
             Controls.Add(pnlReturnBooksBTN);
@@ -778,6 +814,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            pnl_SlipDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -837,5 +875,7 @@
         private Panel panel1;
         private Label lblEmployeeName;
         private Label lblWelcome;
+        private Panel pnl_SlipDetails;
+        private DataGridView dataGridView2;
     }
 }
