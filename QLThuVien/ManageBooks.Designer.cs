@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageBooks));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             picIconReports = new PictureBox();
             lblLogOut = new Label();
             picIconLogOut = new PictureBox();
@@ -68,8 +68,8 @@
             lblEmployeeName = new Label();
             lblWelcome = new Label();
             pnlBookCase = new Panel();
-            btnAddBook = new Button();
             panel1 = new Panel();
+            btnAddBook = new Button();
             txtMaSach = new TextBox();
             label3 = new Label();
             label20 = new Label();
@@ -423,14 +423,14 @@
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaSach, TenSach, MaTL, SL, NXB, NgayNhap, Sua, Xoa });
             dataGridView1.Location = new Point(52, 24);
@@ -531,29 +531,16 @@
             // pnlBookCase
             // 
             pnlBookCase.BackColor = Color.White;
-            pnlBookCase.Controls.Add(btnAddBook);
             pnlBookCase.Controls.Add(panel1);
             pnlBookCase.Controls.Add(dataGridView1);
-            pnlBookCase.Location = new Point(319, 343);
+            pnlBookCase.Location = new Point(316, 343);
             pnlBookCase.Name = "pnlBookCase";
-            pnlBookCase.Size = new Size(921, 524);
+            pnlBookCase.Size = new Size(931, 524);
             pnlBookCase.TabIndex = 28;
-            // 
-            // btnAddBook
-            // 
-            btnAddBook.BackColor = Color.DarkSlateBlue;
-            btnAddBook.Cursor = Cursors.Hand;
-            btnAddBook.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnAddBook.ForeColor = Color.White;
-            btnAddBook.Location = new Point(201, 434);
-            btnAddBook.Name = "btnAddBook";
-            btnAddBook.Size = new Size(517, 48);
-            btnAddBook.TabIndex = 33;
-            btnAddBook.Text = "Add Book";
-            btnAddBook.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAddBook);
             panel1.Controls.Add(txtMaSach);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label20);
@@ -568,8 +555,22 @@
             panel1.Controls.Add(txtSL);
             panel1.Location = new Point(0, 232);
             panel1.Name = "panel1";
-            panel1.Size = new Size(928, 292);
+            panel1.Size = new Size(931, 292);
             panel1.TabIndex = 40;
+            // 
+            // btnAddBook
+            // 
+            btnAddBook.BackColor = Color.DarkSlateBlue;
+            btnAddBook.Cursor = Cursors.Hand;
+            btnAddBook.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnAddBook.ForeColor = Color.White;
+            btnAddBook.Location = new Point(199, 196);
+            btnAddBook.Name = "btnAddBook";
+            btnAddBook.Size = new Size(517, 48);
+            btnAddBook.TabIndex = 33;
+            btnAddBook.Text = "Add Book";
+            btnAddBook.UseVisualStyleBackColor = false;
+            btnAddBook.Click += btnAddBook_Click;
             // 
             // txtMaSach
             // 
