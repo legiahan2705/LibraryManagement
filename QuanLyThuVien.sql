@@ -403,6 +403,19 @@ VALUES
 ('P001', 'SG100001', 1);
 
 
+SELECT t.MaTL,
+     t.Ten, 
+     SUM(s.SL) , 
+     CAST(ROUND(SUM(s.SL) * 100.0 / (SELECT SUM(SL) FROM Sach), 2) AS DECIMAL(10, 2)) 
+ FROM 
+     Sach s
+ JOIN 
+     TheLoai t ON s.MaTL = t.MaTL
+ GROUP BY 
+     t.Ten, T.MaTL
+ORDER BY t.MaTL
+
+
 
 
 

@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageBooks));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             picIconReports = new PictureBox();
             lblLogOut = new Label();
             picIconLogOut = new PictureBox();
@@ -54,7 +57,7 @@
             lblDashBoardTitle = new Label();
             pictureBox2 = new PictureBox();
             pnlBookCaseBTN = new FlowLayoutPanel();
-            pnlSearchBTN = new FlowLayoutPanel();
+            pnlStatisticsBTN = new FlowLayoutPanel();
             pnlBookManagerBTN = new FlowLayoutPanel();
             dataGridView1 = new DataGridView();
             MaSach = new DataGridViewTextBoxColumn();
@@ -82,6 +85,30 @@
             txtNXB = new TextBox();
             txtMaTL = new TextBox();
             txtSL = new TextBox();
+            pnlBookStatistics = new Panel();
+            pnlKhoaHoc = new Panel();
+            pnlXD = new Panel();
+            pnlHH = new Panel();
+            pnlCNTT = new Panel();
+            pnlVL = new Panel();
+            pnlKT = new Panel();
+            pnlTK = new Panel();
+            pnlToan = new Panel();
+            pnlDT = new Panel();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label7 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            dgvStatistics = new DataGridView();
+            MaTheLoai = new DataGridViewTextBoxColumn();
+            TenTheLoai = new DataGridViewTextBoxColumn();
+            TongSoLuong = new DataGridViewTextBoxColumn();
+            TyLe = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -100,6 +127,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pnlBookCase.SuspendLayout();
             panel1.SuspendLayout();
+            pnlBookStatistics.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStatistics).BeginInit();
             SuspendLayout();
             // 
             // picIconReports
@@ -402,35 +431,36 @@
             pnlBookCaseBTN.TabIndex = 23;
             pnlBookCaseBTN.Click += pnlBookCaseBTN_Click;
             // 
-            // pnlSearchBTN
+            // pnlStatisticsBTN
             // 
-            pnlSearchBTN.BackColor = Color.Transparent;
-            pnlSearchBTN.Cursor = Cursors.Hand;
-            pnlSearchBTN.Location = new Point(700, 203);
-            pnlSearchBTN.Name = "pnlSearchBTN";
-            pnlSearchBTN.Size = new Size(192, 118);
-            pnlSearchBTN.TabIndex = 24;
+            pnlStatisticsBTN.BackColor = Color.Transparent;
+            pnlStatisticsBTN.Cursor = Cursors.Hand;
+            pnlStatisticsBTN.Location = new Point(700, 195);
+            pnlStatisticsBTN.Name = "pnlStatisticsBTN";
+            pnlStatisticsBTN.Size = new Size(192, 126);
+            pnlStatisticsBTN.TabIndex = 24;
+            pnlStatisticsBTN.Click += pnlStatisticsBTN_Click;
             // 
             // pnlBookManagerBTN
             // 
             pnlBookManagerBTN.BackColor = Color.Transparent;
             pnlBookManagerBTN.Cursor = Cursors.Hand;
-            pnlBookManagerBTN.Location = new Point(959, 203);
+            pnlBookManagerBTN.Location = new Point(959, 195);
             pnlBookManagerBTN.Name = "pnlBookManagerBTN";
-            pnlBookManagerBTN.Size = new Size(198, 118);
+            pnlBookManagerBTN.Size = new Size(198, 126);
             pnlBookManagerBTN.TabIndex = 24;
             // 
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaSach, TenSach, MaTL, SL, NXB, NgayNhap, Sua, Xoa });
             dataGridView1.Location = new Point(52, 24);
@@ -674,16 +704,259 @@
             txtSL.Size = new Size(242, 27);
             txtSL.TabIndex = 30;
             // 
+            // pnlBookStatistics
+            // 
+            pnlBookStatistics.BackColor = Color.White;
+            pnlBookStatistics.Controls.Add(pnlKhoaHoc);
+            pnlBookStatistics.Controls.Add(pnlXD);
+            pnlBookStatistics.Controls.Add(pnlHH);
+            pnlBookStatistics.Controls.Add(pnlCNTT);
+            pnlBookStatistics.Controls.Add(pnlVL);
+            pnlBookStatistics.Controls.Add(pnlKT);
+            pnlBookStatistics.Controls.Add(pnlTK);
+            pnlBookStatistics.Controls.Add(pnlToan);
+            pnlBookStatistics.Controls.Add(pnlDT);
+            pnlBookStatistics.Controls.Add(label14);
+            pnlBookStatistics.Controls.Add(label13);
+            pnlBookStatistics.Controls.Add(label12);
+            pnlBookStatistics.Controls.Add(label11);
+            pnlBookStatistics.Controls.Add(label10);
+            pnlBookStatistics.Controls.Add(label9);
+            pnlBookStatistics.Controls.Add(label7);
+            pnlBookStatistics.Controls.Add(label2);
+            pnlBookStatistics.Controls.Add(label1);
+            pnlBookStatistics.Controls.Add(dgvStatistics);
+            pnlBookStatistics.Location = new Point(316, 343);
+            pnlBookStatistics.Name = "pnlBookStatistics";
+            pnlBookStatistics.Size = new Size(931, 521);
+            pnlBookStatistics.TabIndex = 41;
+            // 
+            // pnlKhoaHoc
+            // 
+            pnlKhoaHoc.Location = new Point(181, 305);
+            pnlKhoaHoc.Name = "pnlKhoaHoc";
+            pnlKhoaHoc.Size = new Size(73, 23);
+            pnlKhoaHoc.TabIndex = 36;
+            // 
+            // pnlXD
+            // 
+            pnlXD.Location = new Point(423, 382);
+            pnlXD.Name = "pnlXD";
+            pnlXD.Size = new Size(73, 23);
+            pnlXD.TabIndex = 43;
+            // 
+            // pnlHH
+            // 
+            pnlHH.Location = new Point(423, 342);
+            pnlHH.Name = "pnlHH";
+            pnlHH.Size = new Size(73, 23);
+            pnlHH.TabIndex = 42;
+            // 
+            // pnlCNTT
+            // 
+            pnlCNTT.Location = new Point(181, 382);
+            pnlCNTT.Name = "pnlCNTT";
+            pnlCNTT.Size = new Size(73, 23);
+            pnlCNTT.TabIndex = 38;
+            // 
+            // pnlVL
+            // 
+            pnlVL.Location = new Point(423, 265);
+            pnlVL.Name = "pnlVL";
+            pnlVL.Size = new Size(73, 23);
+            pnlVL.TabIndex = 40;
+            // 
+            // pnlKT
+            // 
+            pnlKT.Location = new Point(423, 304);
+            pnlKT.Name = "pnlKT";
+            pnlKT.Size = new Size(73, 23);
+            pnlKT.TabIndex = 41;
+            // 
+            // pnlTK
+            // 
+            pnlTK.Location = new Point(181, 344);
+            pnlTK.Name = "pnlTK";
+            pnlTK.Size = new Size(73, 23);
+            pnlTK.TabIndex = 37;
+            // 
+            // pnlToan
+            // 
+            pnlToan.Location = new Point(181, 420);
+            pnlToan.Name = "pnlToan";
+            pnlToan.Size = new Size(73, 23);
+            pnlToan.TabIndex = 39;
+            // 
+            // pnlDT
+            // 
+            pnlDT.Location = new Point(181, 267);
+            pnlDT.Name = "pnlDT";
+            pnlDT.Size = new Size(73, 23);
+            pnlDT.TabIndex = 35;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label14.Location = new Point(301, 382);
+            label14.Name = "label14";
+            label14.Size = new Size(89, 23);
+            label14.TabIndex = 34;
+            label14.Text = "Xây Dựng";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label13.Location = new Point(301, 342);
+            label13.Name = "label13";
+            label13.Size = new Size(78, 23);
+            label13.TabIndex = 33;
+            label13.Text = "Hóa Học";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label12.Location = new Point(301, 304);
+            label12.Name = "label12";
+            label12.Size = new Size(84, 23);
+            label12.TabIndex = 32;
+            label12.Text = "Kiến Trúc";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label11.Location = new Point(301, 265);
+            label11.Name = "label11";
+            label11.Size = new Size(60, 23);
+            label11.TabIndex = 31;
+            label11.Text = "Vật Lý";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label10.Location = new Point(40, 420);
+            label10.Name = "label10";
+            label10.Size = new Size(47, 23);
+            label10.TabIndex = 30;
+            label10.Text = "Toán";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label9.Location = new Point(40, 382);
+            label9.Name = "label9";
+            label9.Size = new Size(54, 23);
+            label9.TabIndex = 29;
+            label9.Text = "CNTT";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label7.Location = new Point(40, 344);
+            label7.Name = "label7";
+            label7.Size = new Size(100, 23);
+            label7.TabIndex = 28;
+            label7.Text = "Tham Khảo";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label2.Location = new Point(40, 305);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 23);
+            label2.TabIndex = 27;
+            label2.Text = "Khoa Học";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label1.Location = new Point(40, 267);
+            label1.Name = "label1";
+            label1.Size = new Size(73, 23);
+            label1.TabIndex = 26;
+            label1.Text = "Điện Tử";
+            // 
+            // dgvStatistics
+            // 
+            dgvStatistics.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvStatistics.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvStatistics.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStatistics.Columns.AddRange(new DataGridViewColumn[] { MaTheLoai, TenTheLoai, TongSoLuong, TyLe });
+            dgvStatistics.Location = new Point(15, 30);
+            dgvStatistics.Name = "dgvStatistics";
+            dgvStatistics.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvStatistics.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvStatistics.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvStatistics.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dgvStatistics.Size = new Size(500, 195);
+            dgvStatistics.TabIndex = 25;
+            // 
+            // MaTheLoai
+            // 
+            MaTheLoai.HeaderText = "Mã Thể Loại";
+            MaTheLoai.MinimumWidth = 6;
+            MaTheLoai.Name = "MaTheLoai";
+            MaTheLoai.ReadOnly = true;
+            MaTheLoai.Width = 90;
+            // 
+            // TenTheLoai
+            // 
+            TenTheLoai.HeaderText = "Tên Thể Loại";
+            TenTheLoai.MinimumWidth = 6;
+            TenTheLoai.Name = "TenTheLoai";
+            TenTheLoai.ReadOnly = true;
+            TenTheLoai.Width = 126;
+            // 
+            // TongSoLuong
+            // 
+            TongSoLuong.HeaderText = "Tổng Số Lượng";
+            TongSoLuong.MinimumWidth = 6;
+            TongSoLuong.Name = "TongSoLuong";
+            TongSoLuong.ReadOnly = true;
+            TongSoLuong.Width = 135;
+            // 
+            // TyLe
+            // 
+            TyLe.HeaderText = "Tỷ Lệ";
+            TyLe.MinimumWidth = 6;
+            TyLe.Name = "TyLe";
+            TyLe.ReadOnly = true;
+            TyLe.Width = 75;
+            // 
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(pnlBookStatistics);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblWelcome);
             Controls.Add(pnlBookManagerBTN);
-            Controls.Add(pnlSearchBTN);
+            Controls.Add(pnlStatisticsBTN);
             Controls.Add(pnlBookCaseBTN);
             Controls.Add(pictureBox2);
             Controls.Add(lblDashBoardTitle);
@@ -726,6 +999,9 @@
             pnlBookCase.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            pnlBookStatistics.ResumeLayout(false);
+            pnlBookStatistics.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStatistics).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -755,7 +1031,7 @@
         private Label lblDashBoardTitle;
         private PictureBox pictureBox2;
         private FlowLayoutPanel pnlBookCaseBTN;
-        private FlowLayoutPanel pnlSearchBTN;
+        private FlowLayoutPanel pnlStatisticsBTN;
         private FlowLayoutPanel pnlBookManagerBTN;
         private DataGridView dataGridView1;
         private Label lblEmployeeName;
@@ -783,5 +1059,31 @@
         private DataGridViewTextBoxColumn NgayNhap;
         private DataGridViewImageColumn Sua;
         private DataGridViewImageColumn Xoa;
+        private Panel pnlBookStatistics;
+        private DataGridView dgvStatistics;
+        private DataGridViewTextBoxColumn MaTheLoai;
+        private DataGridViewTextBoxColumn TenTheLoai;
+        private DataGridViewTextBoxColumn TongSoLuong;
+        private DataGridViewTextBoxColumn TyLe;
+        private Label label7;
+        private Label label2;
+        private Label label1;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label15;
+        private Panel pnlHH;
+        private Panel pnlCNTT;
+        private Panel pnlVL;
+        private Panel panel3;
+        private Panel pnlKT;
+        private Panel pnlTK;
+        private Panel pnlToan;
+        private Panel pnlDT;
+        private Panel pnlXD;
+        private Panel pnlKhoaHoc;
     }
 }

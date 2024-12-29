@@ -11,11 +11,19 @@ using System.Windows.Forms;
 using TO;
 using BL;
 using DL;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
+using OxyPlot;
+using System.Security.Policy;
+using OxyPlot.Annotations;
+
+
 
 namespace QLThuVien
 {
     public partial class ManageBooks : Form
     {
+        private BL_BookStatisticsByGenre _blBookStatistics;
         private BL_GetBooks _blGetBooks;
         private BL_DeleteBooks _blDeleteBooks;
         private BL_AddBooks _blAddBooks;
@@ -35,6 +43,7 @@ namespace QLThuVien
             _blDeleteBooks = new BL_DeleteBooks();
             _blGetBooks = new BL_GetBooks();
             _blAddBooks = new BL_AddBooks();
+            _blBookStatistics = new BL_BookStatisticsByGenre();
 
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
@@ -77,6 +86,7 @@ namespace QLThuVien
 
         private void ManageBooks_Load(object sender, EventArgs e)
         {
+            pnlBookStatistics.Visible = false;
             pnlBookCase.Visible = false;
             pnlManageBooks.BackColor = ColorTranslator.FromHtml("#BDC0FA");
             //gán tên nhân viên vào label Welcome
@@ -274,7 +284,7 @@ namespace QLThuVien
             }
             else
             {
-               
+
 
                 txtMaSach.Clear();
                 txtTenSach.Clear();
@@ -294,7 +304,8 @@ namespace QLThuVien
 
         private void pnlBookCaseBTN_Click(object sender, EventArgs e)
         {
-            pnlBookCase.Visible = true;
+           
+           
 
             try
             {
@@ -321,6 +332,8 @@ namespace QLThuVien
                             book.NgayNhap
                         );
                     }
+
+                    pnlBookStatistics.Visible = false;
 
                     // Hiển thị GroupBox
                     pnlBookCase.Visible = true;
@@ -349,7 +362,7 @@ namespace QLThuVien
                 // Kiểm tra các TextBox có dữ liệu đầy đủ hay không
                 if (string.IsNullOrEmpty(txtMaSach.Text) ||
                     string.IsNullOrEmpty(txtTenSach.Text) || string.IsNullOrEmpty(txtMaTL.Text) ||
-                    string.IsNullOrEmpty(txtSL.Text) || string.IsNullOrEmpty(txtNXB.Text) || 
+                    string.IsNullOrEmpty(txtSL.Text) || string.IsNullOrEmpty(txtNXB.Text) ||
                     string.IsNullOrEmpty(txtNgayNhap.Text))
                 {
                     MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -459,7 +472,7 @@ namespace QLThuVien
                     Sach_TO updateBook = new Sach_TO
                     {
                         MaSach = txtMaSach.Text,
-                        TenSach = txtTenSach.Text, 
+                        TenSach = txtTenSach.Text,
                         MaTL = txtMaTL.Text,
                         SL = int.Parse(txtSL.Text),
                         NXB = txtNXB.Text,
@@ -513,6 +526,160 @@ namespace QLThuVien
                         MessageBox.Show("Failed to update book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void pnlStatisticsBTN_Click(object sender, EventArgs e)
+        {
+
+            pnlDT.BackColor = ColorTranslator.FromHtml("#D4A1D1");
+            pnlKhoaHoc.BackColor = ColorTranslator.FromHtml("#B79BD9");
+            pnlTK.BackColor = ColorTranslator.FromHtml("#F2A7D6");
+            pnlCNTT.BackColor = ColorTranslator.FromHtml("#F5C2D0");
+            pnlToan.BackColor = ColorTranslator.FromHtml("#A7C9E9");
+            pnlVL.BackColor = ColorTranslator.FromHtml("#B7D6E1");
+            pnlKT.BackColor = ColorTranslator.FromHtml("#9E7BB5");
+            pnlHH.BackColor = ColorTranslator.FromHtml("#F5D0D9");
+            pnlXD.BackColor = ColorTranslator.FromHtml("#A7E1F2");
+            try
+            {
+                // Lấy danh sách thể loại sách từ Business Logic Layer (BL)
+                List<ThongKeSach_TO> theloais = new DL_BookStatisticsByGenre().GetBookStatisticsByGenre();
+
+                // Kiểm tra dữ liệu và thêm vào DataGridView
+                if (theloais != null && theloais.Count > 0)
+                {
+                    // Làm sạch DataGridView
+                    dgvStatistics.Rows.Clear();
+                    dgvStatistics.DataSource = null;
+
+                    // Ánh xạ dữ liệu lên DataGridView
+                    foreach (ThongKeSach_TO theloai in theloais)
+                    {
+                        // Chuyển TyLe sang chuỗi và thêm dấu %
+                        string tyLeWithPercent = theloai.TyLe.ToString("0.00") + "%";  // Định dạng với 2 chữ số thập phân và thêm dấu %
+
+                        dgvStatistics.Rows.Add(
+                            theloai.MaTheLoai,
+                            theloai.TenTheLoai,
+                            theloai.SoLuongSach,
+                            tyLeWithPercent // Dùng chuỗi có dấu %
+                        );
+                    }
+
+                    // Đảm bảo các panel hiển thị đồng thời
+                    pnlBookCase.Visible = false;  // Ẩn Panel chứa các phần tử khác
+                    pnlBookStatistics.Visible = true;  // Hiển thị Panel chứa DataGridView và biểu đồ
+                    DrawPieChart(theloais);
+
+                }
+                else
+                {
+                    MessageBox.Show("There are no categories in the database.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Lỗi cơ sở dữ liệu
+                MessageBox.Show($"Database connection error: {sqlEx.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Lỗi khác
+                MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Phương thức vẽ biểu đồ tròn thể hiện tỷ lệ thể loại sách
+        public void DrawPieChart(List<ThongKeSach_TO> bookStatistics)
+        {
+            // Tạo đối tượng PlotModel cho biểu đồ
+            var plotModel = new PlotModel
+            {
+                Title = "Tỷ lệ thể loại sách",
+                TitlePadding = 20
+
+            };
+
+            // Bảng màu pastel (tím, hồng, xanh dương)
+            var pastelColors = new List<OxyColor>
+            {
+                OxyColor.Parse("#D4A1D1"), // Tím pastel nhẹ
+                OxyColor.Parse("#B79BD9"), // Tím hoa oải hương
+                OxyColor.Parse("#F2A7D6"), // Hồng pastel
+                OxyColor.Parse("#F5C2D0"), // Hồng phấn
+                OxyColor.Parse("#A7C9E9"), // Xanh dương pastel
+                OxyColor.Parse("#B7D6E1"), // Xanh dương nhạt pastel
+                OxyColor.Parse("#9E7BB5"), // Tím đậm pastel
+                OxyColor.Parse("#F5D0D9"), // Hồng nhạt pastel
+                OxyColor.Parse("#A7E1F2")  // Xanh pastel sáng
+            };
+
+
+
+
+            // Tạo một đối tượng PieSeries để vẽ biểu đồ tròn
+            var pieSeries = new PieSeries
+            {
+                StrokeThickness = 1.0,
+                InsideLabelPosition = 0.5, // Đặt nhãn bên trong slice
+                AngleSpan = 360, // Đảm bảo các phần slice chiếm toàn bộ biểu đồ
+                StartAngle = 0, // Bắt đầu từ góc 0
+               
+                OutsideLabelFormat = "{0:0.00}%" // Hiển thị tỷ lệ phần trăm chính xác bên ngoài
+            };
+
+            // Thêm các phần tử vào PieSeries
+            for (int i = 0; i < bookStatistics.Count; i++)
+            {
+                var theloai = bookStatistics[i];
+
+                var slice = new PieSlice(string.Empty, (double)theloai.TyLe) // Bỏ tên thể loại, chỉ dùng tỷ lệ phần trăm
+                {
+                    IsExploded = false,
+                    Fill = pastelColors[i % pastelColors.Count] // Sử dụng màu pastel từ bảng màu
+                };
+
+                pieSeries.Slices.Add(slice);
+            }
+
+            // Thêm PieSeries vào PlotModel
+            plotModel.Series.Add(pieSeries);
+
+            // Tạo đối tượng PlotView và thêm vào form
+            var plotView = new PlotView
+            {
+                Model = plotModel,
+                Width = 540,   // Đặt chiều rộng cụ thể
+                Height = 340,  // Đặt chiều cao cụ thể
+                Location = new Point(453, 15)
+            };
+
+            // Đảm bảo dgv được giữ nguyên
+            pnlBookStatistics.Controls.Add(plotView); // Thêm biểu đồ vào dưới lấy đúng giá trị từ data mà không làm tròn
+
+
+        }
+
+        // Phương thức này sẽ gọi vẽ biểu đồ và truyền dữ liệu vào
+        private void ShowStatistics()
+        {
+            try
+            {
+                // Lấy dữ liệu thống kê từ DL
+                List<ThongKeSach_TO> theloais = new DL_BookStatisticsByGenre().GetBookStatisticsByGenre();
+
+                // Kiểm tra danh sách và vẽ biểu đồ
+                if (theloais != null && theloais.Count > 0)
+                {
+                    // Vẽ biểu đồ với dữ liệu đã lấy
+                    DrawPieChart(theloais);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
