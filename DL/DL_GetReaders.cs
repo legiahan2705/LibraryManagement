@@ -18,7 +18,10 @@ namespace DL
             try
             {
                 // Mở kết nối
-                connection.Open();
+                if (connection.State == System.Data.ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
 
                 // Sử dụng câu lệnh SQL để lấy danh sách nhân viên
                 using (SqlCommand cmd = new SqlCommand("SELECT MaDG,Ten,GioiTinh,SDT,NgaySinh,Diachi FROM Docgia", connection))

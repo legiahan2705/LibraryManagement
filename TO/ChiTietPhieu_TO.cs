@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TO
 {
-    internal class DanhSachPhieu_TO
+    internal class ChiTietPhieu_TO
     {
     }
 }
