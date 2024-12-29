@@ -130,6 +130,8 @@ namespace QLThuVien
 
         private void BorrowReturn_Load(object sender, EventArgs e)
         {
+           
+
             pnlBorrowReturn.BackColor = ColorTranslator.FromHtml("#BDC0FA");
 
             //gán tên nhân viên vào label Welcome
@@ -137,6 +139,11 @@ namespace QLThuVien
 
             // Hiển thị GroupBox
             pnlReader.Visible = false;
+
+            lblReader.Visible = false;
+            lblManageSlips.Visible = false;
+
+            
 
         }
 
@@ -440,6 +447,11 @@ namespace QLThuVien
 
         private void pnlReaderBTN_Click(object sender, EventArgs e)
         {
+            
+
+            pnl_SlipDetails.Visible = false;
+            lblManageSlips.Visible = false;
+            lblReader.Visible = true;
             pnlReader.Visible = true;
             pnl_SlipDetails.Visible = false;
 
@@ -495,16 +507,45 @@ namespace QLThuVien
 
         private void pnlAddBorrowSlipsBTN_Click(object sender, EventArgs e)
         {
+           
+
             AddBorrow brr = new AddBorrow();
             brr.Show();
+
+
         }
 
-        private void load_slips()
+        private void setupDataGridView()
         {
             DataTable data = _blGetPhieuDetails.bl_getphieuDetails();
             dataGridView2.DataSource = data;
 
+            // Tắt tự động điều chỉnh kích thước cột
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridView2.RowHeadersVisible = false;
+
+            // Căn giữa header và chỉnh Padding
+            dataGridView2.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView2.ColumnHeadersDefaultCellStyle.Padding = new Padding(0);
+
+            // Không cho phép người dùng thay đổi kích thước cột
+            dataGridView2.AllowUserToResizeColumns = false;
+
+            // Không cho phép người dùng thay đổi kích thước dòng
+            dataGridView2.AllowUserToResizeRows = false;
+
+            dataGridView2.BorderStyle = BorderStyle.None;
+
+            // Cấu hình chiều rộng cột
+            dataGridView2.Columns[0].Width = 95;
+            dataGridView2.Columns[1].Width = 105;
+            dataGridView2.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView2.Columns[3].Width = 90;
+            dataGridView2.Columns[4].Width = 103;
+            dataGridView2.Columns[5].Width = 40;
+            dataGridView2.Columns[6].Width = 110;
+            dataGridView2.Columns[7].Width = 110;
+            dataGridView2.Columns[8].Width = 100;
 
             try
             {
@@ -513,9 +554,10 @@ namespace QLThuVien
                     DataGridViewImageColumn editColumn = new DataGridViewImageColumn
                     {
                         Name = "Edit",
-                        HeaderText = "Chỉnh Sửa",
-                        //Image = Image.FromFile("path_to_your_edit_icon.png"), 
-                        Width = 50
+                        HeaderText = "Edit",
+                        Image = Image.FromFile("D:/QuanLyThuVien/Images/Images_Icon/Edit_S.png"),
+                        ImageLayout = DataGridViewImageCellLayout.Zoom,
+                        Width = 53
                     };
                     dataGridView2.Columns.Add(editColumn);
                 }
@@ -525,12 +567,25 @@ namespace QLThuVien
                 MessageBox.Show($"Lỗi: {ex}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void load_slips()
+        {
+            // Gọi phương thức thiết lập DataGridView chỉ một lần
+            setupDataGridView();
+            
+        }
 
         private void pnlManaageBorrowBTN_Click(object sender, EventArgs e)
         {
-            pnl_SlipDetails.Visible = true;
+            load_slips(); 
+
             pnlReader.Visible = false;
-            load_slips();
+            lblReader.Visible = false;
+
+            lblManageSlips.Visible = true;
+
+            
+            pnl_SlipDetails.Visible = true;
+
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)

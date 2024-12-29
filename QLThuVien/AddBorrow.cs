@@ -28,6 +28,7 @@ namespace QLThuVien
         private void InitializeComponent()
         {
             components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(AddBorrow));
             lbl_title = new Label();
             label1 = new Label();
             txt_MaPhieu = new TextBox();
@@ -51,9 +52,12 @@ namespace QLThuVien
             // lbl_title
             // 
             lbl_title.AutoSize = true;
-            lbl_title.Location = new Point(192, 43);
+            lbl_title.BackColor = Color.Transparent;
+            lbl_title.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lbl_title.ForeColor = Color.DarkSlateBlue;
+            lbl_title.Location = new Point(135, 21);
             lbl_title.Name = "lbl_title";
-            lbl_title.Size = new Size(89, 20);
+            lbl_title.Size = new Size(175, 38);
             lbl_title.TabIndex = 0;
             lbl_title.Text = "Add Borrow";
             lbl_title.Click += label1_Click;
@@ -61,15 +65,18 @@ namespace QLThuVien
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(63, 105);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label1.ForeColor = Color.DarkSlateBlue;
+            label1.Location = new Point(33, 86);
             label1.Name = "label1";
-            label1.Size = new Size(70, 20);
+            label1.Size = new Size(98, 28);
             label1.TabIndex = 1;
             label1.Text = "Mã Phiếu";
             // 
             // txt_MaPhieu
             // 
-            txt_MaPhieu.Location = new Point(151, 98);
+            txt_MaPhieu.Location = new Point(177, 90);
             txt_MaPhieu.Name = "txt_MaPhieu";
             txt_MaPhieu.ReadOnly = true;
             txt_MaPhieu.Size = new Size(227, 27);
@@ -77,7 +84,7 @@ namespace QLThuVien
             // 
             // txt_MaDocGia
             // 
-            txt_MaDocGia.Location = new Point(151, 146);
+            txt_MaDocGia.Location = new Point(177, 138);
             txt_MaDocGia.Name = "txt_MaDocGia";
             txt_MaDocGia.Size = new Size(227, 27);
             txt_MaDocGia.TabIndex = 2;
@@ -86,15 +93,18 @@ namespace QLThuVien
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(63, 149);
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label2.ForeColor = Color.DarkSlateBlue;
+            label2.Location = new Point(33, 134);
             label2.Name = "label2";
-            label2.Size = new Size(87, 20);
+            label2.Size = new Size(116, 28);
             label2.TabIndex = 3;
             label2.Text = "Mã Độc Giả";
             // 
             // txt_TenDocGia
             // 
-            txt_TenDocGia.Location = new Point(151, 198);
+            txt_TenDocGia.Location = new Point(177, 186);
             txt_TenDocGia.Name = "txt_TenDocGia";
             txt_TenDocGia.ReadOnly = true;
             txt_TenDocGia.Size = new Size(227, 27);
@@ -104,9 +114,12 @@ namespace QLThuVien
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(63, 201);
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label3.ForeColor = Color.DarkSlateBlue;
+            label3.Location = new Point(33, 182);
             label3.Name = "label3";
-            label3.Size = new Size(89, 20);
+            label3.Size = new Size(120, 28);
             label3.TabIndex = 5;
             label3.Text = "Tên Độc Giả";
             // 
@@ -115,9 +128,9 @@ namespace QLThuVien
             comboBox_books.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox_books.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox_books.FormattingEnabled = true;
-            comboBox_books.Location = new Point(147, 245);
+            comboBox_books.Location = new Point(177, 234);
             comboBox_books.Name = "comboBox_books";
-            comboBox_books.Size = new Size(231, 28);
+            comboBox_books.Size = new Size(227, 28);
             comboBox_books.TabIndex = 4;
             comboBox_books.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -127,7 +140,7 @@ namespace QLThuVien
             // 
             // txt_BookID
             // 
-            txt_BookID.Location = new Point(147, 294);
+            txt_BookID.Location = new Point(177, 282);
             txt_BookID.Name = "txt_BookID";
             txt_BookID.ReadOnly = true;
             txt_BookID.Size = new Size(227, 27);
@@ -136,24 +149,30 @@ namespace QLThuVien
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(66, 248);
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label4.ForeColor = Color.DarkSlateBlue;
+            label4.Location = new Point(33, 230);
             label4.Name = "label4";
-            label4.Size = new Size(67, 20);
+            label4.Size = new Size(92, 28);
             label4.TabIndex = 9;
             label4.Text = "Tên Sách";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(66, 301);
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label5.ForeColor = Color.DarkSlateBlue;
+            label5.Location = new Point(33, 278);
             label5.Name = "label5";
-            label5.Size = new Size(65, 20);
+            label5.Size = new Size(88, 28);
             label5.TabIndex = 10;
             label5.Text = "Mã Sách";
             // 
             // txt_SL
             // 
-            txt_SL.Location = new Point(147, 348);
+            txt_SL.Location = new Point(177, 330);
             txt_SL.Name = "txt_SL";
             txt_SL.Size = new Size(227, 27);
             txt_SL.TabIndex = 6;
@@ -161,9 +180,12 @@ namespace QLThuVien
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(66, 351);
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label6.ForeColor = Color.DarkSlateBlue;
+            label6.Location = new Point(33, 326);
             label6.Name = "label6";
-            label6.Size = new Size(72, 20);
+            label6.Size = new Size(99, 28);
             label6.TabIndex = 12;
             label6.Text = "Số Lượng";
             // 
@@ -171,33 +193,41 @@ namespace QLThuVien
             // 
             dateTimePicker1.CustomFormat = "dd/mm/yyyy";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(147, 390);
+            dateTimePicker1.Location = new Point(177, 378);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(231, 27);
+            dateTimePicker1.Size = new Size(227, 27);
             dateTimePicker1.TabIndex = 7;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(54, 395);
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label7.ForeColor = Color.DarkSlateBlue;
+            label7.Location = new Point(33, 374);
             label7.Name = "label7";
-            label7.Size = new Size(87, 20);
+            label7.Size = new Size(119, 28);
             label7.TabIndex = 14;
             label7.Text = "Ngày Mượn";
             // 
             // btn_AddSlip
             // 
-            btn_AddSlip.Location = new Point(192, 440);
+            btn_AddSlip.BackColor = Color.Lavender;
+            btn_AddSlip.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btn_AddSlip.ForeColor = Color.DarkSlateBlue;
+            btn_AddSlip.Location = new Point(156, 442);
             btn_AddSlip.Name = "btn_AddSlip";
-            btn_AddSlip.Size = new Size(94, 29);
+            btn_AddSlip.Size = new Size(120, 46);
             btn_AddSlip.TabIndex = 15;
             btn_AddSlip.Text = "Add Slip";
-            btn_AddSlip.UseVisualStyleBackColor = true;
+            btn_AddSlip.UseVisualStyleBackColor = false;
             btn_AddSlip.Click += btn_AddSlip_Click;
             // 
             // AddBorrow
             // 
-            ClientSize = new Size(505, 517);
+            BackColor = Color.White;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(445, 521);
             Controls.Add(btn_AddSlip);
             Controls.Add(label7);
             Controls.Add(dateTimePicker1);
@@ -215,6 +245,8 @@ namespace QLThuVien
             Controls.Add(label1);
             Controls.Add(lbl_title);
             Name = "AddBorrow";
+            StartPosition = FormStartPosition.CenterScreen;
+            Load += AddBorrow_Load;
             ((ISupportInitialize)bLGetBooksBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -329,6 +361,11 @@ namespace QLThuVien
             {
                 MessageBox.Show($"Lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void AddBorrow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

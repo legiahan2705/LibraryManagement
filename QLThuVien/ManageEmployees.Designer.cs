@@ -55,6 +55,17 @@
             picIconDashBoard = new PictureBox();
             pnlDashBoard = new Panel();
             grBoxManageEmployees = new Panel();
+            dataGridView1 = new DataGridView();
+            MaNV = new DataGridViewTextBoxColumn();
+            Ten = new DataGridViewTextBoxColumn();
+            GioiTinh = new DataGridViewTextBoxColumn();
+            SDT = new DataGridViewTextBoxColumn();
+            NgaySinh = new DataGridViewTextBoxColumn();
+            DiaChi = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            PhanQuyen = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             panel1 = new Panel();
             txtMaNV = new TextBox();
             label20 = new Label();
@@ -73,20 +84,8 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            dataGridView1 = new DataGridView();
-            MaNV = new DataGridViewTextBoxColumn();
-            Ten = new DataGridViewTextBoxColumn();
-            GioiTinh = new DataGridViewTextBoxColumn();
-            SDT = new DataGridViewTextBoxColumn();
-            NgaySinh = new DataGridViewTextBoxColumn();
-            DiaChi = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            PhanQuyen = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
-            Delete = new DataGridViewImageColumn();
             lblEmployeeName = new Label();
             lblWelcome = new Label();
             pnlLogOut.SuspendLayout();
@@ -104,9 +103,9 @@
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
             pnlDashBoard.SuspendLayout();
             grBoxManageEmployees.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblLogOut
@@ -384,19 +383,155 @@
             // grBoxManageEmployees
             // 
             grBoxManageEmployees.BackColor = Color.White;
+            grBoxManageEmployees.Controls.Add(dataGridView1);
             grBoxManageEmployees.Controls.Add(panel1);
-            grBoxManageEmployees.Controls.Add(label2);
             grBoxManageEmployees.Controls.Add(label1);
             grBoxManageEmployees.Controls.Add(pictureBox1);
-            grBoxManageEmployees.Controls.Add(dataGridView1);
             grBoxManageEmployees.Location = new Point(316, 92);
             grBoxManageEmployees.Name = "grBoxManageEmployees";
             grBoxManageEmployees.Size = new Size(930, 771);
             grBoxManageEmployees.TabIndex = 21;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Lavender;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaNV, Ten, GioiTinh, SDT, NgaySinh, DiaChi, Email, PhanQuyen, Edit, Delete });
+            dataGridView1.Cursor = Cursors.Hand;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Lavender;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.GridColor = Color.White;
+            dataGridView1.Location = new Point(11, 107);
+            dataGridView1.Margin = new Padding(0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridView1.ScrollBars = ScrollBars.Vertical;
+            dataGridView1.Size = new Size(919, 261);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // MaNV
+            // 
+            MaNV.HeaderText = "MaNV";
+            MaNV.MinimumWidth = 70;
+            MaNV.Name = "MaNV";
+            MaNV.ReadOnly = true;
+            MaNV.Width = 88;
+            // 
+            // Ten
+            // 
+            Ten.HeaderText = "Ten";
+            Ten.MinimumWidth = 6;
+            Ten.Name = "Ten";
+            Ten.ReadOnly = true;
+            Ten.Width = 87;
+            // 
+            // GioiTinh
+            // 
+            GioiTinh.HeaderText = "GioiTinh";
+            GioiTinh.MinimumWidth = 6;
+            GioiTinh.Name = "GioiTinh";
+            GioiTinh.ReadOnly = true;
+            GioiTinh.Width = 88;
+            // 
+            // SDT
+            // 
+            SDT.HeaderText = "SDT";
+            SDT.MinimumWidth = 6;
+            SDT.Name = "SDT";
+            SDT.ReadOnly = true;
+            SDT.Width = 87;
+            // 
+            // NgaySinh
+            // 
+            NgaySinh.HeaderText = "NgaySinh";
+            NgaySinh.MinimumWidth = 6;
+            NgaySinh.Name = "NgaySinh";
+            NgaySinh.ReadOnly = true;
+            NgaySinh.Width = 88;
+            // 
+            // DiaChi
+            // 
+            DiaChi.HeaderText = "DiaChi";
+            DiaChi.MinimumWidth = 6;
+            DiaChi.Name = "DiaChi";
+            DiaChi.ReadOnly = true;
+            DiaChi.Width = 88;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 87;
+            // 
+            // PhanQuyen
+            // 
+            PhanQuyen.HeaderText = "PhanQuyen";
+            PhanQuyen.MinimumWidth = 6;
+            PhanQuyen.Name = "PhanQuyen";
+            PhanQuyen.ReadOnly = true;
+            PhanQuyen.Width = 88;
+            // 
+            // Edit
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
+            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            Edit.HeaderText = "Edit";
+            Edit.Image = (Image)resources.GetObject("Edit.Image");
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.ReadOnly = true;
+            Edit.Resizable = DataGridViewTriState.True;
+            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
+            Edit.Width = 84;
+            // 
+            // Delete
+            // 
+            Delete.HeaderText = "Delete";
+            Delete.Image = (Image)resources.GetObject("Delete.Image");
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.ReadOnly = true;
+            Delete.Resizable = DataGridViewTriState.True;
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 84;
+            // 
             // panel1
             // 
-            panel1.BackColor = Color.GhostWhite;
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(txtMaNV);
             panel1.Controls.Add(label20);
             panel1.Controls.Add(txtEmail);
@@ -569,18 +704,6 @@
             label3.TabIndex = 6;
             label3.Text = "Tên";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label2.ForeColor = Color.DarkSlateBlue;
-            label2.Location = new Point(702, 39);
-            label2.Name = "label2";
-            label2.Size = new Size(189, 35);
-            label2.TabIndex = 5;
-            label2.Text = "Employees List";
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -603,143 +726,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lavender;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaNV, Ten, GioiTinh, SDT, NgaySinh, DiaChi, Email, PhanQuyen, Edit, Delete });
-            dataGridView1.Cursor = Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Lavender;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.GridColor = Color.White;
-            dataGridView1.Location = new Point(2, 107);
-            dataGridView1.Margin = new Padding(0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridView1.ScrollBars = ScrollBars.Vertical;
-            dataGridView1.Size = new Size(928, 261);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // MaNV
-            // 
-            MaNV.HeaderText = "MaNV";
-            MaNV.MinimumWidth = 70;
-            MaNV.Name = "MaNV";
-            MaNV.ReadOnly = true;
-            MaNV.Width = 88;
-            // 
-            // Ten
-            // 
-            Ten.HeaderText = "Ten";
-            Ten.MinimumWidth = 6;
-            Ten.Name = "Ten";
-            Ten.ReadOnly = true;
-            Ten.Width = 87;
-            // 
-            // GioiTinh
-            // 
-            GioiTinh.HeaderText = "GioiTinh";
-            GioiTinh.MinimumWidth = 6;
-            GioiTinh.Name = "GioiTinh";
-            GioiTinh.ReadOnly = true;
-            GioiTinh.Width = 88;
-            // 
-            // SDT
-            // 
-            SDT.HeaderText = "SDT";
-            SDT.MinimumWidth = 6;
-            SDT.Name = "SDT";
-            SDT.ReadOnly = true;
-            SDT.Width = 87;
-            // 
-            // NgaySinh
-            // 
-            NgaySinh.HeaderText = "NgaySinh";
-            NgaySinh.MinimumWidth = 6;
-            NgaySinh.Name = "NgaySinh";
-            NgaySinh.ReadOnly = true;
-            NgaySinh.Width = 88;
-            // 
-            // DiaChi
-            // 
-            DiaChi.HeaderText = "DiaChi";
-            DiaChi.MinimumWidth = 6;
-            DiaChi.Name = "DiaChi";
-            DiaChi.ReadOnly = true;
-            DiaChi.Width = 88;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            Email.Width = 87;
-            // 
-            // PhanQuyen
-            // 
-            PhanQuyen.HeaderText = "PhanQuyen";
-            PhanQuyen.MinimumWidth = 6;
-            PhanQuyen.Name = "PhanQuyen";
-            PhanQuyen.ReadOnly = true;
-            PhanQuyen.Width = 88;
-            // 
-            // Edit
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
-            Edit.HeaderText = "Edit";
-            Edit.Image = (Image)resources.GetObject("Edit.Image");
-            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.ReadOnly = true;
-            Edit.Resizable = DataGridViewTriState.True;
-            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
-            Edit.Width = 84;
-            // 
-            // Delete
-            // 
-            Delete.HeaderText = "Delete";
-            Delete.Image = (Image)resources.GetObject("Delete.Image");
-            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.ReadOnly = true;
-            Delete.Resizable = DataGridViewTriState.True;
-            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
-            Delete.Width = 84;
             // 
             // lblEmployeeName
             // 
@@ -809,10 +795,10 @@
             pnlDashBoard.PerformLayout();
             grBoxManageEmployees.ResumeLayout(false);
             grBoxManageEmployees.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -858,7 +844,6 @@
         private Label label5;
         private Label label4;
         private Label label3;
-        private Label label2;
         private Label label1;
         private PictureBox pictureBox1;
         private DataGridView dataGridView1;

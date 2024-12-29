@@ -378,7 +378,7 @@ CREATE TABLE [dbo].[Phieu](
     [MaDG] CHAR(10) NOT NULL,            -- Mã độc giả
     [NgayMuon] DATE NOT NULL,            -- Ngày mượn
     [NgayTra] DATE NULL,                 -- Ngày trả
-    [TrangThai] NVARCHAR(20) NOT NULL,   -- Trạng thái
+    [TrangThai] NVARCHAR(20) NULL,   -- Trạng thái
     PRIMARY KEY ([MaPhieu]),
     CONSTRAINT FK_Phieu_Docgia FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG]) ON DELETE CASCADE
 );

@@ -34,6 +34,7 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             lblReports = new Label();
             lblBorrowReturn = new Label();
             picIconBorrowReturn = new PictureBox();
@@ -89,6 +90,8 @@
             lblWelcome = new Label();
             pnl_SlipDetails = new Panel();
             dataGridView2 = new DataGridView();
+            lblReader = new Label();
+            lblManageSlips = new Label();
             ((System.ComponentModel.ISupportInitialize)picIconBorrowReturn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageUsers).BeginInit();
@@ -731,7 +734,9 @@
             // 
             // pnl_SlipDetails
             // 
+            pnl_SlipDetails.BackColor = Color.White;
             pnl_SlipDetails.Controls.Add(dataGridView2);
+            pnl_SlipDetails.ForeColor = SystemColors.ActiveCaptionText;
             pnl_SlipDetails.Location = new Point(316, 337);
             pnl_SlipDetails.Name = "pnl_SlipDetails";
             pnl_SlipDetails.Size = new Size(928, 524);
@@ -740,23 +745,54 @@
             // 
             // dataGridView2
             // 
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView2.BackgroundColor = Color.White;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView2.Location = new Point(3, 3);
+            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 7F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridView2.Location = new Point(0, 25);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(922, 511);
+            dataGridView2.Size = new Size(928, 524);
             dataGridView2.TabIndex = 0;
+            // 
+            // lblReader
+            // 
+            lblReader.AutoSize = true;
+            lblReader.BackColor = Color.Transparent;
+            lblReader.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblReader.ForeColor = Color.DarkSlateBlue;
+            lblReader.Location = new Point(1112, 124);
+            lblReader.Name = "lblReader";
+            lblReader.Size = new Size(96, 35);
+            lblReader.TabIndex = 42;
+            lblReader.Text = "Reader";
+            // 
+            // lblManageSlips
+            // 
+            lblManageSlips.AutoSize = true;
+            lblManageSlips.BackColor = Color.Transparent;
+            lblManageSlips.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblManageSlips.ForeColor = Color.DarkSlateBlue;
+            lblManageSlips.Location = new Point(944, 124);
+            lblManageSlips.Name = "lblManageSlips";
+            lblManageSlips.Size = new Size(264, 35);
+            lblManageSlips.TabIndex = 43;
+            lblManageSlips.Text = "Manage Borrow Slips";
             // 
             // BorrowReturn
             // 
@@ -764,6 +800,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(lblManageSlips);
+            Controls.Add(lblReader);
             Controls.Add(pnl_SlipDetails);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblWelcome);
@@ -877,5 +915,7 @@
         private Label lblWelcome;
         private Panel pnl_SlipDetails;
         private DataGridView dataGridView2;
+        private Label lblReader;
+        private Label lblManageSlips;
     }
 }

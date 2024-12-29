@@ -220,8 +220,8 @@ namespace QLThuVien
             }
             else
             {
-                panel1.BackColor = Color.GhostWhite;
 
+                panel1.BackColor = Color.White;
                 txtMaNV.Clear();
                 txtTen.Clear();
                 txtGioiTinh.Clear();
@@ -380,7 +380,7 @@ namespace QLThuVien
                         MessageBox.Show("Employee updated successfully!", "Success");
 
                         // Đặt lại giao diện
-                        panel1.BackColor = Color.GhostWhite;
+                        
                         txtMaNV.Clear();
                         txtTen.Clear();
                         txtGioiTinh.Clear();
