@@ -53,3 +53,17 @@ D:\Thực Hành\LibraryManagement\DL\obj\Debug\net8.0\DL.dll
 D:\Thực Hành\LibraryManagement\DL\obj\Debug\net8.0\refint\DL.dll
 D:\Thực Hành\LibraryManagement\DL\obj\Debug\net8.0\DL.pdb
 D:\Thực Hành\LibraryManagement\DL\obj\Debug\net8.0\ref\DL.dll
+D:\legiahan2705\LibraryManagement\bin\Debug\net8.0\DL.deps.json
+D:\legiahan2705\LibraryManagement\bin\Debug\net8.0\DL.dll
+D:\legiahan2705\LibraryManagement\bin\Debug\net8.0\DL.pdb
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.csproj.AssemblyReference.cache
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.GeneratedMSBuildEditorConfig.editorconfig
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.AssemblyInfoInputs.cache
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.AssemblyInfo.cs
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.csproj.CoreCompileInputs.cache
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.sourcelink.json
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.csproj.Up2Date
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.dll
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\refint\DL.dll
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\DL.pdb
+D:\legiahan2705\LibraryManagement\DL\obj\Debug\net8.0\ref\DL.dll

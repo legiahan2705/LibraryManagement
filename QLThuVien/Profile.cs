@@ -30,6 +30,8 @@ namespace QLThuVien
         {
             InitializeComponent();
 
+            btnUpdate.Visible = true;
+
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
             this.employeeID = id;
@@ -52,11 +54,30 @@ namespace QLThuVien
             manageBooks.Show();
             this.Hide();
         }
-
         private void pnlDashBoard_Click(object sender, EventArgs e)
         {
             Dashboard dashboard = new Dashboard(employeeName, employeeRole, employeeID);
             dashboard.Show();
+            this.Hide();
+        }
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
+        }
+        private void pnlManageEmployees_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra vai trò trước\
+            string role = "Quản lý";
+            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Thoát khỏi sự kiện nếu không phải quản lý
+            }
+
+            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
+            manageEmployees.Show();
             this.Hide();
         }
 
@@ -161,32 +182,71 @@ namespace QLThuVien
             txtAddress.Text = employee.DiaChi;
             txtRole.Text = employee.PhanQuyen;
 
+            // Các textbox chỉ đọc
+            txtName.ReadOnly = true;
+            txtSex.ReadOnly = true;
+            txtPhoneNo.ReadOnly = true;
+            txtDateOfBirth.ReadOnly = true;
+            txtAddress.ReadOnly = true;
+            txtEmail.ReadOnly = true;
+
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
-
-            // Hiển thị thông tin nhân viên lên các TextBox
         }
 
-        private void pnlManageEmployees_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            //Kiểm tra vai trò trước\
-            string role = "Quản lý";
-            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
+            // Cho phép chỉnh sửa các TextBox
+            txtName.ReadOnly = false;
+            txtSex.ReadOnly = false;
+            txtPhoneNo.ReadOnly = false;
+            txtDateOfBirth.ReadOnly = false;
+            txtAddress.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+
+            // Đổi tên nút Edit thành Update
+            btnEdit.Visible = false; // Ẩn nút Edit
+            btnUpdate.Visible = true; // Hiển thị nút Update
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            // Tạo đối tượng nhân viên mới với dữ liệu đã chỉnh sửa
+            NhanVien_TO updatedEmployee = new NhanVien_TO
             {
-                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Thoát khỏi sự kiện nếu không phải quản lý
+                MaNV = txtEmployeeID.Text,
+                Ten = txtName.Text,
+                GioiTinh = txtSex.Text,
+                SDT = txtPhoneNo.Text,
+                Email = txtEmail.Text,
+                NgaySinh = txtDateOfBirth.Text,
+                DiaChi = txtAddress.Text,
+                PhanQuyen = txtRole.Text
+            };
+
+            // Gọi phương thức từ BL để cập nhật thông tin nhân viên vào cơ sở dữ liệu
+            bool success = _bl_informationEmployee.UpdateEmployeeInfo(updatedEmployee);
+
+            if (success)
+            {
+                MessageBox.Show("Information updated successfully.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Sau khi cập nhật thành công, khóa lại các TextBox
+                txtName.ReadOnly = true;
+                txtSex.ReadOnly = true;
+                txtPhoneNo.ReadOnly = true;
+                txtDateOfBirth.ReadOnly = true;
+                txtAddress.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+
+                // Ẩn nút Update và hiển thị lại nút Edit
+                btnUpdate.Visible = false;
+                btnEdit.Visible = true;
             }
-
-            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
-            manageEmployees.Show();
-            this.Hide();
-        }
-
-        private void pnlReports_Click(object sender, EventArgs e)
-        {
-            Reports reports = new Reports(employeeName, employeeRole, employeeID);
-            reports.Show();
-            this.Hide();
+            else
+            {
+                MessageBox.Show("Failed to update information. Please try again.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
