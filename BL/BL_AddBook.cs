@@ -8,21 +8,21 @@ using TO;
 
 namespace BL
 {
-    public class BL_AddBooks
+    public class BL_AddBook
     {
-        private DL_AddBooks _dlAdd;
+        private DL_AddBook _dlAdd;
 
-        public BL_AddBooks()
+        public BL_AddBook()
         {
-            _dlAdd = new DL_AddBooks();
+            _dlAdd = new DL_AddBook();
         }
 
-        public bool AddBooks(Sach_TO book)
+        public bool AddBook(Sach_TO book)
         {
-            return _dlAdd.AddBooks(book);
+            return _dlAdd.AddBook(book);
         }
 
-        // Phương thức cập nhật reader
+        // Phương thức cập nhật sách
         public bool UpdateBook(Sach_TO book)
         {
             return _dlAdd.UpdateBook(book);

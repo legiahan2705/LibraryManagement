@@ -33,5 +33,24 @@ namespace BL
 
             return employee;
         }
+
+        // Phương thức cập nhật thông tin nhân viên
+        public bool UpdateEmployeeInfo(NhanVien_TO employee)
+        {
+            if (employee == null)
+            {
+                throw new ArgumentException("Employee information cannot be null.");
+            }
+
+            // Gọi phương thức từ DL để cập nhật thông tin
+            bool isUpdated = dlInformationEmployee.UpdateEmployee(employee);
+
+            if (!isUpdated)
+            {
+                throw new Exception("Failed to update employee information.");
+            }
+
+            return true; // Trả về true nếu cập nhật thành công
+        }
     }
 }
