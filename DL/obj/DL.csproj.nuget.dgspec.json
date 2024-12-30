@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\QuanLyThuVien\\DL\\DL.csproj": {}
+    "D:\\Thực Hành\\LibraryManagement\\DL\\DL.csproj": {}
   },
   "projects": {
-    "D:\\QuanLyThuVien\\DL\\DL.csproj": {
+    "D:\\Thực Hành\\LibraryManagement\\DL\\DL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuanLyThuVien\\DL\\DL.csproj",
+        "projectUniqueName": "D:\\Thực Hành\\LibraryManagement\\DL\\DL.csproj",
         "projectName": "DL",
-        "projectPath": "D:\\QuanLyThuVien\\DL\\DL.csproj",
-        "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
-        "outputPath": "D:\\QuanLyThuVien\\DL\\obj\\",
+        "projectPath": "D:\\Thực Hành\\LibraryManagement\\DL\\DL.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Thực Hành\\LibraryManagement\\DL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jmleg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\QuanLyThuVien\\TO\\TO.csproj": {
-                "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj"
+              "D:\\Thực Hành\\LibraryManagement\\TO\\TO.csproj": {
+                "projectPath": "D:\\Thực Hành\\LibraryManagement\\TO\\TO.csproj"
               }
             }
           }
@@ -46,9 +46,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -75,24 +74,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\QuanLyThuVien\\TO\\TO.csproj": {
+    "D:\\Thực Hành\\LibraryManagement\\TO\\TO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuanLyThuVien\\TO\\TO.csproj",
+        "projectUniqueName": "D:\\Thực Hành\\LibraryManagement\\TO\\TO.csproj",
         "projectName": "TO",
-        "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj",
-        "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
-        "outputPath": "D:\\QuanLyThuVien\\TO\\obj\\",
+        "projectPath": "D:\\Thực Hành\\LibraryManagement\\TO\\TO.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Thực Hành\\LibraryManagement\\TO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jmleg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -117,9 +116,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -140,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

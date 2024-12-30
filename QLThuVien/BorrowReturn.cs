@@ -555,7 +555,7 @@ namespace QLThuVien
                     {
                         Name = "Edit",
                         HeaderText = "Edit",
-                        Image = Image.FromFile("D:/QuanLyThuVien/Images/Images_Icon/Edit_S.png"),
+                        Image = Image.FromFile("D:/Thực Hành/LibraryManagement/Images/Images_Icon/Edit_S.png"),
                         ImageLayout = DataGridViewImageCellLayout.Zoom,
                         Width = 53
                     };
