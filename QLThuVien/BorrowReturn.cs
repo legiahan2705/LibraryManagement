@@ -130,7 +130,7 @@ namespace QLThuVien
 
         private void BorrowReturn_Load(object sender, EventArgs e)
         {
-           
+
 
             pnlBorrowReturn.BackColor = ColorTranslator.FromHtml("#BDC0FA");
 
@@ -143,7 +143,7 @@ namespace QLThuVien
             lblReader.Visible = false;
             lblManageSlips.Visible = false;
 
-            
+
 
         }
 
@@ -447,7 +447,7 @@ namespace QLThuVien
 
         private void pnlReaderBTN_Click(object sender, EventArgs e)
         {
-            
+
 
             pnl_SlipDetails.Visible = false;
             lblManageSlips.Visible = false;
@@ -502,12 +502,12 @@ namespace QLThuVien
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
 
         private void pnlAddBorrowSlipsBTN_Click(object sender, EventArgs e)
         {
-           
+
 
             AddBorrow brr = new AddBorrow();
             brr.Show();
@@ -571,19 +571,19 @@ namespace QLThuVien
         {
             // Gọi phương thức thiết lập DataGridView chỉ một lần
             setupDataGridView();
-            
+
         }
 
         private void pnlManaageBorrowBTN_Click(object sender, EventArgs e)
         {
-            load_slips(); 
+            load_slips();
 
             pnlReader.Visible = false;
             lblReader.Visible = false;
 
             lblManageSlips.Visible = true;
 
-            
+
             pnl_SlipDetails.Visible = true;
 
         }
@@ -592,5 +592,14 @@ namespace QLThuVien
         {
 
         }
+
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
+        }
+
+        
     }
 }

@@ -165,6 +165,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 13;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -178,6 +179,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -190,6 +192,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 

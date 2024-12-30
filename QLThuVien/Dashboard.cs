@@ -167,6 +167,13 @@ namespace QLThuVien
         {
 
         }
+
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
+        }
     }
 }
     

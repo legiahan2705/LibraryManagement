@@ -380,7 +380,7 @@ namespace QLThuVien
                         MessageBox.Show("Employee updated successfully!", "Success");
 
                         // Đặt lại giao diện
-                        
+
                         txtMaNV.Clear();
                         txtTen.Clear();
                         txtGioiTinh.Clear();
@@ -473,6 +473,13 @@ namespace QLThuVien
         {
             BorrowReturn borrowReturn = new BorrowReturn(employeeName, employeeRole, employeeID);
             borrowReturn.Show();
+            this.Hide();
+        }
+
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
             this.Hide();
         }
     }

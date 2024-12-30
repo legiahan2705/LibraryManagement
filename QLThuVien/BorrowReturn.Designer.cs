@@ -124,6 +124,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -238,6 +239,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -265,6 +267,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 18;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -353,7 +356,7 @@
             lblDashBoardTitle.BackColor = Color.Transparent;
             lblDashBoardTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblDashBoardTitle.ForeColor = Color.DarkSlateBlue;
-            lblDashBoardTitle.Location = new Point(410, 127);
+            lblDashBoardTitle.Location = new Point(386, 125);
             lblDashBoardTitle.Name = "lblDashBoardTitle";
             lblDashBoardTitle.Size = new Size(237, 35);
             lblDashBoardTitle.TabIndex = 20;
@@ -363,7 +366,7 @@
             // 
             picIconHome.BackColor = Color.Transparent;
             picIconHome.Image = (Image)resources.GetObject("picIconHome.Image");
-            picIconHome.Location = new Point(360, 117);
+            picIconHome.Location = new Point(336, 115);
             picIconHome.Name = "picIconHome";
             picIconHome.Size = new Size(47, 51);
             picIconHome.SizeMode = PictureBoxSizeMode.Zoom;
@@ -776,7 +779,7 @@
             lblReader.BackColor = Color.Transparent;
             lblReader.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblReader.ForeColor = Color.DarkSlateBlue;
-            lblReader.Location = new Point(1112, 124);
+            lblReader.Location = new Point(1131, 124);
             lblReader.Name = "lblReader";
             lblReader.Size = new Size(96, 35);
             lblReader.TabIndex = 42;
@@ -788,7 +791,7 @@
             lblManageSlips.BackColor = Color.Transparent;
             lblManageSlips.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblManageSlips.ForeColor = Color.DarkSlateBlue;
-            lblManageSlips.Location = new Point(944, 124);
+            lblManageSlips.Location = new Point(963, 124);
             lblManageSlips.Name = "lblManageSlips";
             lblManageSlips.Size = new Size(264, 35);
             lblManageSlips.TabIndex = 43;

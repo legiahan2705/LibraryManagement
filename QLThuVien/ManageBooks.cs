@@ -304,8 +304,8 @@ namespace QLThuVien
 
         private void pnlBookCaseBTN_Click(object sender, EventArgs e)
         {
-           
-           
+
+
 
             try
             {
@@ -625,7 +625,7 @@ namespace QLThuVien
                 InsideLabelPosition = 0.5, // Đặt nhãn bên trong slice
                 AngleSpan = 360, // Đảm bảo các phần slice chiếm toàn bộ biểu đồ
                 StartAngle = 0, // Bắt đầu từ góc 0
-               
+
                 OutsideLabelFormat = "{0:0.00}%" // Hiển thị tỷ lệ phần trăm chính xác bên ngoài
             };
 
@@ -675,12 +675,19 @@ namespace QLThuVien
                     // Vẽ biểu đồ với dữ liệu đã lấy
                     DrawPieChart(theloais);
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
         }
     }
 

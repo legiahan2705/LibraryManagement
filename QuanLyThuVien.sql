@@ -49,6 +49,15 @@ SELECT MaDG,Ten,GioiTinh,SDT,NgaySinh,Diachi FROM Docgia
 CREATE DATABASE [QuanLyThuVien]
 GO
 
+--thống kê sách mượn theo tháng
+SELECT MONTH(NgayMuon) AS Month, COUNT(*) AS TotalBooks
+FROM Phieu
+WHERE YEAR(NgayMuon) = @Year
+AND MONTH(NgayMuon) IN ({monthsList})
+GROUP BY MONTH(NgayMuon)
+ORDER BY MONTH(NgayMuon);
+
+
 
 USE QuanLyThuVien
 GO

@@ -140,6 +140,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -178,6 +179,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 18;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -191,6 +193,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -404,7 +407,7 @@
             lblDashBoardTitle.BackColor = Color.Transparent;
             lblDashBoardTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblDashBoardTitle.ForeColor = Color.DarkSlateBlue;
-            lblDashBoardTitle.Location = new Point(398, 138);
+            lblDashBoardTitle.Location = new Point(397, 125);
             lblDashBoardTitle.Name = "lblDashBoardTitle";
             lblDashBoardTitle.Size = new Size(187, 35);
             lblDashBoardTitle.TabIndex = 22;
@@ -414,7 +417,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(333, 122);
+            pictureBox2.Location = new Point(332, 109);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(59, 51);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
