@@ -69,6 +69,13 @@ namespace QLThuVien
             profile.Show();
             this.Hide();
         }
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
+        }
+
 
         private void ManageBooks_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -88,6 +95,7 @@ namespace QLThuVien
         {
             pnlBookStatistics.Visible = false;
             pnlBookCase.Visible = false;
+            pnlBookManager.Visible = false;
             pnlManageBooks.BackColor = ColorTranslator.FromHtml("#BDC0FA");
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
@@ -328,8 +336,10 @@ namespace QLThuVien
 
                     pnlBookStatistics.Visible = false;
 
-                    // Hiển thị GroupBox
+                    // Hiển thị Panel
                     pnlBookCase.Visible = true;
+                    pnlBookStatistics.Visible = false ;
+                    pnlBookManager.Visible = false ;
                 }
                 else
                 {
@@ -557,6 +567,7 @@ namespace QLThuVien
 
                     // Đảm bảo các panel hiển thị đồng thời
                     pnlBookCase.Visible = false;  // Ẩn Panel chứa các phần tử khác
+                    pnlBookManager.Visible = false;
                     pnlBookStatistics.Visible = true;  // Hiển thị Panel chứa DataGridView và biểu đồ
                     DrawPieChart(theloais);
 
@@ -668,11 +679,13 @@ namespace QLThuVien
             }
         }
 
-        private void pnlReports_Click(object sender, EventArgs e)
+        
+        private void pnlBookManagerBTN_Click(object sender, EventArgs e)
         {
-            Reports reports = new Reports(employeeName, employeeRole, employeeID);
-            reports.Show();
-            this.Hide();
+            // Đảm bảo các panel hiển thị đồng thời
+            pnlBookCase.Visible = false;  // Ẩn Panel chứa các phần tử khác
+            pnlBookManager.Visible = true;
+            pnlBookStatistics.Visible = false;
         }
     }
 

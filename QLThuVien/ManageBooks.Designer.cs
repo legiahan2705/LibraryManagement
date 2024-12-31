@@ -60,6 +60,14 @@
             pnlStatisticsBTN = new FlowLayoutPanel();
             pnlBookManagerBTN = new FlowLayoutPanel();
             dataGridView1 = new DataGridView();
+            MaSach = new DataGridViewTextBoxColumn();
+            TenSach = new DataGridViewTextBoxColumn();
+            MaTL = new DataGridViewTextBoxColumn();
+            SL = new DataGridViewTextBoxColumn();
+            NXB = new DataGridViewTextBoxColumn();
+            NgayNhap = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             lblEmployeeName = new Label();
             lblWelcome = new Label();
             pnlBookCase = new Panel();
@@ -78,6 +86,8 @@
             txtMaTL = new TextBox();
             txtSL = new TextBox();
             pnlBookStatistics = new Panel();
+            pnlBookManager = new Panel();
+            label16 = new Label();
             pnlKhoaHoc = new Panel();
             pnlXD = new Panel();
             pnlHH = new Panel();
@@ -101,14 +111,6 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
-            MaSach = new DataGridViewTextBoxColumn();
-            TenSach = new DataGridViewTextBoxColumn();
-            MaTL = new DataGridViewTextBoxColumn();
-            SL = new DataGridViewTextBoxColumn();
-            NXB = new DataGridViewTextBoxColumn();
-            NgayNhap = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
-            Delete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -128,6 +130,7 @@
             pnlBookCase.SuspendLayout();
             panel1.SuspendLayout();
             pnlBookStatistics.SuspendLayout();
+            pnlBookManager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStatistics).BeginInit();
             SuspendLayout();
             // 
@@ -452,6 +455,7 @@
             pnlBookManagerBTN.Name = "pnlBookManagerBTN";
             pnlBookManagerBTN.Size = new Size(198, 126);
             pnlBookManagerBTN.TabIndex = 24;
+            pnlBookManagerBTN.Click += pnlBookManagerBTN_Click;
             // 
             // dataGridView1
             // 
@@ -473,6 +477,78 @@
             dataGridView1.Size = new Size(847, 204);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // MaSach
+            // 
+            MaSach.HeaderText = "MaSach";
+            MaSach.MinimumWidth = 6;
+            MaSach.Name = "MaSach";
+            MaSach.ReadOnly = true;
+            MaSach.Width = 85;
+            // 
+            // TenSach
+            // 
+            TenSach.HeaderText = "TenSach";
+            TenSach.MinimumWidth = 6;
+            TenSach.Name = "TenSach";
+            TenSach.ReadOnly = true;
+            TenSach.Width = 150;
+            // 
+            // MaTL
+            // 
+            MaTL.HeaderText = "MaTL";
+            MaTL.MinimumWidth = 6;
+            MaTL.Name = "MaTL";
+            MaTL.ReadOnly = true;
+            MaTL.Width = 88;
+            // 
+            // SL
+            // 
+            SL.HeaderText = "SL";
+            SL.MinimumWidth = 6;
+            SL.Name = "SL";
+            SL.ReadOnly = true;
+            SL.Width = 40;
+            // 
+            // NXB
+            // 
+            NXB.HeaderText = "NXB";
+            NXB.MinimumWidth = 6;
+            NXB.Name = "NXB";
+            NXB.ReadOnly = true;
+            NXB.Width = 125;
+            // 
+            // NgayNhap
+            // 
+            NgayNhap.HeaderText = "NgayNhap";
+            NgayNhap.MinimumWidth = 6;
+            NgayNhap.Name = "NgayNhap";
+            NgayNhap.ReadOnly = true;
+            NgayNhap.Width = 125;
+            // 
+            // Edit
+            // 
+            Edit.HeaderText = "Edit";
+            Edit.Image = (Image)resources.GetObject("Edit.Image");
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.ReadOnly = true;
+            Edit.Resizable = DataGridViewTriState.True;
+            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
+            Edit.Width = 80;
+            // 
+            // Delete
+            // 
+            Delete.HeaderText = "Delete";
+            Delete.Image = (Image)resources.GetObject("Delete.Image");
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.ReadOnly = true;
+            Delete.Resizable = DataGridViewTriState.True;
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 80;
             // 
             // lblEmployeeName
             // 
@@ -501,7 +577,6 @@
             // pnlBookCase
             // 
             pnlBookCase.BackColor = Color.White;
-            pnlBookCase.Controls.Add(pnlBookStatistics);
             pnlBookCase.Controls.Add(panel1);
             pnlBookCase.Controls.Add(dataGridView1);
             pnlBookCase.Location = new Point(316, 343);
@@ -648,6 +723,7 @@
             // pnlBookStatistics
             // 
             pnlBookStatistics.BackColor = Color.White;
+            pnlBookStatistics.Controls.Add(pnlBookManager);
             pnlBookStatistics.Controls.Add(pnlKhoaHoc);
             pnlBookStatistics.Controls.Add(pnlXD);
             pnlBookStatistics.Controls.Add(pnlHH);
@@ -667,10 +743,30 @@
             pnlBookStatistics.Controls.Add(label2);
             pnlBookStatistics.Controls.Add(label1);
             pnlBookStatistics.Controls.Add(dgvStatistics);
-            pnlBookStatistics.Location = new Point(101, 109);
+            pnlBookStatistics.Location = new Point(316, 343);
             pnlBookStatistics.Name = "pnlBookStatistics";
             pnlBookStatistics.Size = new Size(931, 521);
             pnlBookStatistics.TabIndex = 41;
+            // 
+            // pnlBookManager
+            // 
+            pnlBookManager.BackColor = Color.MistyRose;
+            pnlBookManager.Controls.Add(label16);
+            pnlBookManager.Location = new Point(0, 0);
+            pnlBookManager.Name = "pnlBookManager";
+            pnlBookManager.Size = new Size(931, 521);
+            pnlBookManager.TabIndex = 44;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label16.ForeColor = Color.DarkSlateBlue;
+            label16.Location = new Point(19, 38);
+            label16.Name = "label16";
+            label16.Size = new Size(75, 28);
+            label16.TabIndex = 2;
+            label16.Text = "Profile";
             // 
             // pnlKhoaHoc
             // 
@@ -887,84 +983,13 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
-            // MaSach
-            // 
-            MaSach.HeaderText = "MaSach";
-            MaSach.MinimumWidth = 6;
-            MaSach.Name = "MaSach";
-            MaSach.ReadOnly = true;
-            MaSach.Width = 85;
-            // 
-            // TenSach
-            // 
-            TenSach.HeaderText = "TenSach";
-            TenSach.MinimumWidth = 6;
-            TenSach.Name = "TenSach";
-            TenSach.ReadOnly = true;
-            TenSach.Width = 150;
-            // 
-            // MaTL
-            // 
-            MaTL.HeaderText = "MaTL";
-            MaTL.MinimumWidth = 6;
-            MaTL.Name = "MaTL";
-            MaTL.ReadOnly = true;
-            MaTL.Width = 88;
-            // 
-            // SL
-            // 
-            SL.HeaderText = "SL";
-            SL.MinimumWidth = 6;
-            SL.Name = "SL";
-            SL.ReadOnly = true;
-            SL.Width = 40;
-            // 
-            // NXB
-            // 
-            NXB.HeaderText = "NXB";
-            NXB.MinimumWidth = 6;
-            NXB.Name = "NXB";
-            NXB.ReadOnly = true;
-            NXB.Width = 125;
-            // 
-            // NgayNhap
-            // 
-            NgayNhap.HeaderText = "NgayNhap";
-            NgayNhap.MinimumWidth = 6;
-            NgayNhap.Name = "NgayNhap";
-            NgayNhap.ReadOnly = true;
-            NgayNhap.Width = 125;
-            // 
-            // Edit
-            // 
-            Edit.HeaderText = "Edit";
-            Edit.Image = (Image)resources.GetObject("Edit.Image");
-            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Edit.MinimumWidth = 6;
-            Edit.Name = "Edit";
-            Edit.ReadOnly = true;
-            Edit.Resizable = DataGridViewTriState.True;
-            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
-            Edit.Width = 80;
-            // 
-            // Delete
-            // 
-            Delete.HeaderText = "Delete";
-            Delete.Image = (Image)resources.GetObject("Delete.Image");
-            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Delete.MinimumWidth = 6;
-            Delete.Name = "Delete";
-            Delete.ReadOnly = true;
-            Delete.Resizable = DataGridViewTriState.True;
-            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
-            Delete.Width = 80;
-            // 
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(pnlBookStatistics);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblWelcome);
             Controls.Add(pnlBookManagerBTN);
@@ -1013,6 +1038,8 @@
             panel1.PerformLayout();
             pnlBookStatistics.ResumeLayout(false);
             pnlBookStatistics.PerformLayout();
+            pnlBookManager.ResumeLayout(false);
+            pnlBookManager.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStatistics).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -1097,5 +1124,7 @@
         private DataGridViewTextBoxColumn NgayNhap;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
+        private Panel pnlBookManager;
+        private Label label16;
     }
 }
