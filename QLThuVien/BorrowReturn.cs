@@ -22,6 +22,7 @@ namespace QLThuVien
         private BL_DeleteReader _blDeleteReader;
         private BL_AddReader _blAddReader;
         private BL_GetPhieuDetails _blGetPhieuDetails;
+        private BL_ReturnPhieu _blReturnPhieu;
 
 
         private BL_GetEmployees _blEmployees;
@@ -45,6 +46,8 @@ namespace QLThuVien
             _blAddReader = new BL_AddReader();
 
             _blGetPhieuDetails = new BL_GetPhieuDetails();
+
+            _blReturnPhieu = new BL_ReturnPhieu();
         }
 
         // Chuyển qua các Form
@@ -130,7 +133,7 @@ namespace QLThuVien
 
         private void BorrowReturn_Load(object sender, EventArgs e)
         {
-           
+
 
             pnlBorrowReturn.BackColor = ColorTranslator.FromHtml("#BDC0FA");
 
@@ -143,7 +146,7 @@ namespace QLThuVien
             lblReader.Visible = false;
             lblManageSlips.Visible = false;
 
-            
+
 
         }
 
@@ -447,10 +450,11 @@ namespace QLThuVien
 
         private void pnlReaderBTN_Click(object sender, EventArgs e)
         {
-            
+
 
             pnl_SlipDetails.Visible = false;
             lblManageSlips.Visible = false;
+            pnl_return.Visible = false;
             lblReader.Visible = true;
             pnlReader.Visible = true;
             pnl_SlipDetails.Visible = false;
@@ -502,12 +506,12 @@ namespace QLThuVien
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
 
         private void pnlAddBorrowSlipsBTN_Click(object sender, EventArgs e)
         {
-           
+
 
             AddBorrow brr = new AddBorrow();
             brr.Show();
@@ -537,7 +541,7 @@ namespace QLThuVien
             dataGridView2.BorderStyle = BorderStyle.None;
 
             // Cấu hình chiều rộng cột
-            dataGridView2.Columns[0].Width = 95;
+            dataGridView2.Columns[0].Width = 85;
             dataGridView2.Columns[1].Width = 105;
             dataGridView2.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView2.Columns[3].Width = 90;
@@ -571,19 +575,20 @@ namespace QLThuVien
         {
             // Gọi phương thức thiết lập DataGridView chỉ một lần
             setupDataGridView();
-            
+
         }
 
         private void pnlManaageBorrowBTN_Click(object sender, EventArgs e)
         {
-            load_slips(); 
+            load_slips();
 
             pnlReader.Visible = false;
             lblReader.Visible = false;
+            pnl_return.Visible = false;
 
             lblManageSlips.Visible = true;
 
-            
+
             pnl_SlipDetails.Visible = true;
 
         }
@@ -591,6 +596,106 @@ namespace QLThuVien
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public void SetupGridReturn()
+        {
+            try
+            {
+                DataTable data = _blGetPhieuDetails.bl_GetDetailForReturn(txt_MaDG.Text.Trim());
+                dataGridView3.DataSource = data;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
+        }
+
+        private void btn_TimPhieu_Click(object sender, EventArgs e)
+        {
+            SetupGridReturn();
+        }
+
+        private void pnlReturnBooksBTN_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlReturnBooksBTN_Click(object sender, EventArgs e)
+        {
+            pnlReader.Visible = false;
+            lblReader.Visible = false;
+            pnl_return.Visible = true;
+
+            lblManageSlips.Visible = false;
+
+            pnl_SlipDetails.Visible = false;
+
+            txt_MaDG.Clear();
+            dataGridView3.DataSource = null;
+        }
+
+        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnl_SlipDetails_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_TimPhieu_Click_1(object sender, EventArgs e)
+        {
+            SetupGridReturn();
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+
+                DataGridViewRow selectedRow = dataGridView3.Rows[e.RowIndex];
+
+                string maPhieu = selectedRow.Cells[0].Value?.ToString();
+                string maDG = selectedRow.Cells[1].Value?.ToString();
+                string tenDG = selectedRow.Cells[2].Value?.ToString();
+                string maSach = selectedRow.Cells[3].Value?.ToString();
+                string tenSach = selectedRow.Cells[4].Value?.ToString();
+                string soLuong = selectedRow.Cells[5].Value?.ToString();
+                string ngayMuon = selectedRow.Cells[6].Value?.ToString();
+
+                txt_MaPhieu.Text = maPhieu;
+                txt_MaDocGia.Text = maDG;
+                txt_TenDocGia.Text = tenDG;
+                txt_MaSach.Text = maSach;
+                txt_TenSach.Text = tenSach;
+                txt_SoLuong.Text = soLuong;
+                txt_NgayMuon.Text = ngayMuon;
+
+            }
+
+
+        }
+
+        private void pnl_return_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_TraPhieu_Click(object sender, EventArgs e)
+        {
+            string result = _blReturnPhieu.bl_ReturnPhieu(txt_MaPhieu.Text, DateTime.Parse(txt_NgayMuon.Text));
+            MessageBox.Show(result);
+            SetupGridReturn();
         }
     }
 }

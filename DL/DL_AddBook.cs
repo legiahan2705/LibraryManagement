@@ -8,9 +8,9 @@ using TO;
 
 namespace DL
 {
-    public class DL_AddBooks : DL_Connect
+    public class DL_AddBook : DL_Connect
     {
-        public bool AddBooks(Sach_TO book)
+        public bool AddBook(Sach_TO book)
         {
             bool isAdded = false;
 
@@ -20,8 +20,7 @@ namespace DL
                 connection.Open();
 
                 // Câu lệnh SQL INSERT với OUTPUT để lấy Id vừa thêm
-                string sql = "INSERT INTO Sach (MaSach,TenSach,MaTL,SL,NXB,NgayNhap) " +
-                             "OUTPUT INSERTED.MaSach " +
+                string sql = "INSERT INTO Sach (MaSach, TenSach, MaTL, SL, NXB, NgayNhap) " +
                              "VALUES (@MaSach, @TenSach, @MaTL, @SL, @NXB, @NgayNhap)";
 
                 // Tạo SqlCommand
@@ -35,21 +34,20 @@ namespace DL
                     command.Parameters.AddWithValue("@NXB", book.NXB);
                     command.Parameters.AddWithValue("@NgayNhap", book.NgayNhap);
 
-
                     // Thực thi câu lệnh và lấy Id được sinh ra
                     object result = command.ExecuteScalar();
 
                     // Kiểm tra xem result có phải là giá trị Id hợp lệ không
                     if (result != null)
                     {
-                        //book.MaSach = result.ToString(); // Gán Id tự động sinh vào đối tượng
+                        book.MaSach = result.ToString(); // Gán Id tự động sinh vào đối tượng
                         isAdded = true;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to add reader {ex.Message}");
+                Console.WriteLine($"Failed to add book {ex.Message}");
             }
             finally
             {
@@ -59,11 +57,12 @@ namespace DL
                     connection.Close();
                 }
             }
+
             return isAdded;
 
         }
 
-        // Phương thức cập nhật book
+        // Phương thức cập nhật sách
         public bool UpdateBook(Sach_TO book)
         {
             bool isUpdated = false;
@@ -72,7 +71,7 @@ namespace DL
             {
                 connection.Open();
 
-                string sql = @"UPDATE Sach
+                string sql = @"UPDATE Sach 
                                SET TenSach = @TenSach, MaTL = @MaTL, SL = @SL, 
                                    NXB = @NXB, NgayNhap = @NgayNhap
                                WHERE MaSach = @MaSach";
@@ -86,7 +85,6 @@ namespace DL
                     command.Parameters.AddWithValue("@NXB", book.NXB);
                     command.Parameters.AddWithValue("@NgayNhap", book.NgayNhap);
 
-
                     int rowsAffected = command.ExecuteNonQuery();
 
                     isUpdated = rowsAffected > 0;
@@ -94,10 +92,8 @@ namespace DL
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to add book: {ex.Message}");
-                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                Console.WriteLine($"Failed to update book: {ex.Message}");
             }
-
             finally
             {
                 if (connection.State == System.Data.ConnectionState.Open)

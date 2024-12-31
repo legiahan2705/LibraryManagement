@@ -159,6 +159,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -171,6 +172,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -184,6 +186,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 18;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -710,7 +713,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             label1.ForeColor = Color.DarkSlateBlue;
-            label1.Location = new Point(94, 39);
+            label1.Location = new Point(73, 33);
             label1.Name = "label1";
             label1.Size = new Size(242, 35);
             label1.TabIndex = 3;
@@ -720,7 +723,7 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(44, 29);
+            pictureBox1.Location = new Point(23, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(47, 51);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;

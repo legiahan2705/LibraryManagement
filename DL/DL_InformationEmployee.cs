@@ -61,6 +61,47 @@ namespace DL
 
                 return employee; // Trả về thông tin nhân viên
             }
-        
+
+        // Phương thức cập nhật thông tin nhân viên
+        public bool UpdateEmployee(NhanVien_TO employee)
+        {
+            try
+            {
+                // Mở kết nối
+                connection.Open();
+
+                // Sử dụng câu lệnh SQL để cập nhật thông tin nhân viên
+                string query = "UPDATE Nhanvien SET Ten = @Ten, GioiTinh = @GioiTinh, SDT = @SDT, Email = @Email, NgaySinh = @NgaySinh, Diachi = @DiaChi, PhanQuyen = @PhanQuyen WHERE MaNV = @MaNV";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số để tránh SQL Injection
+                    cmd.Parameters.AddWithValue("@Ten", employee.Ten);
+                    cmd.Parameters.AddWithValue("@GioiTinh", employee.GioiTinh);
+                    cmd.Parameters.AddWithValue("@SDT", employee.SDT);
+                    cmd.Parameters.AddWithValue("@Email", employee.Email);
+                    cmd.Parameters.AddWithValue("@NgaySinh", employee.NgaySinh);
+                    cmd.Parameters.AddWithValue("@DiaChi", employee.DiaChi);
+                    cmd.Parameters.AddWithValue("@PhanQuyen", employee.PhanQuyen);
+                    cmd.Parameters.AddWithValue("@MaNV", employee.MaNV);
+
+                    // Thực thi câu lệnh UPDATE và kiểm tra kết quả
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0; // Trả về true nếu có ít nhất một dòng bị thay đổi
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                throw ex;
+            }
+            finally
+            {
+                // Đảm bảo đóng kết nối
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

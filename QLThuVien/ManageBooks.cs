@@ -26,7 +26,7 @@ namespace QLThuVien
         private BL_BookStatisticsByGenre _blBookStatistics;
         private BL_GetBooks _blGetBooks;
         private BL_DeleteBooks _blDeleteBooks;
-        private BL_AddBooks _blAddBooks;
+        private BL_AddBook _blAddBook;
 
         private string employeeName; // Lưu tên nhân viên
         private string employeeRole; // Lưu quyền của nhân viên
@@ -42,8 +42,8 @@ namespace QLThuVien
             // Khởi tạo đối tượng BL_GetBooks
             _blDeleteBooks = new BL_DeleteBooks();
             _blGetBooks = new BL_GetBooks();
-            _blAddBooks = new BL_AddBooks();
             _blBookStatistics = new BL_BookStatisticsByGenre();
+            _blAddBook = new BL_AddBook();
 
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
@@ -225,9 +225,9 @@ namespace QLThuVien
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["Xoa"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
             {
-                // Lấy mã nhân viên từ cột MaNV (giữ dưới dạng chuỗi)
+                // Lấy mã sách từ cột MaSach (giữ dưới dạng chuỗi)
                 string bookID = dataGridView1.Rows[e.RowIndex].Cells["MaSach"].Value.ToString();
 
                 // Hiển thị hộp thoại xác nhận
@@ -256,7 +256,7 @@ namespace QLThuVien
                 }
             }
 
-            if (e.ColumnIndex == dataGridView1.Columns["Sua"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
                 panel1.BackColor = Color.Lavender;
                 btnAddBook.BackColor = Color.CornflowerBlue;
@@ -279,13 +279,9 @@ namespace QLThuVien
                 // Đặt txtMaNV thành chỉ đọc
                 txtMaSach.ReadOnly = true;
                 txtMaSach.Enabled = false;   // k cho nhấn đâu
-
-
             }
             else
             {
-
-
                 txtMaSach.Clear();
                 txtTenSach.Clear();
                 txtMaTL.Clear();
@@ -304,9 +300,6 @@ namespace QLThuVien
 
         private void pnlBookCaseBTN_Click(object sender, EventArgs e)
         {
-           
-           
-
             try
             {
                 // Lấy danh sách nhân viên từ Business Logic Layer (BL)
@@ -362,8 +355,7 @@ namespace QLThuVien
                 // Kiểm tra các TextBox có dữ liệu đầy đủ hay không
                 if (string.IsNullOrEmpty(txtMaSach.Text) ||
                     string.IsNullOrEmpty(txtTenSach.Text) || string.IsNullOrEmpty(txtMaTL.Text) ||
-                    string.IsNullOrEmpty(txtSL.Text) || string.IsNullOrEmpty(txtNXB.Text) ||
-                    string.IsNullOrEmpty(txtNgayNhap.Text))
+                    string.IsNullOrEmpty(txtSL.Text) || string.IsNullOrEmpty(txtNgayNhap.Text))
                 {
                     MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return; // Nếu thiếu thông tin thì hiển thị thông báo
@@ -374,7 +366,7 @@ namespace QLThuVien
                 if (!DateTime.TryParse(txtNgayNhap.Text, out ngayNhap))
                 {
                     MessageBox.Show("Invalid date format. Please enter the date in YYYY-MM-DD format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Nếu ngày sinh không hợp lệ thì thông báo
+                    return; // Nếu ngày nhập không hợp lệ thì thông báo
                 }
 
                 // Hiển thị hộp thoại xác nhận việc thêm sách
@@ -385,7 +377,7 @@ namespace QLThuVien
                     MessageBoxIcon.Question
                 );
 
-                // Nếu người dùng chọn Yes, tiến hành thêm book
+                // Nếu người dùng chọn Yes, tiến hành thêm sách
                 if (dialogResult == DialogResult.Yes)
                 {
                     // Tạo đối tượng sách và gán các giá trị từ TextBox
@@ -394,15 +386,15 @@ namespace QLThuVien
                         MaSach = txtMaSach.Text,
                         TenSach = txtTenSach.Text,
                         MaTL = txtMaTL.Text,
-                        NXB = txtNXB.Text,
                         SL = int.Parse(txtSL.Text),
-                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd"), // Cần phải kiểm tra xem định dạng ngày có hợp lệ không
+                        NXB = txtNXB.Text,
+                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd") // Cần phải kiểm tra xem định dạng ngày có hợp lệ không
                     };
 
-                    // Gọi phương thức thêm book
-                    bool isAdded = _blAddBooks.AddBooks(newBook);
+                    // Gọi phương thức thêm sách 
+                    bool isAdded = _blAddBook.AddBook(newBook);
 
-                    // Thông báo kết quả thêm book
+                    // Thông báo kết quả thêm sách
                     if (isAdded)
                     {
                         MessageBox.Show("Book added successfully!", "Success");
@@ -426,7 +418,7 @@ namespace QLThuVien
                     }
                     else
                     {
-                        MessageBox.Show("Failed to add book.", "Error");
+                        MessageBox.Show("Đ thêm đươc đmm.", "Error");
                     }
                 }
                 else
@@ -443,9 +435,7 @@ namespace QLThuVien
                     string.IsNullOrEmpty(txtTenSach.Text) ||
                     string.IsNullOrEmpty(txtMaTL.Text) ||
                     string.IsNullOrEmpty(txtSL.Text) ||
-                    string.IsNullOrEmpty(txtNXB.Text) ||
                     string.IsNullOrEmpty(txtNgayNhap.Text))
-
                 {
                     MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -468,7 +458,7 @@ namespace QLThuVien
 
                 if (confirmResult == DialogResult.OK)
                 {
-                    // Cập nhật thông tin book
+                    // Cập nhật thông tin sách
                     Sach_TO updateBook = new Sach_TO
                     {
                         MaSach = txtMaSach.Text,
@@ -476,25 +466,24 @@ namespace QLThuVien
                         MaTL = txtMaTL.Text,
                         SL = int.Parse(txtSL.Text),
                         NXB = txtNXB.Text,
-                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd"),
+                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd") // Cần phải kiểm tra xem định dạng ngày có hợp lệ không
                     };
 
                     // Gọi phương thức cập nhật từ lớp BL
-                    bool isUpdated = _blAddBooks.UpdateBook(updateBook);
+                    bool isUpdated = _blAddBook.UpdateBook(updateBook);
 
                     if (isUpdated)
                     {
                         MessageBox.Show("Book updated successfully!", "Success");
 
                         // Đặt lại giao diện
-                        panel1.BackColor = Color.White;
+
                         txtMaSach.Clear();
                         txtTenSach.Clear();
                         txtMaTL.Clear();
                         txtSL.Clear();
                         txtNXB.Clear();
                         txtNgayNhap.Clear();
-
 
                         // Đặt txtMaSach thành chỉ đọc
                         txtMaSach.ReadOnly = false;
@@ -515,7 +504,6 @@ namespace QLThuVien
                                     updateBook.SL,
                                     updateBook.NXB,
                                     updateBook.NgayNhap
-
                                 );
                                 break;
                             }
@@ -615,9 +603,6 @@ namespace QLThuVien
                 OxyColor.Parse("#A7E1F2")  // Xanh pastel sáng
             };
 
-
-
-
             // Tạo một đối tượng PieSeries để vẽ biểu đồ tròn
             var pieSeries = new PieSeries
             {
@@ -625,7 +610,7 @@ namespace QLThuVien
                 InsideLabelPosition = 0.5, // Đặt nhãn bên trong slice
                 AngleSpan = 360, // Đảm bảo các phần slice chiếm toàn bộ biểu đồ
                 StartAngle = 0, // Bắt đầu từ góc 0
-               
+
                 OutsideLabelFormat = "{0:0.00}%" // Hiển thị tỷ lệ phần trăm chính xác bên ngoài
             };
 
@@ -675,12 +660,19 @@ namespace QLThuVien
                     // Vẽ biểu đồ với dữ liệu đã lấy
                     DrawPieChart(theloais);
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pnlReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(employeeName, employeeRole, employeeID);
+            reports.Show();
+            this.Hide();
         }
     }
 

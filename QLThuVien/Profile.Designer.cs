@@ -59,9 +59,9 @@
             txtEmail = new TextBox();
             txtRole = new TextBox();
             txtName = new TextBox();
-            txtPassword = new TextBox();
             lblEmployeeName = new Label();
             lblWelcome = new Label();
+            btnUpdate = new Button();
             ((System.ComponentModel.ISupportInitialize)picIconDashBoard).BeginInit();
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
@@ -165,6 +165,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 13;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -178,6 +179,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -190,6 +192,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -347,18 +350,20 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnEdit.Location = new Point(727, 743);
+            btnEdit.Location = new Point(730, 709);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(167, 48);
             btnEdit.TabIndex = 15;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // txtEmployeeID
             // 
             txtEmployeeID.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtEmployeeID.Location = new Point(751, 286);
             txtEmployeeID.Name = "txtEmployeeID";
+            txtEmployeeID.ReadOnly = true;
             txtEmployeeID.Size = new Size(292, 31);
             txtEmployeeID.TabIndex = 16;
             // 
@@ -407,6 +412,7 @@
             txtRole.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtRole.Location = new Point(751, 638);
             txtRole.Name = "txtRole";
+            txtRole.ReadOnly = true;
             txtRole.Size = new Size(292, 31);
             txtRole.TabIndex = 22;
             // 
@@ -417,14 +423,6 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(292, 31);
             txtName.TabIndex = 25;
-            // 
-            // txtPassword
-            // 
-            txtPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtPassword.Location = new Point(751, 692);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(292, 31);
-            txtPassword.TabIndex = 26;
             // 
             // lblEmployeeName
             // 
@@ -450,6 +448,17 @@
             lblWelcome.TabIndex = 27;
             lblWelcome.Text = "Welcome!";
             // 
+            // btnUpdate
+            // 
+            btnUpdate.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnUpdate.Location = new Point(730, 711);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(167, 48);
+            btnUpdate.TabIndex = 29;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -458,7 +467,6 @@
             ClientSize = new Size(1246, 863);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblWelcome);
-            Controls.Add(txtPassword);
             Controls.Add(txtName);
             Controls.Add(txtRole);
             Controls.Add(txtEmail);
@@ -475,6 +483,7 @@
             Controls.Add(pnlManageEmployees);
             Controls.Add(pnlProfile);
             Controls.Add(pnlDashBoard);
+            Controls.Add(btnUpdate);
             ForeColor = Color.DarkSlateBlue;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -539,8 +548,8 @@
         private TextBox txtEmail;
         private TextBox txtRole;
         private TextBox txtName;
-        private TextBox txtPassword;
         private Label lblEmployeeName;
         private Label lblWelcome;
+        private Button btnUpdate;
     }
 }

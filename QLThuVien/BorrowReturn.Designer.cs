@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorrowReturn));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             lblReports = new Label();
             lblBorrowReturn = new Label();
             picIconBorrowReturn = new PictureBox();
@@ -90,8 +91,29 @@
             lblWelcome = new Label();
             pnl_SlipDetails = new Panel();
             dataGridView2 = new DataGridView();
+            pnl_return = new Panel();
+            txt_SoLuong = new TextBox();
+            txt_TenSach = new TextBox();
+            txt_TenDocGia = new TextBox();
+            txt_NgayMuon = new TextBox();
+            txt_MaDocGia = new TextBox();
+            txt_MaPhieu = new TextBox();
+            btn_TraPhieu = new Button();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label2 = new Label();
+            txt_MaSach = new TextBox();
+            lbl_MaPhieu = new Label();
+            dataGridView3 = new DataGridView();
+            btn_TimPhieu = new Button();
+            txt_MaDG = new TextBox();
+            lbl_MaDG = new Label();
             lblReader = new Label();
             lblManageSlips = new Label();
+            bLGetPhieuDetailsBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)picIconBorrowReturn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageUsers).BeginInit();
@@ -112,6 +134,9 @@
             panel1.SuspendLayout();
             pnl_SlipDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            pnl_return.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bLGetPhieuDetailsBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lblReports
@@ -124,6 +149,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -238,6 +264,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -265,6 +292,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 18;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -353,7 +381,7 @@
             lblDashBoardTitle.BackColor = Color.Transparent;
             lblDashBoardTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblDashBoardTitle.ForeColor = Color.DarkSlateBlue;
-            lblDashBoardTitle.Location = new Point(410, 127);
+            lblDashBoardTitle.Location = new Point(386, 125);
             lblDashBoardTitle.Name = "lblDashBoardTitle";
             lblDashBoardTitle.Size = new Size(237, 35);
             lblDashBoardTitle.TabIndex = 20;
@@ -363,7 +391,7 @@
             // 
             picIconHome.BackColor = Color.Transparent;
             picIconHome.Image = (Image)resources.GetObject("picIconHome.Image");
-            picIconHome.Location = new Point(360, 117);
+            picIconHome.Location = new Point(336, 115);
             picIconHome.Name = "picIconHome";
             picIconHome.Size = new Size(47, 51);
             picIconHome.SizeMode = PictureBoxSizeMode.Zoom;
@@ -449,6 +477,8 @@
             pnlReturnBooksBTN.Name = "pnlReturnBooksBTN";
             pnlReturnBooksBTN.Size = new Size(199, 120);
             pnlReturnBooksBTN.TabIndex = 23;
+            pnlReturnBooksBTN.Click += pnlReturnBooksBTN_Click;
+            pnlReturnBooksBTN.Paint += pnlReturnBooksBTN_Paint;
             // 
             // pnlReader
             // 
@@ -483,37 +513,37 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lavender;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.Lavender;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaDG, Ten, GioiTinh, SDT, NgaySinh, DiaChi, Edit, Delete });
             dataGridView1.Cursor = Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Lavender;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 8F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.Lavender;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridView1.GridColor = Color.White;
             dataGridView1.Location = new Point(45, 25);
             dataGridView1.Margin = new Padding(0);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 8F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.Size = new Size(841, 204);
@@ -564,9 +594,9 @@
             // 
             // Edit
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            Edit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
+            Edit.DefaultCellStyle = dataGridViewCellStyle8;
             Edit.HeaderText = "Edit";
             Edit.Image = (Image)resources.GetObject("Edit.Image");
             Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
@@ -742,33 +772,233 @@
             pnl_SlipDetails.Size = new Size(928, 524);
             pnl_SlipDetails.TabIndex = 41;
             pnl_SlipDetails.Visible = false;
+            pnl_SlipDetails.Paint += pnl_SlipDetails_Paint;
             // 
             // dataGridView2
             // 
             dataGridView2.BackgroundColor = Color.White;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 7F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView2.Location = new Point(0, 25);
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridView2.GridColor = SystemColors.Desktop;
+            dataGridView2.Location = new Point(3, 0);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(928, 524);
-            dataGridView2.TabIndex = 0;
+            dataGridView2.Size = new Size(922, 524);
+            dataGridView2.TabIndex = 1;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick_1;
+            // 
+            // pnl_return
+            // 
+            pnl_return.BackColor = Color.White;
+            pnl_return.Controls.Add(txt_SoLuong);
+            pnl_return.Controls.Add(txt_TenSach);
+            pnl_return.Controls.Add(txt_TenDocGia);
+            pnl_return.Controls.Add(txt_NgayMuon);
+            pnl_return.Controls.Add(txt_MaDocGia);
+            pnl_return.Controls.Add(txt_MaPhieu);
+            pnl_return.Controls.Add(btn_TraPhieu);
+            pnl_return.Controls.Add(label14);
+            pnl_return.Controls.Add(label13);
+            pnl_return.Controls.Add(label12);
+            pnl_return.Controls.Add(label10);
+            pnl_return.Controls.Add(label9);
+            pnl_return.Controls.Add(label2);
+            pnl_return.Controls.Add(txt_MaSach);
+            pnl_return.Controls.Add(lbl_MaPhieu);
+            pnl_return.Controls.Add(dataGridView3);
+            pnl_return.Controls.Add(btn_TimPhieu);
+            pnl_return.Controls.Add(txt_MaDG);
+            pnl_return.Controls.Add(lbl_MaDG);
+            pnl_return.Location = new Point(316, 337);
+            pnl_return.Name = "pnl_return";
+            pnl_return.Size = new Size(928, 521);
+            pnl_return.TabIndex = 0;
+            pnl_return.Visible = false;
+            pnl_return.Paint += pnl_return_Paint;
+            // 
+            // txt_SoLuong
+            // 
+            txt_SoLuong.Location = new Point(751, 394);
+            txt_SoLuong.Name = "txt_SoLuong";
+            txt_SoLuong.ReadOnly = true;
+            txt_SoLuong.Size = new Size(167, 27);
+            txt_SoLuong.TabIndex = 28;
+            // 
+            // txt_TenSach
+            // 
+            txt_TenSach.Location = new Point(748, 335);
+            txt_TenSach.Name = "txt_TenSach";
+            txt_TenSach.ReadOnly = true;
+            txt_TenSach.Size = new Size(167, 27);
+            txt_TenSach.TabIndex = 27;
+            // 
+            // txt_TenDocGia
+            // 
+            txt_TenDocGia.Location = new Point(451, 335);
+            txt_TenDocGia.Name = "txt_TenDocGia";
+            txt_TenDocGia.ReadOnly = true;
+            txt_TenDocGia.Size = new Size(167, 27);
+            txt_TenDocGia.TabIndex = 26;
+            // 
+            // txt_NgayMuon
+            // 
+            txt_NgayMuon.Location = new Point(140, 331);
+            txt_NgayMuon.Name = "txt_NgayMuon";
+            txt_NgayMuon.ReadOnly = true;
+            txt_NgayMuon.Size = new Size(167, 27);
+            txt_NgayMuon.TabIndex = 25;
+            // 
+            // txt_MaDocGia
+            // 
+            txt_MaDocGia.Location = new Point(451, 268);
+            txt_MaDocGia.Name = "txt_MaDocGia";
+            txt_MaDocGia.ReadOnly = true;
+            txt_MaDocGia.Size = new Size(167, 27);
+            txt_MaDocGia.TabIndex = 24;
+            // 
+            // txt_MaPhieu
+            // 
+            txt_MaPhieu.Location = new Point(140, 268);
+            txt_MaPhieu.Name = "txt_MaPhieu";
+            txt_MaPhieu.ReadOnly = true;
+            txt_MaPhieu.Size = new Size(167, 27);
+            txt_MaPhieu.TabIndex = 23;
+            // 
+            // btn_TraPhieu
+            // 
+            btn_TraPhieu.Location = new Point(427, 453);
+            btn_TraPhieu.Name = "btn_TraPhieu";
+            btn_TraPhieu.Size = new Size(94, 29);
+            btn_TraPhieu.TabIndex = 22;
+            btn_TraPhieu.Text = "Trả Phiếu";
+            btn_TraPhieu.UseVisualStyleBackColor = true;
+            btn_TraPhieu.Click += btn_TraPhieu_Click;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(670, 394);
+            label14.Name = "label14";
+            label14.Size = new Size(69, 20);
+            label14.TabIndex = 21;
+            label14.Text = "Số lượng";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(670, 333);
+            label13.Name = "label13";
+            label13.Size = new Size(67, 20);
+            label13.TabIndex = 20;
+            label13.Text = "Tên Sách";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(670, 274);
+            label12.Name = "label12";
+            label12.Size = new Size(65, 20);
+            label12.TabIndex = 19;
+            label12.Text = "Mã Sách";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(345, 338);
+            label10.Name = "label10";
+            label10.Size = new Size(89, 20);
+            label10.TabIndex = 17;
+            label10.Text = "Tên Độc Giả";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(347, 273);
+            label9.Name = "label9";
+            label9.Size = new Size(87, 20);
+            label9.TabIndex = 16;
+            label9.Text = "Mã Độc Giả";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(37, 331);
+            label2.Name = "label2";
+            label2.Size = new Size(87, 20);
+            label2.TabIndex = 14;
+            label2.Text = "Ngày mượn";
+            // 
+            // txt_MaSach
+            // 
+            txt_MaSach.Location = new Point(748, 270);
+            txt_MaSach.Name = "txt_MaSach";
+            txt_MaSach.ReadOnly = true;
+            txt_MaSach.Size = new Size(163, 27);
+            txt_MaSach.TabIndex = 11;
+            // 
+            // lbl_MaPhieu
+            // 
+            lbl_MaPhieu.AutoSize = true;
+            lbl_MaPhieu.Location = new Point(37, 270);
+            lbl_MaPhieu.Name = "lbl_MaPhieu";
+            lbl_MaPhieu.Size = new Size(70, 20);
+            lbl_MaPhieu.TabIndex = 10;
+            lbl_MaPhieu.Text = "Mã Phiếu";
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridView3.BackgroundColor = Color.White;
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridView3.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridView3.Location = new Point(0, 85);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.ReadOnly = true;
+            dataGridView3.RowHeadersWidth = 51;
+            dataGridView3.Size = new Size(925, 141);
+            dataGridView3.TabIndex = 3;
+            dataGridView3.CellContentClick += dataGridView3_CellContentClick;
+            // 
+            // btn_TimPhieu
+            // 
+            btn_TimPhieu.Location = new Point(392, 40);
+            btn_TimPhieu.Name = "btn_TimPhieu";
+            btn_TimPhieu.Size = new Size(94, 29);
+            btn_TimPhieu.TabIndex = 2;
+            btn_TimPhieu.Text = "Tìm Phiếu";
+            btn_TimPhieu.UseVisualStyleBackColor = true;
+            btn_TimPhieu.Click += btn_TimPhieu_Click_1;
+            // 
+            // txt_MaDG
+            // 
+            txt_MaDG.Location = new Point(164, 42);
+            txt_MaDG.Name = "txt_MaDG";
+            txt_MaDG.Size = new Size(195, 27);
+            txt_MaDG.TabIndex = 1;
+            // 
+            // lbl_MaDG
+            // 
+            lbl_MaDG.AutoSize = true;
+            lbl_MaDG.Location = new Point(52, 45);
+            lbl_MaDG.Name = "lbl_MaDG";
+            lbl_MaDG.Size = new Size(87, 20);
+            lbl_MaDG.TabIndex = 0;
+            lbl_MaDG.Text = "Mã Độc Giả";
             // 
             // lblReader
             // 
@@ -776,7 +1006,7 @@
             lblReader.BackColor = Color.Transparent;
             lblReader.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblReader.ForeColor = Color.DarkSlateBlue;
-            lblReader.Location = new Point(1112, 124);
+            lblReader.Location = new Point(1131, 124);
             lblReader.Name = "lblReader";
             lblReader.Size = new Size(96, 35);
             lblReader.TabIndex = 42;
@@ -788,11 +1018,15 @@
             lblManageSlips.BackColor = Color.Transparent;
             lblManageSlips.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblManageSlips.ForeColor = Color.DarkSlateBlue;
-            lblManageSlips.Location = new Point(944, 124);
+            lblManageSlips.Location = new Point(963, 124);
             lblManageSlips.Name = "lblManageSlips";
             lblManageSlips.Size = new Size(264, 35);
             lblManageSlips.TabIndex = 43;
             lblManageSlips.Text = "Manage Borrow Slips";
+            // 
+            // bLGetPhieuDetailsBindingSource
+            // 
+            bLGetPhieuDetailsBindingSource.DataSource = typeof(BL.BL_GetPhieuDetails);
             // 
             // BorrowReturn
             // 
@@ -800,6 +1034,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
+            Controls.Add(pnl_return);
             Controls.Add(lblManageSlips);
             Controls.Add(lblReader);
             Controls.Add(pnl_SlipDetails);
@@ -854,6 +1089,10 @@
             panel1.PerformLayout();
             pnl_SlipDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            pnl_return.ResumeLayout(false);
+            pnl_return.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bLGetPhieuDetailsBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -914,8 +1153,36 @@
         private Label lblEmployeeName;
         private Label lblWelcome;
         private Panel pnl_SlipDetails;
-        private DataGridView dataGridView2;
         private Label lblReader;
         private Label lblManageSlips;
+        private Panel pnl_return;
+        private DataGridView dataGridView3;
+        private Button btn_TimPhieu;
+        private TextBox txt_MaDG;
+        private Label lbl_MaDG;
+        private DataGridView dataGridView2;
+        private BindingSource bLGetPhieuDetailsBindingSource;
+        private Label lbl_MaPhieu;
+        private TextBox textBox6;
+        private TextBox textBox5;
+        private TextBox textBox4;
+        private TextBox textBox2;
+        private TextBox txt_SoLuong;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label2;
+        private TextBox textBox7;
+        private TextBox textBox8;
+        private TextBox txt_MaSach;
+        private Button btn_TraPhieu;
+        private TextBox txt_TenSach;
+        private TextBox txt_TenDocGia;
+        private TextBox txt_NgayMuon;
+        private TextBox txt_MaDocGia;
+        private TextBox txt_MaPhieu;
     }
 }

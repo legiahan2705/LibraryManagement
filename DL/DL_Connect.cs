@@ -12,7 +12,5 @@ namespace DL
 
     {
         protected static SqlConnection connection = new SqlConnection("Data Source=Desktop-aphv5b4;Initial Catalog=QuanLyThuVien;Integrated Security=True;Trust Server Certificate=True");
-
-
     }
 }

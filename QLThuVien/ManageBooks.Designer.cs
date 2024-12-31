@@ -60,14 +60,6 @@
             pnlStatisticsBTN = new FlowLayoutPanel();
             pnlBookManagerBTN = new FlowLayoutPanel();
             dataGridView1 = new DataGridView();
-            MaSach = new DataGridViewTextBoxColumn();
-            TenSach = new DataGridViewTextBoxColumn();
-            MaTL = new DataGridViewTextBoxColumn();
-            SL = new DataGridViewTextBoxColumn();
-            NXB = new DataGridViewTextBoxColumn();
-            NgayNhap = new DataGridViewTextBoxColumn();
-            Sua = new DataGridViewImageColumn();
-            Xoa = new DataGridViewImageColumn();
             lblEmployeeName = new Label();
             lblWelcome = new Label();
             pnlBookCase = new Panel();
@@ -109,6 +101,14 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
+            MaSach = new DataGridViewTextBoxColumn();
+            TenSach = new DataGridViewTextBoxColumn();
+            MaTL = new DataGridViewTextBoxColumn();
+            SL = new DataGridViewTextBoxColumn();
+            NXB = new DataGridViewTextBoxColumn();
+            NgayNhap = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -140,6 +140,7 @@
             picIconReports.SizeMode = PictureBoxSizeMode.Zoom;
             picIconReports.TabIndex = 1;
             picIconReports.TabStop = false;
+            picIconReports.Click += pnlReports_Click;
             picIconReports.MouseEnter += HoverEffect_MouseEnter;
             picIconReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -178,6 +179,7 @@
             pnlReports.Name = "pnlReports";
             pnlReports.Size = new Size(291, 55);
             pnlReports.TabIndex = 18;
+            pnlReports.Click += pnlReports_Click;
             pnlReports.MouseEnter += HoverEffect_MouseEnter;
             pnlReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -191,6 +193,7 @@
             lblReports.Size = new Size(86, 28);
             lblReports.TabIndex = 0;
             lblReports.Text = "Reports";
+            lblReports.Click += pnlReports_Click;
             lblReports.MouseEnter += HoverEffect_MouseEnter;
             lblReports.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -404,7 +407,7 @@
             lblDashBoardTitle.BackColor = Color.Transparent;
             lblDashBoardTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lblDashBoardTitle.ForeColor = Color.DarkSlateBlue;
-            lblDashBoardTitle.Location = new Point(398, 138);
+            lblDashBoardTitle.Location = new Point(397, 125);
             lblDashBoardTitle.Name = "lblDashBoardTitle";
             lblDashBoardTitle.Size = new Size(187, 35);
             lblDashBoardTitle.TabIndex = 22;
@@ -414,7 +417,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(333, 122);
+            pictureBox2.Location = new Point(332, 109);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(59, 51);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -462,77 +465,14 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaSach, TenSach, MaTL, SL, NXB, NgayNhap, Sua, Xoa });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaSach, TenSach, MaTL, SL, NXB, NgayNhap, Edit, Delete });
             dataGridView1.Location = new Point(52, 24);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(847, 204);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // MaSach
-            // 
-            MaSach.HeaderText = "MaSach";
-            MaSach.MinimumWidth = 6;
-            MaSach.Name = "MaSach";
-            MaSach.Width = 85;
-            // 
-            // TenSach
-            // 
-            TenSach.HeaderText = "TenSach";
-            TenSach.MinimumWidth = 6;
-            TenSach.Name = "TenSach";
-            TenSach.Width = 150;
-            // 
-            // MaTL
-            // 
-            MaTL.HeaderText = "MaTL";
-            MaTL.MinimumWidth = 6;
-            MaTL.Name = "MaTL";
-            MaTL.Width = 88;
-            // 
-            // SL
-            // 
-            SL.HeaderText = "SL";
-            SL.MinimumWidth = 6;
-            SL.Name = "SL";
-            SL.Width = 40;
-            // 
-            // NXB
-            // 
-            NXB.HeaderText = "NXB";
-            NXB.MinimumWidth = 6;
-            NXB.Name = "NXB";
-            NXB.Width = 125;
-            // 
-            // NgayNhap
-            // 
-            NgayNhap.HeaderText = "NgayNhap";
-            NgayNhap.MinimumWidth = 6;
-            NgayNhap.Name = "NgayNhap";
-            NgayNhap.Width = 125;
-            // 
-            // Sua
-            // 
-            Sua.HeaderText = "Edit";
-            Sua.Image = (Image)resources.GetObject("Sua.Image");
-            Sua.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Sua.MinimumWidth = 6;
-            Sua.Name = "Sua";
-            Sua.Resizable = DataGridViewTriState.True;
-            Sua.SortMode = DataGridViewColumnSortMode.Automatic;
-            Sua.Width = 80;
-            // 
-            // Xoa
-            // 
-            Xoa.HeaderText = "Delete";
-            Xoa.Image = (Image)resources.GetObject("Xoa.Image");
-            Xoa.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Xoa.MinimumWidth = 6;
-            Xoa.Name = "Xoa";
-            Xoa.Resizable = DataGridViewTriState.True;
-            Xoa.SortMode = DataGridViewColumnSortMode.Automatic;
-            Xoa.Width = 80;
             // 
             // lblEmployeeName
             // 
@@ -561,6 +501,7 @@
             // pnlBookCase
             // 
             pnlBookCase.BackColor = Color.White;
+            pnlBookCase.Controls.Add(pnlBookStatistics);
             pnlBookCase.Controls.Add(panel1);
             pnlBookCase.Controls.Add(dataGridView1);
             pnlBookCase.Location = new Point(316, 343);
@@ -726,7 +667,7 @@
             pnlBookStatistics.Controls.Add(label2);
             pnlBookStatistics.Controls.Add(label1);
             pnlBookStatistics.Controls.Add(dgvStatistics);
-            pnlBookStatistics.Location = new Point(316, 343);
+            pnlBookStatistics.Location = new Point(101, 109);
             pnlBookStatistics.Name = "pnlBookStatistics";
             pnlBookStatistics.Size = new Size(931, 521);
             pnlBookStatistics.TabIndex = 41;
@@ -946,13 +887,84 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
+            // MaSach
+            // 
+            MaSach.HeaderText = "MaSach";
+            MaSach.MinimumWidth = 6;
+            MaSach.Name = "MaSach";
+            MaSach.ReadOnly = true;
+            MaSach.Width = 85;
+            // 
+            // TenSach
+            // 
+            TenSach.HeaderText = "TenSach";
+            TenSach.MinimumWidth = 6;
+            TenSach.Name = "TenSach";
+            TenSach.ReadOnly = true;
+            TenSach.Width = 150;
+            // 
+            // MaTL
+            // 
+            MaTL.HeaderText = "MaTL";
+            MaTL.MinimumWidth = 6;
+            MaTL.Name = "MaTL";
+            MaTL.ReadOnly = true;
+            MaTL.Width = 88;
+            // 
+            // SL
+            // 
+            SL.HeaderText = "SL";
+            SL.MinimumWidth = 6;
+            SL.Name = "SL";
+            SL.ReadOnly = true;
+            SL.Width = 40;
+            // 
+            // NXB
+            // 
+            NXB.HeaderText = "NXB";
+            NXB.MinimumWidth = 6;
+            NXB.Name = "NXB";
+            NXB.ReadOnly = true;
+            NXB.Width = 125;
+            // 
+            // NgayNhap
+            // 
+            NgayNhap.HeaderText = "NgayNhap";
+            NgayNhap.MinimumWidth = 6;
+            NgayNhap.Name = "NgayNhap";
+            NgayNhap.ReadOnly = true;
+            NgayNhap.Width = 125;
+            // 
+            // Edit
+            // 
+            Edit.HeaderText = "Edit";
+            Edit.Image = (Image)resources.GetObject("Edit.Image");
+            Edit.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Edit.MinimumWidth = 6;
+            Edit.Name = "Edit";
+            Edit.ReadOnly = true;
+            Edit.Resizable = DataGridViewTriState.True;
+            Edit.SortMode = DataGridViewColumnSortMode.Automatic;
+            Edit.Width = 80;
+            // 
+            // Delete
+            // 
+            Delete.HeaderText = "Delete";
+            Delete.Image = (Image)resources.GetObject("Delete.Image");
+            Delete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.ReadOnly = true;
+            Delete.Resizable = DataGridViewTriState.True;
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 80;
+            // 
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1246, 863);
-            Controls.Add(pnlBookStatistics);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblWelcome);
             Controls.Add(pnlBookManagerBTN);
@@ -1051,14 +1063,6 @@
         private TextBox txtNXB;
         private TextBox txtMaTL;
         private TextBox txtSL;
-        private DataGridViewTextBoxColumn MaSach;
-        private DataGridViewTextBoxColumn TenSach;
-        private DataGridViewTextBoxColumn MaTL;
-        private DataGridViewTextBoxColumn SL;
-        private DataGridViewTextBoxColumn NXB;
-        private DataGridViewTextBoxColumn NgayNhap;
-        private DataGridViewImageColumn Sua;
-        private DataGridViewImageColumn Xoa;
         private Panel pnlBookStatistics;
         private DataGridView dgvStatistics;
         private DataGridViewTextBoxColumn MaTheLoai;
@@ -1085,5 +1089,13 @@
         private Panel pnlDT;
         private Panel pnlXD;
         private Panel pnlKhoaHoc;
+        private DataGridViewTextBoxColumn MaSach;
+        private DataGridViewTextBoxColumn TenSach;
+        private DataGridViewTextBoxColumn MaTL;
+        private DataGridViewTextBoxColumn SL;
+        private DataGridViewTextBoxColumn NXB;
+        private DataGridViewTextBoxColumn NgayNhap;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Delete;
     }
 }

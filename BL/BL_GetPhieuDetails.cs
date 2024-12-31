@@ -16,5 +16,18 @@ namespace BL
         {
             return dl_getphieudetails.dl_getphieuDeTails();
         }
+
+        public DataTable bl_GetDetailForReturn(string MaDG)
+        {
+            if (string.IsNullOrEmpty(MaDG))
+                throw new ArgumentException("Mã độc giả không được để trống!");
+
+            return dl_getphieudetails.dl_GetDetailForReturn(MaDG);
+        }
+
+        public DataTable bl_PhieuReturn()
+        {
+            return dl_getphieudetails.PhieuReturn();
+        }
     }
 }

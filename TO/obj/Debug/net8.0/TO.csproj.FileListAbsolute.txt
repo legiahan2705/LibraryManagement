@@ -45,3 +45,15 @@ D:\Thực Hành\LibraryManagement\TO\obj\Debug\net8.0\TO.dll
 D:\Thực Hành\LibraryManagement\TO\obj\Debug\net8.0\refint\TO.dll
 D:\Thực Hành\LibraryManagement\TO\obj\Debug\net8.0\TO.pdb
 D:\Thực Hành\LibraryManagement\TO\obj\Debug\net8.0\ref\TO.dll
+D:\legiahan2705\LibraryManagement\bin\Debug\net8.0\TO.deps.json
+D:\legiahan2705\LibraryManagement\bin\Debug\net8.0\TO.dll
+D:\legiahan2705\LibraryManagement\bin\Debug\net8.0\TO.pdb
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.GeneratedMSBuildEditorConfig.editorconfig
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.AssemblyInfoInputs.cache
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.AssemblyInfo.cs
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.csproj.CoreCompileInputs.cache
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.sourcelink.json
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.dll
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\refint\TO.dll
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\TO.pdb
+D:\legiahan2705\LibraryManagement\TO\obj\Debug\net8.0\ref\TO.dll
