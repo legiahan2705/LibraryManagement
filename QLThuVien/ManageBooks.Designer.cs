@@ -97,8 +97,7 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
-<<<<<<< HEAD
-=======
+
             panel1 = new Panel();
             btnAddBook = new Button();
             txtMaSach = new TextBox();
@@ -113,7 +112,7 @@
             txtNXB = new TextBox();
             txtMaTL = new TextBox();
             txtSL = new TextBox();
->>>>>>> 3c119a5c0bd948a29e438a2c5446d1c2f155582f
+
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -850,8 +849,7 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
-<<<<<<< HEAD
-=======
+
             // panel1
             // 
             panel1.Controls.Add(btnAddBook);
@@ -988,7 +986,7 @@
             txtSL.Size = new Size(242, 27);
             txtSL.TabIndex = 30;
             // 
->>>>>>> 3c119a5c0bd948a29e438a2c5446d1c2f155582f
+
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
