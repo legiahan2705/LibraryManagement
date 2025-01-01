@@ -243,34 +243,34 @@ namespace QLThuVien
             {
                 Title = "Thống kê mượn sách theo tháng",
                 TitlePadding = 20,
-
             };
 
             // Tạo LineSeries để vẽ đường
-            var lineSeries = new LineSeries
+            var BarSeries = new BarSeries()
             {
-                MarkerType = MarkerType.Circle, // Đánh dấu các điểm trên đường (vòng tròn)
-                LineStyle = LineStyle.Solid, // Đường thẳng
-                Color = OxyColors.Blue, // Màu sắc đường
-                StrokeThickness = 2 // Độ dày của đường
+                Title = "Số lượng sách mượn",
+                FillColor = OxyColors.SteelBlue,
+                XAxisKey = "x1",
+                YAxisKey = "y1"
             };
 
             // Thêm các điểm vào LineSeries
             foreach (var stat in statistics)
             {
                 // Dùng điểm với tọa độ (x = tháng, y = số lượng sách)
-                lineSeries.Points.Add(new DataPoint(stat.Month, stat.TotalBooks));
+                BarSeries.Items.Add(new BarItem(stat.TotalBooks));
             }
 
-            plotModel.Series.Add(lineSeries);
+            plotModel.Series.Add(BarSeries);
 
             // Thêm trục danh mục (Tháng) trên trục Ox
             var categoryAxis = new CategoryAxis
             {
                 Position = AxisPosition.Bottom, // Đặt ở phía dưới
                 Title = "Tháng",
-                ItemsSource = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }, // Cố định 12 tháng
-                IsTickCentered = true
+                ItemsSource = statistics.Select(s => $"Tháng {s.Month}").ToList(), // Cố định 12 tháng
+                IsTickCentered = true,
+                Key = "y1"
             };
             plotModel.Axes.Add(categoryAxis);
 
@@ -282,9 +282,10 @@ namespace QLThuVien
                 MaximumPadding = 0.1,
                 Title = "Số lượng sách",
                 Minimum = 0, // Giá trị tối thiểu
-                Maximum = 100, // Giá trị tối đa (vì sách không vượt quá 100)
+                Maximum = statistics.Max(s => s.TotalBooks) + 10,
                 MajorStep = 10, // Mỗi bước trên trục Oy sẽ cách nhau 10 (từ 0 đến 100)
-                MinorStep = 2  // Bước nhỏ hơn, ví dụ chia nhỏ khoảng cách cho các nhãn nhỏ
+                MinorStep = 2,  // Bước nhỏ hơn, ví dụ chia nhỏ khoảng cách cho các nhãn nhỏ
+                Key = "x1"
             };
 
             plotModel.Axes.Add(valueAxis);
@@ -300,6 +301,7 @@ namespace QLThuVien
 
             // Xóa biểu đồ cũ (nếu có) và thêm biểu đồ mới vào panel
 
+            pnlBookBorrowing.Controls.Clear();
             pnlBookBorrowing.Controls.Add(plotView);
         }
 
