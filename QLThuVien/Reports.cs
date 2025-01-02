@@ -1,21 +1,10 @@
 ﻿using BL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using OxyPlot.WindowsForms;
-using System.Security.Policy;
-using OxyPlot.Annotations;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using TO;
-using System.Windows.Controls;
 using Panel = System.Windows.Forms.Panel;
 using Control = System.Windows.Forms.Control;
 

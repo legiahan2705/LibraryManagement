@@ -9,8 +9,8 @@
       "QLThuVien/1.0.0": {
         "dependencies": {
           "BL": "1.0.0",
+          "Microsoft.Data.SqlClient": "5.2.2",
           "OxyPlot.Core": "2.2.0",
-          "OxyPlot.Wpf": "2.2.0",
           "OxyPlot.WindowsForms": "2.2.0",
           "TO": "1.0.0"
         },
@@ -273,29 +273,6 @@
           }
         }
       },
-      "OxyPlot.Wpf/2.2.0": {
-        "dependencies": {
-          "OxyPlot.Core": "2.2.0",
-          "OxyPlot.Wpf.Shared": "2.2.0"
-        },
-        "runtime": {
-          "lib/net8.0-windows7.0/OxyPlot.Wpf.dll": {
-            "assemblyVersion": "2.2.0.0",
-            "fileVersion": "2.2.0.0"
-          }
-        }
-      },
-      "OxyPlot.Wpf.Shared/2.2.0": {
-        "dependencies": {
-          "OxyPlot.Core": "2.2.0"
-        },
-        "runtime": {
-          "lib/net8.0-windows7.0/OxyPlot.Wpf.Shared.dll": {
-            "assemblyVersion": "2.2.0.0",
-            "fileVersion": "2.2.0.0"
-          }
-        }
-      },
       "System.ClientModel/1.0.0": {
         "dependencies": {
           "System.Memory.Data": "1.0.2",
@@ -387,6 +364,9 @@
       "BL/1.0.0": {
         "dependencies": {
           "DL": "1.0.0",
+          "Microsoft.Data.SqlClient": "5.2.2",
+          "OxyPlot.Core": "2.2.0",
+          "OxyPlot.WindowsForms": "2.2.0",
           "TO": "1.0.0"
         },
         "runtime": {
@@ -399,6 +379,8 @@
       "DL/1.0.0": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "5.2.2",
+          "OxyPlot.Core": "2.2.0",
+          "OxyPlot.WindowsForms": "2.2.0",
           "TO": "1.0.0"
         },
         "runtime": {
@@ -409,6 +391,11 @@
         }
       },
       "TO/1.0.0": {
+        "dependencies": {
+          "Microsoft.Data.SqlClient": "5.2.2",
+          "OxyPlot.Core": "2.2.0",
+          "OxyPlot.WindowsForms": "2.2.0"
+        },
         "runtime": {
           "TO.dll": {
             "assemblyVersion": "1.0.0",
@@ -556,20 +543,6 @@
       "sha512": "sha512-jkveaQ7d3PanUP6OKaZ+IXFPuwpyabifPQiQZ40pQls8Tuedf0mUZ8JcLkMltK5Jkj/JRwGP2cNn1oJ8NwaV3A==",
       "path": "oxyplot.windowsforms/2.2.0",
       "hashPath": "oxyplot.windowsforms.2.2.0.nupkg.sha512"
-    },
-    "OxyPlot.Wpf/2.2.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-69KzgsMWpJSZmeXZt07FwfV7B1D4CM1nl0MWMj4wjrCsb3USBMo32up1+fQIjxp5tHCPdGwX9VWhSxW8nsY7pQ==",
-      "path": "oxyplot.wpf/2.2.0",
-      "hashPath": "oxyplot.wpf.2.2.0.nupkg.sha512"
-    },
-    "OxyPlot.Wpf.Shared/2.2.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-JoOD/feTOlKFmgXqeTNrl4Ze0i0L6WizPapNw9pXwot+cnI0qhFgYv3tFjlSdu51hZw0EgmcgeRXMtm5bkueYA==",
-      "path": "oxyplot.wpf.shared/2.2.0",
-      "hashPath": "oxyplot.wpf.shared.2.2.0.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",

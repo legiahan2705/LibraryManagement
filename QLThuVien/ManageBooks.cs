@@ -366,77 +366,80 @@ namespace QLThuVien
 
         private void btnAddBook_Click(object sender, EventArgs e)
         {
+            if (btnAddBook.Text == "Add Book")
             {
-// Kiểm tra dữ liệu hợp lệ
-            if (string.IsNullOrEmpty(txtMaSach.Text) ||
-                string.IsNullOrEmpty(txtTenSach.Text) ||
-                string.IsNullOrEmpty(txtMaTL.Text) ||
-                string.IsNullOrEmpty(txtSL.Text) ||
-                string.IsNullOrEmpty(txtNXB.Text) ||
-                string.IsNullOrEmpty(txtNgayNhap.Text))
-            {
-                MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                // Tạo đối tượng Sach_TO từ dữ liệu trong TextBox
-                Sach_TO newBook = new Sach_TO
                 {
-                    MaSach = txtMaSach.Text,
-                    TenSach = txtTenSach.Text,
-                    MaTL = txtMaTL.Text,
-                    SL = int.Parse(txtSL.Text),
-                    NXB = txtNXB.Text,
-                    NgayNhap = txtNgayNhap.Text
-                };
+                    // Kiểm tra dữ liệu hợp lệ
+                    if (string.IsNullOrEmpty(txtMaSach.Text) ||
+                        string.IsNullOrEmpty(txtTenSach.Text) ||
+                        string.IsNullOrEmpty(txtMaTL.Text) ||
+                        string.IsNullOrEmpty(txtSL.Text) ||
+                        string.IsNullOrEmpty(txtNXB.Text) ||
+                        string.IsNullOrEmpty(txtNgayNhap.Text))
+                    {
+                        MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                // Gọi BL_AddBook để thêm sách
-                BL_AddBook blAddBook = new BL_AddBook();
-                bool isAdded = blAddBook.AddBook(newBook);
+                    try
+                    {
+                        // Tạo đối tượng Sach_TO từ dữ liệu trong TextBox
+                        Sach_TO newBook = new Sach_TO
+                        {
+                            MaSach = txtMaSach.Text,
+                            TenSach = txtTenSach.Text,
+                            MaTL = txtMaTL.Text,
+                            SL = int.Parse(txtSL.Text),
+                            NXB = txtNXB.Text,
+                            NgayNhap = txtNgayNhap.Text
+                        };
 
-                // Hiển thị hộp thoại xác nhận
-                DialogResult confirmResult = MessageBox.Show(
-                    "Are you sure you want to add this book's information?",
-                    "Confirm Add",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Question
-                );
+                        // Gọi BL_AddBook để thêm sách
+                        BL_AddBook blAddBook = new BL_AddBook();
+                        bool isAdded = blAddBook.AddBook(newBook);
 
-                if (isAdded)
-                {
-                    MessageBox.Show("Book added successfully!", "Notification");
+                        // Hiển thị hộp thoại xác nhận
+                        DialogResult confirmResult = MessageBox.Show(
+                            "Are you sure you want to add this book's information?",
+                            "Confirm Add",
+                            MessageBoxButtons.OKCancel,
+                            MessageBoxIcon.Question
+                        );
 
-                    // Thêm dữ liệu sách mới vào DataGridView
-                    dataGridView1.Rows.Add(
-                        newBook.MaSach,
-                        newBook.TenSach,
-                        newBook.MaTL,
-                        newBook.SL,
-                        newBook.NXB,
-                        newBook.NgayNhap
-                    );
+                        if (isAdded)
+                        {
+                            MessageBox.Show("Book added successfully!", "Notification");
 
-                    // Xóa dữ liệu trong các TextBox sau khi thêm thành công
-                    ClearInputFields();
+                            // Thêm dữ liệu sách mới vào DataGridView
+                            dataGridView1.Rows.Add(
+                                newBook.MaSach,
+                                newBook.TenSach,
+                                newBook.MaTL,
+                                newBook.SL,
+                                newBook.NXB,
+                                newBook.NgayNhap
+                            );
+
+                            // Xóa dữ liệu trong các TextBox sau khi thêm thành công
+                            ClearInputFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add book.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Please enter valid data for all fields.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Failed to add book.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Please enter valid data for all fields.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             }
             
-            {
+            
                 // Sửa sách
                 if (btnAddBook.Text == "Save")
                 {
@@ -526,7 +529,7 @@ namespace QLThuVien
                         }
                     }
                 }
-            }            
+                      
             
             
         }

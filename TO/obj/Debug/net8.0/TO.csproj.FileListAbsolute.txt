@@ -69,3 +69,4 @@ D:\Thư mục mới (2)\TO\obj\Debug\net8.0\TO.dll
 D:\Thư mục mới (2)\TO\obj\Debug\net8.0\refint\TO.dll
 D:\Thư mục mới (2)\TO\obj\Debug\net8.0\TO.pdb
 D:\Thư mục mới (2)\TO\obj\Debug\net8.0\ref\TO.dll
+D:\QuanLyThuVien\TO\obj\Debug\net8.0\TO.csproj.AssemblyReference.cache
