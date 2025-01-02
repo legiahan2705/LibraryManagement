@@ -109,6 +109,24 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
+<<<<<<< HEAD
+
+            panel1 = new Panel();
+            btnAddBook = new Button();
+            txtMaSach = new TextBox();
+            label3 = new Label();
+            label20 = new Label();
+            label4 = new Label();
+            txtNgayNhap = new TextBox();
+            label5 = new Label();
+            label8 = new Label();
+            label6 = new Label();
+            txtTenSach = new TextBox();
+            txtNXB = new TextBox();
+            txtMaTL = new TextBox();
+            txtSL = new TextBox();
+
+=======
             pnlBookManager = new Panel();
             groupBox1 = new Panel();
             btnThemSach = new Button();
@@ -122,6 +140,7 @@
             MaNV = new DataGridViewTextBoxColumn();
             TenNV = new DataGridViewTextBoxColumn();
             XemThem = new DataGridViewImageColumn();
+>>>>>>> 716199c6ae9116136bb70dab1eaee15570ef1918
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -976,7 +995,12 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
+<<<<<<< HEAD
+
+            // panel1
+=======
             // pnlBookManager
+>>>>>>> 716199c6ae9116136bb70dab1eaee15570ef1918
             // 
             pnlBookManager.BackColor = SystemColors.ButtonHighlight;
             pnlBookManager.Controls.Add(groupBox1);
@@ -1114,6 +1138,16 @@
             XemThem.Resizable = DataGridViewTriState.True;
             XemThem.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
+<<<<<<< HEAD
+            // txtSL
+            // 
+            txtSL.Location = new Point(37, 122);
+            txtSL.Name = "txtSL";
+            txtSL.Size = new Size(242, 27);
+            txtSL.TabIndex = 30;
+            // 
+=======
+>>>>>>> 716199c6ae9116136bb70dab1eaee15570ef1918
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);

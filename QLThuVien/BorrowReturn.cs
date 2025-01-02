@@ -540,13 +540,16 @@ namespace QLThuVien
             dataGridView2.Columns[1].Width = 105;
             dataGridView2.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView2.Columns[3].Width = 90;
-            dataGridView2.Columns[4].Width = 103;
+            dataGridView2.Columns[4].Width = 150;
             dataGridView2.Columns[5].Width = 40;
             dataGridView2.Columns[6].Width = 110;
             dataGridView2.Columns[7].Width = 110;
             dataGridView2.Columns[8].Width = 100;
 
+<<<<<<< HEAD
+=======
             
+>>>>>>> 716199c6ae9116136bb70dab1eaee15570ef1918
         }
         private void load_slips()
         {
@@ -673,6 +676,15 @@ namespace QLThuVien
             string result = _blReturnPhieu.bl_ReturnPhieu(txt_MaPhieu.Text, DateTime.Parse(txt_NgayMuon.Text));
             MessageBox.Show(result);
             SetupGridReturn();
+        }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == dataGridView2.NewRowIndex && e.RowIndex >= 0)
+            {
+                AddBorrow form = new AddBorrow();
+                form.Show();
+            }
         }
     }
 }
