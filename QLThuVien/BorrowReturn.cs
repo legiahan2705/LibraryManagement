@@ -545,31 +545,12 @@ namespace QLThuVien
             dataGridView2.Columns[1].Width = 105;
             dataGridView2.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView2.Columns[3].Width = 90;
-            dataGridView2.Columns[4].Width = 103;
+            dataGridView2.Columns[4].Width = 150;
             dataGridView2.Columns[5].Width = 40;
             dataGridView2.Columns[6].Width = 110;
             dataGridView2.Columns[7].Width = 110;
             dataGridView2.Columns[8].Width = 100;
 
-            try
-            {
-                if (!dataGridView2.Columns.Contains("Edit"))
-                {
-                    DataGridViewImageColumn editColumn = new DataGridViewImageColumn
-                    {
-                        Name = "Edit",
-                        HeaderText = "Edit",
-                        Image = Image.FromFile("D:/Thực Hành/LibraryManagement/Images/Images_Icon/Edit_S.png"),
-                        ImageLayout = DataGridViewImageCellLayout.Zoom,
-                        Width = 53
-                    };
-                    dataGridView2.Columns.Add(editColumn);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
         private void load_slips()
         {
@@ -696,6 +677,15 @@ namespace QLThuVien
             string result = _blReturnPhieu.bl_ReturnPhieu(txt_MaPhieu.Text, DateTime.Parse(txt_NgayMuon.Text));
             MessageBox.Show(result);
             SetupGridReturn();
+        }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == dataGridView2.NewRowIndex && e.RowIndex >= 0)
+            {
+                AddBorrow form = new AddBorrow();
+                form.Show();
+            }
         }
     }
 }

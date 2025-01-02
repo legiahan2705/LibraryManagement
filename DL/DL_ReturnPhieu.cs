@@ -13,7 +13,7 @@ namespace DL
         {
             string query = @"
                 UPDATE Phieu
-                SET TrangThai = 'Đã Trả'
+                SET TrangThai = 'Đã Trả', NgayTra = GETDATE()
                 WHERE MaPhieu = @MaPhieu";
 
             try

@@ -61,7 +61,7 @@ namespace DL
                     }
                 }
 
-                string queryUpdatePhieu = "UPDATE Phieu SET NgayTra = DATEADD(DAY, 14, NgayMuon), TrangThai = N'Chưa trả' WHERE MaPhieu = @MaPhieu";
+                string queryUpdatePhieu = "UPDATE Phieu SET NgayTra = NULL, TrangThai = N'Chưa trả' WHERE MaPhieu = @MaPhieu";
                 using (SqlCommand cmd = new SqlCommand(queryUpdatePhieu, connection, transaction))
                 {
                     cmd.Parameters.AddWithValue("@MaPhieu", MaPhieu);
