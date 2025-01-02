@@ -126,6 +126,7 @@
             picIconLogOut.SizeMode = PictureBoxSizeMode.Zoom;
             picIconLogOut.TabIndex = 1;
             picIconLogOut.TabStop = false;
+            picIconLogOut.Click += pnlLogOut_Click;
             picIconLogOut.MouseEnter += HoverEffect_MouseEnter;
             picIconLogOut.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -152,6 +153,7 @@
             lblLogOut.Size = new Size(87, 28);
             lblLogOut.TabIndex = 0;
             lblLogOut.Text = "Log Out";
+            lblLogOut.Click += pnlLogOut_Click;
             lblLogOut.MouseEnter += HoverEffect_MouseEnter;
             lblLogOut.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -206,6 +208,7 @@
             lblBorrowReturn.Size = new Size(192, 28);
             lblBorrowReturn.TabIndex = 0;
             lblBorrowReturn.Text = "Borrow and Return";
+            lblBorrowReturn.Click += pnlBorrowReturn_Click;
             lblBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             lblBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -218,6 +221,7 @@
             picIconBorrowReturn.SizeMode = PictureBoxSizeMode.Zoom;
             picIconBorrowReturn.TabIndex = 1;
             picIconBorrowReturn.TabStop = false;
+            picIconBorrowReturn.Click += pnlBorrowReturn_Click;
             picIconBorrowReturn.MouseEnter += HoverEffect_MouseEnter;
             picIconBorrowReturn.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -259,6 +263,7 @@
             lblManageBooks.Size = new Size(151, 28);
             lblManageBooks.TabIndex = 0;
             lblManageBooks.Text = "Manage Books";
+            lblManageBooks.Click += pnlManageBooks_Click;
             lblManageBooks.MouseEnter += HoverEffect_MouseEnter;
             lblManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -271,6 +276,7 @@
             picIconManageBooks.SizeMode = PictureBoxSizeMode.Zoom;
             picIconManageBooks.TabIndex = 1;
             picIconManageBooks.TabStop = false;
+            picIconManageBooks.Click += pnlManageBooks_Click;
             picIconManageBooks.MouseEnter += HoverEffect_MouseEnter;
             picIconManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -284,6 +290,7 @@
             lblManageUsers.Size = new Size(195, 28);
             lblManageUsers.TabIndex = 0;
             lblManageUsers.Text = "Manage Employees";
+            lblManageUsers.Click += pnlManageEmployees_Click;
             lblManageUsers.MouseEnter += HoverEffect_MouseEnter;
             lblManageUsers.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -296,6 +303,7 @@
             picIconManageUsers.SizeMode = PictureBoxSizeMode.Zoom;
             picIconManageUsers.TabIndex = 1;
             picIconManageUsers.TabStop = false;
+            picIconManageUsers.Click += pnlManageEmployees_Click;
             picIconManageUsers.MouseEnter += HoverEffect_MouseEnter;
             picIconManageUsers.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -349,6 +357,7 @@
             // 
             // btnEdit
             // 
+            btnEdit.Cursor = Cursors.Hand;
             btnEdit.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnEdit.Location = new Point(730, 709);
             btnEdit.Name = "btnEdit";

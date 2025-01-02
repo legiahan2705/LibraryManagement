@@ -11,9 +11,11 @@ namespace DL
     {
         public void dl_ReturnPhieu(string MaPhieu)
         {
+            // Query để cập nhật cả TrangThai và NgayTra
             string query = @"
                 UPDATE Phieu
-                SET TrangThai = 'Đã Trả'
+                SET TrangThai = N'Đã Trả',
+                    NgayTra = @NgayTra
                 WHERE MaPhieu = @MaPhieu";
 
             try
@@ -22,15 +24,28 @@ namespace DL
                 {
                     connection.Open();
                 }
+
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
+                    // Thêm tham số Mã Phiếu và Ngày Trả
                     cmd.Parameters.AddWithValue("@MaPhieu", MaPhieu);
+                    cmd.Parameters.AddWithValue("@NgayTra", DateTime.Now); // Ngày hiện tại
+
+                    // Thực thi truy vấn
                     cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Lỗi khi cập nhật phiếu: " + ex.Message);
+            }
+            finally
+            {
+                // Đảm bảo kết nối luôn được đóng
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
             }
         }
     }

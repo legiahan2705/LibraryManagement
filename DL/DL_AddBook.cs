@@ -13,38 +13,41 @@ namespace DL
     {
             public bool AddBook(Sach_TO book)
             {
-            try
-                {
-                    connection.Open();
-                    string query = "INSERT INTO Sach (MaSach, TenSach, MaTL, SL, NXB, NgayNhap) " +
-                                   "VALUES (@MaSach, @TenSach, @MaTL, @SL, @NXB, @NgayNhap)";
-
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
+            bool isAdded = false;
+                try
                     {
-                        cmd.Parameters.AddWithValue("@MaSach", book.MaSach);
-                        cmd.Parameters.AddWithValue("@TenSach", book.TenSach);
-                        cmd.Parameters.AddWithValue("@MaTL", book.MaTL);
-                        cmd.Parameters.AddWithValue("@SL", book.SL);
-                        cmd.Parameters.AddWithValue("@NXB", book.NXB);
-                        cmd.Parameters.AddWithValue("@NgayNhap", book.NgayNhap);
+                        connection.Open();
+                        string query = "INSERT INTO Sach (MaSach, TenSach, MaTL, SL, NXB, NgayNhap) " +
+                                       "VALUES (@MaSach, @TenSach, @MaTL, @SL, @NXB, @NgayNhap)";
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        return rowsAffected > 0; // Trả về true nếu thêm thành công
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@MaSach", book.MaSach);
+                            cmd.Parameters.AddWithValue("@TenSach", book.TenSach);
+                            cmd.Parameters.AddWithValue("@MaTL", book.MaTL);
+                            cmd.Parameters.AddWithValue("@SL", book.SL);
+                            cmd.Parameters.AddWithValue("@NXB", book.NXB);
+                            cmd.Parameters.AddWithValue("@NgayNhap", book.NgayNhap);
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            return rowsAffected > 0; // Trả về true nếu thêm thành công
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new Exception("Error adding book: " + ex.Message);
+                    }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
                     }
                 }
-                catch (Exception ex)
-                {
-                    //throw new Exception("Error adding book: " + ex.Message);
-                }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
 
-        }
+                return isAdded;
+
+            }
 
         // Phương thức cập nhật sách
         public bool UpdateBook(Sach_TO book)

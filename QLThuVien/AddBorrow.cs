@@ -55,11 +55,11 @@ namespace QLThuVien
             lbl_title.BackColor = Color.Transparent;
             lbl_title.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lbl_title.ForeColor = Color.DarkSlateBlue;
-            lbl_title.Location = new Point(135, 21);
+            lbl_title.Location = new Point(107, 20);
             lbl_title.Name = "lbl_title";
-            lbl_title.Size = new Size(175, 38);
+            lbl_title.Size = new Size(232, 38);
             lbl_title.TabIndex = 0;
-            lbl_title.Text = "Add Borrow";
+            lbl_title.Text = "Add Borrow Slip";
             lbl_title.Click += label1_Click;
             // 
             // label1
@@ -127,6 +127,7 @@ namespace QLThuVien
             // 
             comboBox_books.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox_books.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBox_books.Cursor = Cursors.Hand;
             comboBox_books.FormattingEnabled = true;
             comboBox_books.Location = new Point(177, 234);
             comboBox_books.Name = "comboBox_books";
@@ -191,6 +192,7 @@ namespace QLThuVien
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Cursor = Cursors.Hand;
             dateTimePicker1.CustomFormat = "dd/mm/yyyy";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(177, 378);
@@ -213,6 +215,7 @@ namespace QLThuVien
             // btn_AddSlip
             // 
             btn_AddSlip.BackColor = Color.Lavender;
+            btn_AddSlip.Cursor = Cursors.Hand;
             btn_AddSlip.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btn_AddSlip.ForeColor = Color.DarkSlateBlue;
             btn_AddSlip.Location = new Point(156, 442);
@@ -314,12 +317,19 @@ namespace QLThuVien
                 string maDocGia = txt_MaDocGia.Text.Trim();
                 DateTime ngayMuon = dateTimePicker1.Value;
 
-                List<(string maSach, int soLuong)> chitietPhieu = new List<(string maSach, int soLuong)>
+                // Kiểm tra ngày hợp lệ
+                if (ngayMuon < DateTime.Now.Date)
                 {
-                    (txt_BookID.Text.Trim(), int.Parse(txt_SL.Text))
-                };
+                    MessageBox.Show("Ngày mượn không được nhỏ hơn ngày hiện tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                if (string.IsNullOrWhiteSpace(maDocGia) || string.IsNullOrWhiteSpace(txt_TenDocGia.Text) || string.IsNullOrWhiteSpace(comboBox_books.Text) || String.IsNullOrWhiteSpace(txt_SL.Text))
+                List<(string maSach, int soLuong)> chitietPhieu = new List<(string maSach, int soLuong)>
+        {
+            (txt_BookID.Text.Trim(), int.Parse(txt_SL.Text))
+        };
+
+                if (string.IsNullOrWhiteSpace(maDocGia) || string.IsNullOrWhiteSpace(txt_TenDocGia.Text) || string.IsNullOrWhiteSpace(comboBox_books.Text) || string.IsNullOrWhiteSpace(txt_SL.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin phiếu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -336,12 +346,6 @@ namespace QLThuVien
                 if (success)
                 {
                     MessageBox.Show("Tạo phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //txt_MaPhieu.Clear();
-                    //txt_MaDocGia.Clear();
-                    //txt_BookID.Clear();
-                    //txt_SL.Clear();
-                    //txt_TenDocGia.Clear();
-                    //comboBox_books.Items.Clear();
                     this.Hide();
                 }
             }
@@ -365,7 +369,8 @@ namespace QLThuVien
 
         private void AddBorrow_Load(object sender, EventArgs e)
         {
-
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy"; // Đặt lại định dạng
+            dateTimePicker1.Value = DateTime.Now;       // Đặt ngày mặc định là hôm nay
         }
     }
 }

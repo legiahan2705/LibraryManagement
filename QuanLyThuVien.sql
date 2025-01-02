@@ -1,5 +1,7 @@
 --Tao database 
 
+
+
 CREATE DATABASE [QuanLyThuVien]
 
 GO
@@ -147,15 +149,15 @@ CREATE TABLE [dbo].[TheLoai](
 );
 
 GO
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100000  ', N'Điện , Điện Tử , Tự Động Hóa', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100001  ', N'Khoa Học', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100003  ', N'Tham Khảo', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100004  ', N'CNTT', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100006  ', N'Toán', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100007  ', N'Vật Lý', N'1111111111111')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100008  ', N'Kiến Trúc', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100009  ', N'Hóa Học', N'Không có thông tin')
-INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100010  ', N'Xây Dựng', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100000', N'Điện , Điện Tử , Tự Động Hóa', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100001', N'Khoa Học', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100002', N'Tham Khảo', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100003', N'CNTT', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100004', N'Toán', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100005', N'Vật Lý', N'1111111111111')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100006', N'Kiến Trúc', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100007', N'Hóa Học', N'Không có thông tin')
+INSERT [dbo].[TheLoai] ([MaTL], [Ten], [ThongTin]) VALUES (N'TL100008', N'Xây Dựng', N'Không có thông tin')
 GO
 
 -- Tạo bảng Sach (Sách)
@@ -182,7 +184,7 @@ Bởi ai mà chẳng thấy hấp dẫn với những mẩu chuyện kỳ thú v
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100005  ', N'A Mind For Numbers - Cách Chinh Phục Toán Và Khoa Học', N'TL100006  ', 25, N'Nxb Thế giới', CAST(N'2020-07-07' AS Date), N'A Mind for Numbers- Cách chinh phục Toán và Khoa học, đưa ra các cách thức giúp học sinh – sinh viên đang gặp rắc rối với môn toán và khoa học biết cách khai mở và sử dụng nguồn tài nguyên vô tận trong chính bộ não của mình, qua đó không chỉ chinh phục thành công bộ môn này mà đồng trời trở nên xuất sắc hơn bao giờ hết. Cuốn sách cũng giúp ích cho những người đã đi làm biết cách sáng tạo và sắp xếp công việc của mình, đồng thời phát triển nó lên một tầm cao mới, thông qua các kỹ thuật tư duy hoàn hảo.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100006  ', N'Những Điều Tưởng Chừng Bất Khả', N'TL100007  ', 27, N'Nxb Thế giới', CAST(N'2020-07-07' AS Date), N'trong Vật lý của những điều tưởng chừng bất khả, nhà vật lý Michio Kaku khám phá khả năng đưa những công nghệ và thiết bị từ lãnh địa của khoa học viễn tưởng vào cuộc sống thường nhật trong tương lai.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100007  ', N'Vật Lý Của Những Điều Tưởng Chừng Bất Khả', N'TL100007  ', 13, N'Nxb Thế giới', CAST(N'2020-07-07' AS Date), N'Trong Vật lý của những điều tưởng chừng bất khả, nhà vật lý Michio Kaku khám phá khả năng đưa những công nghệ và thiết bị từ lãnh địa của khoa học viễn tưởng vào cuộc sống thường nhật trong tương lai.')
-INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100008  ', N'Bài Học Hay Nhất Về Vật Lý ', N'TL100007  ', 33, N'Nxb Thế giới', CAST(N'2020-07-07' AS Date), N'Cuốn sách 7 bài học hay nhất về Vật lý là một bản tổng kết nhanh những tri thức quan trọng đã tạo nên cuộc cách mạng vĩ đại trong nền vật lý thế kỷ XX như thuyết tương đối rộng, cơ học lượng tử, vũ trụ học, hạt cơ bản, lý thuyết hấp dẫn lượng tử, hố đen. Cuốn sách cũng đề cập đến ý nghĩa của tất cả những tri thức ấy với nhận thức của con người ngày nay.')
+INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100008  ', N'Bài Học Hay Nhất Về Vật Lý ', N'TL100002  ', 33, N'Nxb Thế giới', CAST(N'2020-07-07' AS Date), N'Cuốn sách 7 bài học hay nhất về Vật lý là một bản tổng kết nhanh những tri thức quan trọng đã tạo nên cuộc cách mạng vĩ đại trong nền vật lý thế kỷ XX như thuyết tương đối rộng, cơ học lượng tử, vũ trụ học, hạt cơ bản, lý thuyết hấp dẫn lượng tử, hố đen. Cuốn sách cũng đề cập đến ý nghĩa của tất cả những tri thức ấy với nhận thức của con người ngày nay.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100009  ', N'Ngôi Nhà Việt', N'TL100008  ', 34, N'Nxb Tổng hợp TP.HCM', CAST(N'2020-07-07' AS Date), N'Tuy đã giảng dạy lâu năm về kiến trúc, nhưng khi được yêu cầu trình bày về ngôi nhà của thường dân người Việt, kiến trúc sư Thái thú nhận bản thân mình cũng lúng túng do chưa am hiểu thấu đáo về sự xuất hiện, tồn tại và biến chuyển của ngôi nhà. Chỉ gần đây, do yêu cầu viết một biên khảo về nếp ở của người Việt, anh mới tập trung nghiên cứu lại vấn đề một cách căn cơ hơn.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100010  ', N'Những Ngôi Nhà Kết Hợp Công Việc', N'TL100008  ', 39, N'Nxb Trẻ', CAST(N'2020-07-07' AS Date), N'Bộ sách dành cho bạn trẻ luôn mong muốn sau này chính tay mình dựng lên những tòa nhà trong mơ dành cho mình và người thân, bạn bè.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100011  ', N'Khám Phá Thiết Kế Đô Thị Hàn Quốc', N'TL100008  ', 26, N'NXB Văn hóa - Văn nghệ', CAST(N'2020-07-07' AS Date), N'Có thể nói rằng vấn đề của bản sắc đô thị Hàn Quốc nảy sinh từ chính sự thiếu nhận thức về bản thân chứ không phải từ điều gì khác. Điều này một phần cũng do những sai lầm lịch sử lâu dài bắt đầu từ thời Nhật đô hộ khi người Hàn Quốc dần quen nhìn nhận cuộc sống và không gian sống của bản thân bằng cái nhìn của người khác….')
@@ -193,7 +195,7 @@ INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiD
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100019  ', N'Điều Khiển Xa Với ARDUINO & ESP32', N'TL100000  ', 34, N'Thanh Niên', CAST(N'2020-07-07' AS Date), N'Sách "Điều Khiển Xa Với ARDUINO & ESP32" giúp bạn bắt đầu làm việc với công nghệ phổ biến nhất trong thời điểm hiện tại (truyền thông không dây) để kết nối các thiết bị và hệ thống với Internet bằng cảm biến. ')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100020  ', N'Sổ Tay Kỹ Thuật Thi Công Nhà Ở Gia Đình', N'TL100010  ', 30, N'NXB Khoa học và kỹ thuật', CAST(N'2020-07-07' AS Date), N'Cuốn sổ tay này chủ yếu đề cập đến các yêu cầu và kỹ thuật thi công các bộ phận của nhà, đặc biệt là một số kinh nghiệm từ thực thể thi công chống thấm cho mái bằng, cho tường ngoài, cho tường khu phụ, cho bể nước,... chống nóng cho mái bằng và nhất là kỹ thuật thi công móng của các loại đất nền, móng khi xây chen, móng cọc tre, khắc phục hiện tượng cát chảy; làm bếp cải tiến xây bể tự hoại,..')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100021  ', N'Công Suất - Bộ Biến Đổi Cộng Hưởng Và Ballast Điện Tử', N'TL100000  ', 35, N'Thanh Niên', CAST(N'2020-07-07' AS Date), N': Điện tử công suất là môn học đã và đang được đưa vào giảng dạy tại các trường Cao đẳng, Đại học chuyên ngành điện. Môn học Điện tử công suất ngoài việc nghiên cứu bản chất vật lý, các quá trình diễn ra trong các linh kiện điện tử công suất như Diode, Thyristor, GTO, Triac, Mosfet công suất, IGBT, SID, MCT... làm việc ở chế độ chuyển mạch trong quá trình biến đổi điện năng. Khảo sát các tính năng kỹ thuật và những ứng dụng của các linh kiện này.')
-INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100022  ', N'. Cơ Sở Thiết Kế Và Gia Công Cơ Khí', N'TL100000  ', 38, N'Bách khoa Hà Nội', CAST(N'2020-07-07' AS Date), N'Cuốn sách này được biên soạn theo yêu cầu dạy học chuyên ngành lắp đặt và bảo trì sửa chữa thiết bị cơ điện cùng các chuyên ngành liên quan trong các trường trung cấp nghề hiện nay của Trung Quốc, có tham khảo các quy phạm thẩm định kỹ năng nghề của các ngành nghề liên quan và tiêu chuẩn cấp bậc công nhân kỹ thuật. ')
+INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100022  ', N'. Cơ Sở Thiết Kế Và Gia Công Cơ Khí', N'TL100001  ', 38, N'Bách khoa Hà Nội', CAST(N'2020-07-07' AS Date), N'Cuốn sách này được biên soạn theo yêu cầu dạy học chuyên ngành lắp đặt và bảo trì sửa chữa thiết bị cơ điện cùng các chuyên ngành liên quan trong các trường trung cấp nghề hiện nay của Trung Quốc, có tham khảo các quy phạm thẩm định kỹ năng nghề của các ngành nghề liên quan và tiêu chuẩn cấp bậc công nhân kỹ thuật. ')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100023  ', N'Ngôi Nhà Hạnh Phúc', N'TL100008  ', 39, N'Nxb Tổng hợp TP.HCM', CAST(N'2020-07-07' AS Date), N'Tuy đã giảng dạy lâu năm về kiến trúc, nhưng khi được yêu cầu trình bày về ngôi nhà của thường dân người Việt, kiến trúc sư Thái thú nhận bản thân mình cũng lúng túng do chưa am hiểu thấu đáo về sự xuất hiện, tồn tại và biến chuyển của ngôi nhà. Chỉ gần đây, do yêu cầu viết một biên khảo về nếp ở của người Việt, anh mới tập trung nghiên cứu lại vấn đề một cách căn cơ hơn.')
 INSERT [dbo].[Sach] ([MaSach], [TenSach], [MaTL], [SL], [NXB], [NgayNhap], [NoiDung]) VALUES (N'SG100024  ', N'Giai Tích', N'TL100006  ', 19, N'NXB Dân Trí', CAST(N'2020-07-07' AS Date), N'Toán học đại học .')
 GO
@@ -236,50 +238,6 @@ INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG10002
 INSERT [dbo].[TacGia] ([MaTG], [Ten], [NgaySinh], [GioiThieu]) VALUES (N'TG100028  ', N'Nguyễn Bá Đô', CAST(N'1888-02-07' AS Date), N'Không có thông tin')
 GO
 
--- Tạo bảng TacGiaVietSach (Tác giả viết sách)
-CREATE TABLE [dbo].[TacGiaVietSach](
-    [MaSach] CHAR(10) NOT NULL,          -- Mã sách
-    [MaTG] CHAR(10) NOT NULL,            -- Mã tác giả
-    PRIMARY KEY ([MaSach], [MaTG]),
-    CONSTRAINT FK_TacGiaVietSach_Sach FOREIGN KEY ([MaSach]) REFERENCES [Sach]([MaSach]) ON DELETE CASCADE,
-    CONSTRAINT FK_TacGiaVietSach_TacGia FOREIGN KEY ([MaTG]) REFERENCES [TacGia]([MaTG]) ON DELETE CASCADE
-);
-
-GO
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100011  ', N'TG100025  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100010  ', N'TG100024  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100006  ', N'TG100002  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100005  ', N'TG100003  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100004  ', N'TG100023  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100000  ', N'TG100000  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100014  ', N'TG100026  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100014  ', N'TG100027  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100015  ', N'TG100003  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100015  ', N'TG100019  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100000  ', N'TG100007  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100000  ', N'TG100002  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100012  ', N'TG100006  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100013  ', N'TG100002  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100013  ', N'TG100017  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100008  ', N'TG100008  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100007  ', N'TG100002  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100001  ', N'TG100007  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100003  ', N'TG100001  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100001  ', N'TG100022  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100009  ', N'TG100007  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100024  ', N'TG100001  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100023  ', N'TG100007  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100023  ', N'TG100024  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100024  ', N'TG100021  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100019  ', N'TG100010  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100019  ', N'TG100009  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100020  ', N'TG100004  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100021  ', N'TG100020  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100021  ', N'TG100021  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100022  ', N'TG100011  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100002  ', N'TG100007  ')
-INSERT [dbo].[TacGiaVietSach] ([Masach], [MaTG]) VALUES (N'SG100002  ', N'TG100006  ')
-GO
 
 -- Tạo bảng QuanLySach (Quản lý sách)
 CREATE TABLE [dbo].[QuanLySach](
@@ -392,9 +350,18 @@ CREATE TABLE [dbo].[Phieu](
     CONSTRAINT FK_Phieu_Docgia FOREIGN KEY ([MaDG]) REFERENCES [Docgia]([MaDG]) ON DELETE CASCADE
 );
 
+GO
 INSERT INTO Phieu (MaPhieu, MaDG, NgayMuon, NgayTra, TrangThai)
 VALUES
-('P001', '5951071111', '2024-12-22', NULL, N'Chưa trả');
+('P001', '5951071111', '2024-01-10', DATEADD(DAY, 14, '2024-01-10'), N'Chưa trả'), 
+('P002', '5951071112', '2024-04-05', DATEADD(DAY, 14, '2024-04-05'), N'Chưa trả'),  
+('P003', '5951071113', '2024-07-15', DATEADD(DAY, 14, '2024-07-15'), N'Chưa trả'), 
+('P004', '5951071114', '2024-10-01', DATEADD(DAY, 14, '2024-10-01'), N'Chưa trả'),  
+('P005', '5951071115', '2024-01-15', DATEADD(DAY, 14, '2024-01-15'), N'Chưa trả'), 
+('P006', '5951071116', '2024-05-20', DATEADD(DAY, 14, '2024-05-20'), N'Chưa trả'),  
+('P007', '5951071117', '2024-09-02', DATEADD(DAY, 14, '2024-09-02'), N'Chưa trả'),  
+('P008', '5951071118', '2024-12-10', DATEADD(DAY, 14, '2024-12-10'), N'Chưa trả');
+
 
 -- Tạo bảng ChiTietPhieu (Chi tiết phiếu mượn)
 CREATE TABLE [dbo].[ChiTietPhieu](
@@ -408,8 +375,15 @@ CREATE TABLE [dbo].[ChiTietPhieu](
 
 INSERT INTO ChiTietPhieu (MaPhieu, MaSach, SoLuong)
 VALUES
-('P001', 'SG100000', 2),
-('P001', 'SG100001', 1);
+('P001', 'SG100000', 2),  -- Phiếu P001 mượn 2 cuốn sách với mã SG100000
+('P001', 'SG100001', 1),  -- Phiếu P001 mượn 1 cuốn sách với mã SG100001
+('P002', 'SG100002', 3),  -- Phiếu P002 mượn 3 cuốn sách với mã SG100002
+('P003', 'SG100003', 1),  -- Phiếu P003 mượn 1 cuốn sách với mã SG100003
+('P004', 'SG100000', 2),  -- Phiếu P004 mượn 2 cuốn sách với mã SG100000
+('P005', 'SG100001', 1),  -- Phiếu P005 mượn 1 cuốn sách với mã SG100001
+('P006', 'SG100002', 3),  -- Phiếu P006 mượn 3 cuốn sách với mã SG100002
+('P007', 'SG100003', 1),  -- Phiếu P007 mượn 1 cuốn sách với mã SG100003
+('P008', 'SG100000', 2);  -- Phiếu P008 mượn 2 cuốn sách với mã SG100000
 
 
 SELECT t.MaTL,

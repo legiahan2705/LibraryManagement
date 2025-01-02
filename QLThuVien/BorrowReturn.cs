@@ -516,8 +516,21 @@ namespace QLThuVien
 
         private void setupDataGridView()
         {
+            // Lấy dữ liệu và gán vào DataGridView
             DataTable data = _blGetPhieuDetails.bl_getphieuDetails();
             dataGridView2.DataSource = data;
+
+            // Đăng ký sự kiện DataBindingComplete để định dạng cột sau khi dữ liệu được gán
+            dataGridView2.DataBindingComplete += (s, e) =>
+            {
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        row.Cells[8].Style.Font = new Font(dataGridView2.Font, FontStyle.Bold);
+                    }
+                }
+            };
 
             // Tắt tự động điều chỉnh kích thước cột
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
@@ -546,8 +559,9 @@ namespace QLThuVien
             dataGridView2.Columns[7].Width = 110;
             dataGridView2.Columns[8].Width = 100;
 
-
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView2.Font, FontStyle.Bold);
         }
+
         private void load_slips()
         {
             // Gọi phương thức thiết lập DataGridView chỉ một lần
@@ -557,6 +571,8 @@ namespace QLThuVien
 
         private void pnlManaageBorrowBTN_Click(object sender, EventArgs e)
         {
+            // Thiết lập các ô cột thứ 9 thành bold
+            
             load_slips();
 
             pnlReader.Visible = false;
@@ -673,6 +689,8 @@ namespace QLThuVien
             string result = _blReturnPhieu.bl_ReturnPhieu(txt_MaPhieu.Text, DateTime.Parse(txt_NgayMuon.Text));
             MessageBox.Show(result);
             SetupGridReturn();
+
+           
         }
     }
 }

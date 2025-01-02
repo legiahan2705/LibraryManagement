@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reports));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             lblLogOut = new Label();
             lblReports = new Label();
             picIconReports = new PictureBox();
@@ -61,23 +61,10 @@
             lblEmployeeName = new Label();
             pictureBox2 = new PictureBox();
             lblDashBoardTitle = new Label();
-            pnlBookBorrowing = new Panel();
             pnl_Quarter = new Panel();
             dgvQuarter = new DataGridView();
             column = new DataGridViewTextBoxColumn();
             columnTotalQuarter = new DataGridViewTextBoxColumn();
-            pnl_Month = new Panel();
-            dgvMonth = new DataGridView();
-            columnMonth = new DataGridViewTextBoxColumn();
-            columnTotal = new DataGridViewTextBoxColumn();
-            btnMonth = new Button();
-            btnQuarter = new Button();
-            clbMonth = new CheckedListBox();
-            label3 = new Label();
-            label2 = new Label();
-            clbQuarter = new CheckedListBox();
-            label1 = new Label();
-            txtYear = new TextBox();
             pnlMostBorrowedBook = new Panel();
             txtTopN = new TextBox();
             label7 = new Label();
@@ -98,6 +85,19 @@
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             pnlBookBorrowingBTN = new Panel();
             pnlMostBorrowedBTN = new Panel();
+            txtYear = new TextBox();
+            label1 = new Label();
+            clbQuarter = new CheckedListBox();
+            label2 = new Label();
+            label3 = new Label();
+            clbMonth = new CheckedListBox();
+            btnQuarter = new Button();
+            btnMonth = new Button();
+            pnl_Month = new Panel();
+            dgvMonth = new DataGridView();
+            columnTotal = new DataGridViewTextBoxColumn();
+            columnMonth = new DataGridViewTextBoxColumn();
+            pnlBookBorrowing = new Panel();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconBorrowReturn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).BeginInit();
@@ -113,13 +113,13 @@
             pnlLogOut.SuspendLayout();
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            pnlBookBorrowing.SuspendLayout();
             pnl_Quarter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvQuarter).BeginInit();
-            pnl_Month.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMonth).BeginInit();
             pnlMostBorrowedBook.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTop5Book).BeginInit();
+            pnl_Month.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMonth).BeginInit();
+            pnlBookBorrowing.SuspendLayout();
             SuspendLayout();
             // 
             // lblLogOut
@@ -446,24 +446,6 @@
             lblDashBoardTitle.TabIndex = 38;
             lblDashBoardTitle.Text = "Reports";
             // 
-            // pnlBookBorrowing
-            // 
-            pnlBookBorrowing.BackColor = Color.White;
-            pnlBookBorrowing.Controls.Add(pnl_Quarter);
-            pnlBookBorrowing.Controls.Add(pnl_Month);
-            pnlBookBorrowing.Controls.Add(btnMonth);
-            pnlBookBorrowing.Controls.Add(btnQuarter);
-            pnlBookBorrowing.Controls.Add(clbMonth);
-            pnlBookBorrowing.Controls.Add(label3);
-            pnlBookBorrowing.Controls.Add(label2);
-            pnlBookBorrowing.Controls.Add(clbQuarter);
-            pnlBookBorrowing.Controls.Add(label1);
-            pnlBookBorrowing.Controls.Add(txtYear);
-            pnlBookBorrowing.Location = new Point(316, 315);
-            pnlBookBorrowing.Name = "pnlBookBorrowing";
-            pnlBookBorrowing.Size = new Size(931, 549);
-            pnlBookBorrowing.TabIndex = 39;
-            // 
             // pnl_Quarter
             // 
             pnl_Quarter.Controls.Add(dgvQuarter);
@@ -476,26 +458,27 @@
             // 
             dgvQuarter.BackgroundColor = Color.White;
             dgvQuarter.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvQuarter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Control;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvQuarter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvQuarter.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvQuarter.Columns.AddRange(new DataGridViewColumn[] { column, columnTotalQuarter });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvQuarter.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dgvQuarter.DefaultCellStyle = dataGridViewCellStyle9;
             dgvQuarter.Location = new Point(3, 6);
             dgvQuarter.Name = "dgvQuarter";
+            dgvQuarter.ReadOnly = true;
             dgvQuarter.RowHeadersWidth = 51;
             dgvQuarter.Size = new Size(343, 134);
             dgvQuarter.TabIndex = 9;
@@ -505,6 +488,7 @@
             column.HeaderText = "Quarter";
             column.MinimumWidth = 6;
             column.Name = "column";
+            column.ReadOnly = true;
             column.Width = 88;
             // 
             // columnTotalQuarter
@@ -512,153 +496,8 @@
             columnTotalQuarter.HeaderText = "Total Borrowed Books";
             columnTotalQuarter.MinimumWidth = 6;
             columnTotalQuarter.Name = "columnTotalQuarter";
+            columnTotalQuarter.ReadOnly = true;
             columnTotalQuarter.Width = 200;
-            // 
-            // pnl_Month
-            // 
-            pnl_Month.Controls.Add(dgvMonth);
-            pnl_Month.Location = new Point(3, 127);
-            pnl_Month.Name = "pnl_Month";
-            pnl_Month.Size = new Size(928, 419);
-            pnl_Month.TabIndex = 43;
-            // 
-            // dgvMonth
-            // 
-            dgvMonth.BackgroundColor = Color.White;
-            dgvMonth.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvMonth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgvMonth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMonth.Columns.AddRange(new DataGridViewColumn[] { columnMonth, columnTotal });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvMonth.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvMonth.Location = new Point(3, 6);
-            dgvMonth.Name = "dgvMonth";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvMonth.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dgvMonth.RowHeadersWidth = 51;
-            dgvMonth.Size = new Size(333, 134);
-            dgvMonth.TabIndex = 8;
-            // 
-            // columnMonth
-            // 
-            columnMonth.HeaderText = "Month";
-            columnMonth.MinimumWidth = 6;
-            columnMonth.Name = "columnMonth";
-            columnMonth.Width = 81;
-            // 
-            // columnTotal
-            // 
-            columnTotal.HeaderText = "Total Borrowed Books";
-            columnTotal.MinimumWidth = 6;
-            columnTotal.Name = "columnTotal";
-            columnTotal.Width = 200;
-            // 
-            // btnMonth
-            // 
-            btnMonth.BackColor = Color.Lavender;
-            btnMonth.Cursor = Cursors.Hand;
-            btnMonth.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnMonth.Location = new Point(635, 56);
-            btnMonth.Name = "btnMonth";
-            btnMonth.Size = new Size(98, 48);
-            btnMonth.TabIndex = 7;
-            btnMonth.Text = "Monthly Report";
-            btnMonth.UseVisualStyleBackColor = false;
-            btnMonth.Click += btnMonth_Click;
-            // 
-            // btnQuarter
-            // 
-            btnQuarter.BackColor = Color.Lavender;
-            btnQuarter.Cursor = Cursors.Hand;
-            btnQuarter.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnQuarter.Location = new Point(327, 52);
-            btnQuarter.Name = "btnQuarter";
-            btnQuarter.Size = new Size(98, 48);
-            btnQuarter.TabIndex = 6;
-            btnQuarter.Text = "Quarterly Report";
-            btnQuarter.UseVisualStyleBackColor = false;
-            btnQuarter.Click += btnQuarter_Click;
-            // 
-            // clbMonth
-            // 
-            clbMonth.BackColor = Color.White;
-            clbMonth.CheckOnClick = true;
-            clbMonth.Cursor = Cursors.Hand;
-            clbMonth.FormattingEnabled = true;
-            clbMonth.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" });
-            clbMonth.Location = new Point(760, 8);
-            clbMonth.Name = "clbMonth";
-            clbMonth.Size = new Size(109, 92);
-            clbMonth.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label3.Location = new Point(616, 8);
-            label3.Name = "label3";
-            label3.Size = new Size(138, 28);
-            label3.TabIndex = 4;
-            label3.Text = "Select Month";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label2.Location = new Point(303, 8);
-            label2.Name = "label2";
-            label2.Size = new Size(149, 28);
-            label2.TabIndex = 3;
-            label2.Text = "Select Quarter";
-            // 
-            // clbQuarter
-            // 
-            clbQuarter.BackColor = Color.White;
-            clbQuarter.CheckOnClick = true;
-            clbQuarter.Cursor = Cursors.Hand;
-            clbQuarter.FormattingEnabled = true;
-            clbQuarter.Items.AddRange(new object[] { "1", "2", "3", "4" });
-            clbQuarter.Location = new Point(458, 8);
-            clbQuarter.Name = "clbQuarter";
-            clbQuarter.Size = new Size(109, 92);
-            clbQuarter.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label1.Location = new Point(67, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(52, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Year";
-            // 
-            // txtYear
-            // 
-            txtYear.BackColor = Color.White;
-            txtYear.Location = new Point(125, 8);
-            txtYear.Name = "txtYear";
-            txtYear.Size = new Size(118, 27);
-            txtYear.TabIndex = 0;
             // 
             // pnlMostBorrowedBook
             // 
@@ -682,6 +521,7 @@
             // 
             // txtTopN
             // 
+            txtTopN.Cursor = Cursors.IBeam;
             txtTopN.Location = new Point(67, 42);
             txtTopN.Name = "txtTopN";
             txtTopN.Size = new Size(151, 27);
@@ -693,32 +533,32 @@
             label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             label7.Location = new Point(60, 13);
             label7.Name = "label7";
-            label7.Size = new Size(163, 23);
+            label7.Size = new Size(157, 23);
             label7.TabIndex = 10;
-            label7.Text = "Select Top N Books";
+            label7.Text = "Enter Top N Books";
             // 
             // dgvTop5Book
             // 
             dgvTop5Book.BackgroundColor = Color.White;
             dgvTop5Book.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvTop5Book.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvTop5Book.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dgvTop5Book.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTop5Book.Columns.AddRange(new DataGridViewColumn[] { columnSTT, columnMaSach, columnTenSach, columnTongSoLuong });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dgvTop5Book.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvTop5Book.DefaultCellStyle = dataGridViewCellStyle11;
             dgvTop5Book.Location = new Point(180, 150);
             dgvTop5Book.Name = "dgvTop5Book";
             dgvTop5Book.ReadOnly = true;
@@ -799,6 +639,7 @@
             // 
             // cb_Quarter
             // 
+            cb_Quarter.Cursor = Cursors.Hand;
             cb_Quarter.FormattingEnabled = true;
             cb_Quarter.Items.AddRange(new object[] { "1", "2", "3", "4" });
             cb_Quarter.Location = new Point(501, 40);
@@ -808,6 +649,7 @@
             // 
             // cb_Month
             // 
+            cb_Month.Cursor = Cursors.Hand;
             cb_Month.FormattingEnabled = true;
             cb_Month.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" });
             cb_Month.Location = new Point(718, 41);
@@ -841,12 +683,13 @@
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             label4.Location = new Point(314, 12);
             label4.Name = "label4";
-            label4.Size = new Size(96, 23);
+            label4.Size = new Size(90, 23);
             label4.TabIndex = 1;
-            label4.Text = "Select Year";
+            label4.Text = "Enter Year";
             // 
             // txt_Year
             // 
+            txt_Year.Cursor = Cursors.IBeam;
             txt_Year.Location = new Point(285, 41);
             txt_Year.Name = "txt_Year";
             txt_Year.Size = new Size(151, 27);
@@ -876,6 +719,174 @@
             pnlMostBorrowedBTN.Size = new Size(207, 113);
             pnlMostBorrowedBTN.TabIndex = 41;
             pnlMostBorrowedBTN.Click += pnlMostBorrowedBTN_Click;
+            // 
+            // txtYear
+            // 
+            txtYear.BackColor = Color.White;
+            txtYear.Cursor = Cursors.IBeam;
+            txtYear.Location = new Point(157, 3);
+            txtYear.Name = "txtYear";
+            txtYear.Size = new Size(118, 27);
+            txtYear.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label1.Location = new Point(38, 3);
+            label1.Name = "label1";
+            label1.Size = new Size(108, 28);
+            label1.TabIndex = 1;
+            label1.Text = "Enter Year";
+            // 
+            // clbQuarter
+            // 
+            clbQuarter.BackColor = Color.White;
+            clbQuarter.CheckOnClick = true;
+            clbQuarter.Cursor = Cursors.Hand;
+            clbQuarter.FormattingEnabled = true;
+            clbQuarter.Items.AddRange(new object[] { "1", "2", "3", "4" });
+            clbQuarter.Location = new Point(490, 3);
+            clbQuarter.Name = "clbQuarter";
+            clbQuarter.Size = new Size(109, 92);
+            clbQuarter.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label2.Location = new Point(335, 3);
+            label2.Name = "label2";
+            label2.Size = new Size(149, 28);
+            label2.TabIndex = 3;
+            label2.Text = "Select Quarter";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label3.Location = new Point(648, 3);
+            label3.Name = "label3";
+            label3.Size = new Size(138, 28);
+            label3.TabIndex = 4;
+            label3.Text = "Select Month";
+            // 
+            // clbMonth
+            // 
+            clbMonth.BackColor = Color.White;
+            clbMonth.CheckOnClick = true;
+            clbMonth.Cursor = Cursors.Hand;
+            clbMonth.FormattingEnabled = true;
+            clbMonth.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" });
+            clbMonth.Location = new Point(792, 3);
+            clbMonth.Name = "clbMonth";
+            clbMonth.Size = new Size(109, 92);
+            clbMonth.TabIndex = 5;
+            // 
+            // btnQuarter
+            // 
+            btnQuarter.BackColor = Color.Lavender;
+            btnQuarter.Cursor = Cursors.Hand;
+            btnQuarter.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnQuarter.Location = new Point(359, 47);
+            btnQuarter.Name = "btnQuarter";
+            btnQuarter.Size = new Size(98, 48);
+            btnQuarter.TabIndex = 6;
+            btnQuarter.Text = "Quarterly Report";
+            btnQuarter.UseVisualStyleBackColor = false;
+            btnQuarter.Click += btnQuarter_Click;
+            // 
+            // btnMonth
+            // 
+            btnMonth.BackColor = Color.Lavender;
+            btnMonth.Cursor = Cursors.Hand;
+            btnMonth.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnMonth.Location = new Point(667, 51);
+            btnMonth.Name = "btnMonth";
+            btnMonth.Size = new Size(98, 48);
+            btnMonth.TabIndex = 7;
+            btnMonth.Text = "Monthly Report";
+            btnMonth.UseVisualStyleBackColor = false;
+            btnMonth.Click += btnMonth_Click;
+            // 
+            // pnl_Month
+            // 
+            pnl_Month.Controls.Add(dgvMonth);
+            pnl_Month.Location = new Point(3, 127);
+            pnl_Month.Name = "pnl_Month";
+            pnl_Month.Size = new Size(928, 419);
+            pnl_Month.TabIndex = 43;
+            // 
+            // dgvMonth
+            // 
+            dgvMonth.BackgroundColor = Color.White;
+            dgvMonth.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Control;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvMonth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dgvMonth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMonth.Columns.AddRange(new DataGridViewColumn[] { columnMonth, columnTotal });
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = SystemColors.Window;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle13.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
+            dgvMonth.DefaultCellStyle = dataGridViewCellStyle13;
+            dgvMonth.Location = new Point(3, 6);
+            dgvMonth.Name = "dgvMonth";
+            dgvMonth.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.Control;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dgvMonth.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dgvMonth.RowHeadersWidth = 51;
+            dgvMonth.Size = new Size(333, 134);
+            dgvMonth.TabIndex = 8;
+            // 
+            // columnTotal
+            // 
+            columnTotal.HeaderText = "Total Borrowed Books";
+            columnTotal.MinimumWidth = 6;
+            columnTotal.Name = "columnTotal";
+            columnTotal.ReadOnly = true;
+            columnTotal.Width = 200;
+            // 
+            // columnMonth
+            // 
+            columnMonth.HeaderText = "Month";
+            columnMonth.MinimumWidth = 6;
+            columnMonth.Name = "columnMonth";
+            columnMonth.ReadOnly = true;
+            columnMonth.Width = 81;
+            // 
+            // pnlBookBorrowing
+            // 
+            pnlBookBorrowing.BackColor = Color.White;
+            pnlBookBorrowing.Controls.Add(pnl_Quarter);
+            pnlBookBorrowing.Controls.Add(pnl_Month);
+            pnlBookBorrowing.Controls.Add(btnMonth);
+            pnlBookBorrowing.Controls.Add(btnQuarter);
+            pnlBookBorrowing.Controls.Add(clbMonth);
+            pnlBookBorrowing.Controls.Add(label3);
+            pnlBookBorrowing.Controls.Add(label2);
+            pnlBookBorrowing.Controls.Add(clbQuarter);
+            pnlBookBorrowing.Controls.Add(label1);
+            pnlBookBorrowing.Controls.Add(txtYear);
+            pnlBookBorrowing.Location = new Point(316, 315);
+            pnlBookBorrowing.Name = "pnlBookBorrowing";
+            pnlBookBorrowing.Size = new Size(931, 549);
+            pnlBookBorrowing.TabIndex = 39;
             // 
             // Reports
             // 
@@ -927,15 +938,15 @@
             pnlDashBoard.ResumeLayout(false);
             pnlDashBoard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            pnlBookBorrowing.ResumeLayout(false);
-            pnlBookBorrowing.PerformLayout();
             pnl_Quarter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvQuarter).EndInit();
-            pnl_Month.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvMonth).EndInit();
             pnlMostBorrowedBook.ResumeLayout(false);
             pnlMostBorrowedBook.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTop5Book).EndInit();
+            pnl_Month.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvMonth).EndInit();
+            pnlBookBorrowing.ResumeLayout(false);
+            pnlBookBorrowing.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -967,24 +978,12 @@
         private Label lblEmployeeName;
         private PictureBox pictureBox2;
         private Label lblDashBoardTitle;
-        private Panel pnlBookBorrowing;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Panel pnlBookBorrowingBTN;
         private Panel pnlMostBorrowedBTN;
-        private CheckedListBox clbQuarter;
-        private Label label1;
-        private TextBox txtYear;
-        private CheckedListBox clbMonth;
-        private Label label3;
-        private Label label2;
-        private Button btnMonth;
-        private Button btnQuarter;
-        private DataGridView dgvMonth;
         private DataGridView dgvQuarter;
         private DataGridViewTextBoxColumn column;
         private DataGridViewTextBoxColumn columnTotalQuarter;
-        private DataGridViewTextBoxColumn columnMonth;
-        private DataGridViewTextBoxColumn columnTotal;
         private Panel pnlMostBorrowedBook;
         private Label label4;
         private TextBox txt_Year;
@@ -1002,7 +1001,19 @@
         private DataGridViewTextBoxColumn columnMaSach;
         private DataGridViewTextBoxColumn columnTenSach;
         private DataGridViewTextBoxColumn columnTongSoLuong;
-        private Panel pnl_Month;
         private Panel pnl_Quarter;
+        private TextBox txtYear;
+        private Label label1;
+        private CheckedListBox clbQuarter;
+        private Label label2;
+        private Label label3;
+        private CheckedListBox clbMonth;
+        private Button btnQuarter;
+        private Button btnMonth;
+        private Panel pnl_Month;
+        private DataGridView dgvMonth;
+        private DataGridViewTextBoxColumn columnMonth;
+        private DataGridViewTextBoxColumn columnTotal;
+        private Panel pnlBookBorrowing;
     }
 }

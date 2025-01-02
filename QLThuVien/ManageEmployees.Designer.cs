@@ -241,6 +241,7 @@
             lblManageBooks.Size = new Size(151, 28);
             lblManageBooks.TabIndex = 0;
             lblManageBooks.Text = "Manage Books";
+            lblManageBooks.Click += pnlManageBooks_Click;
             lblManageBooks.MouseEnter += HoverEffect_MouseEnter;
             lblManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 
@@ -253,6 +254,7 @@
             picIconManageBooks.SizeMode = PictureBoxSizeMode.Zoom;
             picIconManageBooks.TabIndex = 1;
             picIconManageBooks.TabStop = false;
+            picIconManageBooks.Click += pnlManageBooks_Click;
             picIconManageBooks.MouseEnter += HoverEffect_MouseEnter;
             picIconManageBooks.MouseLeave += HoverEffect_MouseLeave;
             // 

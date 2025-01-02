@@ -850,7 +850,7 @@
             // 
             // txt_NgayMuon
             // 
-            txt_NgayMuon.Location = new Point(140, 331);
+            txt_NgayMuon.Location = new Point(140, 335);
             txt_NgayMuon.Name = "txt_NgayMuon";
             txt_NgayMuon.ReadOnly = true;
             txt_NgayMuon.Size = new Size(167, 27);
@@ -874,9 +874,11 @@
             // 
             // btn_TraPhieu
             // 
-            btn_TraPhieu.Location = new Point(427, 453);
+            btn_TraPhieu.Cursor = Cursors.Hand;
+            btn_TraPhieu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btn_TraPhieu.Location = new Point(417, 446);
             btn_TraPhieu.Name = "btn_TraPhieu";
-            btn_TraPhieu.Size = new Size(94, 29);
+            btn_TraPhieu.Size = new Size(103, 36);
             btn_TraPhieu.TabIndex = 22;
             btn_TraPhieu.Text = "Trả Phiếu";
             btn_TraPhieu.UseVisualStyleBackColor = true;
@@ -885,60 +887,66 @@
             // label14
             // 
             label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label14.Location = new Point(670, 394);
             label14.Name = "label14";
-            label14.Size = new Size(69, 20);
+            label14.Size = new Size(83, 23);
             label14.TabIndex = 21;
             label14.Text = "Số lượng";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(670, 333);
+            label13.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label13.Location = new Point(670, 336);
             label13.Name = "label13";
-            label13.Size = new Size(67, 20);
+            label13.Size = new Size(79, 23);
             label13.TabIndex = 20;
             label13.Text = "Tên Sách";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(670, 274);
+            label12.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label12.Location = new Point(670, 270);
             label12.Name = "label12";
-            label12.Size = new Size(65, 20);
+            label12.Size = new Size(77, 23);
             label12.TabIndex = 19;
             label12.Text = "Mã Sách";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(345, 338);
+            label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label10.Location = new Point(346, 336);
             label10.Name = "label10";
-            label10.Size = new Size(89, 20);
+            label10.Size = new Size(104, 23);
             label10.TabIndex = 17;
             label10.Text = "Tên Độc Giả";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(347, 273);
+            label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label9.Location = new Point(346, 270);
             label9.Name = "label9";
-            label9.Size = new Size(87, 20);
+            label9.Size = new Size(102, 23);
             label9.TabIndex = 16;
             label9.Text = "Mã Độc Giả";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(37, 331);
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label2.Location = new Point(37, 336);
             label2.Name = "label2";
-            label2.Size = new Size(87, 20);
+            label2.Size = new Size(105, 23);
             label2.TabIndex = 14;
             label2.Text = "Ngày mượn";
             // 
             // txt_MaSach
             // 
-            txt_MaSach.Location = new Point(748, 270);
+            txt_MaSach.Location = new Point(748, 268);
             txt_MaSach.Name = "txt_MaSach";
             txt_MaSach.ReadOnly = true;
             txt_MaSach.Size = new Size(163, 27);
@@ -947,9 +955,10 @@
             // lbl_MaPhieu
             // 
             lbl_MaPhieu.AutoSize = true;
+            lbl_MaPhieu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             lbl_MaPhieu.Location = new Point(37, 270);
             lbl_MaPhieu.Name = "lbl_MaPhieu";
-            lbl_MaPhieu.Size = new Size(70, 20);
+            lbl_MaPhieu.Size = new Size(84, 23);
             lbl_MaPhieu.TabIndex = 10;
             lbl_MaPhieu.Text = "Mã Phiếu";
             // 
@@ -958,6 +967,7 @@
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridView3.BackgroundColor = Color.White;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Cursor = Cursors.Hand;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = SystemColors.Window;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
@@ -976,6 +986,8 @@
             // 
             // btn_TimPhieu
             // 
+            btn_TimPhieu.Cursor = Cursors.Hand;
+            btn_TimPhieu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btn_TimPhieu.Location = new Point(392, 40);
             btn_TimPhieu.Name = "btn_TimPhieu";
             btn_TimPhieu.Size = new Size(94, 29);
@@ -986,6 +998,7 @@
             // 
             // txt_MaDG
             // 
+            txt_MaDG.Cursor = Cursors.IBeam;
             txt_MaDG.Location = new Point(164, 42);
             txt_MaDG.Name = "txt_MaDG";
             txt_MaDG.Size = new Size(195, 27);
@@ -994,9 +1007,10 @@
             // lbl_MaDG
             // 
             lbl_MaDG.AutoSize = true;
+            lbl_MaDG.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             lbl_MaDG.Location = new Point(52, 45);
             lbl_MaDG.Name = "lbl_MaDG";
-            lbl_MaDG.Size = new Size(87, 20);
+            lbl_MaDG.Size = new Size(102, 23);
             lbl_MaDG.TabIndex = 0;
             lbl_MaDG.Text = "Mã Độc Giả";
             // 
