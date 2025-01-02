@@ -546,25 +546,25 @@ namespace QLThuVien
             dataGridView2.Columns[7].Width = 110;
             dataGridView2.Columns[8].Width = 100;
 
-            try
-            {
-                if (!dataGridView2.Columns.Contains("Edit"))
-                {
-                    DataGridViewImageColumn editColumn = new DataGridViewImageColumn
-                    {
-                        Name = "Edit",
-                        HeaderText = "Edit",
-                        Image = Image.FromFile("D:/Thực Hành/LibraryManagement/Images/Images_Icon/Edit_S.png"),
-                        ImageLayout = DataGridViewImageCellLayout.Zoom,
-                        Width = 53
-                    };
-                    dataGridView2.Columns.Add(editColumn);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //try
+            //{
+            //    if (!dataGridView2.Columns.Contains("Edit"))
+            //    {
+            //        DataGridViewImageColumn editColumn = new DataGridViewImageColumn
+            //        {
+            //            Name = "Edit",
+            //            HeaderText = "Edit",
+            //            Image = Image.FromFile("D:/Thực Hành/LibraryManagement/Images/Images_Icon/Edit_S.png"),
+            //            ImageLayout = DataGridViewImageCellLayout.Zoom,
+            //            Width = 53
+            //        };
+            //        dataGridView2.Columns.Add(editColumn);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Lỗi: {ex}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
         private void load_slips()
         {

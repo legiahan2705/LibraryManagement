@@ -673,9 +673,9 @@ namespace QLThuVien
         
         private void pnlBookManagerBTN_Click(object sender, EventArgs e)
         {
-            //pnlBookManager.Visible = true;
-            //pnlBookCase.Visible = false;
-            //pnlBookStatistics.Visible = false;
+            pnlBookManager.Visible = true;
+            pnlBookCase.Visible = false;
+            pnlBookStatistics.Visible = false;
 
             //// Lấy danh sách nhân viên từ lớp BL
             //DataTable dtNhanVien = _blGetEmployees.AddBookToManager();
