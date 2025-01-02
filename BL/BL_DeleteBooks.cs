@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TO;
 using DL;
+using System.Text.RegularExpressions;
 
 namespace BL
 {
@@ -21,5 +22,11 @@ namespace BL
         {
             return _dlDeletebooks.Delete_Books(bookId);
         }
+
+        public bool XoaSachKhoiQuanLy(string bookId)
+        {
+            return _dlDeletebooks.XoaSachKhoiQuanLy(bookId);
+        }
+
     }
 }

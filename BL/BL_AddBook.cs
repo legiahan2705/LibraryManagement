@@ -1,31 +1,52 @@
-﻿using System;
+﻿using DL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using DL;
 using TO;
 
 namespace BL
 {
     public class BL_AddBook
     {
-        private DL_AddBook _dlAdd;
+        private DL_AddBook dlAddBook;
 
         public BL_AddBook()
         {
-            _dlAdd = new DL_AddBook();
+            dlAddBook = new DL_AddBook();
         }
 
         public bool AddBook(Sach_TO book)
         {
-            return _dlAdd.AddBook(book);
+            // Kiểm tra dữ liệu trước khi thêm
+            if (string.IsNullOrEmpty(book.MaSach) || string.IsNullOrEmpty(book.TenSach) ||
+                string.IsNullOrEmpty(book.MaTL) || book.SL <= 0 ||
+                string.IsNullOrEmpty(book.NXB) || string.IsNullOrEmpty(book.NgayNhap))
+            {
+                throw new ArgumentException("Invalid book data.");
+            }
+
+            // Gọi phương thức từ tầng DL
+            return dlAddBook.AddBook(book);
         }
 
         // Phương thức cập nhật sách
         public bool UpdateBook(Sach_TO book)
         {
-            return _dlAdd.UpdateBook(book);
+            return dlAddBook.UpdateBook(book);
         }
+
+        public bool AddBookToEmployee(string maNV, string maSach)
+        {
+            return dlAddBook.AddBookToEmployee(maNV, maSach);
+        }
+
+        public List<Sach_TO> GetBooksManagedByEmployee(string maNV)
+        {
+            return dlAddBook.GetBooksManagedByEmployee(maNV); // Gọi hàm từ DL
+        }
+
     }
 }

@@ -27,6 +27,8 @@ namespace QLThuVien
         private BL_GetBooks _blGetBooks;
         private BL_DeleteBooks _blDeleteBooks;
         private BL_AddBook _blAddBook;
+        private BL_GetEmployees _blGetEmployees;
+        private BL_AddEmployee _blAddEmployee;
 
         private string employeeName; // Lưu tên nhân viên
         private string employeeRole; // Lưu quyền của nhân viên
@@ -44,6 +46,8 @@ namespace QLThuVien
             _blGetBooks = new BL_GetBooks();
             _blBookStatistics = new BL_BookStatisticsByGenre();
             _blAddBook = new BL_AddBook();
+            _blGetEmployees = new BL_GetEmployees();
+            _blAddEmployee = new BL_AddEmployee();
 
             this.employeeName = employeeName;
             this.employeeRole = employeeRole;
@@ -75,6 +79,20 @@ namespace QLThuVien
             reports.Show();
             this.Hide();
         }
+        private void pnlManageEmployees_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra vai trò trước\
+            string role = "Quản lý";
+            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Thoát khỏi sự kiện nếu không phải quản lý
+            }
+
+            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
+            manageEmployees.Show();
+            this.Hide();
+        }
 
 
         private void ManageBooks_FormClosing(object sender, FormClosingEventArgs e)
@@ -93,13 +111,15 @@ namespace QLThuVien
 
         private void ManageBooks_Load(object sender, EventArgs e)
         {
+            pnlBookManager.Visible = false;
             pnlBookStatistics.Visible = false;
             pnlBookCase.Visible = false;
-            pnlBookManager.Visible = false;
+            groupBox1.Visible = false;
             pnlManageBooks.BackColor = ColorTranslator.FromHtml("#BDC0FA");
             //gán tên nhân viên vào label Welcome
             lblEmployeeName.Text = employeeName;
 
+            // Đưa dữ liệu sách lên dgv
             try
             {
                 // Lấy danh sách nhân viên từ Business Logic Layer (BL)
@@ -141,6 +161,9 @@ namespace QLThuVien
                 // Các lỗi khác
                 MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+
         }
 
         // Hàm thoát dùng chung để tránh lặp lại MessageBox thoát nhiều lần
@@ -216,20 +239,6 @@ namespace QLThuVien
             }
         }
 
-        private void pnlManageEmployees_Click(object sender, EventArgs e)
-        {
-            //Kiểm tra vai trò trước\
-            string role = "Quản lý";
-            if (!string.Equals(this.employeeRole, role, StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Only managers are allowed to access this function.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Thoát khỏi sự kiện nếu không phải quản lý
-            }
-
-            ManageEmployees manageEmployees = new ManageEmployees(employeeName, employeeRole, employeeID);
-            manageEmployees.Show();
-            this.Hide();
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -308,6 +317,10 @@ namespace QLThuVien
 
         private void pnlBookCaseBTN_Click(object sender, EventArgs e)
         {
+            // Hiển thị Panel
+            pnlBookCase.Visible = true;
+            pnlBookManager.Visible = false;
+            pnlBookStatistics.Visible = false;
             try
             {
                 // Lấy danh sách nhân viên từ Business Logic Layer (BL)
@@ -333,13 +346,6 @@ namespace QLThuVien
                             book.NgayNhap
                         );
                     }
-
-                    pnlBookStatistics.Visible = false;
-
-                    // Hiển thị Panel
-                    pnlBookCase.Visible = true;
-                    pnlBookStatistics.Visible = false ;
-                    pnlBookManager.Visible = false ;
                 }
                 else
                 {
@@ -360,84 +366,75 @@ namespace QLThuVien
 
         private void btnAddBook_Click(object sender, EventArgs e)
         {
-            if (btnAddBook.Text == "Add Book")
+            // Kiểm tra dữ liệu hợp lệ
+            if (string.IsNullOrEmpty(txtMaSach.Text) ||
+                string.IsNullOrEmpty(txtTenSach.Text) ||
+                string.IsNullOrEmpty(txtMaTL.Text) ||
+                string.IsNullOrEmpty(txtSL.Text) ||
+                string.IsNullOrEmpty(txtNXB.Text) ||
+                string.IsNullOrEmpty(txtNgayNhap.Text))
             {
-                // Kiểm tra các TextBox có dữ liệu đầy đủ hay không
-                if (string.IsNullOrEmpty(txtMaSach.Text) ||
-                    string.IsNullOrEmpty(txtTenSach.Text) || string.IsNullOrEmpty(txtMaTL.Text) ||
-                    string.IsNullOrEmpty(txtSL.Text) || string.IsNullOrEmpty(txtNgayNhap.Text))
-                {
-                    MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Nếu thiếu thông tin thì hiển thị thông báo
-                }
+                MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                // Kiểm tra xem ngày nhập có hợp lệ không
-                DateTime ngayNhap;
-                if (!DateTime.TryParse(txtNgayNhap.Text, out ngayNhap))
+            try
+            {
+                // Tạo đối tượng Sach_TO từ dữ liệu trong TextBox
+                Sach_TO newBook = new Sach_TO
                 {
-                    MessageBox.Show("Invalid date format. Please enter the date in YYYY-MM-DD format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Nếu ngày nhập không hợp lệ thì thông báo
-                }
+                    MaSach = txtMaSach.Text,
+                    TenSach = txtTenSach.Text,
+                    MaTL = txtMaTL.Text,
+                    SL = int.Parse(txtSL.Text),
+                    NXB = txtNXB.Text,
+                    NgayNhap = txtNgayNhap.Text
+                };
 
-                // Hiển thị hộp thoại xác nhận việc thêm sách
-                DialogResult dialogResult = MessageBox.Show(
-                    "Are you sure you want to add this book?",
+                // Gọi BL_AddBook để thêm sách
+                BL_AddBook blAddBook = new BL_AddBook();
+                bool isAdded = blAddBook.AddBook(newBook);
+
+                // Hiển thị hộp thoại xác nhận
+                DialogResult confirmResult = MessageBox.Show(
+                    "Are you sure you want to add this book's information?",
                     "Confirm Add",
-                    MessageBoxButtons.YesNo,
+                    MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Question
                 );
 
-                // Nếu người dùng chọn Yes, tiến hành thêm sách
-                if (dialogResult == DialogResult.Yes)
+                if (isAdded)
                 {
-                    // Tạo đối tượng sách và gán các giá trị từ TextBox
-                    Sach_TO newBook = new Sach_TO
-                    {
-                        MaSach = txtMaSach.Text,
-                        TenSach = txtTenSach.Text,
-                        MaTL = txtMaTL.Text,
-                        SL = int.Parse(txtSL.Text),
-                        NXB = txtNXB.Text,
-                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd") // Cần phải kiểm tra xem định dạng ngày có hợp lệ không
-                    };
+                    MessageBox.Show("Book added successfully!", "Notification");
 
-                    // Gọi phương thức thêm sách 
-                    bool isAdded = _blAddBook.AddBook(newBook);
+                    // Thêm dữ liệu sách mới vào DataGridView
+                    dataGridView1.Rows.Add(
+                        newBook.MaSach,
+                        newBook.TenSach,
+                        newBook.MaTL,
+                        newBook.SL,
+                        newBook.NXB,
+                        newBook.NgayNhap
+                    );
 
-                    // Thông báo kết quả thêm sách
-                    if (isAdded)
-                    {
-                        MessageBox.Show("Book added successfully!", "Success");
-                        // Có thể làm sạch các TextBox sau khi thêm
-                        txtMaSach.Clear();
-                        txtTenSach.Clear();
-                        txtMaTL.Clear();
-                        txtSL.Clear();
-                        txtNXB.Clear();
-                        txtNgayNhap.Clear();
-
-                        // Thêm sách mới vào DataGridView ngay lập tức
-                        dataGridView1.Rows.Add(
-                            newBook.MaSach,
-                            newBook.TenSach,
-                            newBook.MaTL,
-                            newBook.SL,
-                            newBook.NXB,
-                            newBook.NgayNhap
-                        );
-                    }
-                    else
-                    {
-                        MessageBox.Show("Đ thêm đươc đmm.", "Error");
-                    }
+                    // Xóa dữ liệu trong các TextBox sau khi thêm thành công
+                    ClearInputFields();
                 }
                 else
                 {
-                    // Nếu chọn No, không làm gì cả, đóng MessageBox
-                    return;
+                    MessageBox.Show("Failed to add book.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter valid data for all fields.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            // Sửa sách
             if (btnAddBook.Text == "Save")
             {
                 // Kiểm tra dữ liệu hợp lệ
@@ -445,6 +442,7 @@ namespace QLThuVien
                     string.IsNullOrEmpty(txtTenSach.Text) ||
                     string.IsNullOrEmpty(txtMaTL.Text) ||
                     string.IsNullOrEmpty(txtSL.Text) ||
+                    string.IsNullOrEmpty(txtNXB.Text) ||
                     string.IsNullOrEmpty(txtNgayNhap.Text))
                 {
                     MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -468,7 +466,7 @@ namespace QLThuVien
 
                 if (confirmResult == DialogResult.OK)
                 {
-                    // Cập nhật thông tin sách
+                    // Cập nhật thông tin nhân viên
                     Sach_TO updateBook = new Sach_TO
                     {
                         MaSach = txtMaSach.Text,
@@ -476,7 +474,7 @@ namespace QLThuVien
                         MaTL = txtMaTL.Text,
                         SL = int.Parse(txtSL.Text),
                         NXB = txtNXB.Text,
-                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd") // Cần phải kiểm tra xem định dạng ngày có hợp lệ không
+                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd"),
                     };
 
                     // Gọi phương thức cập nhật từ lớp BL
@@ -495,12 +493,12 @@ namespace QLThuVien
                         txtNXB.Clear();
                         txtNgayNhap.Clear();
 
-                        // Đặt txtMaSach thành chỉ đọc
+                        // Đặt txtMaNV thành chỉ đọc
                         txtMaSach.ReadOnly = false;
                         txtMaSach.Enabled = true;   // Cho phép nhấp chuột
 
                         btnAddBook.BackColor = Color.DarkSlateBlue;
-                        btnAddBook.Text = "Add Book";
+                        btnAddBook.Text = "Add book";
 
                         // Cập nhật lại hàng trong DataGridView
                         foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -527,8 +525,23 @@ namespace QLThuVien
             }
         }
 
+        // Phương thức xóa dữ liệu trong các TextBox
+        private void ClearInputFields()
+        {
+            txtMaSach.Clear();
+            txtTenSach.Clear();
+            txtMaTL.Clear();
+            txtSL.Clear();
+            txtNXB.Clear();
+            txtNgayNhap.Clear();
+        }
+
         private void pnlStatisticsBTN_Click(object sender, EventArgs e)
         {
+            // Đảm bảo các panel hiển thị đồng thời
+            pnlBookCase.Visible = false;  // Ẩn Panel chứa các phần tử khác
+            pnlBookManager.Visible = false;
+            pnlBookStatistics.Visible = true;  // Hiển thị Panel chứa DataGridView và biểu đồ
 
             pnlDT.BackColor = ColorTranslator.FromHtml("#D4A1D1");
             pnlKhoaHoc.BackColor = ColorTranslator.FromHtml("#B79BD9");
@@ -565,10 +578,6 @@ namespace QLThuVien
                         );
                     }
 
-                    // Đảm bảo các panel hiển thị đồng thời
-                    pnlBookCase.Visible = false;  // Ẩn Panel chứa các phần tử khác
-                    pnlBookManager.Visible = false;
-                    pnlBookStatistics.Visible = true;  // Hiển thị Panel chứa DataGridView và biểu đồ
                     DrawPieChart(theloais);
 
                 }
@@ -679,14 +688,213 @@ namespace QLThuVien
             }
         }
 
-        
+
         private void pnlBookManagerBTN_Click(object sender, EventArgs e)
         {
-            // Đảm bảo các panel hiển thị đồng thời
-            pnlBookCase.Visible = false;  // Ẩn Panel chứa các phần tử khác
+            dgvBooksManaged.Rows.Clear();
+            // Đưa dữ liệu nhân viên quản lý sách lên dgv
+            try
+            {
+                // Lấy danh sách nhân viên từ tầng DL
+                List<NhanVien_TO> employees = new DL_GetEmployees().GetQLSach();
+
+                // Kiểm tra danh sách nhân viên
+                if (employees != null && employees.Count > 0)
+                {
+                    // Làm sạch DataGridView
+                    dgvEmployees.Rows.Clear();
+                    dgvEmployees.DataSource = null;
+
+                    // Ánh xạ dữ liệu lên DataGridView
+                    foreach (NhanVien_TO employee in employees)
+                    {
+                        dgvEmployees.Rows.Add(
+                            employee.MaNV,
+                            employee.Ten
+                        );
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("There are no employees in the database.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Lỗi cơ sở dữ liệu
+                MessageBox.Show($"Database connection error: {sqlEx.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Các lỗi khác
+                MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             pnlBookManager.Visible = true;
+            pnlBookCase.Visible = false;
             pnlBookStatistics.Visible = false;
         }
-    }
 
+        private void dgvEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            groupBox1.Visible = true;
+            dgvBooksManaged.Rows.Clear();
+            // Kiểm tra nếu người dùng nhấn vào cột "XemThem" và hàng hợp lệ
+            if (e.ColumnIndex == dgvEmployees.Columns["XemThem"].Index && e.RowIndex >= 0)
+            {
+                // Lấy mã nhân viên từ cột MaNV
+                string maNV = dgvEmployees.Rows[e.RowIndex].Cells["MaNV"].Value.ToString();
+
+                try
+                {
+                    // Gọi BL để lấy danh sách sách quản lý
+                    BL_GetEmployees blQuanLySach = new BL_GetEmployees(); // Tạo đối tượng tầng BL
+                    List<Sach_TO> books = blQuanLySach.GetSachDuocQL(maNV); // Truyền maNV vào BL
+
+                    // Kiểm tra nếu danh sách sách rỗng
+                    if (books == null || books.Count == 0)
+                    {
+                        MessageBox.Show("This employee does not manage any books.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    // Thêm danh sách sách vào dgvBooksManaged
+                    foreach (Sach_TO book in books)
+                    {
+                        dgvBooksManaged.Rows.Add(book.MaSach, book.TenSach);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void dgvBooksManaged_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvBooksManaged.Columns["XoaSach"].Index && e.RowIndex >= 0)
+            {
+                // Lấy mã sách từ cột MaSach (giữ dưới dạng chuỗi)
+                string bookID = dgvBooksManaged.Rows[e.RowIndex].Cells["MaSach1"].Value.ToString();
+
+                // Hiển thị hộp thoại xác nhận
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Are you sure you want to delete the book with Book ID = {bookID}?",
+                    "Delete Confirmation",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning
+                );
+
+                // Nếu người dùng chọn OK, tiến hành xóa
+                if (dialogResult == DialogResult.OK)
+                {
+
+                    bool isDeleted = new BL.BL_DeleteBooks().XoaSachKhoiQuanLy(bookID);
+                    if (isDeleted)
+                    {
+                        // Xóa dòng khỏi DataGridView
+                        dgvBooksManaged.Rows.RemoveAt(e.RowIndex);
+                        MessageBox.Show("Book deleted successfully!", "Notification");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete book!", "Notification");
+                    }
+                }
+            }
+        }
+
+        private void btnThemSach_Click(object sender, EventArgs e)
+        {
+            // Lấy mã sách từ textbox
+            string bookID = txtBoxAddBookQL.Text.Trim();
+
+            // Kiểm tra xem người dùng đã chọn nhân viên chưa
+            if (dgvEmployees.CurrentRow == null)
+            {
+                MessageBox.Show("Please select an employee to manage the book.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy mã nhân viên từ DataGridView
+            string selectedEmployeeID = dgvEmployees.CurrentRow.Cells["MaNV"].Value.ToString();
+
+            // Kiểm tra mã sách có được nhập hay không
+            if (string.IsNullOrEmpty(bookID) || bookID.Length > 10)
+            {
+                MessageBox.Show("Please enter a valid Book ID (up to 10 characters).",
+                                "Notification",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Gọi lớp Business Layer để thêm sách vào quản lý
+                bool isAdded = _blAddBook.AddBookToEmployee(selectedEmployeeID, bookID);
+
+                if (isAdded)
+                {
+                    // Thêm thành công, cập nhật lại dgvBooksManaged
+                    try
+                    {
+                        LoadBooksManaged(selectedEmployeeID);
+                        MessageBox.Show("Book has been successfully added to the employee's management.",
+                                        "Notification",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while reloading the books: {ex.Message}",
+                                        "Error",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+
+                    // Làm sạch textbox
+                    txtBoxAddBookQL.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add the book. Please check the Book ID.",
+                                    "Error",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadBooksManaged(string maNV)
+        {
+            try
+            {
+                // Lấy danh sách sách quản lý từ BL
+                List<Sach_TO> books = _blAddBook.GetBooksManagedByEmployee(maNV);
+
+                // Làm sạch DataGridView
+                dgvBooksManaged.Rows.Clear();
+
+                // Hiển thị lại danh sách sách
+                foreach (Sach_TO book in books)
+                {
+                    dgvBooksManaged.Rows.Add(book.MaSach, book.TenSach);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+    }
 }
