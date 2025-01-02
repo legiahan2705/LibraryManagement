@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Thư mục mới (2)\\TO\\TO.csproj": {}
   },
   "projects": {
@@ -12,12 +13,25 @@
         "projectPath": "D:\\Thư mục mới (2)\\TO\\TO.csproj",
         "packagesPath": "C:\\Users\\Mike Cheese\\.nuget\\packages\\",
         "outputPath": "D:\\Thư mục mới (2)\\TO\\obj\\",
+=======
+    "D:\\QuanLyThuVien\\TO\\TO.csproj": {}
+  },
+  "projects": {
+    "D:\\QuanLyThuVien\\TO\\TO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\QuanLyThuVien\\TO\\TO.csproj",
+        "projectName": "TO",
+        "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj",
+        "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
+        "outputPath": "D:\\QuanLyThuVien\\TO\\obj\\",
+>>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mike Cheese\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jmleg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,7 +56,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -65,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

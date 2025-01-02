@@ -62,9 +62,11 @@
             pictureBox2 = new PictureBox();
             lblDashBoardTitle = new Label();
             pnlBookBorrowing = new Panel();
+            pnl_Quarter = new Panel();
             dgvQuarter = new DataGridView();
             column = new DataGridViewTextBoxColumn();
             columnTotalQuarter = new DataGridViewTextBoxColumn();
+            pnl_Month = new Panel();
             dgvMonth = new DataGridView();
             columnMonth = new DataGridViewTextBoxColumn();
             columnTotal = new DataGridViewTextBoxColumn();
@@ -76,9 +78,6 @@
             clbQuarter = new CheckedListBox();
             label1 = new Label();
             txtYear = new TextBox();
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            pnlBookBorrowingBTN = new Panel();
-            pnlMostBorrowedBTN = new Panel();
             pnlMostBorrowedBook = new Panel();
             txtTopN = new TextBox();
             label7 = new Label();
@@ -96,6 +95,9 @@
             label5 = new Label();
             label4 = new Label();
             txt_Year = new TextBox();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            pnlBookBorrowingBTN = new Panel();
+            pnlMostBorrowedBTN = new Panel();
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconBorrowReturn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconManageBooks).BeginInit();
@@ -112,7 +114,9 @@
             pnlDashBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             pnlBookBorrowing.SuspendLayout();
+            pnl_Quarter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvQuarter).BeginInit();
+            pnl_Month.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMonth).BeginInit();
             pnlMostBorrowedBook.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTop5Book).BeginInit();
@@ -445,8 +449,8 @@
             // pnlBookBorrowing
             // 
             pnlBookBorrowing.BackColor = Color.White;
-            pnlBookBorrowing.Controls.Add(dgvQuarter);
-            pnlBookBorrowing.Controls.Add(dgvMonth);
+            pnlBookBorrowing.Controls.Add(pnl_Quarter);
+            pnlBookBorrowing.Controls.Add(pnl_Month);
             pnlBookBorrowing.Controls.Add(btnMonth);
             pnlBookBorrowing.Controls.Add(btnQuarter);
             pnlBookBorrowing.Controls.Add(clbMonth);
@@ -459,6 +463,14 @@
             pnlBookBorrowing.Name = "pnlBookBorrowing";
             pnlBookBorrowing.Size = new Size(931, 549);
             pnlBookBorrowing.TabIndex = 39;
+            // 
+            // pnl_Quarter
+            // 
+            pnl_Quarter.Controls.Add(dgvQuarter);
+            pnl_Quarter.Location = new Point(3, 127);
+            pnl_Quarter.Name = "pnl_Quarter";
+            pnl_Quarter.Size = new Size(928, 419);
+            pnl_Quarter.TabIndex = 44;
             // 
             // dgvQuarter
             // 
@@ -482,10 +494,10 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvQuarter.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvQuarter.Location = new Point(294, 136);
+            dgvQuarter.Location = new Point(3, 6);
             dgvQuarter.Name = "dgvQuarter";
             dgvQuarter.RowHeadersWidth = 51;
-            dgvQuarter.Size = new Size(340, 159);
+            dgvQuarter.Size = new Size(343, 134);
             dgvQuarter.TabIndex = 9;
             // 
             // column
@@ -501,6 +513,14 @@
             columnTotalQuarter.MinimumWidth = 6;
             columnTotalQuarter.Name = "columnTotalQuarter";
             columnTotalQuarter.Width = 200;
+            // 
+            // pnl_Month
+            // 
+            pnl_Month.Controls.Add(dgvMonth);
+            pnl_Month.Location = new Point(3, 127);
+            pnl_Month.Name = "pnl_Month";
+            pnl_Month.Size = new Size(928, 419);
+            pnl_Month.TabIndex = 43;
             // 
             // dgvMonth
             // 
@@ -524,7 +544,7 @@
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             dgvMonth.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvMonth.Location = new Point(294, 136);
+            dgvMonth.Location = new Point(3, 6);
             dgvMonth.Name = "dgvMonth";
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Control;
@@ -535,7 +555,7 @@
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dgvMonth.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvMonth.RowHeadersWidth = 51;
-            dgvMonth.Size = new Size(333, 174);
+            dgvMonth.Size = new Size(333, 134);
             dgvMonth.TabIndex = 8;
             // 
             // columnMonth
@@ -639,31 +659,6 @@
             txtYear.Name = "txtYear";
             txtYear.Size = new Size(118, 27);
             txtYear.TabIndex = 0;
-            // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
-            // 
-            // pnlBookBorrowingBTN
-            // 
-            pnlBookBorrowingBTN.BackColor = Color.Transparent;
-            pnlBookBorrowingBTN.Cursor = Cursors.Hand;
-            pnlBookBorrowingBTN.Location = new Point(555, 180);
-            pnlBookBorrowingBTN.Name = "pnlBookBorrowingBTN";
-            pnlBookBorrowingBTN.Size = new Size(208, 113);
-            pnlBookBorrowingBTN.TabIndex = 40;
-            pnlBookBorrowingBTN.Click += pnlBookBorrowingBTN_Click;
-            // 
-            // pnlMostBorrowedBTN
-            // 
-            pnlMostBorrowedBTN.BackColor = Color.Transparent;
-            pnlMostBorrowedBTN.Cursor = Cursors.Hand;
-            pnlMostBorrowedBTN.Location = new Point(794, 180);
-            pnlMostBorrowedBTN.Name = "pnlMostBorrowedBTN";
-            pnlMostBorrowedBTN.Size = new Size(207, 113);
-            pnlMostBorrowedBTN.TabIndex = 41;
-            pnlMostBorrowedBTN.Click += pnlMostBorrowedBTN_Click;
             // 
             // pnlMostBorrowedBook
             // 
@@ -857,6 +852,31 @@
             txt_Year.Size = new Size(151, 27);
             txt_Year.TabIndex = 0;
             // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
+            // pnlBookBorrowingBTN
+            // 
+            pnlBookBorrowingBTN.BackColor = Color.Transparent;
+            pnlBookBorrowingBTN.Cursor = Cursors.Hand;
+            pnlBookBorrowingBTN.Location = new Point(555, 180);
+            pnlBookBorrowingBTN.Name = "pnlBookBorrowingBTN";
+            pnlBookBorrowingBTN.Size = new Size(208, 113);
+            pnlBookBorrowingBTN.TabIndex = 40;
+            pnlBookBorrowingBTN.Click += pnlBookBorrowingBTN_Click;
+            // 
+            // pnlMostBorrowedBTN
+            // 
+            pnlMostBorrowedBTN.BackColor = Color.Transparent;
+            pnlMostBorrowedBTN.Cursor = Cursors.Hand;
+            pnlMostBorrowedBTN.Location = new Point(794, 180);
+            pnlMostBorrowedBTN.Name = "pnlMostBorrowedBTN";
+            pnlMostBorrowedBTN.Size = new Size(207, 113);
+            pnlMostBorrowedBTN.TabIndex = 41;
+            pnlMostBorrowedBTN.Click += pnlMostBorrowedBTN_Click;
+            // 
             // Reports
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -878,6 +898,8 @@
             Controls.Add(pnlLogOut);
             Controls.Add(pnlDashBoard);
             Controls.Add(lblEmployeeName);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Reports";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Reports";
@@ -907,7 +929,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             pnlBookBorrowing.ResumeLayout(false);
             pnlBookBorrowing.PerformLayout();
+            pnl_Quarter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvQuarter).EndInit();
+            pnl_Month.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvMonth).EndInit();
             pnlMostBorrowedBook.ResumeLayout(false);
             pnlMostBorrowedBook.PerformLayout();
@@ -978,5 +1002,7 @@
         private DataGridViewTextBoxColumn columnMaSach;
         private DataGridViewTextBoxColumn columnTenSach;
         private DataGridViewTextBoxColumn columnTongSoLuong;
+        private Panel pnl_Month;
+        private Panel pnl_Quarter;
     }
 }

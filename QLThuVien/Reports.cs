@@ -15,6 +15,9 @@ using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using TO;
+using System.Windows.Controls;
+using Panel = System.Windows.Forms.Panel;
+using Control = System.Windows.Forms.Control;
 
 
 
@@ -95,8 +98,7 @@ namespace QLThuVien
         private void pnlBookBorrowingBTN_Click(object sender, EventArgs e)
         {
             pnlBookBorrowing.Visible = true;
-            dgvMonth.Visible = false;
-            dgvQuarter.Visible = false;
+            
             pnlMostBorrowedBook.Visible = false;
         }
 
@@ -129,6 +131,7 @@ namespace QLThuVien
 
         private void btnMonth_Click(object sender, EventArgs e)
         {
+            pnl_Month.Controls.Clear();
             try
             {
                 // Lấy năm từ TextBox
@@ -159,9 +162,13 @@ namespace QLThuVien
 
                 // Hiển thị dữ liệu vào DataGridView
                 DisplayStatisticsInDgv(statistics, dgvMonth, isQuarter: false);
+
+                pnl_Month.Controls.Add(dgvMonth);
+                // Vẽ biểu đồ cột cho dữ liệu đã lấy
                 DrawMonthlyLineChart(statistics);
-                dgvQuarter.Visible = false;
-                dgvMonth.Visible = true;
+                pnl_Quarter.Visible = false;
+                pnl_Month.Visible = true;
+
 
             }
             catch (Exception ex)
@@ -172,6 +179,7 @@ namespace QLThuVien
 
         private void btnQuarter_Click(object sender, EventArgs e)
         {
+            pnl_Quarter.Controls.Clear();
             try
             {
                 // Lấy năm từ TextBox
@@ -200,13 +208,20 @@ namespace QLThuVien
                 // Gọi BL để lấy dữ liệu
                 var statistics = blStatistics.GetStatisticsByQuarters(year, selectedQuarters);
 
-                dgvMonth.Visible = false;
+                
+                
                 // Hiển thị dữ liệu vào DataGridView
+                
+                
                 DisplayStatisticsInDgv(statistics, dgvQuarter, isQuarter: true);
+                pnl_Quarter.Controls.Add(dgvQuarter);
 
                 // Vẽ biểu đồ cột cho dữ liệu đã lấy
-
-                dgvQuarter.Visible = true;
+                DrawQuarterlyLineChart(statistics);
+                pnl_Month.Visible = false;
+                pnl_Quarter.Visible = true;
+                
+               
 
 
             }
@@ -243,34 +258,34 @@ namespace QLThuVien
             {
                 Title = "Thống kê mượn sách theo tháng",
                 TitlePadding = 20,
-
             };
 
             // Tạo LineSeries để vẽ đường
-            var lineSeries = new LineSeries
+            var BarSeries = new BarSeries()
             {
-                MarkerType = MarkerType.Circle, // Đánh dấu các điểm trên đường (vòng tròn)
-                LineStyle = LineStyle.Solid, // Đường thẳng
-                Color = OxyColors.Blue, // Màu sắc đường
-                StrokeThickness = 2 // Độ dày của đường
+                Title = "Số lượng sách mượn",
+                FillColor = OxyColor.FromRgb(221, 160, 221), // Màu tím pastel
+                XAxisKey = "x1",
+                YAxisKey = "y1"
             };
 
             // Thêm các điểm vào LineSeries
             foreach (var stat in statistics)
             {
                 // Dùng điểm với tọa độ (x = tháng, y = số lượng sách)
-                lineSeries.Points.Add(new DataPoint(stat.Month, stat.TotalBooks));
+                BarSeries.Items.Add(new BarItem(stat.TotalBooks));
             }
 
-            plotModel.Series.Add(lineSeries);
+            plotModel.Series.Add(BarSeries);
 
             // Thêm trục danh mục (Tháng) trên trục Ox
             var categoryAxis = new CategoryAxis
             {
                 Position = AxisPosition.Bottom, // Đặt ở phía dưới
                 Title = "Tháng",
-                ItemsSource = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }, // Cố định 12 tháng
-                IsTickCentered = true
+                ItemsSource = statistics.Select(s => $"Tháng {s.Month}").ToList(), // Cố định 12 tháng
+                IsTickCentered = true,
+                Key = "y1"
             };
             plotModel.Axes.Add(categoryAxis);
 
@@ -282,9 +297,10 @@ namespace QLThuVien
                 MaximumPadding = 0.1,
                 Title = "Số lượng sách",
                 Minimum = 0, // Giá trị tối thiểu
-                Maximum = 100, // Giá trị tối đa (vì sách không vượt quá 100)
+                Maximum = statistics.Max(s => s.TotalBooks) + 10,
                 MajorStep = 10, // Mỗi bước trên trục Oy sẽ cách nhau 10 (từ 0 đến 100)
-                MinorStep = 2  // Bước nhỏ hơn, ví dụ chia nhỏ khoảng cách cho các nhãn nhỏ
+                MinorStep = 2,  // Bước nhỏ hơn, ví dụ chia nhỏ khoảng cách cho các nhãn nhỏ
+                Key = "x1"
             };
 
             plotModel.Axes.Add(valueAxis);
@@ -293,14 +309,101 @@ namespace QLThuVien
             var plotView = new PlotView
             {
                 Model = plotModel,
-                Width = 600,  // Chiều rộng biểu đồ
-                Height = 400, // Chiều cao biểu đồ
-                Location = new Point(50, 50) // Đặt vị trí biểu đồ trong panel
+                Width = 600,
+                Height = 400,
+                Location = new Point(
+                    (pnl_Month.Width - 600),
+                    (pnl_Month.Height - 400)/2
+                )
             };
+
 
             // Xóa biểu đồ cũ (nếu có) và thêm biểu đồ mới vào panel
 
-            pnlBookBorrowing.Controls.Add(plotView);
+            
+            pnl_Month.Controls.Add(plotView);
+        }
+
+
+        // phương thức vẽ biểu đồ cột cho các quý
+        private void DrawQuarterlyLineChart(List<BookBorrowingStatistic_TO> statistics)
+        {
+            // Kiểm tra nếu statistics không trống
+            if (statistics == null || statistics.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để vẽ biểu đồ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Tạo đối tượng PlotModel cho biểu đồ
+            var plotModel = new PlotModel
+            {
+                Title = "Thống kê mượn sách theo quý",
+                TitlePadding = 20,
+            };
+
+            // Tạo LineSeries để vẽ đường
+            var BarSeries = new BarSeries()
+            {
+                Title = "Số lượng sách mượn",
+                FillColor = OxyColor.FromRgb(221, 160, 221), // Màu tím pastel
+                XAxisKey = "x1",
+                YAxisKey = "y1"
+            };
+
+            // Thêm các điểm vào LineSeries
+            foreach (var stat in statistics)
+            {
+                // Dùng điểm với tọa độ (x = tháng, y = số lượng sách)
+                BarSeries.Items.Add(new BarItem(stat.TotalBooks));
+            }
+
+            plotModel.Series.Add(BarSeries);
+
+            // Thêm trục danh mục (QÚY) trên trục Ox
+            var categoryAxis = new CategoryAxis
+            {
+                Position = AxisPosition.Bottom, // Đặt ở phía dưới
+                Title = "Qúy",
+                ItemsSource = statistics.Select(s => $"Qúy {s.Quarter}").ToList(), // Cố định 12 tháng
+                IsTickCentered = true,
+                Key = "y1"
+            };
+            plotModel.Axes.Add(categoryAxis);
+
+            // Thêm trục giá trị (Số lượng sách) trên trục Oy
+            var valueAxis = new LinearAxis
+            {
+                Position = AxisPosition.Left, // Đặt ở bên trái
+                MinimumPadding = 0.1,
+                MaximumPadding = 0.1,
+                Title = "Số lượng sách",
+                Minimum = 0, // Giá trị tối thiểu
+                Maximum = statistics.Max(s => s.TotalBooks) + 10,
+                MajorStep = 10, // Mỗi bước trên trục Oy sẽ cách nhau 10 (từ 0 đến 100)
+                MinorStep = 2,  // Bước nhỏ hơn, ví dụ chia nhỏ khoảng cách cho các nhãn nhỏ
+                Key = "x1"
+            };
+
+            plotModel.Axes.Add(valueAxis);
+
+            // Tạo đối tượng PlotView và thêm vào form với kích thước mong muốn (600x400)
+            var plotView = new PlotView
+            {
+                Model = plotModel,
+                Width = 600,
+                Height = 400,
+                Location = new Point(
+                    (pnl_Month.Width - 600),
+                    (pnl_Month.Height - 400) 
+                )
+            };
+
+
+            // Xóa biểu đồ cũ (nếu có) và thêm biểu đồ mới vào panel
+
+            
+            pnl_Quarter.Controls.Add(plotView);
         }
 
         private void pnlMostBorrowedBTN_Click(object sender, EventArgs e)

@@ -109,6 +109,7 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
+<<<<<<< HEAD
             pnlBookManager = new Panel();
             dgvBooksManaged = new DataGridView();
             dgvEmployees = new DataGridView();
@@ -118,6 +119,24 @@
             MaSach1 = new DataGridViewTextBoxColumn();
             TenSach1 = new DataGridViewTextBoxColumn();
             XoaSach = new DataGridViewTextBoxColumn();
+=======
+
+            panel1 = new Panel();
+            btnAddBook = new Button();
+            txtMaSach = new TextBox();
+            label3 = new Label();
+            label20 = new Label();
+            label4 = new Label();
+            txtNgayNhap = new TextBox();
+            label5 = new Label();
+            label8 = new Label();
+            label6 = new Label();
+            txtTenSach = new TextBox();
+            txtNXB = new TextBox();
+            txtMaTL = new TextBox();
+            txtSL = new TextBox();
+
+>>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -971,7 +990,12 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
+<<<<<<< HEAD
             // pnlBookManager
+=======
+
+            // panel1
+>>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
             // 
             pnlBookManager.BackColor = SystemColors.ButtonHighlight;
             pnlBookManager.Controls.Add(dgvBooksManaged);
@@ -1055,6 +1079,48 @@
             XoaSach.ReadOnly = true;
             XoaSach.Width = 80;
             // 
+<<<<<<< HEAD
+=======
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label6.Location = new Point(345, 99);
+            label6.Name = "label6";
+            label6.Size = new Size(117, 23);
+            label6.TabIndex = 26;
+            label6.Text = "Nhà Xuất Bản";
+            // 
+            // txtTenSach
+            // 
+            txtTenSach.Location = new Point(345, 58);
+            txtTenSach.Name = "txtTenSach";
+            txtTenSach.Size = new Size(242, 27);
+            txtTenSach.TabIndex = 28;
+            // 
+            // txtNXB
+            // 
+            txtNXB.Location = new Point(345, 122);
+            txtNXB.Name = "txtNXB";
+            txtNXB.Size = new Size(242, 27);
+            txtNXB.TabIndex = 31;
+            // 
+            // txtMaTL
+            // 
+            txtMaTL.Location = new Point(650, 58);
+            txtMaTL.Name = "txtMaTL";
+            txtMaTL.Size = new Size(242, 27);
+            txtMaTL.TabIndex = 29;
+            // 
+            // txtSL
+            // 
+            txtSL.Location = new Point(37, 122);
+            txtSL.Name = "txtSL";
+            txtSL.Size = new Size(242, 27);
+            txtSL.TabIndex = 30;
+            // 
+
+>>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
