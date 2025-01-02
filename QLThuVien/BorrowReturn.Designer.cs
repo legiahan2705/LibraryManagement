@@ -794,7 +794,7 @@
             dataGridView2.Size = new Size(922, 524);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick_1;
-            dataGridView2.CellDoubleClick += dataGridView2_CellDoubleClick;
+            //dataGridView2.CellDoubleClick += dataGridView2_CellDoubleClick;
             // 
             // pnl_return
             // 
