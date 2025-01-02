@@ -546,6 +546,7 @@ namespace QLThuVien
             dataGridView2.Columns[7].Width = 110;
             dataGridView2.Columns[8].Width = 100;
 
+<<<<<<< HEAD
             //try
             //{
             //    if (!dataGridView2.Columns.Contains("Edit"))
@@ -565,6 +566,9 @@ namespace QLThuVien
             //{
             //    MessageBox.Show($"Lỗi: {ex}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
+=======
+            
+>>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
         }
         private void load_slips()
         {

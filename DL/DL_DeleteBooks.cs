@@ -51,5 +51,31 @@ namespace DL
 
             return isDeleted; // Trả về trạng thái xóa
         }
+
+        public bool XoaSachKhoiQuanLy(string maSach)
+        {
+
+            bool isDeleted = false; // Biến kiểm tra trạng thái xóa
+            try
+            {
+                // Mở kết nối
+                connection.Open();
+
+                string sql = "DELETE FROM QuanLySach WHERE MaSach = @MaSach";
+
+                // Tạo SqlCommand
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@MaSach", maSach);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0; // Trả về true nếu có bản ghi bị xóa
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Database error: " + sqlEx.Message);
+            }
+        }
+
     }
 }

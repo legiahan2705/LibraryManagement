@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageBooks));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             picIconReports = new PictureBox();
             lblLogOut = new Label();
             picIconLogOut = new PictureBox();
@@ -109,12 +109,23 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
+<<<<<<< HEAD
 
+=======
+>>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             pnlBookManager = new Panel();
+            groupBox1 = new Panel();
+            btnThemSach = new Button();
+            txtBoxAddBookQL = new TextBox();
+            lblBookID = new Label();
             dgvBooksManaged = new DataGridView();
+            MaSach1 = new DataGridViewTextBoxColumn();
+            TenSach1 = new DataGridViewTextBoxColumn();
+            XoaSach = new DataGridViewImageColumn();
             dgvEmployees = new DataGridView();
             MaNV = new DataGridViewTextBoxColumn();
             TenNV = new DataGridViewTextBoxColumn();
+<<<<<<< HEAD
             Email = new DataGridViewTextBoxColumn();
             MaSach1 = new DataGridViewTextBoxColumn();
             TenSach1 = new DataGridViewTextBoxColumn();
@@ -137,6 +148,9 @@
             txtSL = new TextBox();
 
 
+=======
+            XemThem = new DataGridViewImageColumn();
+>>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -158,6 +172,7 @@
             pnlBookStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStatistics).BeginInit();
             pnlBookManager.SuspendLayout();
+            groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBooksManaged).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             SuspendLayout();
@@ -488,14 +503,14 @@
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { MaSach, TenSach, MaTL, SL, NXB, NgayNhap, Edit, Delete });
             dataGridView1.Location = new Point(52, 24);
@@ -931,30 +946,30 @@
             // dgvStatistics
             // 
             dgvStatistics.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = SystemColors.Control;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dgvStatistics.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvStatistics.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvStatistics.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStatistics.Columns.AddRange(new DataGridViewColumn[] { MaTheLoai, TenTheLoai, TongSoLuong, TyLe });
             dgvStatistics.Location = new Point(15, 30);
             dgvStatistics.Name = "dgvStatistics";
             dgvStatistics.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = SystemColors.Control;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dgvStatistics.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvStatistics.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvStatistics.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvStatistics.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvStatistics.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvStatistics.Size = new Size(500, 195);
             dgvStatistics.TabIndex = 25;
             // 
@@ -990,13 +1005,18 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
+<<<<<<< HEAD
 
             // pnlBookManager
 
             // panel1
 
+=======
+            // pnlBookManager
+>>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             // 
             pnlBookManager.BackColor = SystemColors.ButtonHighlight;
+            pnlBookManager.Controls.Add(groupBox1);
             pnlBookManager.Controls.Add(dgvBooksManaged);
             pnlBookManager.Controls.Add(dgvEmployees);
             pnlBookManager.Location = new Point(316, 343);
@@ -1004,55 +1024,61 @@
             pnlBookManager.Size = new Size(931, 521);
             pnlBookManager.TabIndex = 44;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnThemSach);
+            groupBox1.Controls.Add(txtBoxAddBookQL);
+            groupBox1.Controls.Add(lblBookID);
+            groupBox1.Location = new Point(301, 276);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(314, 207);
+            groupBox1.TabIndex = 3;
+            // 
+            // btnThemSach
+            // 
+            btnThemSach.Cursor = Cursors.Hand;
+            btnThemSach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThemSach.ForeColor = Color.DarkSlateBlue;
+            btnThemSach.Location = new Point(94, 135);
+            btnThemSach.Name = "btnThemSach";
+            btnThemSach.Size = new Size(127, 44);
+            btnThemSach.TabIndex = 0;
+            btnThemSach.Text = "Thêm sách";
+            btnThemSach.UseVisualStyleBackColor = true;
+            btnThemSach.Click += btnThemSach_Click;
+            // 
+            // txtBoxAddBookQL
+            // 
+            txtBoxAddBookQL.Location = new Point(83, 78);
+            txtBoxAddBookQL.Name = "txtBoxAddBookQL";
+            txtBoxAddBookQL.Size = new Size(159, 27);
+            txtBoxAddBookQL.TabIndex = 2;
+            // 
+            // lblBookID
+            // 
+            lblBookID.AutoSize = true;
+            lblBookID.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBookID.ForeColor = Color.DarkSlateBlue;
+            lblBookID.Location = new Point(119, 52);
+            lblBookID.Name = "lblBookID";
+            lblBookID.Size = new Size(76, 23);
+            lblBookID.TabIndex = 1;
+            lblBookID.Text = "Mã Sách";
+            // 
             // dgvBooksManaged
             // 
             dgvBooksManaged.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvBooksManaged.BorderStyle = BorderStyle.None;
             dgvBooksManaged.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBooksManaged.Columns.AddRange(new DataGridViewColumn[] { MaSach1, TenSach1, XoaSach });
-            dgvBooksManaged.GridColor = SystemColors.HighlightText;
-            dgvBooksManaged.Location = new Point(506, 0);
+            dgvBooksManaged.GridColor = SystemColors.ControlText;
+            dgvBooksManaged.Location = new Point(487, 3);
             dgvBooksManaged.Name = "dgvBooksManaged";
             dgvBooksManaged.ReadOnly = true;
             dgvBooksManaged.RowHeadersWidth = 51;
-            dgvBooksManaged.Size = new Size(412, 228);
+            dgvBooksManaged.Size = new Size(412, 237);
             dgvBooksManaged.TabIndex = 1;
-            // 
-            // dgvEmployees
-            // 
-            dgvEmployees.BackgroundColor = SystemColors.ButtonHighlight;
-            dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployees.Columns.AddRange(new DataGridViewColumn[] { MaNV, TenNV, Email });
-            dgvEmployees.GridColor = SystemColors.HighlightText;
-            dgvEmployees.Location = new Point(15, 1);
-            dgvEmployees.Name = "dgvEmployees";
-            dgvEmployees.ReadOnly = true;
-            dgvEmployees.RowHeadersWidth = 51;
-            dgvEmployees.Size = new Size(444, 225);
-            dgvEmployees.TabIndex = 0;
-            // 
-            // MaNV
-            // 
-            MaNV.HeaderText = "MaNV";
-            MaNV.MinimumWidth = 6;
-            MaNV.Name = "MaNV";
-            MaNV.ReadOnly = true;
-            MaNV.Width = 125;
-            // 
-            // TenNV
-            // 
-            TenNV.HeaderText = "TenNV";
-            TenNV.MinimumWidth = 6;
-            TenNV.Name = "TenNV";
-            TenNV.ReadOnly = true;
-            TenNV.Width = 125;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            Email.Width = 125;
+            dgvBooksManaged.CellContentClick += dgvBooksManaged_CellContentClick;
             // 
             // MaSach1
             // 
@@ -1073,43 +1099,64 @@
             // XoaSach
             // 
             XoaSach.HeaderText = "XoaSach";
+            XoaSach.Image = (Image)resources.GetObject("XoaSach.Image");
+            XoaSach.ImageLayout = DataGridViewImageCellLayout.Zoom;
             XoaSach.MinimumWidth = 6;
             XoaSach.Name = "XoaSach";
             XoaSach.ReadOnly = true;
+            XoaSach.Resizable = DataGridViewTriState.True;
+            XoaSach.SortMode = DataGridViewColumnSortMode.Automatic;
             XoaSach.Width = 80;
             // 
+<<<<<<< HEAD
 
             // label6
+=======
+            // dgvEmployees
+>>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(345, 99);
-            label6.Name = "label6";
-            label6.Size = new Size(117, 23);
-            label6.TabIndex = 26;
-            label6.Text = "Nhà Xuất Bản";
+            dgvEmployees.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvEmployees.BorderStyle = BorderStyle.None;
+            dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmployees.Columns.AddRange(new DataGridViewColumn[] { MaNV, TenNV, XemThem });
+            dgvEmployees.GridColor = SystemColors.ControlText;
+            dgvEmployees.Location = new Point(40, 3);
+            dgvEmployees.Name = "dgvEmployees";
+            dgvEmployees.ReadOnly = true;
+            dgvEmployees.RowHeadersWidth = 51;
+            dgvEmployees.Size = new Size(387, 237);
+            dgvEmployees.TabIndex = 0;
+            dgvEmployees.CellContentClick += dgvEmployees_CellContentClick;
             // 
-            // txtTenSach
+            // MaNV
             // 
-            txtTenSach.Location = new Point(345, 58);
-            txtTenSach.Name = "txtTenSach";
-            txtTenSach.Size = new Size(242, 27);
-            txtTenSach.TabIndex = 28;
+            MaNV.HeaderText = "MaNV";
+            MaNV.MinimumWidth = 6;
+            MaNV.Name = "MaNV";
+            MaNV.ReadOnly = true;
+            MaNV.Width = 110;
             // 
-            // txtNXB
+            // TenNV
             // 
-            txtNXB.Location = new Point(345, 122);
-            txtNXB.Name = "txtNXB";
-            txtNXB.Size = new Size(242, 27);
-            txtNXB.TabIndex = 31;
+            TenNV.HeaderText = "TenNV";
+            TenNV.MinimumWidth = 6;
+            TenNV.Name = "TenNV";
+            TenNV.ReadOnly = true;
+            TenNV.Width = 125;
             // 
-            // txtMaTL
+            // XemThem
             // 
-            txtMaTL.Location = new Point(650, 58);
-            txtMaTL.Name = "txtMaTL";
-            txtMaTL.Size = new Size(242, 27);
-            txtMaTL.TabIndex = 29;
+            XemThem.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            XemThem.HeaderText = "XemThem";
+            XemThem.Image = (Image)resources.GetObject("XemThem.Image");
+            XemThem.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            XemThem.MinimumWidth = 6;
+            XemThem.Name = "XemThem";
+            XemThem.ReadOnly = true;
+            XemThem.Resizable = DataGridViewTriState.True;
+            XemThem.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
+<<<<<<< HEAD
             // txtSL
             // 
             txtSL.Location = new Point(37, 122);
@@ -1119,6 +1166,8 @@
             // 
 
 
+=======
+>>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1177,6 +1226,8 @@
             pnlBookStatistics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStatistics).EndInit();
             pnlBookManager.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBooksManaged).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).EndInit();
             ResumeLayout(false);
@@ -1243,7 +1294,6 @@
         private Label label11;
         private Label label10;
         private Label label9;
-        private Label label15;
         private Panel pnlHH;
         private Panel pnlCNTT;
         private Panel pnlVL;
@@ -1265,11 +1315,15 @@
         private Panel pnlBookManager;
         private DataGridView dgvEmployees;
         private DataGridView dgvBooksManaged;
-        private DataGridViewTextBoxColumn MaNV;
-        private DataGridViewTextBoxColumn TenNV;
-        private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn MaSach1;
         private DataGridViewTextBoxColumn TenSach1;
-        private DataGridViewTextBoxColumn XoaSach;
+        private DataGridViewImageColumn XoaSach;
+        private DataGridViewTextBoxColumn MaNV;
+        private DataGridViewTextBoxColumn TenNV;
+        private DataGridViewImageColumn XemThem;
+        private Panel groupBox1;
+        private TextBox txtBoxAddBookQL;
+        private Label lblBookID;
+        private Button btnThemSach;
     }
 }

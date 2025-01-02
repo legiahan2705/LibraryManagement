@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TO;
 
@@ -36,5 +37,16 @@ namespace BL
         {
             return dlAddBook.UpdateBook(book);
         }
+
+        public bool AddBookToEmployee(string maNV, string maSach)
+        {
+            return dlAddBook.AddBookToEmployee(maNV, maSach);
+        }
+
+        public List<Sach_TO> GetBooksManagedByEmployee(string maNV)
+        {
+            return dlAddBook.GetBooksManagedByEmployee(maNV); // Gọi hàm từ DL
+        }
+
     }
 }
