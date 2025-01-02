@@ -64,5 +64,30 @@ namespace DL
 
             return employees; // Trả về danh sách nhân viên
         }
+
+        //Lấy danh sách từ QuanLySach
+        public bool AddBookToManager(string maNV, string maSach)
+        {
+            string query = "INSERT INTO QuanLySach (MaNV, MaSach) VALUES (@MaNV, @MaSach)";
+            try
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@MaNV", maNV);
+                    cmd.Parameters.AddWithValue("@MaSach", maSach);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding book to manager: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

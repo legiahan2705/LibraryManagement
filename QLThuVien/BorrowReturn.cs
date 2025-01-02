@@ -133,8 +133,6 @@ namespace QLThuVien
 
         private void BorrowReturn_Load(object sender, EventArgs e)
         {
-
-
             pnlBorrowReturn.BackColor = ColorTranslator.FromHtml("#BDC0FA");
 
             //gán tên nhân viên vào label Welcome
@@ -145,9 +143,6 @@ namespace QLThuVien
 
             lblReader.Visible = false;
             lblManageSlips.Visible = false;
-
-
-
         }
 
 
