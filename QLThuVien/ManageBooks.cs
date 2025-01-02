@@ -734,17 +734,7 @@ namespace QLThuVien
             pnlBookStatistics.Visible = false;
         }
 
-<<<<<<< HEAD
-            //// Lấy danh sách nhân viên từ lớp BL
-            //DataTable dtNhanVien = _blGetEmployees.AddBookToManager();
 
-            //// Hiển thị trong DataGridView
-            //dgvEmployees.Rows.Clear();
-            //foreach (DataRow row in dtNhanVien.Rows)
-            //{
-            //    dgvEmployees.Rows.Add(row["MaNV"], row["Ten"], row["Email"]);
-            //}
-=======
         private void dgvEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -780,7 +770,7 @@ namespace QLThuVien
                     MessageBox.Show($"Error loading books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
+
         }
 
         private void dgvBooksManaged_CellContentClick(object sender, DataGridViewCellEventArgs e)

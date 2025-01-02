@@ -109,10 +109,7 @@
             TenTheLoai = new DataGridViewTextBoxColumn();
             TongSoLuong = new DataGridViewTextBoxColumn();
             TyLe = new DataGridViewTextBoxColumn();
-<<<<<<< HEAD
 
-=======
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             pnlBookManager = new Panel();
             groupBox1 = new Panel();
             btnThemSach = new Button();
@@ -125,7 +122,7 @@
             dgvEmployees = new DataGridView();
             MaNV = new DataGridViewTextBoxColumn();
             TenNV = new DataGridViewTextBoxColumn();
-<<<<<<< HEAD
+
             Email = new DataGridViewTextBoxColumn();
             MaSach1 = new DataGridViewTextBoxColumn();
             TenSach1 = new DataGridViewTextBoxColumn();
@@ -148,9 +145,7 @@
             txtSL = new TextBox();
 
 
-=======
-            XemThem = new DataGridViewImageColumn();
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
+
             ((System.ComponentModel.ISupportInitialize)picIconReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIconLogOut).BeginInit();
             pnlReports.SuspendLayout();
@@ -1005,15 +1000,6 @@
             TyLe.ReadOnly = true;
             TyLe.Width = 75;
             // 
-<<<<<<< HEAD
-
-            // pnlBookManager
-
-            // panel1
-
-=======
-            // pnlBookManager
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             // 
             pnlBookManager.BackColor = SystemColors.ButtonHighlight;
             pnlBookManager.Controls.Add(groupBox1);
@@ -1108,12 +1094,7 @@
             XoaSach.SortMode = DataGridViewColumnSortMode.Automatic;
             XoaSach.Width = 80;
             // 
-<<<<<<< HEAD
 
-            // label6
-=======
-            // dgvEmployees
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             // 
             dgvEmployees.BackgroundColor = SystemColors.ButtonHighlight;
             dgvEmployees.BorderStyle = BorderStyle.None;
@@ -1156,7 +1137,7 @@
             XemThem.Resizable = DataGridViewTriState.True;
             XemThem.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
-<<<<<<< HEAD
+
             // txtSL
             // 
             txtSL.Location = new Point(37, 122);
@@ -1166,8 +1147,7 @@
             // 
 
 
-=======
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
+
             // ManageBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);

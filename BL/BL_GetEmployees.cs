@@ -29,24 +29,8 @@ namespace BL
             return employees;
         }
 
-<<<<<<< HEAD
-        //public List<QuanLySach_TO> GetAllQuanLySach()
-        //{
-        //    // Gọi tầng DL để lấy dữ liệu
-        //    List<QuanLySach_TO> qlSach = _dlGetEmployees.AddBookToManager();
 
-        //    // Kiểm tra nếu không có nhân viên nào
-        //    if (employees == null || employees.Count == 0)
-        //    {
-        //        // Trả về danh sách rỗng hoặc ném thông báo lỗi
-        //        Console.WriteLine("There are no employees in the database");
-        //        return new List<NhanVien_TO>();
-        //    }
-
-        //    // Trả về danh sách nhân viên nếu hợp lệ
-        //    return employees;
-        //}
-=======
+        
         public List<NhanVien_TO> GetQLSach()
         {
             // Gọi tầng DL để lấy dữ liệu
@@ -81,7 +65,7 @@ namespace BL
             // Trả về danh sách sách nếu hợp lệ
             return sachDQL;
         }
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
+
 
     }
 }

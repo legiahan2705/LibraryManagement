@@ -1722,31 +1722,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mike Cheese\\.nuget\\packages\\": {},
+    "C:\\Users\\jmleg\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "D:\\QuanLyThuVien\\BL\\BL.csproj",
       "projectName": "BL",
       "projectPath": "D:\\QuanLyThuVien\\BL\\BL.csproj",
       "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
       "outputPath": "D:\\QuanLyThuVien\\BL\\obj\\",
-=======
-      "projectUniqueName": "D:\\Thư mục mới (2)\\BL\\BL.csproj",
-      "projectName": "BL",
-      "projectPath": "D:\\Thư mục mới (2)\\BL\\BL.csproj",
-      "packagesPath": "C:\\Users\\Mike Cheese\\.nuget\\packages\\",
-      "outputPath": "D:\\Thư mục mới (2)\\BL\\obj\\",
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mike Cheese\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jmleg\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1761,19 +1753,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-<<<<<<< HEAD
             "D:\\QuanLyThuVien\\DL\\DL.csproj": {
               "projectPath": "D:\\QuanLyThuVien\\DL\\DL.csproj"
             },
             "D:\\QuanLyThuVien\\TO\\TO.csproj": {
               "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj"
-=======
-            "D:\\Thư mục mới (2)\\DL\\DL.csproj": {
-              "projectPath": "D:\\Thư mục mới (2)\\DL\\DL.csproj"
-            },
-            "D:\\Thư mục mới (2)\\TO\\TO.csproj": {
-              "projectPath": "D:\\Thư mục mới (2)\\TO\\TO.csproj"
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
             }
           }
         }
@@ -1786,7 +1770,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -1809,7 +1793,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -1818,11 +1802,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-<<<<<<< HEAD
       "message": "Problem reading the cache file D:\\QuanLyThuVien\\BL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-      "message": "Problem reading the cache file D:\\Thư mục mới (2)\\BL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
->>>>>>> d0f93771b860fcfaea895f97c6963a23fbcd9ac8
     }
   ]
 }
