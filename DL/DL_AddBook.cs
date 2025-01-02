@@ -13,6 +13,7 @@ namespace DL
     {
             public bool AddBook(Sach_TO book)
             {
+            bool isAdded = false;
             try
                 {
                     connection.Open();
@@ -43,7 +44,7 @@ namespace DL
                     connection.Close();
                 }
             }
-
+            return isAdded;
         }
 
         // Phương thức cập nhật sách

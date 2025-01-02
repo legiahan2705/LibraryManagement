@@ -366,7 +366,8 @@ namespace QLThuVien
 
         private void btnAddBook_Click(object sender, EventArgs e)
         {
-            // Kiểm tra dữ liệu hợp lệ
+            {
+// Kiểm tra dữ liệu hợp lệ
             if (string.IsNullOrEmpty(txtMaSach.Text) ||
                 string.IsNullOrEmpty(txtTenSach.Text) ||
                 string.IsNullOrEmpty(txtMaTL.Text) ||
@@ -433,96 +434,101 @@ namespace QLThuVien
             {
                 //MessageBox.Show($"Error: {ex.Message}", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Sửa sách
-            if (btnAddBook.Text == "Save")
+            }
+            
             {
-                // Kiểm tra dữ liệu hợp lệ
-                if (string.IsNullOrEmpty(txtMaSach.Text) ||
-                    string.IsNullOrEmpty(txtTenSach.Text) ||
-                    string.IsNullOrEmpty(txtMaTL.Text) ||
-                    string.IsNullOrEmpty(txtSL.Text) ||
-                    string.IsNullOrEmpty(txtNXB.Text) ||
-                    string.IsNullOrEmpty(txtNgayNhap.Text))
+                // Sửa sách
+                if (btnAddBook.Text == "Save")
                 {
-                    MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                DateTime ngayNhap;
-                if (!DateTime.TryParse(txtNgayNhap.Text, out ngayNhap))
-                {
-                    MessageBox.Show("Invalid date format. Please enter the date in YYYY-MM-DD format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Hiển thị hộp thoại xác nhận
-                DialogResult confirmResult = MessageBox.Show(
-                    "Are you sure you want to update this book's information?",
-                    "Confirm Update",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Question
-                );
-
-                if (confirmResult == DialogResult.OK)
-                {
-                    // Cập nhật thông tin nhân viên
-                    Sach_TO updateBook = new Sach_TO
+                    // Kiểm tra dữ liệu hợp lệ
+                    if (string.IsNullOrEmpty(txtMaSach.Text) ||
+                        string.IsNullOrEmpty(txtTenSach.Text) ||
+                        string.IsNullOrEmpty(txtMaTL.Text) ||
+                        string.IsNullOrEmpty(txtSL.Text) ||
+                        string.IsNullOrEmpty(txtNXB.Text) ||
+                        string.IsNullOrEmpty(txtNgayNhap.Text))
                     {
-                        MaSach = txtMaSach.Text,
-                        TenSach = txtTenSach.Text,
-                        MaTL = txtMaTL.Text,
-                        SL = int.Parse(txtSL.Text),
-                        NXB = txtNXB.Text,
-                        NgayNhap = ngayNhap.ToString("yyyy-MM-dd"),
-                    };
+                        MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                    // Gọi phương thức cập nhật từ lớp BL
-                    bool isUpdated = _blAddBook.UpdateBook(updateBook);
-
-                    if (isUpdated)
+                    DateTime ngayNhap;
+                    if (!DateTime.TryParse(txtNgayNhap.Text, out ngayNhap))
                     {
-                        MessageBox.Show("Book updated successfully!", "Success");
+                        MessageBox.Show("Invalid date format. Please enter the date in YYYY-MM-DD format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                        // Đặt lại giao diện
+                    // Hiển thị hộp thoại xác nhận
+                    DialogResult confirmResult = MessageBox.Show(
+                        "Are you sure you want to update this book's information?",
+                        "Confirm Update",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Question
+                    );
 
-                        txtMaSach.Clear();
-                        txtTenSach.Clear();
-                        txtMaTL.Clear();
-                        txtSL.Clear();
-                        txtNXB.Clear();
-                        txtNgayNhap.Clear();
-
-                        // Đặt txtMaNV thành chỉ đọc
-                        txtMaSach.ReadOnly = false;
-                        txtMaSach.Enabled = true;   // Cho phép nhấp chuột
-
-                        btnAddBook.BackColor = Color.DarkSlateBlue;
-                        btnAddBook.Text = "Add book";
-
-                        // Cập nhật lại hàng trong DataGridView
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                    if (confirmResult == DialogResult.OK)
+                    {
+                        // Cập nhật thông tin nhân viên
+                        Sach_TO updateBook = new Sach_TO
                         {
-                            if (row.Cells["MaSach"].Value.ToString() == updateBook.MaSach)
+                            MaSach = txtMaSach.Text,
+                            TenSach = txtTenSach.Text,
+                            MaTL = txtMaTL.Text,
+                            SL = int.Parse(txtSL.Text),
+                            NXB = txtNXB.Text,
+                            NgayNhap = ngayNhap.ToString("yyyy-MM-dd"),
+                        };
+
+                        // Gọi phương thức cập nhật từ lớp BL
+                        bool isUpdated = _blAddBook.UpdateBook(updateBook);
+
+                        if (isUpdated)
+                        {
+                            MessageBox.Show("Book updated successfully!", "Success");
+
+                            // Đặt lại giao diện
+
+                            txtMaSach.Clear();
+                            txtTenSach.Clear();
+                            txtMaTL.Clear();
+                            txtSL.Clear();
+                            txtNXB.Clear();
+                            txtNgayNhap.Clear();
+
+                            // Đặt txtMaNV thành chỉ đọc
+                            txtMaSach.ReadOnly = false;
+                            txtMaSach.Enabled = true;   // Cho phép nhấp chuột
+
+                            btnAddBook.BackColor = Color.DarkSlateBlue;
+                            btnAddBook.Text = "Add book";
+
+                            // Cập nhật lại hàng trong DataGridView
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
                             {
-                                row.SetValues(
-                                    updateBook.MaSach,
-                                    updateBook.TenSach,
-                                    updateBook.MaTL,
-                                    updateBook.SL,
-                                    updateBook.NXB,
-                                    updateBook.NgayNhap
-                                );
-                                break;
+                                if (row.Cells["MaSach"].Value.ToString() == updateBook.MaSach)
+                                {
+                                    row.SetValues(
+                                        updateBook.MaSach,
+                                        updateBook.TenSach,
+                                        updateBook.MaTL,
+                                        updateBook.SL,
+                                        updateBook.NXB,
+                                        updateBook.NgayNhap
+                                    );
+                                    break;
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to update book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            MessageBox.Show("Failed to update book.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
-            }
+            }            
+            
+            
         }
 
         // Phương thức xóa dữ liệu trong các TextBox
