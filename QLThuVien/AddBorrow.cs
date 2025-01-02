@@ -249,6 +249,7 @@ namespace QLThuVien
             Controls.Add(lbl_title);
             Name = "AddBorrow";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Add Borrow Slip";
             Load += AddBorrow_Load;
             ((ISupportInitialize)bLGetBooksBindingSource).EndInit();
             ResumeLayout(false);
