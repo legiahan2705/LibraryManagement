@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "D:\\Thư mục mới (2)\\DL\\DL.csproj": {}
-  },
-  "projects": {
-    "D:\\Thư mục mới (2)\\DL\\DL.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Thư mục mới (2)\\DL\\DL.csproj",
-        "projectName": "DL",
-        "projectPath": "D:\\Thư mục mới (2)\\DL\\DL.csproj",
-        "packagesPath": "C:\\Users\\Mike Cheese\\.nuget\\packages\\",
-        "outputPath": "D:\\Thư mục mới (2)\\DL\\obj\\",
-=======
     "D:\\QuanLyThuVien\\DL\\DL.csproj": {}
   },
   "projects": {
@@ -25,7 +12,6 @@
         "projectPath": "D:\\QuanLyThuVien\\DL\\DL.csproj",
         "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
         "outputPath": "D:\\QuanLyThuVien\\DL\\obj\\",
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -46,13 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-<<<<<<< HEAD
-              "D:\\Thư mục mới (2)\\TO\\TO.csproj": {
-                "projectPath": "D:\\Thư mục mới (2)\\TO\\TO.csproj"
-=======
               "D:\\QuanLyThuVien\\TO\\TO.csproj": {
                 "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj"
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
               }
             }
           }
@@ -98,16 +79,6 @@
         }
       }
     },
-<<<<<<< HEAD
-    "D:\\Thư mục mới (2)\\TO\\TO.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Thư mục mới (2)\\TO\\TO.csproj",
-        "projectName": "TO",
-        "projectPath": "D:\\Thư mục mới (2)\\TO\\TO.csproj",
-        "packagesPath": "C:\\Users\\Mike Cheese\\.nuget\\packages\\",
-        "outputPath": "D:\\Thư mục mới (2)\\TO\\obj\\",
-=======
     "D:\\QuanLyThuVien\\TO\\TO.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -116,7 +87,6 @@
         "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj",
         "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
         "outputPath": "D:\\QuanLyThuVien\\TO\\obj\\",
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

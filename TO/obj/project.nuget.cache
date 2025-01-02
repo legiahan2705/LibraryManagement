@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "r1sa0qK4uXU=",
-  "success": true,
-  "projectFilePath": "D:\\Thư mục mới (2)\\TO\\TO.csproj",
-=======
   "dgSpecHash": "fOON0gC1+xs=",
   "success": true,
   "projectFilePath": "D:\\QuanLyThuVien\\TO\\TO.csproj",
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\QuanLyThuVien\\TO\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

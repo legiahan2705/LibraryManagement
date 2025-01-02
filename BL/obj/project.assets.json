@@ -1728,19 +1728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "D:\\Thư mục mới (2)\\BL\\BL.csproj",
-      "projectName": "BL",
-      "projectPath": "D:\\Thư mục mới (2)\\BL\\BL.csproj",
-      "packagesPath": "C:\\Users\\Mike Cheese\\.nuget\\packages\\",
-      "outputPath": "D:\\Thư mục mới (2)\\BL\\obj\\",
-=======
       "projectUniqueName": "D:\\QuanLyThuVien\\BL\\BL.csproj",
       "projectName": "BL",
       "projectPath": "D:\\QuanLyThuVien\\BL\\BL.csproj",
       "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
       "outputPath": "D:\\QuanLyThuVien\\BL\\obj\\",
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1761,19 +1753,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-<<<<<<< HEAD
-            "D:\\Thư mục mới (2)\\DL\\DL.csproj": {
-              "projectPath": "D:\\Thư mục mới (2)\\DL\\DL.csproj"
-            },
-            "D:\\Thư mục mới (2)\\TO\\TO.csproj": {
-              "projectPath": "D:\\Thư mục mới (2)\\TO\\TO.csproj"
-=======
             "D:\\QuanLyThuVien\\DL\\DL.csproj": {
               "projectPath": "D:\\QuanLyThuVien\\DL\\DL.csproj"
             },
             "D:\\QuanLyThuVien\\TO\\TO.csproj": {
               "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj"
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
             }
           }
         }
@@ -1812,5 +1796,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\QuanLyThuVien\\BL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

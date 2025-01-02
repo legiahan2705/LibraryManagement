@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "D:\\Thư mục mới (2)\\TO\\TO.csproj": {}
-  },
-  "projects": {
-    "D:\\Thư mục mới (2)\\TO\\TO.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Thư mục mới (2)\\TO\\TO.csproj",
-        "projectName": "TO",
-        "projectPath": "D:\\Thư mục mới (2)\\TO\\TO.csproj",
-        "packagesPath": "C:\\Users\\Mike Cheese\\.nuget\\packages\\",
-        "outputPath": "D:\\Thư mục mới (2)\\TO\\obj\\",
-=======
     "D:\\QuanLyThuVien\\TO\\TO.csproj": {}
   },
   "projects": {
@@ -25,7 +12,6 @@
         "projectPath": "D:\\QuanLyThuVien\\TO\\TO.csproj",
         "packagesPath": "C:\\Users\\jmleg\\.nuget\\packages\\",
         "outputPath": "D:\\QuanLyThuVien\\TO\\obj\\",
->>>>>>> ab96b7f44eb6a9045e0a57109eda44850a403ca0
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

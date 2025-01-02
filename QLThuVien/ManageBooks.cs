@@ -673,19 +673,19 @@ namespace QLThuVien
         
         private void pnlBookManagerBTN_Click(object sender, EventArgs e)
         {
-            pnlBookManager.Visible = true;
-            pnlBookCase.Visible = false;
-            pnlBookStatistics.Visible = false;
+            //pnlBookManager.Visible = true;
+            //pnlBookCase.Visible = false;
+            //pnlBookStatistics.Visible = false;
 
-            // Lấy danh sách nhân viên từ lớp BL
-            DataTable dtNhanVien = _blGetEmployees.AddBookToManager();
+            //// Lấy danh sách nhân viên từ lớp BL
+            //DataTable dtNhanVien = _blGetEmployees.AddBookToManager();
 
-            // Hiển thị trong DataGridView
-            dgvEmployees.Rows.Clear();
-            foreach (DataRow row in dtNhanVien.Rows)
-            {
-                dgvEmployees.Rows.Add(row["MaNV"], row["Ten"], row["Email"]);
-            }
+            //// Hiển thị trong DataGridView
+            //dgvEmployees.Rows.Clear();
+            //foreach (DataRow row in dtNhanVien.Rows)
+            //{
+            //    dgvEmployees.Rows.Add(row["MaNV"], row["Ten"], row["Email"]);
+            //}
         }
 
         
