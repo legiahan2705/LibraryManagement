@@ -56,7 +56,7 @@ LibraryManagement/
 - Tạo và xử lý phiếu mượn/trả
 - Theo dõi tình trạng sách đang được mượn
 - Thống kê sách mượn nhiều nhất
-- Báo cáo theo th��� loại, mượn/trả, số lượng
+- Báo cáo theo thể loại, mượn/trả, số lượng
 
 ## Cơ sở dữ liệu
 
@@ -130,10 +130,6 @@ Repository hiện chưa khai báo license cụ thể.
 
 ## Tác giả
 
-- legiahan2705
-
-Nếu bạn muốn, mình có thể tiếp tục bổ sung thêm:
-- phiên bản README tiếng Anh
-- hình ảnh giao diện demo
-- cấu trúc chi tiết từng class trong project
-- hướng dẫn debug khi chạy lỗi database connection
+- Lê Gia Hân
+- Phan Hồng Lĩnh
+- Trịnh Ngọc Mai Chi
