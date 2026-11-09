@@ -124,10 +124,6 @@ File này chạy form `DangNhap` khi chương trình start.
   - `DL`: truy vấn dữ liệu
   - `TO`: đối tượng dữ liệu
 
-## License
-
-Repository hiện chưa khai báo license cụ thể.
-
 ## Tác giả
 
 - Lê Gia Hân
